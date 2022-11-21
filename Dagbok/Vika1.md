@@ -22,7 +22,13 @@ Hver og einn fór yfir Verkefnalýsinguna og byrjaði að finna klassa til að h
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-Texti fyrir Færslu 2
+Allur hópurinn ræddi verkefnið vel og erum komnir með nýfundna ákveðni eftir að hafa dregið úr áhyggjum hvers annars
+það eru ennþá nokkrar litlar spurningar eftir sem við fáum svar fyrir á næstu dögum.
+Við búnir að finna marga klassa og höfum skipt verkum aðeins niður.
+---Verkefni eru skift svona---
+Kjartan Elvar og Kristinn F: Class Diagram sketch
+Styrmir, Kjartan Ingi: State Machine Diagram
+Hrafnkell: Menu Design
 ```
 
 
