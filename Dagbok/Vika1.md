@@ -28,7 +28,7 @@ Við búnir að finna marga klassa og höfum skipt verkum aðeins niður.
 ---Verkefni eru skift svona---
 Kjartan Elvar og Kristinn F: Class Diagram sketch
 Styrmir og Kjartan Ingi: State Machine Diagram
-Hrafnkell: Menu Design
+Hrafnkell: Happy Path
 *Erum svo allir að hjálpa hvert öðrum með hvern part með umræðum og athugasemdum*
 ```
 
