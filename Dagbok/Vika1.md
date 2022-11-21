@@ -1,5 +1,4 @@
 # Vika 1
-## 21.11.2022
 
 #### ---Plan út vikuna---
 - Mánudagur: Rough sketch
@@ -7,6 +6,7 @@
 - Fimmtudagur: Finaliza
 - Föstudagur Yfirferð.
 
+## 21.11.2022
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
