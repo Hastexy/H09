@@ -27,8 +27,9 @@ Allur hópurinn ræddi verkefnið vel og erum komnir með nýfundna ákveðni ef
 Við búnir að finna marga klassa og höfum skipt verkum aðeins niður.
 ---Verkefni eru skift svona---
 Kjartan Elvar og Kristinn F: Class Diagram sketch
-Styrmir, Kjartan Ingi: State Machine Diagram
+Styrmir og Kjartan Ingi: State Machine Diagram
 Hrafnkell: Menu Design
+*Erum svo allir að hjálpa hvert öðrum með hvern part með umræðum og athugasemdum*
 ```
 
 
