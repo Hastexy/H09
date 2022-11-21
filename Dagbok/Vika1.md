@@ -13,7 +13,12 @@
 - Föstudagur Yfirferð.
 
 ### Færsla 2 - Samantekt
-testing 2
+#### ---Hvað hópurinn gerði---
+- Hrafnkell Orri: 
+- Kjartan Elvar: 
+- Kjartan Ingi: 
+- Kristinn F: 
+- Styrmir: 
 
 
 ## 22.11.2022 - 
