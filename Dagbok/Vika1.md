@@ -15,7 +15,7 @@ við settum svo upp sameiginlegt UML skjal til að vinna á hönnunar skjölum s
 Hver og einn fór yfir Verkefnalýsinguna og byrjaði að finna klassa til að hafa í UML skjölunum okkar
 ```
 - Finna hvaða diagrams/skjöl við þurfum
-- skipta skjölum á hópinn (2-3 með hvert skjal)
+- skipta skjölum á hópinn (1-3 með hvert skjal)
 - Byrja að gera rough skjal
 
 
