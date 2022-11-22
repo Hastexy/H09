@@ -43,7 +43,7 @@ mögulega með val á að breyta yfir í íslensku (Væri þá c krafa).
 Skoðað var grunnhönnun af happy path og komu nokkrar athugasemdir um hvernig fyrsti skjárinn ætti að líta út og 
 valið að hafa 3 valmöguleika fyrst: Tournament Mangers, New Results og View info
 En einnig skiptum við niður verkum svipað og eftir gærdaginn:
-Kjartan Elvar og Kristinn F: Class Diagram sketch
+Kjartan Elvar og Kristinn F: Class Diagram
 Kjartan Ingi, Hrafnkell og Styrmir: State Machine Diagram
 Styrmir veiktist en kom svo að vinna með hópnum eftir hvíld
 ```
@@ -51,7 +51,20 @@ Styrmir veiktist en kom svo að vinna með hópnum eftir hvíld
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-Covid
+Hópurinn kom saman klukkan 3 og ræddi hvernig staðan á öllu væri.
+Hrafnkell hjálpaði með state machine diagram-ið en fór svo eftir að góður hluti var kominn í að gera happy path
+Kjartan Elvar og Kristinn F kláruðu Model Class Diagram-ið og fóru að gera Use Cases
+Allir aðrir eru að halda áfram að vinna í sínu
+
+State Machine Diagram-ið er búið svo hægt er að vinna á öðru eftir því en auðvitað gæti alltaf breyst hvort vanti eitthvað
+Happy path-ið er á góðri leið en er sífelt að breyta eftir athugasemdum hópsins
+Model Class Diagram-ið er búið en eru vafar með hvernig á að gera Virkni Class Diagram-ið
+Use Cases er ný byrjað og verður klárað þau á næstu dögum
+
+Þannig verkefni í lok dagsins eru skipt svona:
+Hrafnkell: Happy path
+Kjartan Ingi og Styrmir: Klára State Machine Diagram-ið .V1
+Kjartan Elvar og Kristinn F: Klára Model Class Diagram-ið .V1 og byrja á Use Cases
 ```
 
 
