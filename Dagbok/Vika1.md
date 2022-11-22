@@ -49,4 +49,22 @@ Styrmir veiktist en kom svo að vinna með hópnum eftir hvíld
 ```
 
 ### Færsla 2 - Samantekt
-WAH
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+Covid
+```
+
+
+
+## 23.11.2022 - 
+### Færsla 1 - Morgunfundur
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+
+```
+
+### Færsla 2 - Samantekt
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+
+```
