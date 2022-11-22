@@ -45,7 +45,7 @@ valið að hafa 3 valmöguleika fyrst: Tournament Mangers, New Results og View i
 En einnig skiptum við niður verkum svipað og eftir gærdaginn:
 Kjartan Elvar og Kristinn F: Class Diagram sketch
 Kjartan Ingi, Hrafnkell og Styrmir: State Machine Diagram
-Styrmir veiktist með ælupest en kom svo að vinna með hópnum eftir hvíld
+Styrmir veiktist en kom svo að vinna með hópnum eftir hvíld
 ```
 
 ### Færsla 2 - Samantekt
