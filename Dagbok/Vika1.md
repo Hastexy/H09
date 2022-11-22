@@ -35,7 +35,18 @@ Hrafnkell: Happy Path
 
 ## 22.11.2022 - 
 ### Færsla 1 - Morgunfundur
-testing 3
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+Hópurinn hittist á morgunfund klukkan 10 og byrjaði að fara yfir hvað var gert í gær og fara yfir nokkra umræðupunkta
+sem komu eftir gærdeginum. Eitt af þeim umræðupuntkum var tungumálið á forritinu og völdum við að hafa allt á íslensku 
+mögulega með val á að breyta yfir í ensku (Væri þá c krafa).
+Skoðað var grunnhönnun af happy path og komu nokkrar athugasemdir um hvernig fyrsti skjárinn ætti að líta út og 
+valið að hafa 3 valmöguleika fyrst: mótshöldun, nýskrá úrslit og skoða upplýsingar
+En einnig skiptum við niður verkum svipað og eftir gærdaginn:
+Kjartan Elvar og Kristinn F: Class Diagram sketch
+Kjartan Ingi og Hrafnkell: State Machine Diagram
+Styrmir veiktist með ælupest svo hann hvílir sig
+```
 
 ### Færsla 2 - Samantekt
 WAH
