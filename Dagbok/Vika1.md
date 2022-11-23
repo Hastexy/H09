@@ -68,8 +68,44 @@ Kjartan Elvar og Kristinn F: Klára Model Class Diagram-ið .V1 og byrja á Use 
 ```
 
 
-
 ## 23.11.2022 - 
+### Færsla 1 - Morgunfundur
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+Hópurinn kom saman klukkan 10 og fór smá yfir nokkrar upplýsingar sem voru fengnar eftir fundin í gær.
+Kristinn sýndi 3 tier class diagram-ið sem hann gerði á meðan hann spjallaði við Gylfa.
+Happy path-ið, eða það sem var komið af því var sett inná githubbið af mér með nýju formatti.
+Og kom í ljós að við erum næstum komnir með fyrstu gerð af öllum skjölum sem þarf að klára í þessari viku.
+Einnig voru 3 use cases komin sem er góður grunnur fyrir fleiri use cases.
+
+Þannig við skiptum verkunum svona eftir fundin:
+Hrafnkell og Styrmir: Notendahópagreining
+Kristinn og Kjartan Elvar: klára 3 tier class diagram
+Kjartan Ingi: rissa upp skýrslu
+```
+
+### Færsla 2 - Samantekt
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+
+```
+
+
+## 24.11.2022 - 
+### Færsla 1 - Morgunfundur
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+
+```
+
+### Færsla 2 - Samantekt
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+
+```
+
+
+## 25.11.2022 - 
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
