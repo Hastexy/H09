@@ -1,1 +1,52 @@
-COMING SOON
+1. Main Menu
+
+    ########################################
+    #           RU Basement Open           #
+    ########################################
+
+    ##Note: So far bara View Info búið í nýja formattinu, fara betur yfir með hópnum View Info partin (mögulega laga state machine smá)
+
+    0. Quit
+    1. Tournament Manager
+    2. Register Results
+    3. View Info
+        1. View Teams
+            1. teamChuckNorris
+                Players:
+                Gylfi
+                Hrafn
+                Friðrik
+            2. teamH9
+                1. Hrafnkell Orri Elvarrson
+                    SSN: 1234567890
+                    Email: hraf@hraf.is
+                    Birthday: 12.34.5678 
+                2. Kjartan Elvar Baldvinsson
+                    SSN: 1234567890
+                    Email: kjart@elv.is
+                    Birthday: 12.34.5678
+                3. Kjartan Ingi Karlsson
+                    SSN: 1234567890
+                    Email: kjart@ing.is
+                    Birthday: 12.34.5678
+                4. Kristinn F Birgisson
+                    SSN: 1234567890
+                    Email: krist@f.is
+                    Birthday: 12.34.5678  
+            3. team1
+                1. player1
+                2. player2
+                3. player3
+        2. View Tournaments
+            1. Unplayed Games
+                1. date - tournament - player1 - player2 - gamemode 
+                2. date - home team - away team
+                3. ##Finna betur út hvað fer hér
+            2. Played Games
+                1. date - tournament - player1 - player2 - gamemode - results
+                2. date - home team - away team - results
+                3. ##Finna betur út hvað fer hér
+            3. Tournament Scores
+                1. RU Basement Open: NaN-NaN
+                2. H9 Open: 6-0
+                3. Tournament 3: 3-3
