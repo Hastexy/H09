@@ -91,9 +91,9 @@ Hópurinn kom saman klukkan 3 og ræddi stöðuna.
 Við erum komnir með grunn fyrir flest skjöl sem þarf nema eitt og vinnum við allir á því skjali á morgun
 Erum sífalt að breyta smáum hlutum hér og þar því upplýsingar og hugsunarháttur okkar breytist
 sem dæmi að leita upp upplýsingar hefur breyst frá því að geta leitt upp lið, leikmenn, félög og fleira yfir í
-að bara geta leitað upp lið, mót/deild og viðureignir(spilaðar og óspilaðar).
+að bara geta leitað upp lið/leikmenn, mót/deild og viðureignir(spilaðar og óspilaðar).
 Annars er Notendahópagreiningin búin og er skýrslan byrjuð. Einnig er verið að gera Ascii Art fyrir Happy path
-3 tier diagram-ið er nánast tilbúið en mun breytast út vikuna vegna smáatriðum.
+öll diagrams er nánast tilbúin en munu breytast út vikuna vegna smáatriðum.
 
 Þannig allt gengur frekar vel og eru verk skipt svona:
 Hrafnkell og Styrmir: Happy path og síðasta skjalið
