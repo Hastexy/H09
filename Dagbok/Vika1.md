@@ -113,13 +113,17 @@ Kröfu skjalið er eina sem er ekki byrjað en var planið að klára það alli
 Einnig fórum við hratt yfir happy path-ið og löguðum og breyttum smá þar og er það nánast tilbúið
 
 Þannig í dag voru verkin skipt svona:
-Allir: Kröfu skjal
+Allir: Requirement Analysis
 ```
 
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn hittist saman klukkan 3:30 og við vorum komnir áfram með öll skjöl.
+State Diagram-ið er búið eins og er, Requirement Analysis-ið er komið góða leið og klárast með hjálp frá kennara.
+Styrmir og Kristinn kláruðu 5 Use Cases sem er nóg fyrir fyrstu skil.
+Hrafnkell fór að gera kláraða Happy path-ið með hjálp Kristins
+Kjartan Ingi og Kjartan Elvar: Voru að vinna í Lokaskýrslunni.
 ```
 
 
