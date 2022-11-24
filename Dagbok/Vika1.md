@@ -106,7 +106,14 @@ Kjartan Ingi: Skýrsla og síðasta skjalið
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
+Hópurinn hittist saman klukkan 10 og setti saman Trello til að sjá stöðuna á öllu betur.
+þau skjöl sem eru til fyrir firstu skil voru bæði klasa diagram-in og notendahópagreining.
+Öll hin skjöl hafa eitthvað í sér og þurfa bara smá breytingar nema eitt.
+Kröfu skjalið er eina sem er ekki byrjað en var planið að klára það allir saman í dag.
+Einnig fórum við hratt yfir happy path-ið og löguðum og breyttum smá þar og er það nánast tilbúið
 
+Þannig í dag voru verkin skipt svona:
+Allir: Kröfu skjal
 ```
 
 ### Færsla 2 - Samantekt
