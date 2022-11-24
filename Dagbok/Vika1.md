@@ -68,8 +68,66 @@ Kjartan Elvar og Kristinn F: Klára Model Class Diagram-ið .V1 og byrja á Use 
 ```
 
 
-
 ## 23.11.2022 - 
+### Færsla 1 - Morgunfundur
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+Hópurinn kom saman klukkan 10 og fór smá yfir nokkrar upplýsingar sem voru fengnar eftir fundin í gær.
+Kristinn sýndi 3 tier class diagram-ið sem hann gerði á meðan hann spjallaði við Gylfa.
+Happy path-ið, eða það sem var komið af því var sett inná githubbið af mér með nýju formatti.
+Og kom í ljós að við erum næstum komnir með fyrstu gerð af öllum skjölum sem þarf að klára í þessari viku.
+Einnig voru 3 use cases komin sem er góður grunnur fyrir fleiri use cases.
+
+Þannig við skiptum verkunum svona eftir fundin:
+Hrafnkell og Styrmir: Notendahópagreining
+Kristinn og Kjartan Elvar: klára 3 tier class diagram
+Kjartan Ingi: rissa upp skýrslu
+```
+
+### Færsla 2 - Samantekt
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+Hópurinn kom saman klukkan 3 og ræddi stöðuna.
+Við erum komnir með grunn fyrir flest skjöl sem þarf nema eitt og vinnum við allir á því skjali á morgun
+Erum sífalt að breyta smáum hlutum hér og þar því upplýsingar og hugsunarháttur okkar breytist
+sem dæmi að leita upp upplýsingar hefur breyst frá því að geta leitt upp lið, leikmenn, félög og fleira yfir í
+að bara geta leitað upp lið/leikmenn, mót/deild og viðureignir(spilaðar og óspilaðar).
+Annars er Notendahópagreiningin búin og er skýrslan byrjuð. Einnig er verið að gera Ascii Art fyrir Happy path
+öll diagrams er nánast tilbúin en munu breytast út vikuna vegna smáatriðum.
+
+Þannig allt gengur frekar vel og eru verk skipt svona:
+Hrafnkell og Styrmir: Happy path og síðasta skjalið
+Kjartan Elvar og Kristinn F: 3 tier class diagram og síðasta skjalið
+Kjartan Ingi: Skýrsla og síðasta skjalið
+```
+
+
+## 24.11.2022 - 
+### Færsla 1 - Morgunfundur
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+Hópurinn hittist saman klukkan 10 og setti saman Trello til að sjá stöðuna á öllu betur.
+þau skjöl sem eru til fyrir firstu skil voru bæði klasa diagram-in og notendahópagreining.
+Öll hin skjöl hafa eitthvað í sér og þurfa bara smá breytingar nema eitt.
+Kröfu skjalið er eina sem er ekki byrjað en var planið að klára það allir saman í dag.
+Einnig fórum við hratt yfir happy path-ið og löguðum og breyttum smá þar og er það nánast tilbúið
+
+Þannig í dag voru verkin skipt svona:
+Allir: Requirement Analysis
+```
+
+### Færsla 2 - Samantekt
+##### Ritari: Hrafnkell Orri Elvarsson
+```
+Hópurinn hittist saman klukkan 3:30 og við vorum komnir áfram með öll skjöl.
+State Diagram-ið er búið eins og er, Requirement Analysis-ið er komið góða leið og klárast með hjálp frá kennara.
+Styrmir og Kristinn kláruðu 5 Use Cases sem er nóg fyrir fyrstu skil.
+Hrafnkell fór að gera kláraða Happy path-ið með hjálp Kristins
+Kjartan Ingi og Kjartan Elvar: Voru að vinna í Lokaskýrslunni.
+```
+
+
+## 25.11.2022 - 
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
