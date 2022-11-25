@@ -33,7 +33,7 @@ Hrafnkell: Happy Path
 ```
 
 
-## 22.11.2022 - 
+## 22.11.2022
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
@@ -68,7 +68,7 @@ Kjartan Elvar og Kristinn F: Klára Model Class Diagram-ið .V1 og byrja á Use 
 ```
 
 
-## 23.11.2022 - 
+## 23.11.2022
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
@@ -102,7 +102,7 @@ Kjartan Ingi: Skýrsla og síðasta skjalið
 ```
 
 
-## 24.11.2022 - 
+## 24.11.2022
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
@@ -127,7 +127,7 @@ Kjartan Ingi og Kjartan Elvar: Voru að vinna í Lokaskýrslunni.
 ```
 
 
-## 25.11.2022 - 
+## 25.11.2022
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
