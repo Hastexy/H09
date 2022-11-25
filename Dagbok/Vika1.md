@@ -131,7 +131,12 @@ Kjartan Ingi og Kjartan Elvar: Voru að vinna í Lokaskýrslunni.
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn hittist saman klukkan 10 og var planið í dag að klára allt og skila.
+Hrafnkell og Kristinn fóru að klára happy pathið og þarf svo að breyta state diagram smá útaf því.
+Kjartan Elvar, Kjartan Ingi og Styrmir fóru að klára Requirement Analysis-ið.
+Eftir það var planið að setja allt inn á lokaskýrsluna og skila inn.
+Eina vesenið er að skilja hvað á að fara í requirement analysis-ið því allar skýringar á því rugla okkur meir.
+Verkefnin eru skift eins og stendur fyrir ofan.
 ```
 
 ### Færsla 2 - Samantekt
