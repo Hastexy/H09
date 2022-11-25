@@ -142,5 +142,10 @@ Verkefnin eru skift eins og stendur fyrir ofan.
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn hittist saman klukkan 2 og mun hittast aftur á eftir.
+Allt er búið nema Kristinn er að bæta við loka frágang á Happy path-ið.
+Um leið og Happy path-ið klárast verður settu Eina mynd af því inná lokaskýrsluna og svo link til að prófa í figma.
+Eftir það mun hópurinn koma saman í nokkrar mínútur og skila inn lokaskýrsluni, ekki þarf aðra færsu fyrir það.
+Þannig í lok dags eru engin verk til að skipta niður og var þetta mjög skilvirk fyrsta vika.
+Eftir daginn fær hópurinn gott helgar frí :)
 ```
