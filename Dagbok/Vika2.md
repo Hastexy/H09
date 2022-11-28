@@ -15,7 +15,8 @@ Allir voru að vinna í að setja upp öll files og wrappers.
 ```
 Hópurinn tók stuttan fund klukkan 2 og ræddi smá saman.
 Eftir að hafa farið yfir kóðan frá fyrirlestrinum og reynt að herma eftir honum til að búa til okkar eigin leikmann
-þá stoppuðum stuttu eftir að hafa klárað allt nema UI partinn, svo hópurinn ákvað að taka sér smá pásu og byrja bara að læra um þetta meira.
+við stoppuðum stuttu eftir að hafa klárað allt nema UI partinn.
+hópurinn ákvað að taka sér smá pásu og byrja bara að læra um þetta meira og notaði restina af deginum í það
 Á morgun munum við setja allan grunnin betur upp og skulum hafa skipt verkum betur í lok morgundags.
 ```
 
