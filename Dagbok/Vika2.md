@@ -15,10 +15,8 @@ Allir voru að vinna í að setja upp öll files og wrappers.
 ```
 Hópurinn tók stuttan fund klukkan 2 og ræddi smá saman.
 Eftir að hafa farið yfir kóðan frá fyrirlestrinum og reynt að herma eftir honum til að búa til okkar eigin leikmann
-þá stoppuðum stuttu eftir að hafa klárað allt nema UI partinn, svo hópurinn ákvað að taka sér smá pásu og hittast aftur um 5
-þegar við hittumst aftur var planið að reyna klára það og að reyna hafa virkt forrit sem leyfir manni að skrá leikmann
-og einnig sækja leikmanna lista.
-í pásunni var planið að hver og einn reyndi að bæta skilning sinn á 3 tier kóðanum
+þá stoppuðum stuttu eftir að hafa klárað allt nema UI partinn, svo hópurinn ákvað að taka sér smá pásu og byrja bara að læra um þetta meira.
+Á morgun munum við setja allan grunnin betur upp og skulum hafa skipt verkum betur í lok morgundags.
 ```
 
 
