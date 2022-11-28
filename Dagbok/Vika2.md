@@ -5,8 +5,9 @@
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
 Hópurinn hittist klukkan 12 eftir fyrirlesturinn og byrjaði að skipuleggja daginn og vikuna.
-Við byrjuðum að setja saman basica filin og wrappers fyrir alla klassana.
-
+Við byrjuðum að setja saman basic files og wrappers fyrir alla klassana.
+Löguðum nokkrar athugasemdir frá kennurum eins og use cases, table of contents og fleira.
+Allir voru að vinna í að setja upp öll files og wrappers.
 ```
 
 ### Færsla 2 - Samantekt
