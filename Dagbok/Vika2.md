@@ -13,7 +13,7 @@ Allir voru að vinna í að setja upp öll files og wrappers.
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók samantektar fundin klukkan 3
 ```
 
 
