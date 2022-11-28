@@ -4,6 +4,8 @@
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
+Hópurinn hittist klukkan 12 eftir fyrirlesturinn og byrjaði að skipuleggja daginn og vikuna.
+Við byrjuðum að setja saman basica filin og wrappers fyrir alla klassana.
 
 ```
 
