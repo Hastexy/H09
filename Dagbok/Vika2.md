@@ -25,7 +25,11 @@ hópurinn ákvað að taka sér smá pásu og byrja bara að læra um þetta mei
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund klukkan 10 og ræddi saman hvað var gert eftir fund gærdagsins.
+Kristinn var búinn að gera flottan grunn fyrir allt verkefnið og settum við það á github og skiptum svo hópnum up.
+Hrafnkell og Styrmir fóru að vinna á að búa til alla UI skjáina
+Kristin, Kjartan Elvar og Kjartan Ingi fóru að vinna í gagnagrunninum að setja allt þar
+hópurinn mun svo koma saman annaðhvort á eftir eða á morgun að tengja allt það saman.
 ```
 
 ### Færsla 2 - Samantekt
