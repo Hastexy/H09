@@ -35,7 +35,15 @@ hópurinn mun svo koma saman annaðhvort á eftir eða á morgun að tengja allt
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund saman klukkan 4 og náðum við góðum árangri í þessum fundi.
+Við kláruðum hvernig gagnagrunnurinn átti að líta út en eigum eftir að fá athugasemdir kennara um það.
+Við hreinsuðum smá upp githubbið okkar og tókum út óþarfar skrár.
+Næsta skref verður að vinna upp frá gagnagrunninum í að láta Data lagið geti unnið úr csv skránum.
+Á meðan eru menu-in að vera gerð með öllu þessu og á næstunni verður hægt að tengja öll lögin saman.
+í lok þessara viku verðum við komnir með flott og virkandi grunnforrit.
+Verkin í lok dagsins eru einhvernvegin skipt svona, en eru allir að hjálpast að samt:
+Hrafnkell og Styrmir: Menu/UI
+Kristin, Kjartan Elvar og Kjartan Ingi: Data/Logic Layer
 ```
 
 
