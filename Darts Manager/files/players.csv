@@ -1,4 +1,4 @@
-ID;name;kt;email;date_of_birth;team;phone;home_phone;address
+p_ID;name;kt;email;date_of_birth;phone;home_phone;address
 Kjartan Elvar,1234567890,Kjartanb21@ru.is,1994;
 Hrafnkell,1234567890,hrafnkell022@ru.is,1900
 Raul ,1234567890,ahahah@kjzjzj.com,2019
