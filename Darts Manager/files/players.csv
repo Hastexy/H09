@@ -1,7 +1,2 @@
-p_ID;name;kt;email;date_of_birth;phone;home_phone;address
-Kjartan Elvar,1234567890,Kjartanb21@ru.is,1994;
-Hrafnkell,1234567890,hrafnkell022@ru.is,1900
-Raul ,1234567890,ahahah@kjzjzj.com,2019
-Kjartan Ingi,1234567890,kjarta@lala.is,1989
-Styrmir,1234567890,styrmir22@ru.is,060503
-Jón Halldór,1234567890,jajaja@jajaja.com,2900
+ID;name;ssn;email;date_of_birth;phone;home_phone;address;team_ID
+1;kdkdfjhjf;1234567890;kskskks@kskks.ia;14.04.1982;6963583;56704044;DisneyLand;

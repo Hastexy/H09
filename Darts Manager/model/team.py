@@ -1,8 +1,9 @@
 class Team:
-    def __init__(self, name="", club=""):
+    def __init__(self, id="", name="", club=""):
+        self.id = id
         self.name = name
         self.club = club
-        self.players = ""
+        self.players = []
         self.captain = ""
 
     def __str__(self):

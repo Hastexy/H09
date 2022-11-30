@@ -11,5 +11,8 @@ class Club_Logic:
 
         self.data_wrapper.create_club(club)
 
+    def get_new_club_id(self) -> int:
+        return self.data_wrapper.get_new_club_id()
+
     def get_all_clubs(self):
         return self.data_wrapper.get_all_clubs()

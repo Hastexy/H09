@@ -1,5 +1,6 @@
 class Player:
-    def __init__(self, name="", ssn="", email="", dob="2000", phone="", home_phone="", address=""):
+    def __init__(self, ID="", name="", ssn="", email="", dob="", phone="", home_phone="", address=""):
+        self.id = ID
         self.name = name
         self.ssn = ssn
         self.email = email
@@ -7,6 +8,8 @@ class Player:
         self.phone = phone
         self.home_phone = home_phone
         self.address = address
+        self.team = ""
+        self.role = ""
 
     def __str__(self):
         result_str = f"==========\nName: {self.name}\nSSN: {self.ssn}\nEmail: {self.email}\nDOB: {self.dob}"

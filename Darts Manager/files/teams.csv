@@ -1,21 +1,3 @@
-t_ID;name;clubID;team_captainID;player2ID;player3ID;player4ID;
-teamH9,"Kristinn, Kjartan, Hrafnkell, Styrmir",Kristinn
-teamChuckNorris,"Gylfi, Hrafn, Friðrik, Flati",Gylfi
-Man Utd,"Fernandez, Antony, Rashford, De Gea",De Gea
-Stjarnan,"Kári, Helgi, Jónas, Gulli",Helgi
-Tottenham,"Kane, Son, Loris, Moura",Kane
-FH,"Jonni, Pétur, Hannes, Aron",Jonni
-
-
-
-tournament taflan inniheldur litlar upplýsingar
-
-matches tengd við tournament
-lið tengd við matches
-lið tengd við tournament
-
-búa til club og players fyrst áður en liðið er búið til
-
-player stats:
-
-ganga á alla leiki og finna hvar hann spilaði og reikna þannig
+ID;name;clubID
+12;youth team;1 "Liverpool"
+23;womens team;34 "Manchester united"

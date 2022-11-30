@@ -3,10 +3,11 @@ from model.team import Team
 from model.player import Player
 from model.tourney import Tourney
 from ui.input_validators import *
+from logic.logic_wrapper import Logic_Wrapper
 
 class Tournament_Manager_UI:
-    def __init__(self, logic_connection) -> None:
-        self.logic_wrapper = logic_connection
+    def __init__(self, data_connection) -> None:
+        self.logic_wrapper = data_connection
         
     def menu_output(self):
         print("\n---Tournament Manager---")
@@ -30,6 +31,8 @@ class Tournament_Manager_UI:
                 return "b"
             elif command == "1":
                 c = Club()
+                c.id = self.logic_wrapper.get_new_club_id()
+
                 while True:
                     c.name = input("\nEnter the name of your club: ")
                     try:
@@ -63,15 +66,38 @@ class Tournament_Manager_UI:
                         print("\n##Phone number must only consist of digits##")
                     except:
                         print("\n##Unknown Error Occured, try again##")
-                #self.logic_wrapper.create_club(c)    
-                #print("\n==Club Created==")
-                print()
-                print(c)
+                self.logic_wrapper.create_club(c)    
+                print("\n==Club Created==")
             elif command == "2":
+                # fyrst skoða hvort clubs séu til
+                # biðja um persónuupplýsingar um liðið
+
+                
+                # biðja um team_captain
+                    # - add existing player
+                    # - create new player
+                # breyta role á gefnum player í player.role = "captain"
+
+
+                # fylla liðið af players (liðsmenn >= 4)
+                    # - add existing player
+                    # - create new player
+
+                # breyta status fyrir hvern og einn player í listanum:
+                #   - player.team = team_ID
+                #   - player.role = captain/player
+
+
+                # búa til nýja skrá sem heitir: teamID.csv og skrifa id nr. spilarana þar inn
+                    
+                
+                
                 #print("\n==Team Created==")
                 pass
             elif command == "3":
                 p = Player()
+                p.id = self.logic_wrapper.get_new_player_id()
+
                 while True:
                     p.name = input("\nEnter the name of the player: ")
                     try:
@@ -117,8 +143,7 @@ class Tournament_Manager_UI:
                 p.home_phone = input("\n(Optional)Enter the Home-Phone of the player: ")
                 p.address = input("\n(Optional)Enter the Address of the player: ")
                 #print("\n==Player Created==")
-                print()
-                print(p)
+                self.logic_wrapper.create_player(p)
             elif command == "4":
                 #print("\n==Tourney Created==")
                 pass

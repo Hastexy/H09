@@ -16,13 +16,21 @@ class Club_Data:
 
     def create_club(self, club):
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
-            fieldnames = ["name", "address", "phone_number"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            fieldnames = ["id", "name", "address", "phone_number"]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
 
             writer.writerow(
                 {
+                    "id": club.id,
                     "name": club.name,
                     "address": club.address,
-                    "phone number": club.phone_number,
+                    "phone_number": club.phone_number
                 }
             )
+
+    def get_new_club_id(self) -> int:
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            for id, _ in enumerate(csvfile):
+                pass
+            new_id = id + 1
+        return new_id
