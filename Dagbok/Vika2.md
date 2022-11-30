@@ -51,13 +51,21 @@ Kristin, Kjartan Elvar og Kjartan Ingi: Data/Logic Layer
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn hittist rétt fyrir 11 og ræddi saman.
+Farið var yfir nokkrar hluti og var klárað að gera 2 UI hluti sem voru að búa til klúbb og leikmann.
+Það er verið að bæta við logic og data layerinn og annaðhvort í lok dags eða á morgun,
+verður hægt að skrá það í csv file, einnig verður létt að bæta við menui sem prentar út öll lið/leikminn/annað
+Hópurinn var skiptur mjög lítið og voru allir að vinna bara saman, en meira nákvæmt væri það sama og síðast:
+Hrafnkell og Styrmir: Menu/UI
+Kristin, Kjartan Elvar og Kjartan Ingi: Data/Logic Layer
 ```
 
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn hafði fund um 8 leytið þar sem fólk var mjög upptekið í dag.
+Ræddum saman um hvað þurfti að geta verið breytt af notenda forrits og hvað þurfti bara að nýskrá og birta.
+Fundið var út úr því 
 ```
 
 
