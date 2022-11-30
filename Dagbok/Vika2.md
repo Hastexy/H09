@@ -63,9 +63,15 @@ Kristin, Kjartan Elvar og Kjartan Ingi: Data/Logic Layer
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-Hópurinn hafði fund um 8 leytið þar sem fólk var mjög upptekið í dag.
+Hópurinn hafði fund 8 um kvöld þar sem fólk var mjög upptekið í dag.
 Ræddum saman um hvað þurfti að geta verið breytt af notenda forrits og hvað þurfti bara að nýskrá og birta.
-Fundið var út úr því 
+Fundið var út úr því að félög, lið og leikmenn þurfti bara að nýskrá og birta.
+Mótin hinsvegar þurftu það sama og félög/lið/leikmenn en þurfti aukalega að geta breytt hlutum um það.
+Á morgun var planið hjá Hrafnkeli og Styrmir að klára að klára 2 parta Í UI Layerinum.
+Það að búa allt til (create) og að geta birt allt á skjáinn (view).
+Eftir að það klárast reynum við að geta breytt hlutum í UI-inu.
+Kristin, Kjartan Elvar og Kjartan Ingi héldu áfram að Í Data og Logic layerinum.
+Eftir að create og view parturinn af UI klárast var plan að reyna að láta allt data og logic layerinn fyrir það virka.
 ```
 
 
