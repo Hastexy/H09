@@ -1,5 +1,5 @@
 import csv
-from model.te import Team
+from model.team import Team
 
 class Team_Data:
     def __init__(self):

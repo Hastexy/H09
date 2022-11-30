@@ -1,9 +1,6 @@
-#from logic.player_logic import Player_Logic
-#from model.player import Player
 #from ui.player_UI import Player_UI
 #from ui.team_ui import Team_UI
-#from ui.tournament_menu_UI import TournamentMenu_UI
-from ui.tm_verification_ui import Tournament_Manager_Verification_UI
+from ui.tournament_manager_ui import Tournament_Manager_UI
 from logic.logic_wrapper import Logic_Wrapper
 
 class MainMenu_UI:
@@ -12,7 +9,7 @@ class MainMenu_UI:
 
     def menu_output(self):
         print("\n---Main Menu---")
-        print("1. Tournament manager") # Create player
+        print("1. Tournament manager")
         print("2. Results manager")
         print("3. View manager")
         print("q. to exit")
@@ -26,23 +23,21 @@ class MainMenu_UI:
                 print("\nGoodbye")
                 break
             elif command == "1":
-                #print("\n===TOURNAMENT MANAGER===")
-                menu = Tournament_Manager_Verification_UI()
-                back_method = menu.input_prompt()
-                if back_method == "q":
-                    return "q"
-                #menu = TournamentMenu_UI()
-                #back_method = menu.input_prompt()
-                #if back_method == "q":
-                    #return "q"
+                #print("\n===TOURNAMENT MANAGER====")
+                verify_user = input("\nAre you a tournament manager? (y/n)")
+                if verify_user == "y":
+                    menu = Tournament_Manager_UI(self.logic_wrapper)
+                    back_method = menu.input_promt()
+                    if back_method == "q":
+                        return "q"
+                elif verify_user == "n":
+                    print("\nReturning you to main menu")
+                else:
+                    print("\nInvalid input, try again")
             elif command == "2":
-                print("\n===RESULTS MANAGER===")    #Implement RM Menu
-                #menu = Team_UI(self.logic_wrapper)
-                #back_method = menu.input_prompt()
-                #if back_method == "q":
-                    #return "q"
+                print("\n===RESULTS MANAGER===")    #Implement RM Menu Later
             elif command == "3":
-                print("\n===VIEW MANAGER===")       #Implement VM Menu
+                print("\n===VIEW MANAGER===")       #Implement VM Menu Later
             else:
                 print("\ninvalid input, try again")
             

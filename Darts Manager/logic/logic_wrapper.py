@@ -21,3 +21,4 @@ class Logic_Wrapper:
 
     def get_all_teams(self):
         return self.team_logic.get_all_teams()
+    

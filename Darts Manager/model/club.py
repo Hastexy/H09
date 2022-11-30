@@ -5,4 +5,4 @@ class Club:
         self.phone_number = phone_number
 
     def __str__(self):
-        return f"name: {self.name}; address: {self.address}; phone number: {self.phone_number};"
+        return f"==========\nName: {self.name}\nAddress: {self.address}\nPhone nr: {self.phone_number}\n=========="

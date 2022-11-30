@@ -1,12 +1,47 @@
 class NameLengthException(Exception):
     pass
 
-# class AlreadyRegisteredExeption(Exception)
-#     pass
+class NameShortException(Exception):
+    pass
+
+class InvalidNumberLengthException(Exception):
+    pass
+
+class InvalidNumberCharacterException(Exception):
+    pass
+
+class NoAsperandSymbolException(Exception):
+    pass
 
 def validate_name(name):
     if len(name) >= 50:
         raise NameLengthException()
+    if len(name) <= 2:
+        raise NameShortException()
+
+def validate_number(number):
+    if len(number) != 7:
+        raise InvalidNumberLengthException()
+    if not number.isdigit():
+        raise InvalidNumberCharacterException()
+
+def validate_ssn(ssn):
+    if len(ssn) != 10:
+        raise InvalidNumberLengthException()
+    if not ssn.isdigit():
+        raise InvalidNumberCharacterException()
+    
+def validate_email(email):
+    if "@" not in email:
+        raise NoAsperandSymbolException
+    
+def validate_dob(dob):
+    if len(dob) != 10:
+        raise NameLengthException
+    if dob[2] != "." or dob[5] != ".":
+        raise InvalidNumberCharacterException
+# class AlreadyRegisteredExeption(Exception)
+#     pass
     
 # def validate_results(score):
 #     if score in results:
