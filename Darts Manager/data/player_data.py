@@ -19,26 +19,42 @@ class Player_Data:
     def create_player(self, player):
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
+                "ID",
                 "name",
                 "ssn",
                 "email",
                 "dob",
-                "team",
                 "phone",
                 "home_phone",
                 "address",
+                "team_ID"
             ]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
 
             writer.writerow(
                 {
+                    "ID": player.id,
                     "name": player.name,
                     "ssn": player.ssn,
                     "email": player.email,
                     "dob": player.dob,
-                    "team": player.team,
                     "phone": player.phone,
                     "home_phone": player.home_phone,
                     "address": player.address,
+                    "team_ID": player.team
                 }
             )
+
+    def get_new_player_id(self) -> int:
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            for id, _ in enumerate(csvfile):
+                pass
+            new_id = id + 1
+        return new_id
+
+        # Hérna er hugmynd um að nota rand-int... samt ekki, veit ekki...
+
+        #     # for line in csvfile:
+        #     #     pass
+        #     # new_id, *_ = line.split(";")
+        # return int(new_id) + 1
