@@ -4,6 +4,7 @@ from model.player import Player
 from model.tourney import Tourney
 from ui.input_validators import *
 
+
 class Tournament_Manager_UI:
     def __init__(self, data_connection) -> None:
         self.logic_wrapper = data_connection
@@ -36,25 +37,15 @@ class Tournament_Manager_UI:
                 while True:
                     c.name = input("\nEnter the name of your club: ")
                     try:
-                        validate_name(c.name)
+                        validate_club_name(c.name)
                         break
                     except NameLengthException:
-                        print("\n##Name is too long##")
-                    except NameShortException:
-                        print("\n##Name is too short##")
+                        print("\n##The name must be between 3 or 49 characters long!##")
                     except:
                         print("\n##Unknown Error Occured, try again##")
                 while True:
                     c.address = input("\nEnter the address of your club: ")
-                    try:
-                        validate_name(c.address)
-                        break
-                    except NameLengthException:
-                        print("\n##Address is too long##")
-                    except NameShortException:
-                        print("\n##Address is too short##")
-                    except:
-                        print("\n##Unknown Error Occured, try again##")
+                    break
                 while True:
                     c.phone_number = input("\nEnter the club phone number: ")
                     try:
@@ -68,45 +59,71 @@ class Tournament_Manager_UI:
                         print("\n##Unknown Error Occured, try again##")
                 self.logic_wrapper.create_club(c)
                 print("\n==Club Created==")
-                """###############################VIÐ ERUM HÉR################################################################"""
             elif command == "2":
-                # fyrst skoða hvort team séu til
+                # fyrst skoða hvort clubs séu til
                 if not self.logic_wrapper.check_for_clubs():
                     print(
                         "No clubs exist in the database. A team must belong to a club so it is recommended you first create club/s and then create a team."
                     )
                     break
                 t = Team()
-                # biðja um persónuupplýsingar um liðið
                 # t.id = self.logic_wrapper.get_new_team_id()
 
+                # biðja um almennar upplýsingar um liðið
+                print("\n##### Every team must belong to a club. #####")
                 while True:
-                    t.name = input("\nEnter the name of the team: ")
+                    header = "* Here is a list of names for every registered club in the system:"
+                    separator = "*" * len(header)
+
+                    print(f"\n{separator}")
+                    print(header)
+                    print(f"{separator}\n")
+
+                    all_clubs_names = self.logic_wrapper.get_all_club_names()
+                    for name in all_clubs_names:
+                        print(f" - {name.capitalize()}")
+
+                    header = "*Press 'b' to go back to the menu screen.*"
+                    separator = "*" * len(header)
+
+                    print(f"\n{separator}")
+                    print(header)
+                    print(f"{separator}")
+
+                    club_name = input(
+                        "\nWhich club does the new team belong to (full name)?: "
+                    ).lower()
+                    if club_name == "b":
+                        break
+                    elif self.logic_wrapper.club_exists(t.club):
+                        break
+                    print("This club does not exist, please try another one.")
+
+                header = "*Remeber, every team MUST have at least four players, one of whom is the team captain.*"
+                separator = "*" * len(header)
+
+                print(f"\n{separator}")
+                print(header)
+                print(f"{separator}")
+                while True:
+                    t.name = input("\nEnter the name of the new team: ")
                     try:
-                        validate_name(t.name)
+                        validate_team_name(t.name)
                         break
                     except NameLengthException:
-                        print("\n##Name is too long##")
-                    except NameShortException:
-                        print("\n##Name is too short##")
+                        print("\n##The name must be between 3 or 49 characters long!##")
                     except:
                         print("\n##Unknown Error Occured, try again##")
 
-                while True:
-                    team_to_club = input("Enter the club this team belongs to: ")
-                    if team_to_club in self.clubs:
-                        print("Club exists")
-                        t.club = team_to_club
-                        break
-                    else:
-                        print("Club doesn't exist")
+                # biðja um team_captain
+                # - add existing player
+                # - create new player
+                # breyta role á gefnum player í player.role = "captain"
 
                 while True:
-                    Captain_Dartmerica = input("Enter Team Captain Name: ")
-                    print(Captain_Dartmerica)
-                    t.captain = Captain_Dartmerica
+                    team_captain = input("Who is the team captain?:")
+
                     break
-                # Team Captain
 
                 while True:
                     # Players
@@ -121,16 +138,8 @@ class Tournament_Manager_UI:
                     t.players = player_list
                     break
 
-                print(t)
-
-                """######################################################################33"""
                 # print("\n==Player Created==")
                 # self.logic_wrapper.create_player(p)
-
-                # biðja um team_captain
-                # - add existing player
-                # - create new player
-                # breyta role á gefnum player í player.role = "captain"
 
                 # fylla liðið af players (liðsmenn >= 4)
                 # - add existing player
@@ -140,7 +149,7 @@ class Tournament_Manager_UI:
                 #   - player.team = team_ID
                 #   - player.role = captain/player
 
-                # búa til nýja skrá sem heitir: teamID.csv og skrifa id nr. spilarana þar inn
+                # búa til nýja skrá sem heitir: teamID.csv og skrifa persónupplýsngar spilarana þar inn
 
                 # print("\n==Team Created==")
             elif command == "3":
@@ -150,12 +159,10 @@ class Tournament_Manager_UI:
                 while True:
                     p.name = input("\nEnter the name of the player: ")
                     try:
-                        validate_name(p.name)
+                        validate_player_name(p.name)
                         break
                     except NameLengthException:
                         print("\n##Name is too long##")
-                    except NameShortException:
-                        print("\n##Name is too short##")
                     except:
                         print("\n##Unknown Error Occured, try again##")
                 while True:

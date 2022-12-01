@@ -42,3 +42,9 @@ class Logic_Wrapper:
     def get_all_teams(self) -> List[dict]:
         # return self.team_logic.get_all_teams()
         return self.team_logic.get_all_teams()
+
+    def club_exists(self, club_name: str) -> bool:
+        return self.club_logic.club_exists(club_name)
+
+    def get_all_club_names(self) -> list:
+        return self.club_logic.get_all_club_names()

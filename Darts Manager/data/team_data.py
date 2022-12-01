@@ -12,7 +12,7 @@ class Team_Data:
         self.member_folder = "files/TeamMembers/"
 
     def read_all_teams(self) -> List[object]:
-        """Opens two files: one containing general info about the team and the other its team members. Creates a Team object and fills its players list attribute with player objects. Appends all Team objects into a list and returns it."""
+        """Opens two files: one containing general info about the team and the other file contains its team members. Creates a Team object with an appropriate name and also fills the team.players attribute with player objects. Appends all Team objects into a list and returns it."""
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as team_info_file:
             team_reader = csv.DictReader(team_info_file, delimiter=";")

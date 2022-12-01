@@ -32,11 +32,17 @@ class Data_Wrapper:
         """Takes in a club object and forwards it to club_data"""
         self.club_data.create_club(club)
 
+    def club_exists(self, club_name: str) -> bool:
+        return self.club_data.club_exists(club_name)
+
+    def get_all_club_names(self) -> list:
+        return self.club_data.get_all_club_names()
+
     def get_new_club_id(self) -> int:
         return self.club_data.get_new_club_id()
 
     def get_new_team_id(self) -> int:
-        return self.team_data.get_new_team_id()   
+        return self.team_data.get_new_team_id()
 
     def get_all_results():
         pass
