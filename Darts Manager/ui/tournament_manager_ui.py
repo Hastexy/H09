@@ -76,27 +76,32 @@ class Tournament_Manager_UI:
                         "No clubs exist in the database. A team must belong to a club so it is recommended you first create club/s and then create a team."
                     )
                     break
+                p1 = Player(
+                    "12", "kjarri", "0112121212", "email@emai.com", "12.34.5432"
+                )
+                t = Team()
+                t.id = "12"
+                t.name = "coolbros"
+                t.club = "Tvíund"
+                t.players = [p1]
+                self.logic_wrapper.create_team(t)
 
                 # biðja um persónuupplýsingar um liðið
-                t = Team()
-                t.id = self.logic_wrapper.get_new_team_id()
+                # t.id = self.logic_wrapper.get_new_team_id()
 
-                while True:
-                    p.name = input("\nEnter the name of the team: ")
-                    try:
-                        validate_name(p.name)
-                        break
-                    except NameLengthException:
-                        print("\n##Name is too long##")
-                    except NameShortException:
-                        print("\n##Name is too short##")
-                    except:
-                        print("\n##Unknown Error Occured, try again##")
+                # while True:
+                #     p.name = input("\nEnter the name of the team: ")
+                #     try:
+                #         validate_name(p.name)
+                #         break
+                #     except NameLengthException:
+                #         print("\n##Name is too long##")
+                #     except NameShortException:
+                #         print("\n##Name is too short##")
+                #     except:
+                #         print("\n##Unknown Error Occured, try again##")
 
-                while True:
-                    pass
                 # print("\n==Player Created==")
-                self.logic_wrapper.create_player(p)
 
                 # biðja um team_captain
                 # - add existing player
@@ -114,7 +119,6 @@ class Tournament_Manager_UI:
                 # búa til nýja skrá sem heitir: teamID.csv og skrifa id nr. spilarana þar inn
 
                 # print("\n==Team Created==")
-                pass
             elif command == "3":
                 p = Player()
                 p.id = self.logic_wrapper.get_new_player_id()
