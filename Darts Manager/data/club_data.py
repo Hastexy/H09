@@ -11,8 +11,14 @@ class Club_Data:
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                ret_list.append(Club(*row))
+                ret_list.append(Club(*row.values()))
         return ret_list
+
+    def check_for_clubs(self) -> bool:
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            text = csvfile.read()
+
+        return text[1] is not None
 
     def create_club(self, club):
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
@@ -24,7 +30,7 @@ class Club_Data:
                     "id": club.id,
                     "name": club.name,
                     "address": club.address,
-                    "phone_number": club.phone_number
+                    "phone_number": club.phone_number,
                 }
             )
 

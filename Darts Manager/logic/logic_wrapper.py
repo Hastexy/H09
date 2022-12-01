@@ -1,3 +1,4 @@
+from typing import List
 from logic.player_logic import Player_Logic
 from logic.team_logic import Team_Logic
 from data.data_wrapper import Data_Wrapper
@@ -20,10 +21,13 @@ class Logic_Wrapper:
 
     def get_all_players(self):
         return self.player_logic.get_all_players()
-    
+
     def create_team(self, team):
         """Takes in a team object and forwards it to the data layer"""
         return self.team_logic.create_team(team)
+
+    def check_for_clubs(self) -> bool:
+        return self.club_logic.check_for_clubs()
 
     def create_club(self, club: object) -> None:
         """Takes in a club object and forwards it to the data layer"""
@@ -32,6 +36,6 @@ class Logic_Wrapper:
     def get_new_club_id(self) -> int:
         return self.club_logic.get_new_club_id()
 
-    def get_all_teams(self):
-        return self.team_logic.get_all_teams()
-    
+    def get_all_teams(self) -> List[dict]:
+        # return self.team_logic.get_all_teams()
+        return [{"name": "Dart Vader", "players": ["1", "2"]}]

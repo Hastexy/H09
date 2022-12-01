@@ -5,10 +5,11 @@ from model.tourney import Tourney
 from ui.input_validators import *
 from logic.logic_wrapper import Logic_Wrapper
 
+
 class Tournament_Manager_UI:
     def __init__(self, data_connection) -> None:
         self.logic_wrapper = data_connection
-        
+
     def menu_output(self):
         print("\n---Tournament Manager---")
         print("1. create club")
@@ -17,7 +18,7 @@ class Tournament_Manager_UI:
         print("4. create tourney")
         print("b. back")
         print("q. quit")
-        
+
     def input_promt(self):
         while True:
             self.menu_output()
@@ -44,7 +45,7 @@ class Tournament_Manager_UI:
                         print("\n##Name is too short##")
                     except:
                         print("\n##Unknown Error Occured, try again##")
-                while True:        
+                while True:
                     c.address = input("\nEnter the address of your club: ")
                     try:
                         validate_name(c.address)
@@ -55,7 +56,7 @@ class Tournament_Manager_UI:
                         print("\n##Address is too short##")
                     except:
                         print("\n##Unknown Error Occured, try again##")
-                while True:    
+                while True:
                     c.phone_number = input("\nEnter the club phone number: ")
                     try:
                         validate_number(c.phone_number)
@@ -66,33 +67,53 @@ class Tournament_Manager_UI:
                         print("\n##Phone number must only consist of digits##")
                     except:
                         print("\n##Unknown Error Occured, try again##")
-                self.logic_wrapper.create_club(c)    
+                self.logic_wrapper.create_club(c)
                 print("\n==Club Created==")
             elif command == "2":
                 # fyrst skoða hvort clubs séu til
-                # biðja um persónuupplýsingar um liðið
+                if not self.logic_wrapper.check_for_clubs():
+                    print(
+                        "No clubs exist in the database. A team must belong to a club so it is recommended you first create club/s and then create a team."
+                    )
+                    break
 
-                
+                # biðja um persónuupplýsingar um liðið
+                t = Team()
+                t.id = self.logic_wrapper.get_new_team_id()
+
+                while True:
+                    p.name = input("\nEnter the name of the team: ")
+                    try:
+                        validate_name(p.name)
+                        break
+                    except NameLengthException:
+                        print("\n##Name is too long##")
+                    except NameShortException:
+                        print("\n##Name is too short##")
+                    except:
+                        print("\n##Unknown Error Occured, try again##")
+
+                while True:
+                    pass
+                # print("\n==Player Created==")
+                self.logic_wrapper.create_player(p)
+
                 # biðja um team_captain
-                    # - add existing player
-                    # - create new player
+                # - add existing player
+                # - create new player
                 # breyta role á gefnum player í player.role = "captain"
 
-
                 # fylla liðið af players (liðsmenn >= 4)
-                    # - add existing player
-                    # - create new player
+                # - add existing player
+                # - create new player
 
                 # breyta status fyrir hvern og einn player í listanum:
                 #   - player.team = team_ID
                 #   - player.role = captain/player
 
-
                 # búa til nýja skrá sem heitir: teamID.csv og skrifa id nr. spilarana þar inn
-                    
-                
-                
-                #print("\n==Team Created==")
+
+                # print("\n==Team Created==")
                 pass
             elif command == "3":
                 p = Player()
@@ -130,7 +151,9 @@ class Tournament_Manager_UI:
                     except:
                         print("\n##Unknown Error Occured, try again##")
                 while True:
-                    p.dob = input("\nEnter the date of birth of the player in this format(dd.mm.yyyy): ")
+                    p.dob = input(
+                        "\nEnter the date of birth of the player in this format(dd.mm.yyyy): "
+                    )
                     try:
                         validate_dob(p.dob)
                         break
@@ -138,14 +161,14 @@ class Tournament_Manager_UI:
                         print("\n##The format is only 10 letters, try again##")
                     except InvalidNumberCharacterException:
                         print("\n##There must be a dot between day, month and year##")
-                
+
                 p.phone = input("\n(Optional)Enter the GSM-Phone of the player: ")
                 p.home_phone = input("\n(Optional)Enter the Home-Phone of the player: ")
                 p.address = input("\n(Optional)Enter the Address of the player: ")
-                #print("\n==Player Created==")
+                # print("\n==Player Created==")
                 self.logic_wrapper.create_player(p)
             elif command == "4":
-                #print("\n==Tourney Created==")
+                # print("\n==Tourney Created==")
                 pass
             else:
                 print("\nInvalid input, try again")
