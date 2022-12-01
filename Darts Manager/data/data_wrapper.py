@@ -22,7 +22,7 @@ class Data_Wrapper:
     def get_all_teams(self):
         return self.team_data.read_all_teams()
 
-    def create_team(self, team):
+    def create_team(self, team: object) -> None:
         self.team_data.create_team(team)
 
     def check_for_clubs(self) -> bool:

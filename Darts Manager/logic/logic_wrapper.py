@@ -22,9 +22,9 @@ class Logic_Wrapper:
     def get_all_players(self):
         return self.player_logic.get_all_players()
 
-    def create_team(self, team):
+    def create_team(self, team: object) -> None:
         """Takes in a team object and forwards it to the data layer"""
-        return self.team_logic.create_team(team)
+        self.team_logic.create_team(team)
 
     def check_for_clubs(self) -> bool:
         return self.club_logic.check_for_clubs()
