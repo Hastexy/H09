@@ -3,13 +3,11 @@ from model.team import Team
 from model.player import Player
 from model.tourney import Tourney
 from ui.input_validators import *
-from logic.logic_wrapper import Logic_Wrapper
-
 
 class Tournament_Manager_UI:
-    def __init__(self, data_connection) -> None:
-        self.logic_wrapper = data_connection
-        self.clubs = ["test", "Dart Vader"]
+    def __init__(self, logic_connection) -> None:
+        self.logic_wrapper = logic_connection
+        self.clubs = ["test", "Dart Vader"]     #Þetta er bara til að testa
 
     def menu_output(self):
         print("\n---Tournament Manager---")
