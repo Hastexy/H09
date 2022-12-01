@@ -79,7 +79,12 @@ Eftir að create og view parturinn af UI klárast var plan að reyna að láta a
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn hafði fund um 12 leytið og fór yfir plan dagsins.
+Planið var að ná virkni fyrir allt nema tournament hluti(sem dæmi nýskrá úrslit eða skoða match dót).
+Svo hópurinn var skiptur svona:
+Hrafnkell, Styrmir og Kjartan Ingi: fóru að gera create og view teams
+Kjartan Elvar og Kristinn: fóru að gera data og logic tengingarnar fyrir create og view teams
+Ef það allt næst að klárast í vikunni er bara allt tengdt tournament eftir fyrir A kröfur.
 ```
 
 ### Færsla 2 - Samantekt
