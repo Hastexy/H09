@@ -28,7 +28,7 @@ class Logic_Wrapper:
 
     def check_for_clubs(self) -> bool:
         return self.club_logic.check_for_clubs()
-    
+
     def create_club(self, club: object) -> None:
         """Takes in a club object and forwards it to the data layer"""
         self.data_wrapper.create_club(club)
@@ -41,5 +41,4 @@ class Logic_Wrapper:
 
     def get_all_teams(self) -> List[dict]:
         # return self.team_logic.get_all_teams()
-        return [{"name": "Dart Vader", "players": ["1", "2"]}]
-        {"Dart Vader": [Player1, Player2, Player3]}
+        return self.team_logic.get_all_teams()
