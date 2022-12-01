@@ -1,6 +1,7 @@
 #from ui.player_UI import Player_UI
 #from ui.team_ui import Team_UI
 from ui.tournament_manager_ui import Tournament_Manager_UI
+from ui.view_manager import View_Manager_UI
 from logic.logic_wrapper import Logic_Wrapper
 
 class MainMenu_UI:
@@ -37,7 +38,11 @@ class MainMenu_UI:
             elif command == "2":
                 print("\n===RESULTS MANAGER===")    #Implement RM Menu Later
             elif command == "3":
-                print("\n===VIEW MANAGER===")       #Implement VM Menu Later
+                #print("\n===VIEW MANAGER===")
+                menu = View_Manager_UI(self.logic_wrapper)
+                back_method = menu.input_prompt()
+                if back_method == "q":
+                    return "q"
             else:
                 print("\ninvalid input, try again")
             

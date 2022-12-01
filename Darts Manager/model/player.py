@@ -12,12 +12,11 @@ class Player:
         self.role = ""
 
     def __str__(self):
-        result_str = f"==========\nName: {self.name}\nSSN: {self.ssn}\nEmail: {self.email}\nDOB: {self.dob}"
+        result_str = f"{self.name} {self.ssn}{self.email}{self.dob}"
         if self.phone != "":
-            result_str += f"\nGSM: {self.phone}"
+            result_str += f"{self.phone}"
         if self.home_phone != "":
-            result_str += f"\nHome-Phone: {self.home_phone}"
+            result_str += f"{self.home_phone}"
         if self.address != "":
-            result_str += f"\nAddress: {self.address}"
-        result_str += "\n=========="
+            result_str += f"{self.address}"
         return result_str

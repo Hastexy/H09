@@ -3,8 +3,6 @@ from model.team import Team
 from model.player import Player
 from model.tourney import Tourney
 from ui.input_validators import *
-from logic.logic_wrapper import Logic_Wrapper
-
 
 class Tournament_Manager_UI:
     def __init__(self, data_connection) -> None:
