@@ -1,5 +1,17 @@
 class Player:
-    def __init__(self, ID="", name="", ssn="", email="", dob="", phone="", home_phone="", address=""):
+    def __init__(
+        self,
+        ID="",
+        name="",
+        ssn="",
+        email="",
+        dob="",
+        phone="",
+        home_phone="",
+        address="",
+        team="",
+        role="",
+    ):
         self.id = ID
         self.name = name
         self.ssn = ssn

@@ -69,15 +69,15 @@ class View_Manager_UI:
             elif command == "1":
                 # print("\nYou are viewing the teams and their players")
                 all_teams = self.logic_wrapper.get_all_teams()
-                for key, value in all_teams.items():
-                    print(f"\n1. TEAM NAME: {key}")
+                for team in all_teams:
+                    print(f"\n1. TEAM NAME: {team.name}")
                     print()
                     print(
                         f"{str_name:<25}{str_ssn:<12}{str_email:<20}{str_dob:<12}{str_phone:<10}{str_home_phone:<15}{str_address:<30}\n"
                     )
-                    for test in value:
+                    for player in team.players:
                         print(
-                            f"{test.name:<25}{test.ssn:<12}{test.email:<20}{test.dob:<12}{test.phone:<10}{test.home_phone:<15}{test.address:<30}"
+                            f"{player.name:<25}{player.ssn:<12}{player.email:<20}{player.dob:<12}{player.phone:<10}{player.home_phone:<15}{player.address:<30}"
                         )
 
     # Menu fyrir view manager, með option a view teams.

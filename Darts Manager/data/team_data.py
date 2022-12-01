@@ -2,6 +2,7 @@ import os
 import csv
 from model.team import Team
 from typing import List
+from model.player import Player
 
 
 class Team_Data:
@@ -11,16 +12,23 @@ class Team_Data:
         self.member_folder = "files/TeamMembers/"
 
     def read_all_teams(self) -> List[object]:
+        """Opens two files: one containing general info about the team and the other its team members. Creates a Team object and fills its players list attribute with player objects. Appends all Team objects into a list and returns it."""
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as team_info_file:
-            reader = csv.DictReader(team_info_file)
-            for team in reader:
-                t = Team()
-
+            team_reader = csv.DictReader(team_info_file, delimiter=";")
+            for team in team_reader:
+                members_file = self.member_folder + team["ID"] + ".csv"
+                with open(members_file, newline="", encoding="utf-8") as players_file:
+                    player_reader = csv.DictReader(players_file, delimiter=";")
+                    t = Team(*team.values())
+                    for player in player_reader:
+                        p = Player(*player.values())
+                        t.players.append(p)
+                ret_list.append(t)
         return ret_list
 
     def create_team(self, team):
-        new_file = self.member_folder + team.id
+        new_file = self.member_folder + team.id + ".csv"
 
         with open(self.file_name, "a", newline="", encoding="utf-8") as team_file:
             fieldnames = ["ID", "name", "club"]
