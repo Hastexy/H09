@@ -7,10 +7,7 @@ class Team_Data:
     def __init__(self):
         print(os.getcwd())
         self.file_name = "files/teams.csv"
-<<<<<<< HEAD
         self.member_folder = "files/TeamMembers/"
-=======
->>>>>>> c1ac79fb81bd04f962b3edc0f5ccc09282967bee
 
     def read_all_teams(self):
         ret_list = []
@@ -27,13 +24,7 @@ class Team_Data:
             fieldnames = ["ID", "name", "club"]
             writer = csv.DictWriter(team_file, fieldnames=fieldnames)
 
-            writer.writerow(
-                {
-                    "ID": team.id,
-                    "name": team.name,
-                    "club": team.club,
-                }
-            )
+        # writer.writerow({"ID": team.id, "name": team.name, "club": team.club})
         with open(new_file, "a", newline="", encoding="utf-8") as members_file:
             fieldnames = [
                 "ID",
