@@ -39,3 +39,4 @@ class Logic_Wrapper:
     def get_all_teams(self) -> List[dict]:
         # return self.team_logic.get_all_teams()
         return [{"name": "Dart Vader", "players": ["1", "2"]}]
+        {"Dart Vader": [Player1, Player2, Player3]}
