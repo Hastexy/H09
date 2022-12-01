@@ -7,7 +7,10 @@ class Team_Data:
     def __init__(self):
         print(os.getcwd())
         self.file_name = "files/teams.csv"
+<<<<<<< HEAD
         self.member_folder = "files/TeamMembers/"
+=======
+>>>>>>> c1ac79fb81bd04f962b3edc0f5ccc09282967bee
 
     def read_all_teams(self):
         ret_list = []

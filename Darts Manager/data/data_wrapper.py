@@ -35,6 +35,9 @@ class Data_Wrapper:
     def get_new_club_id(self) -> int:
         return self.club_data.get_new_club_id()
 
+    def get_new_team_id(self) -> int:
+        return self.team_data.get_new_team_id()   
+
     def get_all_results():
         pass
 
