@@ -6,7 +6,7 @@ from model.team import Team
 class Team_Data:
     def __init__(self):
         print(os.getcwd())
-        self.file_name = "Test-Kristinn/files/teams.csv"
+        self.file_name = "files/teams.csv"
 
     def read_all_teams(self):
         ret_list = []
@@ -29,3 +29,10 @@ class Team_Data:
                     "captain": team.captain,
                 }
             )
+
+    def get_new_team_id(self) -> int:
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            for id, _ in enumerate(csvfile):
+                pass
+            new_id = id + 1
+        return new_id

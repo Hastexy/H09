@@ -13,3 +13,6 @@ class Team_Logic:
 
     def get_all_teams(self):
         return self.data_wrapper.get_all_teams()
+
+    def get_new_team_id(self) -> int:
+        return self.data_wrapper.get_new_team_id()
