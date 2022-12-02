@@ -49,6 +49,7 @@ class Team_Data:
                 "role",
             ]
             writer = csv.DictWriter(members_file, fieldnames=fieldnames, delimiter=";")
+            writer.writeheader()
             for player in team.players:
                 writer.writerow(
                     {
