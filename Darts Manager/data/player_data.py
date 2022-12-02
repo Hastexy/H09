@@ -30,6 +30,7 @@ class Player_Data:
                 "home_phone",
                 "address",
                 "team_ID",
+                "role",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
 
@@ -44,6 +45,7 @@ class Player_Data:
                     "home_phone": player.home_phone,
                     "address": player.address,
                     "team_ID": player.team,
+                    "role": player.role,
                 }
             )
 

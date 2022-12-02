@@ -32,7 +32,7 @@ class Team_Data:
 
         with open(self.file_name, "a", newline="", encoding="utf-8") as team_file:
             fieldnames = ["ID", "name", "club"]
-            writer = csv.DictWriter(team_file, fieldnames=fieldnames)
+            writer = csv.DictWriter(team_file, fieldnames=fieldnames, delimiter=";")
             writer.writerow({"ID": team.id, "name": team.name, "club": team.club})
 
         with open(new_file, "a", newline="", encoding="utf-8") as members_file:
