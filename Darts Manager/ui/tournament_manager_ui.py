@@ -11,13 +11,24 @@ class Tournament_Manager_UI:
         self.clubs = ["test", "Dart Vader"]
 
     def menu_output(self):
-        print("\n---Tournament Manager---")
-        print("1. create club")
-        print("2. create team")
-        print("3. create player")
-        print("4. create tourney")
-        print("b. back")
-        print("q. quit")
+        print("""
+╔═══╦════════════════════╗
+║   ║ Tournament Manager ║
+╠═══╬════════════════════╣
+║ 1 ║ Create Club        ║
+║ 2 ║ Create Team        ║
+║ 3 ║ Create Player      ║
+║ 4 ║ Create League      ║
+║ b ║ Back               ║
+║ q ║ Quit               ║
+╚═══╩════════════════════╝""")
+        # print("\n---Tournament Manager---")
+        # print("1. create club")
+        # print("2. create team")
+        # print("3. create player")
+        # print("4. create tourney")
+        # print("b. back")
+        # print("q. quit")
 
     def input_promt(self):
         while True:
@@ -61,11 +72,12 @@ class Tournament_Manager_UI:
                 print("\n==Club Created==")
             elif command == "2":
                 # fyrst skoða hvort clubs séu til
+                print(self.logic_wrapper.check_for_clubs())
                 if not self.logic_wrapper.check_for_clubs():
                     print(
                         "No clubs exist in the database. A team must belong to a club so you must first create one, and then you can create a team."
                     )
-                    break
+                    return "b"
                 t = Team()
                 t.id = self.logic_wrapper.get_new_team_id()
 

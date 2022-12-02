@@ -1,12 +1,22 @@
-import itertools
+from ui.view_manager import View_Manager_UI
+from logic.logic_wrapper import Logic_Wrapper
 
-teams = [1,5,3,4]
+menu = View_Manager_UI(Logic_Wrapper())
+back_method = menu.input_prompt()
+if back_method == "q":
+    print("quit")
 
-combinations = set(itertools.combinations(teams, 2))
-
-print(combinations)
 
 
+
+
+# import itertools
+
+# teams = [1,5,3,4]
+
+# combinations = set(itertools.combinations(teams, 2))
+
+# print(combinations)
 
 
 
