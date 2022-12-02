@@ -90,7 +90,14 @@ Ef það allt næst að klárast í vikunni er bara allt tengdt tournament eftir
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn fór í fund klukkan 4 og ræddi hvað náðist að klára í dag.
+Það náðist að klára allt UI sem við vildum klára í dag og er hægt að núna búa til lið og viewa það.
+Data og Logic tengingin við það er nærrum öll komin og klárast annaðhvort í kvöld eða á morgun.
+Planið á morgun er að reyna klára allt og fínpússa allt sem tengist ekki deildum.
+En einnig er ætlað að plana og undirbúa smá að geta búið til deildir.
+Dagurinn endaði með sömu skiptingar og í morgun:
+Hrafnkell, Styrmir og Kjartan Ingi: UI
+Kjartan Elvar og Kristinn: Data og Logic Tengingar
 ```
 
 
