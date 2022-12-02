@@ -16,9 +16,6 @@ class Club_Logic:
     def check_for_clubs(self) -> bool:
         return self.data_wrapper.check_for_clubs()
 
-    def get_all_club_names(self) -> list:
-        names_list = self.data_wrapper.get_all_club_names()
-        return sorted(names_list)
-
-    def club_exists(self, club_name: str) -> bool:
-        return self.data_wrapper.club_exists(club_name)
+    def get_all_clubs(self) -> list:
+        clubs_list = self.data_wrapper.get_all_clubs()
+        return sorted(clubs_list, key=lambda c: c.name)

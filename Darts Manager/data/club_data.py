@@ -41,17 +41,8 @@ class Club_Data:
             new_id = id + 1
         return new_id
 
-    def club_exists(self, club_name: str) -> bool:
-        """Searches the csv file for a given club name. If the club exists the function returns True, else it returns False"""
+    def get_all_clubs(self) -> list:
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile, delimiter=";")
-            for club in reader:
-                if club["name"] == club_name:
-                    return True
-        return False
-
-    def get_all_club_names(self) -> list:
-        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile, delimiter=";")
-            names_list = [club["name"] for club in reader]
+            names_list = [Club(*club.values()) for club in reader]
         return names_list

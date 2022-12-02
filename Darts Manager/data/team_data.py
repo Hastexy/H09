@@ -27,14 +27,14 @@ class Team_Data:
                 ret_list.append(t)
         return ret_list
 
-    def create_team(self, team):
-        new_file = self.member_folder + team.id + ".csv"
+    def create_team(self, team: object):
+        new_file = self.member_folder + str(team.id) + ".csv"
 
         with open(self.file_name, "a", newline="", encoding="utf-8") as team_file:
             fieldnames = ["ID", "name", "club"]
             writer = csv.DictWriter(team_file, fieldnames=fieldnames)
+            writer.writerow({"ID": team.id, "name": team.name, "club": team.club})
 
-        # writer.writerow({"ID": team.id, "name": team.name, "club": team.club})
         with open(new_file, "a", newline="", encoding="utf-8") as members_file:
             fieldnames = [
                 "ID",
@@ -46,6 +46,7 @@ class Team_Data:
                 "home_phone",
                 "address",
                 "team_ID",
+                "role",
             ]
             writer = csv.DictWriter(members_file, fieldnames=fieldnames, delimiter=";")
             for player in team.players:
@@ -60,5 +61,13 @@ class Team_Data:
                         "home_phone": player.home_phone,
                         "address": player.address,
                         "team_ID": player.team,
+                        "role": player.role,
                     }
                 )
+
+    def get_new_team_id(self) -> int:
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            for id, _ in enumerate(csvfile):
+                pass
+            new_id = id + 1
+        return new_id

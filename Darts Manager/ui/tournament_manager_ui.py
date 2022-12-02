@@ -35,7 +35,7 @@ class Tournament_Manager_UI:
                 c.id = self.logic_wrapper.get_new_club_id()
 
                 while True:
-                    c.name = input("\nEnter the name of your club: ")
+                    c.name = input("\nEnter the name of your club: ").lower()
                     try:
                         validate_club_name(c.name)
                         break
@@ -63,48 +63,32 @@ class Tournament_Manager_UI:
                 # fyrst skoða hvort clubs séu til
                 if not self.logic_wrapper.check_for_clubs():
                     print(
-                        "No clubs exist in the database. A team must belong to a club so it is recommended you first create club/s and then create a team."
+                        "No clubs exist in the database. A team must belong to a club so you must first create one, and then you can create a team."
                     )
                     break
                 t = Team()
-                # t.id = self.logic_wrapper.get_new_team_id()
+                t.id = self.logic_wrapper.get_new_team_id()
 
                 # biðja um almennar upplýsingar um liðið
-                print("\n##### Every team must belong to a club. #####")
+                all_clubs = self.display_all_clubs()
+                club_assigned = False
                 while True:
-                    header = "* Here is a list of names for every registered club in the system:"
-                    separator = "*" * len(header)
 
-                    print(f"\n{separator}")
-                    print(header)
-                    print(f"{separator}\n")
-
-                    all_clubs_names = self.logic_wrapper.get_all_club_names()
-                    for name in all_clubs_names:
-                        print(f" - {name.capitalize()}")
-
-                    header = "*Press 'b' to go back to the menu screen.*"
-                    separator = "*" * len(header)
-
-                    print(f"\n{separator}")
-                    print(header)
-                    print(f"{separator}")
-
-                    club_name = input(
-                        "\nWhich club does the new team belong to (full name)?: "
+                    club_ID = input(
+                        "\nWhich club does the new team belong to? (club ID): "
                     ).lower()
-                    if club_name == "b":
-                        break
-                    elif self.logic_wrapper.club_exists(t.club):
-                        break
-                    print("This club does not exist, please try another one.")
 
-                header = "*Remeber, every team MUST have at least four players, one of whom is the team captain.*"
-                separator = "*" * len(header)
+                    for club in all_clubs:
+                        if club_ID == club.id:
+                            t.club = club_ID
+                            club_assigned = True
+                            break
 
-                print(f"\n{separator}")
-                print(header)
-                print(f"{separator}")
+                    if club_assigned:
+                        break
+
+                    print("Please choose one of the club ID's from the list.")
+
                 while True:
                     t.name = input("\nEnter the name of the new team: ")
                     try:
@@ -116,53 +100,77 @@ class Tournament_Manager_UI:
                         print("\n##Unknown Error Occured, try again##")
 
                 # biðja um team_captain
-                # - add existing player
+                # - choose existing player
                 # - create new player
                 # breyta role á gefnum player í player.role = "captain"
 
-                while True:
-                    team_captain = input("Who is the team captain?:")
+                header = "* Remember, every team must have at least FOUR players, one of whom is the team captain. *"
+                separator = "*" * len(header)
 
-                    break
+                print(f"\n{separator}")
+                print(header)
+                print(f"{separator}\n")
+
+                print("---Let's start by picking the team captain---")
+
+                captain_assigned = False
+                all_players = self.display_available_players()
 
                 while True:
-                    # Players
-                    player_list = []
-                    player_input = ""
-                    while True:
-                        player_input = input("Enter a player name: ")
-                        if player_input == "q":
+                    player_ID = input("\nYour choice (Player ID): ")
+
+                    for player in all_players:
+                        if player_ID == player.id:
+                            self.logic_wrapper.update_player_status(
+                                player_ID, "captain", str(t.id)
+                            )
+                            t.players.append(player)
+                            captain_assigned = True
                             break
-                        else:
-                            player_list.append(player_input)
-                    t.players = player_list
-                    break
 
-                # print("\n==Player Created==")
-                # self.logic_wrapper.create_player(p)
+                    if captain_assigned:
+                        break
 
-                # fylla liðið af players (liðsmenn >= 4)
-                # - add existing player
-                # - create new player
+                    print("Invalid player ID!")
 
-                # breyta status fyrir hvern og einn player í listanum:
-                #   - player.team = team_ID
-                #   - player.role = captain/player
+                print(
+                    "---Now we need to add the rest of the players (at least THREE more)---"
+                )
+                print("Press 'q' to stop adding players to the team.")
 
-                # búa til nýja skrá sem heitir: teamID.csv og skrifa persónupplýsngar spilarana þar inn
+                self.display_available_players()
+                player_ID = input("\nYour choice (Player ID): ")
+                while player_ID != "q" and len(t.players) < 4:
 
-                # print("\n==Team Created==")
+                    for player in all_players:
+                        if player_ID == player.id:
+                            self.logic_wrapper.update_player_status(
+                                player_ID, "player", str(t.id)
+                            )
+                            t.players.append(player)
+                            break
+                    else:
+                        print("Invalid player ID!")
+
+                    self.display_available_players()
+                    player_ID = input("\nYour choice (Player ID): ")
+
+                self.logic_wrapper.create_team(t)
+                print("\n==Team Created==")
+
             elif command == "3":
                 p = Player()
                 p.id = self.logic_wrapper.get_new_player_id()
 
                 while True:
-                    p.name = input("\nEnter the name of the player: ")
+                    p.name = input("\nEnter the name of the player: ").lower().strip()
                     try:
                         validate_player_name(p.name)
                         break
                     except NameLengthException:
                         print("\n##Name is too long##")
+                    except InvalidNameError:
+                        print("\n##Name cannot contain digits!##")
                     except:
                         print("\n##Unknown Error Occured, try again##")
                 while True:
@@ -207,3 +215,57 @@ class Tournament_Manager_UI:
                 pass
             else:
                 print("\nInvalid input, try again")
+
+    def display_available_players(self) -> list:
+        """Displays all players who are both registered in the database and do not belong to a team."""
+        header = "* Here is a list of all available players: *"
+        separator = "*" * len(header)
+
+        print(f"\n{separator}")
+        print(header)
+        print(f"{separator}\n")
+
+        print(f"{'NAME':<35}{'SocialSecurityNumber':<25}{'ID'}")
+        print("-" * 64)
+        all_players = self.logic_wrapper.get_all_players()
+        for player in all_players:
+            print(f"{player.name.title():<35}{player.ssn:<25}{player.id}")
+        print("-" * 64)
+
+        return all_players
+
+    def display_all_clubs(self) -> list:
+        """Displays all clubs registered in the system."""
+
+        print("\n##### Every team must belong to a club. #####")
+
+        header = "* Here is a list of all the clubs registered in the system: *"
+        separator = "*" * len(header)
+
+        print(f"\n{separator}")
+        print(header)
+        print(f"{separator}\n")
+
+        print(f"{'NAME':<35}{'Address':<25}{'ID'}")
+        print("-" * 64)
+        all_clubs = self.logic_wrapper.get_all_clubs()
+        for club in all_clubs:
+            print(f"{club.name.title():<35}{club.address:<25}{club.id}")
+        print("-" * 64)
+
+        return all_clubs
+
+        # print("\n==Player Created==")
+        # self.logic_wrapper.create_player(p)
+
+        # fylla liðið af players (liðsmenn >= 4)
+        # - add existing player
+        # - create new player
+
+        # breyta status fyrir hvern og einn player í listanum:
+        #   - player.team = team_ID
+        #   - player.role = captain/player
+
+        # búa til nýja skrá sem heitir: teamID.csv og skrifa persónupplýsngar spilarana þar inn
+
+        # print("\n==Team Created==")

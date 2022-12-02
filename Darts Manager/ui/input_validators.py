@@ -31,7 +31,7 @@ def validate_team_name(name):
 def validate_player_name(name):
     if len(name) <= 2 or len(name) >= 50:
         raise NameLengthException()
-    elif not name.isalpha():
+    elif not name.replace(" ", "").isalpha():
         raise InvalidNameError()
 
 

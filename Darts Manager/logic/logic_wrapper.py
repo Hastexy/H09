@@ -19,7 +19,7 @@ class Logic_Wrapper:
     def get_new_player_id(self) -> int:
         return self.player_logic.get_new_player_id()
 
-    def get_all_players(self):
+    def get_all_players(self) -> List[object]:
         return self.player_logic.get_all_players()
 
     def create_team(self, team: object) -> None:
@@ -43,8 +43,9 @@ class Logic_Wrapper:
         # return self.team_logic.get_all_teams()
         return self.team_logic.get_all_teams()
 
-    def club_exists(self, club_name: str) -> bool:
-        return self.club_logic.club_exists(club_name)
+    def get_all_clubs(self) -> list:
+        return self.club_logic.get_all_clubs()
 
-    def get_all_club_names(self) -> list:
-        return self.club_logic.get_all_club_names()
+    def update_player_status(self, player_id: str, role: str, team_id: str) -> None:
+        """Updates the role and team_id for the player with the given player_id."""
+        self.player_logic.update_player_status(player_id, role, team_id)

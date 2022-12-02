@@ -1,6 +1,8 @@
 # import os
 import csv
 from model.player import Player
+from typing import List
+import fileinput
 
 
 class Player_Data:
@@ -8,12 +10,12 @@ class Player_Data:
         # print(os.getcwd())
         self.file_name = "files/players.csv"
 
-    def read_all_players(self):
-        ret_list = []
+    def read_all_players(self) -> List[object]:
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                ret_list.append(Player(*row))
+            reader = csv.DictReader(csvfile, delimiter=";")
+            ret_list = [
+                Player(*player.values()) for player in reader if not player["team_ID"]
+            ]
         return ret_list
 
     def create_player(self, player):
@@ -27,7 +29,7 @@ class Player_Data:
                 "phone",
                 "home_phone",
                 "address",
-                "team_ID"
+                "team_ID",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
 
@@ -41,7 +43,7 @@ class Player_Data:
                     "phone": player.phone,
                     "home_phone": player.home_phone,
                     "address": player.address,
-                    "team_ID": player.team
+                    "team_ID": player.team,
                 }
             )
 
@@ -52,9 +54,16 @@ class Player_Data:
             new_id = id + 1
         return new_id
 
-        # Hérna er hugmynd um að nota rand-int... samt ekki, veit ekki...
+    def update_player_status(self, player_id, role, team_id) -> None:
+        """Updates both role and team id for one player. This function isn't very efficient because it overwrites the file contents and then rewrites the ENTIRE data back into the file again with minor changes."""
+        with fileinput.input(
+            files=(self.file_name), inplace=True, mode="r"
+        ) as player_file:
 
-        #     # for line in csvfile:
-        #     #     pass
-        #     # new_id, *_ = line.split(";")
-        # return int(new_id) + 1
+            reader = csv.DictReader(player_file, delimiter=";")
+            print(";".join(reader.fieldnames))  # print back the headers
+            for player in reader:
+                if player["ID"] == player_id:
+                    player["team_ID"] = team_id
+                    player["role"] = role
+                print(";".join([*player.values()]))

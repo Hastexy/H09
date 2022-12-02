@@ -1,3 +1,5 @@
-ID;name;ssn;email;date_of_birth;phone;home_phone;address;team_ID
-1;óskar;1234567890;oskar@gmail.com;14.04.1982;6963583;56704044;DisneyLand;
-2;palli;1234567803;palli@gmail.com;14.04.1982;1963564;36704098;NoWhereLand;
+ID;name;ssn;email;date_of_birth;phone;home_phone;address;team_ID;role
+1;kjartan elvar baldvinsson;4567952179;kjartan@gmail.com;10.10.1995;1998585;5468888;Leirutangi 1;2;captain
+2;ólafur kári baldvinsson;0610954279;oli@gmail.com;09.10.1995;2998585;5868883;Leirutangi 22;2;player
+3;palli elvar kárason;0610952432;palli@gmail.com;08.10.1995;3998585;5868882;Leirutangi 11;2;player
+4;skari maur ólafsson;0610952123;skari@gmail.com;07.10.1995;4998585;5868881;Leirutangi 13;2;player

@@ -1,6 +1,7 @@
 from data.player_data import Player_Data
 from data.team_data import Team_Data
 from data.club_data import Club_Data
+from typing import List
 
 
 class Data_Wrapper:
@@ -9,7 +10,7 @@ class Data_Wrapper:
         self.team_data = Team_Data()
         self.player_data = Player_Data()
 
-    def get_all_players(self):
+    def get_all_players(self) -> List[object]:
         return self.player_data.read_all_players()
 
     def create_player(self, player: object) -> None:
@@ -18,6 +19,10 @@ class Data_Wrapper:
 
     def get_new_player_id(self) -> int:
         return self.player_data.get_new_player_id()
+
+    def update_player_status(self, player_id: str, role: str, team_id: str) -> None:
+        """Updates the role and team_id for the player with the given player_id."""
+        self.player_data.update_player_status(player_id, role, team_id)
 
     def get_all_teams(self):
         return self.team_data.read_all_teams()
@@ -32,11 +37,8 @@ class Data_Wrapper:
         """Takes in a club object and forwards it to club_data"""
         self.club_data.create_club(club)
 
-    def club_exists(self, club_name: str) -> bool:
-        return self.club_data.club_exists(club_name)
-
-    def get_all_club_names(self) -> list:
-        return self.club_data.get_all_club_names()
+    def get_all_clubs(self) -> list:
+        return self.club_data.get_all_clubs()
 
     def get_new_club_id(self) -> int:
         return self.club_data.get_new_club_id()

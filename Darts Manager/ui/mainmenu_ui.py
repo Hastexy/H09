@@ -1,8 +1,9 @@
-#from ui.player_UI import Player_UI
-#from ui.team_ui import Team_UI
+# from ui.player_UI import Player_UI
+# from ui.team_ui import Team_UI
 from ui.tournament_manager_ui import Tournament_Manager_UI
 from ui.view_manager import View_Manager_UI
 from logic.logic_wrapper import Logic_Wrapper
+
 
 class MainMenu_UI:
     def __init__(self):
@@ -24,8 +25,8 @@ class MainMenu_UI:
                 print("\nGoodbye")
                 break
             elif command == "1":
-                #print("\n===TOURNAMENT MANAGER====")
-                verify_user = input("\nAre you a tournament manager? (y/n)")
+                # print("\n===TOURNAMENT MANAGER====")
+                verify_user = input("\nAre you a tournament manager? (y/n): ")
                 if verify_user == "y":
                     menu = Tournament_Manager_UI(self.logic_wrapper)
                     back_method = menu.input_promt()
@@ -36,13 +37,12 @@ class MainMenu_UI:
                 else:
                     print("\nInvalid input, try again")
             elif command == "2":
-                print("\n===RESULTS MANAGER===")    #Implement RM Menu Later
+                print("\n===RESULTS MANAGER===")  # Implement RM Menu Later
             elif command == "3":
-                #print("\n===VIEW MANAGER===")
+                # print("\n===VIEW MANAGER===")
                 menu = View_Manager_UI(self.logic_wrapper)
                 back_method = menu.input_prompt()
                 if back_method == "q":
                     return "q"
             else:
                 print("\ninvalid input, try again")
-            
