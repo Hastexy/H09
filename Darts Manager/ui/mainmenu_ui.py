@@ -26,7 +26,7 @@ class MainMenu_UI:
                 break
             elif command == "1":
                 # print("\n===TOURNAMENT MANAGER====")
-                verify_user = input("\nAre you a tournament manager? (y/n): ")
+                verify_user = input("\nAre you a tournament host? (y/n): ")
                 if verify_user == "y":
                     menu = Tournament_Manager_UI(self.logic_wrapper)
                     back_method = menu.input_promt()

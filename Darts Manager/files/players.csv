@@ -3,3 +3,7 @@ ID;name;ssn;email;date_of_birth;phone;home_phone;address;team_ID;role
 2;ólafur kári baldvinsson;0610954279;oli@gmail.com;09.10.1995;2998585;5868883;Leirutangi 22;2;player
 3;palli elvar kárason;0610952432;palli@gmail.com;08.10.1995;3998585;5868882;Leirutangi 11;2;player
 4;skari maur ólafsson;0610952123;skari@gmail.com;07.10.1995;4998585;5868881;Leirutangi 13;2;player
+5;cool man;7777777777;cool@cool1.com;77.77.7777;;;;3;captain
+6;testing;1234567890;abbab@com.com;12.34.5678;;;;3;player
+7;blabla;3216549870;bla@bla.com;55.87.9563;1234567;;;3;player
+8;styrmir;8529637419;Styrmir@styrmirstyrmir;12.51.8451;3512647;8459675;sussville;3;player
