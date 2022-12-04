@@ -49,7 +49,8 @@ class View_Manager_UI:
         # }
 
     def menu_output(self):
-        print("""
+        print(
+            """
 ╔═══╦══════════════════════════════════════╗
 ║   ║             View Manager             ║
 ╠═══╬══════════════════════════════════════╣
@@ -59,7 +60,8 @@ class View_Manager_UI:
 ║ 4 ║ View League Scores                   ║
 ║ b ║ Back                                 ║
 ║ q ║ Quit                                 ║
-╚═══╩══════════════════════════════════════╝""")
+╚═══╩══════════════════════════════════════╝"""
+        )
         # print("\n---View Manager---")
         # print("1. view team")
         # print("2. view upcoming matches")
@@ -83,16 +85,16 @@ class View_Manager_UI:
             elif command == "1":
                 # print("\nYou are viewing the teams and their players")
                 all_teams = self.logic_wrapper.get_all_teams()
-                counter = 1
-                for team in all_teams:
-                    print(f"\n{counter}. TEAM NAME: {team.name}")
-                    print(f"\n{STR_NAME:<50}{STR_SSN:<12}{STR_EMAIL:<20}{STR_DOB:<12}{STR_PHONE:<10}{STR_HOME_PHONE:<15}{STR_ADDRESS:<30}\n")
-                    print("test")
+                for idx, team in enumerate(all_teams, 1):
+                    print(f"\n{idx}. TEAM NAME: {team.name}")
+                    print(
+                        f"\n{STR_NAME:<50}{STR_SSN:<12}{STR_EMAIL:<30}{STR_DOB:<12}{STR_PHONE:<10}{STR_HOME_PHONE:<15}{STR_ADDRESS:<30}\n"
+                    )
                     print(team.captain)
-                    print("test")
-                    for j in team.players:
-                        print(j)
-                    counter += 1
+                    for player in team.players:
+                        print(
+                            f"{player.name:<50}{player.ssn:<12}{player.email:<30}{player.dob:<12}{player.phone:<10}{player.home_phone:<15}{player.address:<30}"
+                        )
                 # for team in all_teams:
                 #     print(f"\n1. TEAM NAME: {team.name}")
                 #     print()
