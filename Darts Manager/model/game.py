@@ -1,13 +1,7 @@
-class Game:
+class Game:  # tegund af leik / umferð í einhverri viðureign
     def __init__(self) -> None:
-        self.type = ""
-        self.home_player = ""
-        self.away_player = ""
-        self.home_score = ""
-        self.away_score = ""
-        self.result = ""
-
-    def __str__(self) -> str:
-        name = self.type
-
-        return
+        self.type = "501"
+        self.home_player = "Greg"
+        self.away_player = "Palli"
+        self.home_score = "1-0"
+        self.away_score = "1-1"
