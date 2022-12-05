@@ -10,7 +10,6 @@ class Data_Wrapper:
         self.club_data = Club_Data()
         self.team_data = Team_Data()
         self.player_data = Player_Data()
-        self.league_data = League_Data()
 
     def get_all_players(self) -> List[object]:
         return self.player_data.read_all_players()
@@ -50,26 +49,29 @@ class Data_Wrapper:
     def get_new_team_id(self) -> int:
         return self.team_data.get_new_team_id()
 
-    def get_all_results():
+    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
+        self.league_data.generate_schedule(all_teams, league_ID)
+
+    def get_unplayed_matches(self):
         pass
 
-    def get_unfinished_matches(self) -> list:
-        return self.league_data.get_unfinished_matches()
-
-    def get_finished_matches(self) -> list:
-        return self.league_data.get_finished_matches()
-
-    def get_leaderboard():
+    def get_unplayed_matches():
         pass
 
-    def register_result():
+    def get_complete_results():
         pass
 
-    def edit_result():
+    def register_result(self):
         pass
 
-    def create_tournament():
+    def edit_result(self):
         pass
 
-    def create_a_match():
+    def create_tournament(self):
         pass
+
+    def create_a_match(self):
+        pass
+
+    def get_new_match_id(self) -> int:
+        return self.league_data.get_new_match_id()

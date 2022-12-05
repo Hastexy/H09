@@ -13,40 +13,7 @@ STR_ADDRESS = "ADDRESS"
 class View_Manager_UI:
     def __init__(self, logic_connection) -> None:
         self.logic_wrapper = logic_connection
-        # self.testing = {
-        #     "Dart Vader": [
-        #         Player(
-        #             "1",
-        #             "óskar",
-        #             "1234567890",
-        #             "oskar@gmail.com",
-        #             "14.04.1982",
-        #             "6963583",
-        #             "4567892",
-        #             "DisneyLand",
-        #         ),
-        #         Player(
-        #             "2",
-        #             "styrmir",
-        #             "0987654321",
-        #             "styrmir@gmail.com",
-        #             "10.09.2000",
-        #             "5012345",
-        #             "9685742",
-        #             "Discord",
-        #         ),
-        #         Player(
-        #             "3",
-        #             "kjartan",
-        #             "1020304050",
-        #             "kjartan@gmail.com",
-        #             "11.11.2016",
-        #             "9876541",
-        #             "3574692",
-        #             "RU",
-        #         ),
-        #     ]
-        # }
+
 
     def menu_output(self):
         print(

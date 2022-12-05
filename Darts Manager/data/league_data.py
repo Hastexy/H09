@@ -6,19 +6,55 @@ from model.match import Match
 from model.game import Game
 from model.team import Team
 from model.player import Player
+import itertools
 
 
-class LeagueData:
+class League_Data:
     def __init__(self):
         self.file_name = "files/matches.csv"
         self.team_folder = "league_teams"
 
-    def generate_schedule(
-        variable, all_teams: List[object]
-    ) -> List[tuple]:  # Hrafnkell og Styrmir
-        # list((team1, team2))
-        # for match in all_teams:
-        # record match in the
+    def get_new_match_id(self) -> int:
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            for id, _ in enumerate(csvfile):
+                pass
+            new_id = id + 1
+        return new_id
+
+    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:  # Hrafnkell og Styrmir
+        #match_ID;???date;Xhome_team;Xaway_team;Xresult;Xleague_ID;
+        
+        id_list = []
+        
+        for teams in all_teams:
+            t_id = teams.id
+            id_list.append(t_id)
+            
+        matches = set(combinations(id_list,2))
+        
+        with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
+            fieldnames = [
+                "match_ID",
+                "date",
+                "home_team",
+                "away_team",
+                "result",
+                "league_ID",
+            ]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
+
+            for match in matches:
+                new_id = self.get_new_match_id()
+                writer.writerow(
+                    {
+                    "match_ID":new_id,
+                    "date": "xx/xx/xxxx",
+                    "home_team": match[0],
+                    "away_team": match[1],
+                    "result": "0-0", #Enter results in this format (2-1)
+                    "league_ID": league_ID,
+                    }
+                )
         pass
 
     def get_all_league_teams(league_id: str) -> List[object]:
@@ -67,3 +103,5 @@ class LeagueData:
 
     def reschedule_match(self, match_id: int) -> object:
         pass
+    
+
