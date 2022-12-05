@@ -221,9 +221,9 @@ class Tournament_Manager_UI:
                 # print("\n==Player Created==")
                 self.logic_wrapper.create_player(p)
             elif command == "4":
-                #print("\n==League Created==")
+                # print("\n==League Created==")
                 l = League()
-                #l.id = self.logic_wrapper.get_id() vantar að geta náð id
+                # l.id = self.logic_wrapper.get_id() vantar að geta náð id
                 while True:
                     l.name = input("\nEnter the name of your league: ")
                     break
@@ -234,22 +234,28 @@ class Tournament_Manager_UI:
                     l.phone = input("\nEnter the phone nr. of your league: ")
                     break
                 while True:
-                    l.start_date = input("\nEnter the starting date of your league (with this format: xx.xx.xxxx): ")
+                    l.start_date = input(
+                        "\nEnter the starting date of your league (with this format: xx.xx.xxxx): "
+                    )
                     break
                 while True:
-                    l.end_date = input("\nEnter the ending date of your league (If it is a one day league enter the same date): ")
+                    l.end_date = input(
+                        "\nEnter the ending date of your league (If it is a one day league enter the same date): "
+                    )
                     break
                 while True:
-                    l.team_amount = input("\nEnter the amount of teams competing in your league: ")
+                    l.team_amount = input(
+                        "\nEnter the amount of teams competing in your league: "
+                    )
                     print("===teams picked===")
                     break
-                while True:
+                while True:  # spurning hvort það megi bara vera ein umferð per dag?...
                     l.round = input("\nEnter the amount of rounds per day: ")
                     break
-        
+
                 print("---Testing---")
                 print(l)
-                
+
                 pass
             else:
                 print("\nInvalid input, try again")
