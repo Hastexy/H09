@@ -116,5 +116,10 @@ Styrmir, Kristinn og Kjartan Ingi: Gera/uppfæra skýrslur fyrir deildir til þe
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn hittist á fundi um 4 og tók stutt plan fyrir næstu viku.
+flest allt UI er komið, þarf bara að input checka margt og commenta.
+Annars var planið í næstu viku að fara á fullum gang í deildir.
+Kjartan Ingi og Styrmir gerðu stutta lýsingu yfir hvað þarf í deildir.
+Kjartan Elvar og Kristinn unnu í data og logic layerum
+Hrafnkell vann að hanna smá breytingu á main ui-onum
 ```
