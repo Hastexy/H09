@@ -21,8 +21,8 @@ class League_Data:
             new_id = id + 1
         return new_id
 
-    def generate_schedule(self, all_teams: List[object], tournament_ID):  # Hrafnkell og Styrmir
-        #match_ID;???date;Xhome_team;Xaway_team;Xresult;Xtournament_ID;
+    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:  # Hrafnkell og Styrmir
+        #match_ID;???date;Xhome_team;Xaway_team;Xresult;Xleague_ID;
         
         id_list = []
         
@@ -39,7 +39,7 @@ class League_Data:
                 "home_team",
                 "away_team",
                 "result",
-                "tournament_ID",
+                "league_ID",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
 
@@ -52,7 +52,7 @@ class League_Data:
                     "home_team": match[0],
                     "away_team": match[1],
                     "result": "0-0", #Enter results in this format (2-1)
-                    "tournament_ID": tournament_ID,
+                    "league_ID": league_ID,
                     }
                 )
         pass
