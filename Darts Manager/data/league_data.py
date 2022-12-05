@@ -57,7 +57,7 @@ class League_Data:
                 )
         pass
 
-    def get_all_teams(league_id: str) -> List[object]:
+    def get_all_league_teams(league_id: str) -> List[object]:
         all_teams = []
         league_team_file = "files/league_teams/" + league_id + ".csv"
         with open(league_team_file, newline="", encoding="utf-8") as teams_file:
