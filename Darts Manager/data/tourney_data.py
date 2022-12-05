@@ -1,21 +1,27 @@
 import csv
-from model.team import Team
+from typing import List
+from itertools import combinations
 
-class Team_Data:
+
+class TourneyData:
     def __init__(self):
-        self.file_name = "files/teams.csv"
+        self.file_name = "files/matches.csv"
+        self.team_folder = "tourney_teams"
 
-    def read_all_teams(self):
-        ret_list = []
-        with open(self.file_name, newline='', encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                ret_list.append(Team(*row))
-        return ret_list
+    def generate_shcedule(variable, all_teams: List[object]) -> List[tuple]:
+        pass
 
-    def create_team(self, team):
-        with open(self.file_name, 'a', newline='', encoding="utf-8") as csvfile:
-            fieldnames = ["name", "players", "captain"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    def get_all_teams(self) -> List[object]:
+        tourney_file = self.team_folder + self.id + ".csv"
+        with open(tourney_file, newline="", encoding="utf-8") as teams_file:
+            reader = csv.DictReader(teams_file, delimiter=";")
+            pass
 
-            writer.writerow({'name': team.name, 'players': team.players, 'captain': team.captain})
+    def get_standings(self) -> List[object]:
+        pass
+
+    def get_finished_matches(self) -> List[object]:
+        pass
+
+    def get_unfinished_matches(self) -> List[object]:
+        pass
