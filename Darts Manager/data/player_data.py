@@ -1,4 +1,3 @@
-# import os
 import csv
 from model.player import Player
 from typing import List
@@ -7,7 +6,6 @@ import fileinput
 
 class Player_Data:
     def __init__(self):
-        # print(os.getcwd())
         self.file_name = "files/players.csv"
 
     def read_all_players(self) -> List[object]:
