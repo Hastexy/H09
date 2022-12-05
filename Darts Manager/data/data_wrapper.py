@@ -1,6 +1,7 @@
 from data.player_data import Player_Data
 from data.team_data import Team_Data
 from data.club_data import Club_Data
+from data.league_data import League_Data
 from typing import List
 
 
@@ -9,6 +10,7 @@ class Data_Wrapper:
         self.club_data = Club_Data()
         self.team_data = Team_Data()
         self.player_data = Player_Data()
+        self.league_data = League_Data()
 
     def get_all_players(self) -> List[object]:
         return self.player_data.read_all_players()
@@ -24,7 +26,9 @@ class Data_Wrapper:
         """Updates the role and team_id for the player with the given player_id."""
         self.player_data.update_player_status(player_id, role, team_id)
 
-    def get_all_teams(self):
+    def get_all_teams(self, league_id: str = "") -> List[object]:
+        if league_id:
+            return self.league_data.get_all_teams()
         return self.team_data.read_all_teams()
 
     def create_team(self, team: object) -> None:
@@ -49,11 +53,11 @@ class Data_Wrapper:
     def get_all_results():
         pass
 
-    def get_unplayed_matches():
-        pass
+    def get_unfinished_matches(self) -> list:
+        return self.league_data.get_unfinished_matches()
 
-    def get_complete_results():
-        pass
+    def get_finished_matches(self) -> list:
+        return self.league_data.get_finished_matches()
 
     def get_leaderboard():
         pass
