@@ -2,6 +2,7 @@ from data.player_data import Player_Data
 from data.team_data import Team_Data
 from data.club_data import Club_Data
 from data.league_data import League_Data
+
 from typing import List
 
 
@@ -10,6 +11,7 @@ class Data_Wrapper:
         self.club_data = Club_Data()
         self.team_data = Team_Data()
         self.player_data = Player_Data()
+        self.league_data = League_Data()
 
     def get_all_players(self) -> List[object]:
         return self.player_data.read_all_players()
@@ -72,6 +74,9 @@ class Data_Wrapper:
 
     def create_a_match(self):
         pass
-
+    
     def get_new_match_id(self) -> int:
         return self.league_data.get_new_match_id()
+
+    def register_teams(self, tourney):
+        self.league_data.register_teams(tourney)

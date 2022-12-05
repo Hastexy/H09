@@ -9,3 +9,6 @@ class League_Logic:
     
     def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
         self.data_wrapper.generate_schedule(all_teams, league_ID)
+    
+    def register_teams(self, tourney):
+        self.data_wrapper.register_teams(tourney)
