@@ -1,6 +1,7 @@
 from data.player_data import Player_Data
 from data.team_data import Team_Data
 from data.club_data import Club_Data
+from data.league_data import League_Data
 from typing import List
 
 
@@ -46,7 +47,7 @@ class Data_Wrapper:
     def get_new_team_id(self) -> int:
         return self.team_data.get_new_team_id()
 
-    def get_all_results():
+    def generate_schedule():
         pass
 
     def get_unplayed_matches():
@@ -68,4 +69,7 @@ class Data_Wrapper:
         pass
 
     def create_a_match():
+        pass
+    
+    def get_new_match_id():
         pass

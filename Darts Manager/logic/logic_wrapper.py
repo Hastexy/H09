@@ -3,6 +3,7 @@ from logic.player_logic import Player_Logic
 from logic.team_logic import Team_Logic
 from data.data_wrapper import Data_Wrapper
 from logic.club_logic import Club_Logic
+from logic.league_logic import League_Logic
 
 
 class Logic_Wrapper:

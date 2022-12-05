@@ -9,7 +9,7 @@ from model.player import Player
 import itertools
 
 
-class LeagueData:
+class League_Data:
     def __init__(self):
         self.file_name = "files/matches.csv"
         self.team_folder = "league_teams"
