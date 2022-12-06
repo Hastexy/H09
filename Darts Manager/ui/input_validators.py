@@ -1,3 +1,32 @@
+CANCEL = """
+╔═══════════════════════════════════════════╗
+║ Input "b" at any point to cancel creation ║
+╚═══════════════════════════════════════════╝"""
+CANCEL2 = """
+╔════════════════════╗
+║ Creation Cancelled ║
+╚════════════════════╝"""
+
+ERR_LENGTH = """
+╔═════════════════════════════════════════════════════╗
+║ The input must be between 3 and 49 characters long! ║
+╚═════════════════════════════════════════════════════╝"""
+
+ERR_UNKNOWN = """
+╔═══════════════════════════════════╗
+║ Unknown Error Occurred, try again ║
+╚═══════════════════════════════════╝"""
+
+ERR_DIGIT = """
+╔══════════════════════════════════════════╗
+║ Phone number must only consist of digits ║
+╚══════════════════════════════════════════╝"""
+
+ERR_PHONE = """
+╔════════════════════════════════════╗
+║ Phone number must be 7 digits long ║
+╚════════════════════════════════════╝"""
+
 class NameLengthException(Exception):
     pass
 
@@ -18,7 +47,7 @@ class InvalidNameError(Exception):
     pass
 
 
-def validate_club_name(name):
+def validate_club_length(name):
     if len(name) <= 2 or len(name) >= 50:
         raise NameLengthException()
 
