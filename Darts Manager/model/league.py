@@ -11,6 +11,7 @@ class League:
         # team_amount="",
         # rounds="",
     ) -> None:
+        """Initiates an instance of a league. Each league has a unique ID number which Match objects use to link themselves to a specific league. Each league has a name and a host. The host must have a name and a phonenumber."""
         self.id = id
         self.name = name
         self.host = host

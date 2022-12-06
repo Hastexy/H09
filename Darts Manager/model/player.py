@@ -12,6 +12,7 @@ class Player:
         team="",
         role="",
     ):
+        """Initiates an instance of a player. Each player has a unique id number associated with them. Each player has basic personal information. If a player is a part of a team, the 'team' attribute is set to that team's ID number and the 'role' attribute can  either be a 'player' or a 'captain', depending on that player's status within the team."""
         self.id = ID
         self.name = name
         self.ssn = ssn
@@ -22,13 +23,3 @@ class Player:
         self.address = address
         self.team = ""
         self.role = ""
-
-    # def __str__(self):
-    #     result_str = f"{self.name} {self.ssn}{self.email}{self.dob}"
-    #     if self.phone != "":
-    #         result_str += f"{self.phone}"
-    #     if self.home_phone != "":
-    #         result_str += f"{self.home_phone}"
-    #     if self.address != "":
-    #         result_str += f"{self.address}"
-    #     return result_str
