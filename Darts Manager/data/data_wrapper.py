@@ -57,11 +57,14 @@ class Data_Wrapper:
     def get_unplayed_matches(self):
         pass
 
-    def get_unplayed_matches():
-        pass
+    def get_unfinished_matches(self, league_id: str) -> List[object]:
+        return self.league_data.get_unfinished_matches(league_id)
 
-    def get_complete_results():
-        pass
+    def get_finished_matces(self, league_id: str) -> List[object]:
+        return self.league_data.get_finished_matches(league_id)
+
+    def get_all_league_teams(self, league_id: str) -> List[object]:
+        return self.league_data.get_all_league_teams(league_id)
 
     def register_result(self):
         pass
@@ -74,7 +77,7 @@ class Data_Wrapper:
 
     def create_a_match(self):
         pass
-    
+
     def get_new_match_id(self) -> int:
         return self.league_data.get_new_match_id()
 

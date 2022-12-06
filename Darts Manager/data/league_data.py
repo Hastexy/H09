@@ -58,7 +58,7 @@ class League_Data:
                 )
         pass
 
-    def get_all_league_teams(league_id: str) -> List[object]:
+    def get_all_league_teams(self, league_id: str) -> List[object]:
         all_teams = []
         league_team_file = "files/league_teams/" + league_id + ".csv"
         with open(league_team_file, newline="", encoding="utf-8") as teams_file:
@@ -104,24 +104,21 @@ class League_Data:
         with open(self.file_name, "a", newline="", encoding="utf-8") as teams_file:
             fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
-            writer.writerow({"ID": tourney.id, "name": tourney.name, "host_name": tourney.host_name, "host_phonenumber": tourney.host_phonenumber})
+            writer.writerow(
+                {
+                    "ID": tourney.id,
+                    "name": tourney.name,
+                    "host_name": tourney.host_name,
+                    "host_phonenumber": tourney.host_phonenumber,
+                }
+            )
 
         with open(teams_file, "a", newline="", encoding="utf-8") as teams_file:
-            fieldnames = [
-                "ID",
-                "name",
-                "host_name",
-                "host_phonenumber"
-            ]
+            fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
             writer.writeheader()
             for team in tourney.teams:
-                writer.writerow(
-                                {   
-                                    "ID": team.id, 
-                                    "clubID": team.clubID
-                                }
-                               )
+                writer.writerow({"ID": team.id, "clubID": team.clubID})
 
     def reschedule_match(self, match_id: int) -> object:
         pass

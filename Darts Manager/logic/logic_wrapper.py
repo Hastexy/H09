@@ -51,7 +51,7 @@ class Logic_Wrapper:
     def update_player_status(self, player_id: str, role: str, team_id: str) -> None:
         """Updates the role and team_id for the player with the given player_id."""
         self.player_logic.update_player_status(player_id, role, team_id)
-        
+
     def get_new_match_id(self) -> int:
         return self.league_logic.get_new_match_id()
 
@@ -60,3 +60,12 @@ class Logic_Wrapper:
 
     def register_teams(self, tourney):
         self.league_logic.register_teams(tourney)
+
+    def get_unfinished_matches(self, league_id: str) -> List[object]:
+        return self.league_logic.get_unfinished_matches(league_id)
+
+    def get_finished_matces(self, league_id: str) -> List[object]:
+        return self.league_logic.get_finished_matches(league_id)
+
+    def get_all_league_teams(self, league_id: str) -> List[object]:
+        return self.league_logic.get_all_league_teams(league_id)
