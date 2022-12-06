@@ -16,7 +16,12 @@ Hrafnkell og Styrmir: Vinna á UI laginu og plana myndbandið
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund klukkan 4.
+allur hópurinn fór í að mynda teningar fyrir deildir og tóku hver í hópnum einn til tvo hluti.
+Það var klárað að mynda flestar af þeim tengingum.
+á morgun var pælingin svo að klára UI layerinn svo að notandi gæti byrjað að gera eitthvað með deildir.
+Svo þarf að fara breyta skjölunum svo að tourney verði league.
+Það var ekkert skipt hópnum upp í dag og verður gert það á morgun betur.
 ```
 
 
@@ -24,7 +29,13 @@ Hrafnkell og Styrmir: Vinna á UI laginu og plana myndbandið
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund klukkan 12 og fór að ræða plan dagsins.
+planið var aðalega að laga smá skjölin og að reyna uppfæra UI layerinn til þess að virka,
+þar sem allar tengingarnar fyrir deildir eru komnar, það þarf bara að geta nota þær í UI-inu.
+Annars er hópurinn skiptur svona:
+Kristinn: Laga skýrslur
+Kjartan Elvar og Kjartan Ingi: Fara að vinna í data og logic layer
+Hrafnkell og Styrmir: UI layer og byrja að hugsa um hvernig myndbandið ætti að vera
 ```
 
 ### Færsla 2 - Samantekt
