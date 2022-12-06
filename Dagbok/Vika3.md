@@ -29,7 +29,13 @@ Svo þarf að fara breyta skjölunum svo að tourney verði league.
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund klukkan 12 og fór að ræða plan dagsins.
+planið var aðalega að laga smá skjölin og að reyna uppfæra UI layerinn til þess að virka,
+þar sem allar tengingarnar fyrir deildir eru komnar, það þarf bara að geta nota þær í UI-inu.
+Annars er hópurinn skiptur svona:
+Kristinn: Laga skýrslur
+Kjartan Elvar og Kjartan Ingi: Fara að vinna í data og logic layer
+Hrafnkell og Styrmir: UI layer og byrja að hugsa um hvernig myndbandið ætti að vera
 ```
 
 ### Færsla 2 - Samantekt
