@@ -14,16 +14,15 @@ class League_Data:
         self.team_folder = "league_teams"
 
     def get_new_match_id(self) -> int:
+        """Generates a unique match id."""
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             for id, _ in enumerate(csvfile):
                 pass
             new_id = id + 1
         return new_id
 
-    def generate_schedule(
-        self, all_teams: List[object], league_ID: str
-    ) -> None:  # Hrafnkell og Styrmir
-        # match_ID;???date;Xhome_team;Xaway_team;Xresult;Xleague_ID;
+    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
+        """Creates a schedule for a league. It makes sure that all the teams compete with each other only once."""
 
         id_list = []
 
@@ -59,6 +58,7 @@ class League_Data:
         pass
 
     def get_all_league_teams(self, league_id: str) -> List[object]:
+        """Receives a league_id number and fetches all the teams participating in that specific league. Returns a list of Team objects."""
         all_teams = []
         league_team_file = "files/league_teams/" + league_id + ".csv"
         with open(league_team_file, newline="", encoding="utf-8") as teams_file:
@@ -77,8 +77,8 @@ class League_Data:
     def get_team_standings(self) -> List[object]:
         pass
 
-    def get_finished_matches(self, league_id: str) -> List[object]:  # Kristinn
-        # opna tengingu og sækja allt sem viðkemur þessu tournamenti og filtera og skila lista af objects
+    def get_finished_matches(self, league_id: str) -> List[object]:
+        """Receives a league_id number and fetches all the matches that have been completed in that league. Returns a list of Match objects."""
         matches = []
         with open(self.file_name, newline="", encoding="utf-8") as match_file:
             reader = csv.DictReader(match_file, delimiter=";")
@@ -105,6 +105,7 @@ class League_Data:
         return matches
 
     def get_unfinished_matches(self, league_id) -> List[object]:  # Kristinn
+        """Receives a league_id number and fetches all the matches that have yet to be  in that league. Returns a list of Match objects."""
         matches = []
         with open(self.file_name, newline="", encoding="utf-8") as match_file:
             reader = csv.DictReader(match_file, delimiter=";")
