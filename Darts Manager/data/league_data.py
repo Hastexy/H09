@@ -130,18 +130,20 @@ class League_Data:
                         matches.append(m)
         return matches
 
-    def register_teams(self, league) -> None:  # KjartanIK
-        teams_file = self.team_folder + league.id + ".csv"
+    def register_teams(self, teams: List[object], league_id: str) -> None:  # KjartanIK
+        """Takes a Team object and registers a new Team in the database based on its attributes."""
+
+        teams_file = self.team_folder + league_id.id + ".csv"
 
         with open(self.file_name, "a", newline="", encoding="utf-8") as teams_file:
             fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
             writer.writerow(
                 {
-                    "ID": league.id,
-                    "name": league.name,
-                    "host_name": league.host_name,
-                    "host_phonenumber": league.host_phonenumber,
+                    "ID": league_id.id,
+                    "name": league_id.name,
+                    "host_name": league_id.host_name,
+                    "host_phonenumber": league_id.host_phonenumber,
                 }
             )
 
@@ -149,7 +151,7 @@ class League_Data:
             fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
             writer.writeheader()
-            for team in league.teams:
+            for team in league_id.teams:
                 writer.writerow({"ID": team.id, "clubID": team.clubID})
 
     def reschedule_match(self, match_id: int) -> object:

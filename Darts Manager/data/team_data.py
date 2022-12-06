@@ -67,6 +67,7 @@ class Team_Data:
                 )
 
     def get_new_team_id(self) -> int:
+        """Generates a unique team id. Returns it as an integer."""
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             for id, _ in enumerate(csvfile):
                 pass

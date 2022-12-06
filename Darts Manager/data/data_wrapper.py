@@ -17,14 +17,12 @@ class Data_Wrapper:
         return self.player_data.read_all_players()
 
     def create_player(self, player: object) -> None:
-        """Takes in a player object and forwards it to player_data"""
         self.player_data.create_player(player)
 
     def get_new_player_id(self) -> int:
         return self.player_data.get_new_player_id()
 
     def update_player_status(self, player_id: str, role: str, team_id: str) -> None:
-        """Updates the role and team_id for the player with the given player_id."""
         self.player_data.update_player_status(player_id, role, team_id)
 
     def get_all_teams(self, league_id: str = "") -> List[object]:
@@ -39,7 +37,6 @@ class Data_Wrapper:
         return self.club_data.check_for_clubs()
 
     def create_club(self, club: object):
-        """Takes in a club object and forwards it to club_data"""
         self.club_data.create_club(club)
 
     def get_all_clubs(self) -> list:
