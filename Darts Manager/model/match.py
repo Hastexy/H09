@@ -1,7 +1,11 @@
 class Match:  # viðureign
-    def __init__(self) -> None:
-        self.date = "2022-11-16 T20:00:00"
-        self.home_team = "Thundercats"
-        self.away_team = "Olligarcs"
-        self.result = "2-5"
+    def __init__(
+        self, id="", date="", home_team="", away_team="", result="", league_id=""
+    ) -> None:
+        self.id = id
+        self.date = date
+        self.home_team = home_team
+        self.away_team = away_team
+        self.result = result
+        self.league_id = league_id
         self.games = []

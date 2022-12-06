@@ -85,8 +85,24 @@ class League_Data:
             for match in reader:
                 if match["league_ID"] == league_id:
                     if match["result"]:
-                        m = Match(*match.values())
+                        m = Match(
+                            match["match_ID"],
+                            match["date"],
+                            match["home_team"],
+                            match["away_team"],
+                            match["result"],
+                            match["league_ID"],
+                        )
+                        with open(
+                            "files/games.csv", newline="", encoding="utf-8"
+                        ) as game_file:
+                            game_reader = csv.DictReader(game_file, delimiter=";")
+                            for game in game_reader:
+                                if game["match_ID"] == m.id:
+                                    g = Game(*game.values())
+                                    m.games.append(g)
                         matches.append(m)
+        return matches
 
     def get_unfinished_matches(self, league_id) -> List[object]:  # Kristinn
         matches = []
@@ -95,8 +111,24 @@ class League_Data:
             for match in reader:
                 if match["league_ID"] == league_id:
                     if not match["result"]:
-                        m = Match(*match.values())
+                        m = Match(
+                            match["id"],
+                            match["date"],
+                            match["home_team"],
+                            match["away_team"],
+                            match["result"],
+                            match["league_ID"],
+                        )
+                        with open(
+                            "files/games.csv", newline="", encoding="utf-8"
+                        ) as game_file:
+                            game_reader = csv.DictReader(game_file, delimiter=";")
+                            for game in game_reader:
+                                if game["match_ID"] == m.id:
+                                    g = Game(*game.values())
+                                    m.games.append(g)
                         matches.append(m)
+        return matches
 
     def register_teams(self, tourney) -> None:  # KjartanIK
         teams_file = self.team_folder + tourney.id + ".csv"
