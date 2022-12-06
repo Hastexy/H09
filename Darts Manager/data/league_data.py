@@ -130,18 +130,18 @@ class League_Data:
                         matches.append(m)
         return matches
 
-    def register_teams(self, tourney) -> None:  # KjartanIK
-        teams_file = self.team_folder + tourney.id + ".csv"
+    def register_teams(self, league) -> None:  # KjartanIK
+        teams_file = self.team_folder + league.id + ".csv"
 
         with open(self.file_name, "a", newline="", encoding="utf-8") as teams_file:
             fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
             writer.writerow(
                 {
-                    "ID": tourney.id,
-                    "name": tourney.name,
-                    "host_name": tourney.host_name,
-                    "host_phonenumber": tourney.host_phonenumber,
+                    "ID": league.id,
+                    "name": league.name,
+                    "host_name": league.host_name,
+                    "host_phonenumber": league.host_phonenumber,
                 }
             )
 
@@ -149,7 +149,7 @@ class League_Data:
             fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
             writer.writeheader()
-            for team in tourney.teams:
+            for team in league.teams:
                 writer.writerow({"ID": team.id, "clubID": team.clubID})
 
     def reschedule_match(self, match_id: int) -> object:
