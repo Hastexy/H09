@@ -16,7 +16,12 @@ Hrafnkell og Styrmir: Vinna á UI laginu og plana myndbandið
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund klukkan 4.
+allur hópurinn fór í að mynda teningar fyrir deildir og tóku hver í hópnum einn til tvo hluti.
+Það var klárað að mynda flestar af þeim tengingum.
+á morgun var pælingin svo að klára UI layerinn svo að notandi gæti byrjað að gera eitthvað með deildir.
+Svo þarf að fara breyta skjölunum svo að tourney verði league.
+Það var ekkert skipt hópnum upp í dag og verður gert það á morgun betur.
 ```
 
 
