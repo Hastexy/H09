@@ -57,3 +57,6 @@ class Logic_Wrapper:
 
     def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
         self.league_logic.generate_schedule(all_teams, league_ID)
+
+    def register_teams(self, tourney):
+        self.league_logic.register_teams(tourney)
