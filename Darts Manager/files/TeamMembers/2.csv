@@ -1,4 +1,5 @@
-1;kjartan elvar baldvinsson;4567952179;kjartan@gmail.com;10.10.1995;1998585;5468888;Leirutangi 1;;
-2;ólafur kári baldvinsson;0610954279;oli@gmail.com;09.10.1995;2998585;5868883;Leirutangi 22;;
-3;palli elvar kárason;0610952432;palli@gmail.com;08.10.1995;3998585;5868882;Leirutangi 11;;
-4;skari maur ólafsson;0610952123;skari@gmail.com;07.10.1995;4998585;5868881;Leirutangi 13;;
+ID;name;ssn;email;date_of_birth;phone;home_phone;address;team_ID;role
+6;kóngur kári óskarsson;0610952179;oskar@gmail.com;12.12.2002;6593121;568888;Leirutangi 1;2;captain
+7;destro the king;0610953658;destro@gmail.com;12.12.2008;5868666;5878985;Kingside road 13;2;player
+8;australian thunderlord;0610953214;austro@gmail.com;12.12.2345;5648975;5632145;Asgard;2;player
+9;truckside weightclass;0685478965;thundertruck@gmail.com;12.12.2341;6985456;2568975;Leirutangi 26;2;player

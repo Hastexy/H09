@@ -1,6 +1,8 @@
 from data.player_data import Player_Data
 from data.team_data import Team_Data
 from data.club_data import Club_Data
+from data.league_data import League_Data
+
 from typing import List
 
 
@@ -9,6 +11,7 @@ class Data_Wrapper:
         self.club_data = Club_Data()
         self.team_data = Team_Data()
         self.player_data = Player_Data()
+        self.league_data = League_Data()
 
     def get_all_players(self) -> List[object]:
         return self.player_data.read_all_players()
@@ -24,7 +27,9 @@ class Data_Wrapper:
         """Updates the role and team_id for the player with the given player_id."""
         self.player_data.update_player_status(player_id, role, team_id)
 
-    def get_all_teams(self):
+    def get_all_teams(self, league_id: str = "") -> List[object]:
+        if league_id:
+            return self.league_data.get_all_teams()
         return self.team_data.read_all_teams()
 
     def create_team(self, team: object) -> None:
@@ -46,26 +51,35 @@ class Data_Wrapper:
     def get_new_team_id(self) -> int:
         return self.team_data.get_new_team_id()
 
-    def get_all_results():
+    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
+        self.league_data.generate_schedule(all_teams, league_ID)
+
+    def get_unplayed_matches(self):
         pass
 
-    def get_unplayed_matches():
+    def get_unfinished_matches(self, league_id: str) -> List[object]:
+        return self.league_data.get_unfinished_matches(league_id)
+
+    def get_finished_matces(self, league_id: str) -> List[object]:
+        return self.league_data.get_finished_matches(league_id)
+
+    def get_all_league_teams(self, league_id: str) -> List[object]:
+        return self.league_data.get_all_league_teams(league_id)
+
+    def register_result(self):
         pass
 
-    def get_complete_results():
+    def edit_result(self):
         pass
 
-    def get_leaderboard():
+    def create_tournament(self):
         pass
 
-    def register_result():
+    def create_a_match(self):
         pass
 
-    def edit_result():
-        pass
+    def get_new_match_id(self) -> int:
+        return self.league_data.get_new_match_id()
 
-    def create_tournament():
-        pass
-
-    def create_a_match():
-        pass
+    def register_teams(self, tourney):
+        self.league_data.register_teams(tourney)

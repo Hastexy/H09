@@ -1,1 +1,2 @@
-m_ID;date;home_team;away_team;match1;match2;match3;match4;match5;match6;match7
+match_ID;date;home_team;away_team;result;league_ID;
+1;2022-11-16T20:00:00;The Rings;The Oligarcs;4-3;1

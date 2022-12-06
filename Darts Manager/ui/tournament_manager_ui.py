@@ -1,7 +1,7 @@
 from model.club import Club
 from model.team import Team
 from model.player import Player
-from model.tourney import Tourney
+from model.league import League
 from ui.input_validators import *
 
 
@@ -11,13 +11,26 @@ class Tournament_Manager_UI:
         self.clubs = ["test", "Dart Vader"]
 
     def menu_output(self):
-        print("\n---Tournament Manager---")
-        print("1. create club")
-        print("2. create team")
-        print("3. create player")
-        print("4. create tourney")
-        print("b. back")
-        print("q. quit")
+        print(
+            """
+╔═══╦════════════════════╗
+║   ║ Tournament Manager ║
+╠═══╬════════════════════╣
+║ 1 ║ Create Club        ║
+║ 2 ║ Create Team        ║
+║ 3 ║ Create Player      ║
+║ 4 ║ Create League      ║
+║ b ║ Back               ║
+║ q ║ Quit               ║
+╚═══╩════════════════════╝"""
+        )
+        # print("\n---Tournament Manager---")
+        # print("1. create club")
+        # print("2. create team")
+        # print("3. create player")
+        # print("4. create tourney")
+        # print("b. back")
+        # print("q. quit")
 
     def input_promt(self):
         while True:
@@ -60,16 +73,15 @@ class Tournament_Manager_UI:
                 self.logic_wrapper.create_club(c)
                 print("\n==Club Created==")
             elif command == "2":
-                # fyrst skoða hvort clubs séu til
+                print(self.logic_wrapper.check_for_clubs())
                 if not self.logic_wrapper.check_for_clubs():
                     print(
                         "No clubs exist in the database. A team must belong to a club so you must first create one, and then you can create a team."
                     )
-                    break
+                    return "b"
                 t = Team()
                 t.id = self.logic_wrapper.get_new_team_id()
 
-                # biðja um almennar upplýsingar um liðið
                 all_clubs = self.display_all_clubs()
                 club_assigned = False
                 while True:
@@ -99,11 +111,6 @@ class Tournament_Manager_UI:
                     except:
                         print("\n##Unknown Error Occured, try again##")
 
-                # biðja um team_captain
-                # - choose existing player
-                # - create new player
-                # breyta role á gefnum player í player.role = "captain"
-
                 header = "* Remember, every team must have at least FOUR players, one of whom is the team captain. *"
                 separator = "*" * len(header)
 
@@ -121,6 +128,8 @@ class Tournament_Manager_UI:
 
                     for player in all_players:
                         if player_ID == player.id:
+                            player.role = "captain"
+                            player.team = str(t.id)
                             self.logic_wrapper.update_player_status(
                                 player_ID, "captain", str(t.id)
                             )
@@ -140,10 +149,12 @@ class Tournament_Manager_UI:
 
                 self.display_available_players()
                 player_ID = input("\nYour choice (Player ID): ")
-                while player_ID != "q" and len(t.players) < 4:
+                while player_ID != "q" or len(t.players) < 4:
 
                     for player in all_players:
                         if player_ID == player.id:
+                            player.role = "player"
+                            player.team = str(t.id)
                             self.logic_wrapper.update_player_status(
                                 player_ID, "player", str(t.id)
                             )
@@ -157,7 +168,6 @@ class Tournament_Manager_UI:
 
                 self.logic_wrapper.create_team(t)
                 print("\n==Team Created==")
-
             elif command == "3":
                 p = Player()
                 p.id = self.logic_wrapper.get_new_player_id()
@@ -211,7 +221,41 @@ class Tournament_Manager_UI:
                 # print("\n==Player Created==")
                 self.logic_wrapper.create_player(p)
             elif command == "4":
-                # print("\n==Tourney Created==")
+                # print("\n==League Created==")
+                l = League()
+                # l.id = self.logic_wrapper.get_id() vantar að geta náð id
+                while True:
+                    l.name = input("\nEnter the name of your league: ")
+                    break
+                while True:
+                    l.host = input("\nEnter the host name of your league: ")
+                    break
+                while True:
+                    l.phone = input("\nEnter the phone nr. of your league: ")
+                    break
+                while True:
+                    l.start_date = input(
+                        "\nEnter the starting date of your league (with this format: xx.xx.xxxx): "
+                    )
+                    break
+                while True:
+                    l.end_date = input(
+                        "\nEnter the ending date of your league (If it is a one day league enter the same date): "
+                    )
+                    break
+                while True:
+                    l.team_amount = input(
+                        "\nEnter the amount of teams competing in your league: "
+                    )
+                    print("===teams picked===")
+                    break
+                while True:  # spurning hvort það megi bara vera ein umferð per dag?...
+                    l.round = input("\nEnter the amount of rounds per day: ")
+                    break
+
+                print("---Testing---")
+                print(l)
+
                 pass
             else:
                 print("\nInvalid input, try again")
@@ -254,18 +298,3 @@ class Tournament_Manager_UI:
         print("-" * 64)
 
         return all_clubs
-
-        # print("\n==Player Created==")
-        # self.logic_wrapper.create_player(p)
-
-        # fylla liðið af players (liðsmenn >= 4)
-        # - add existing player
-        # - create new player
-
-        # breyta status fyrir hvern og einn player í listanum:
-        #   - player.team = team_ID
-        #   - player.role = captain/player
-
-        # búa til nýja skrá sem heitir: teamID.csv og skrifa persónupplýsngar spilarana þar inn
-
-        # print("\n==Team Created==")

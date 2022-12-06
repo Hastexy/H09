@@ -105,11 +105,21 @@ Kjartan Elvar og Kristinn: Data og Logic Tengingar
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn fór í fund klukkan 12 og fór yfir planið.
+Þar sem allt var komið til að búa til klúbb, lið og leikmenn þá var komið að því að undirbúa allt fyrir deildir.
+það var lagað á fundinum smá kóða með að view teams og þeirra players og þarf bara að laga formattið fyrir það.
+Kjartan Elvar er upptekinn yfir daginn og vinnur um kvöldið.
+Hrafnkell: Klára view teams formattið og byrja að setja upp basic UI fyrir allt varðandi deildir
+Styrmir, Kristinn og Kjartan Ingi: Gera/uppfæra skýrslur fyrir deildir til þess að einfalda flow-ið þegar við byrjum að vinna á því
 ```
 
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn hittist á fundi um 4 og tók stutt plan fyrir næstu viku.
+flest allt UI er komið, þarf bara að input checka margt og commenta.
+Annars var planið í næstu viku að fara á fullum gang í deildir.
+Kjartan Ingi og Styrmir gerðu stutta lýsingu yfir hvað þarf í deildir.
+Kjartan Elvar og Kristinn unnu í data og logic layerum
+Hrafnkell vann að hanna smá breytingu á main ui-onum
 ```

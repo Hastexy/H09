@@ -3,6 +3,7 @@ from logic.player_logic import Player_Logic
 from logic.team_logic import Team_Logic
 from data.data_wrapper import Data_Wrapper
 from logic.club_logic import Club_Logic
+from logic.league_logic import League_Logic
 
 
 class Logic_Wrapper:
@@ -11,6 +12,7 @@ class Logic_Wrapper:
         self.player_logic = Player_Logic(self.data_wrapper)
         self.team_logic = Team_Logic(self.data_wrapper)
         self.club_logic = Club_Logic(self.data_wrapper)
+        self.league_logic = League_Logic(self.data_wrapper)
 
     def create_player(self, player: object) -> None:
         """Takes in a player object and forwards it to the data layer"""
@@ -49,3 +51,21 @@ class Logic_Wrapper:
     def update_player_status(self, player_id: str, role: str, team_id: str) -> None:
         """Updates the role and team_id for the player with the given player_id."""
         self.player_logic.update_player_status(player_id, role, team_id)
+
+    def get_new_match_id(self) -> int:
+        return self.league_logic.get_new_match_id()
+
+    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
+        self.league_logic.generate_schedule(all_teams, league_ID)
+
+    def register_teams(self, tourney):
+        self.league_logic.register_teams(tourney)
+
+    def get_unfinished_matches(self, league_id: str) -> List[object]:
+        return self.league_logic.get_unfinished_matches(league_id)
+
+    def get_finished_matces(self, league_id: str) -> List[object]:
+        return self.league_logic.get_finished_matches(league_id)
+
+    def get_all_league_teams(self, league_id: str) -> List[object]:
+        return self.league_logic.get_all_league_teams(league_id)
