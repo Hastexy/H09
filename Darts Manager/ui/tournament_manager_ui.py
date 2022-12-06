@@ -7,10 +7,12 @@ from ui.input_validators import *
 
 class Tournament_Manager_UI:
     def __init__(self, data_connection) -> None:
+
         self.logic_wrapper = data_connection
         self.clubs = ["test", "Dart Vader"]
 
     def menu_output(self):
+
         print(
             """
 ╔═══╦════════════════════╗
@@ -47,106 +49,13 @@ class Tournament_Manager_UI:
                 print(CANCEL)
                 self.create_club()
             elif command == "2":
-                print(self.logic_wrapper.check_for_clubs())
-                if not self.logic_wrapper.check_for_clubs():
-                    print(
-                        "No clubs exist in the database. A team must belong to a club so you must first create one, and then you can create a team."
-                    )
-                    return "b"
-                t = Team()
-                t.id = self.logic_wrapper.get_new_team_id()
-
-                all_clubs = self.display_all_clubs()
-                club_assigned = False
-                while True:
-
-                    club_ID = input(
-                        "\nWhich club does the new team belong to? (club ID): "
-                    ).lower()
-
-                    for club in all_clubs:
-                        if club_ID == club.id:
-                            t.club = club_ID
-                            club_assigned = True
-                            break
-
-                    if club_assigned:
-                        break
-
-                    print("Please choose one of the club ID's from the list.")
-
-                while True:
-                    t.name = input("\nEnter the name of the new team: ")
-                    try:
-                        validate_team_name(t.name)
-                        break
-                    except NameLengthException:
-                        print("\n##The name must be between 3 or 49 characters long!##")
-                    except:
-                        print("\n##Unknown Error Occured, try again##")
-
-                header = "* Remember, every team must have at least FOUR players, one of whom is the team captain. *"
-                separator = "*" * len(header)
-
-                print(f"\n{separator}")
-                print(header)
-                print(f"{separator}\n")
-
-                print("---Let's start by picking the team captain---")
-
-                captain_assigned = False
-                all_players = self.display_available_players()
-
-                while True:
-                    player_ID = input("\nYour choice (Player ID): ")
-
-                    for player in all_players:
-                        if player_ID == player.id:
-                            player.role = "captain"
-                            player.team = str(t.id)
-                            self.logic_wrapper.update_player_status(
-                                player_ID, "captain", str(t.id)
-                            )
-                            t.players.append(player)
-                            captain_assigned = True
-                            break
-
-                    if captain_assigned:
-                        break
-
-                    print("Invalid player ID!")
-
-                print(
-                    "---Now we need to add the rest of the players (at least THREE more)---"
-                )
-                print("Press 'q' to stop adding players to the team.")
-
-                self.display_available_players()
-                player_ID = input("\nYour choice (Player ID): ")
-                while player_ID != "q" or len(t.players) < 4:
-
-                    for player in all_players:
-                        if player_ID == player.id:
-                            player.role = "player"
-                            player.team = str(t.id)
-                            self.logic_wrapper.update_player_status(
-                                player_ID, "player", str(t.id)
-                            )
-                            t.players.append(player)
-                            break
-                    else:
-                        print("Invalid player ID!")
-
-                    self.display_available_players()
-                    player_ID = input("\nYour choice (Player ID): ")
-
-                self.logic_wrapper.create_team(t)
-                print("\n==Team Created==")
+                print(CANCEL)
+                self.create_team()
             elif command == "3":
                 p = Player()
                 p.id = self.logic_wrapper.get_new_player_id()
 
-                #Gera check að ef það eru minni en 4 players sem geta verið skráðir í lið þá hætta þessu
+                # Gera check að ef það eru minni en 4 players sem geta verið skráðir í lið þá hætta þessu
 
                 while True:
                     p.name = input("\nEnter the name of the player: ").lower().strip()
@@ -280,6 +189,7 @@ class Tournament_Manager_UI:
         c.id = self.logic_wrapper.get_new_club_id()
 
         while True:
+
             c.name = input("\nEnter the name of your club: ")
             if c.name == "b":
                 print(CANCEL2)
@@ -292,7 +202,7 @@ class Tournament_Manager_UI:
                     print(ERR_LENGTH)
                 except:
                     print(ERR_UNKNOWN)
-        
+
         while True:
             c.address = input("\nEnter the address of your club: ")
             if c.address == "b":
@@ -306,7 +216,7 @@ class Tournament_Manager_UI:
                     print(ERR_LENGTH)
                 except:
                     print(ERR_UNKNOWN)
-                    
+
         while True:
             c.phone_number = input("\nEnter the club phone number: ")
             if c.phone_number == "b":
@@ -322,9 +232,120 @@ class Tournament_Manager_UI:
                     print(ERR_DIGIT)
                 except:
                     print(ERR_UNKNOWN)
-                    
+
         self.logic_wrapper.create_club(c)
-        print("""
+        print(
+            """
 ╔══════════════╗
 ║ CLUB CREATED ║
-╚══════════════╝""")
+╚══════════════╝"""
+        )
+
+    def create_team(self) -> None:
+        if not self.logic_wrapper.check_for_clubs():
+
+            print(
+                "No clubs exist in the database. A team must belong to a club so you must first create one, and then you can create a team."
+            )
+            return
+        t = Team()
+        t.id = self.logic_wrapper.get_new_team_id()
+
+        all_clubs = self.display_all_clubs()
+        club_assigned = False
+        while True:
+
+            club_ID = input(
+                "\nWhich club does the new team belong to? (club ID): "
+            ).lower()
+
+            if club_ID == "b":
+                print(CANCEL2)
+                return
+
+            for club in all_clubs:
+                if club_ID == club.id:
+                    t.club = club_ID
+                    club_assigned = True
+                    break
+
+            if club_assigned:
+                break
+
+            print("Please choose one of the club ID's from the list.")
+
+        while True:
+            t.name = input("\nEnter the name of the new team: ")
+            if t.name == "b":
+                return
+
+            try:
+                validate_team_name(t.name)
+                break
+            except NameLengthException:
+                print("\n##The name must be between 3 or 49 characters long!##")
+            except:
+                print("\n##Unknown Error Occured, try again##")
+
+        header = "* Remember, every team must have at least FOUR players, one of whom is the team captain. *"
+        separator = "*" * len(header)
+
+        print(f"\n{separator}")
+        print(header)
+        print(f"{separator}\n")
+
+        print("---Let's start by picking the team captain---")
+
+        captain_assigned = False
+        all_players = self.display_available_players()
+
+        while True:
+            player_ID = input("\nYour choice (Player ID): ")
+
+            if player_ID == "b":
+                print(CANCEL2)
+                return
+
+            for player in all_players:
+                if player_ID == player.id:
+                    player.role = "captain"
+                    player.team = str(t.id)
+                    self.logic_wrapper.update_player_status(
+                        player_ID, "captain", str(t.id)
+                    )
+                    t.players.append(player)
+                    captain_assigned = True
+                    break
+
+            if captain_assigned:
+                break
+
+            print("Invalid player ID!")
+
+        print("---Now we need to add the rest of the players (at least THREE more)---")
+        print("Press 'q' to stop adding players to the team.")
+
+        while True:
+            self.display_available_players()
+            player_ID = input("\nYour choice (Player ID): ")
+
+            if player_ID == "q":
+                break
+
+            if player_ID == "b":
+                return
+
+            for player in all_players:
+                if player_ID == player.id:
+                    player.role = "player"
+                    player.team = str(t.id)
+                    self.logic_wrapper.update_player_status(
+                        player_ID, "player", str(t.id)
+                    )
+                    t.players.append(player)
+                    break
+            else:
+                print("Invalid player ID!")
+
+        self.logic_wrapper.create_team(t)
+        print("\n==Team Created==")
