@@ -44,34 +44,7 @@ class Tournament_Manager_UI:
                 print("\nGoing back!")
                 return "b"
             elif command == "1":
-                c = Club()
-                c.id = self.logic_wrapper.get_new_club_id()
-
-                while True:
-                    c.name = input("\nEnter the name of your club: ").lower()
-                    try:
-                        validate_club_name(c.name)
-                        break
-                    except NameLengthException:
-                        print("\n##The name must be between 3 or 49 characters long!##")
-                    except:
-                        print("\n##Unknown Error Occured, try again##")
-                while True:
-                    c.address = input("\nEnter the address of your club: ")
-                    break
-                while True:
-                    c.phone_number = input("\nEnter the club phone number: ")
-                    try:
-                        validate_number(c.phone_number)
-                        break
-                    except InvalidNumberLengthException:
-                        print("\n##Phone number must be 7 digits long##")
-                    except InvalidNumberCharacterException:
-                        print("\n##Phone number must only consist of digits##")
-                    except:
-                        print("\n##Unknown Error Occured, try again##")
-                self.logic_wrapper.create_club(c)
-                print("\n==Club Created==")
+                self.create_club()
             elif command == "2":
                 print(self.logic_wrapper.check_for_clubs())
                 if not self.logic_wrapper.check_for_clubs():
@@ -172,6 +145,8 @@ class Tournament_Manager_UI:
                 p = Player()
                 p.id = self.logic_wrapper.get_new_player_id()
 
+                #Gera check að ef það eru minni en 4 players sem geta verið skráðir í lið þá hætta þessu
+
                 while True:
                     p.name = input("\nEnter the name of the player: ").lower().strip()
                     try:
@@ -244,13 +219,13 @@ class Tournament_Manager_UI:
                     )
                     break
                 while True:
-                    l.team_amount = input(
+                    l.teams = input(
                         "\nEnter the amount of teams competing in your league: "
                     )
                     print("===teams picked===")
                     break
                 while True:  # spurning hvort það megi bara vera ein umferð per dag?...
-                    l.round = input("\nEnter the amount of rounds per day: ")
+                    l.matches = input("\nEnter the amount of rounds per day: ")
                     break
 
                 print("---Testing---")
@@ -298,3 +273,47 @@ class Tournament_Manager_UI:
         print("-" * 64)
 
         return all_clubs
+
+    def create_club(self) -> None:
+        c = Club()
+        c.id = self.logic_wrapper.get_new_club_id()
+
+        while True:
+            c.name = input("\nEnter the name of your club: ")
+            if c.name == "b":
+                print("\nGoing back!")
+                return "b"
+            else:
+                try:
+                    validate_club_name(c.name)
+                    break
+                except NameLengthException:
+                    print("\n##The name must be between 3 or 49 characters long!##")
+                except:
+                    print("\n##Unknown Error Occured, try again##")
+        
+        # while True:
+        #     c.name = input("\nEnter the name of your club: ")
+        #     try:
+        #         validate_club_name(c.name)
+        #         break
+        #     except NameLengthException:
+        #         print("\n##The name must be between 3 or 49 characters long!##")
+        #     except:
+        #         print("\n##Unknown Error Occured, try again##")
+        while True:
+            c.address = input("\nEnter the address of your club: ")
+            break
+        while True:
+            c.phone_number = input("\nEnter the club phone number: ")
+            try:
+                validate_number(c.phone_number)
+                break
+            except InvalidNumberLengthException:
+                print("\n##Phone number must be 7 digits long##")
+            except InvalidNumberCharacterException:
+                print("\n##Phone number must only consist of digits##")
+            except:
+                print("\n##Unknown Error Occured, try again##")
+        self.logic_wrapper.create_club(c)
+        print("\n==Club Created==")       

@@ -7,7 +7,8 @@ class League:
         phone="",
         start_date="",
         end_date="",
-        teams="",
+        teams=[],
+        matches=[]
         # team_amount="",
         # rounds="",
     ) -> None:
@@ -20,8 +21,8 @@ class League:
         self.end_date = end_date
         # self.team_amount = team_amount
         # self.round = rounds
-        self.teams = []
-        self.matches = []
+        self.teams = teams
+        self.matches = matches
 
     def __str__(self) -> str:
-        return f"==========\nName: {self.name}\nHost: {self.host}\nPhone nr: {self.phone}\nSD: {self.start_date}\nED: {self.end_date}\nAmount of teams: {self.team_amount}\nRounds: {self.round}\n=========="
+        return f"==========\nName: {self.name}\nHost: {self.host}\nPhone nr: {self.phone}\nSD: {self.start_date}\nED: {self.end_date}\nAmount of teams: {self.teams}\nRounds: {self.matches}\n=========="
