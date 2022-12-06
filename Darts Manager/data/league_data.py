@@ -55,7 +55,6 @@ class League_Data:
                         "league_ID": league_ID,
                     }
                 )
-        pass
 
     def get_all_league_teams(self, league_id: str) -> List[object]:
         """Receives a league_id number and fetches all the teams participating in that specific league. Returns a list of Team objects."""
