@@ -6,7 +6,6 @@ from model.match import Match
 from model.game import Game
 from model.team import Team
 from model.player import Player
-import itertools
 
 
 class League_Data:
@@ -21,17 +20,19 @@ class League_Data:
             new_id = id + 1
         return new_id
 
-    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:  # Hrafnkell og Styrmir
-        #match_ID;???date;Xhome_team;Xaway_team;Xresult;Xleague_ID;
-        
+    def generate_schedule(
+        self, all_teams: List[object], league_ID: str
+    ) -> None:  # Hrafnkell og Styrmir
+        # match_ID;???date;Xhome_team;Xaway_team;Xresult;Xleague_ID;
+
         id_list = []
-        
+
         for teams in all_teams:
             t_id = teams.id
             id_list.append(t_id)
-            
-        matches = set(combinations(id_list,2))
-        
+
+        matches = set(combinations(id_list, 2))
+
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
                 "match_ID",
@@ -47,12 +48,12 @@ class League_Data:
                 new_id = self.get_new_match_id()
                 writer.writerow(
                     {
-                    "match_ID":new_id,
-                    "date": "xx/xx/xxxx",
-                    "home_team": match[0],
-                    "away_team": match[1],
-                    "result": "0-0", #Enter results in this format (2-1)
-                    "league_ID": league_ID,
+                        "match_ID": new_id,
+                        "date": "xx/xx/xxxx",
+                        "home_team": match[0],
+                        "away_team": match[1],
+                        "result": "0-0",  # Enter results in this format (2-1)
+                        "league_ID": league_ID,
                     }
                 )
         pass
@@ -103,5 +104,3 @@ class League_Data:
 
     def reschedule_match(self, match_id: int) -> object:
         pass
-    
-
