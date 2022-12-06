@@ -55,8 +55,6 @@ class Tournament_Manager_UI:
                 p = Player()
                 p.id = self.logic_wrapper.get_new_player_id()
 
-                # Gera check að ef það eru minni en 4 players sem geta verið skráðir í lið þá hætta þessu
-
                 while True:
                     p.name = input("\nEnter the name of the player: ").lower().strip()
                     try:
