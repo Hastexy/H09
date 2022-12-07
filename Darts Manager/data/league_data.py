@@ -56,18 +56,19 @@ class League_Data:
                 "league_ID",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
-
-            for match in all_matches:
+            next_id = int(self.get_new_match_id())
+            for match in all_matches:  # a match is a tuple containing two Team objects
                 m = Match()
-                m.id = self.get_new_match_id()
+                m.id = next_id
+                next_id += 1
                 m.date = ""  # vantar að sækja úr league.round_dates
                 m.home_team, m.away_team = match
                 writer.writerow(
                     {
                         "match_ID": m.id,
                         "date": m.date,
-                        "home_team": m.home_team,
-                        "away_team": m.away_team,
+                        "home_team": m.home_team.name,
+                        "away_team": m.away_team.name,
                         "result": m.result,
                         "league_ID": league.id,
                     }
