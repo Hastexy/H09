@@ -5,6 +5,9 @@ class League_Logic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
 
+    def create_league(self, league: object) -> None:
+        self.data_wrapper.create_league(league)
+
     def get_new_league_id(self) -> int:
         return self.data_wrapper.get_new_league_id()
 

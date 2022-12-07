@@ -1,3 +1,4 @@
+from typing import List
 from model.club import Club
 from model.team import Team
 from model.player import Player
@@ -311,26 +312,57 @@ class Tournament_Manager_UI:
             except InvalidNumberCharacterException:
                 print("The phone number must consist ONLY of digits!")
 
+        # Get a list of all the teams participating!!
+        print("Register Teams In The League (At Least TWO Teams):")
+        all_teams = self.logic_wrapper.get_all_teams()
         while True:
-            l.start_date = input(
-                "\nEnter the starting date of your league (with this format: xx.xx.xxxx): "
-            )
-            break
+            self.display_available_teams(all_teams)
+            next_team_id = input("\n Register Next Team (Team ID): ")
+
+            if next_team_id == "b":
+                return
+
+            if next_team_id == "q":
+                break
+
+            for team in all_teams:
+                if next_team_id == team.id:
+                    all_teams.remove(team)
+                    l.teams.append(team)
+                    break
+            else:
+                print("Invalid input!")
+
+        # get number of rounds
         while True:
-            l.end_date = input(
-                "\nEnter the ending date of your league (If it is a one day league enter the same date): "
-            )
-            break
+            l.rounds = input("\nEnter the amount of rounds per day: ")
+
+            if l.rounds == "b":
+                return
+
+            try:
+                validate_rounds(l.rounds)
+                break
+            except NotDigitsError:
+                print("Please insert an integer!")
+            except RoundLengthError:
+                print(
+                    "The league must be at least ONE round! Please enter an integer greater than ZERO!"
+                )
         while True:
-            l.teams = input("\nEnter the amount of teams competing in your league: ")
-            print("===teams picked===")
-            break
-        while True:  # spurning hvort það megi bara vera ein umferð per dag?...
-            l.matches = input("\nEnter the amount of rounds per day: ")
+            print("Now enter the dates of all the rounds in this format (dd/mm/yyyy)")
+            for i in range(1, int(l.rounds) + 1):
+                next_date = input(f"Enter the date of round {i}: ")
+                l.round_dates.append(next_date)
+
+            if len(l.round_dates) > 1:
+                l.start_date = l.round_dates[0]
+                l.end_date = l.round_dates[-1]
+            else:
+                l.start_date, l.end_date = l.round_dates[0]
             break
 
-        print("---Testing---")
-        print(l)
+        self.logic_wrapper.create_league(l)
 
     def create_player(self) -> None:
         p = Player()
@@ -382,7 +414,9 @@ class Tournament_Manager_UI:
                 except:
                     print(ERR_UNKNOWN)
         while True:
-            p.dob = input("\nEnter the date of birth for the player in this format (dd/mm/yyyy): ")
+            p.dob = input(
+                "\nEnter the date of birth for the player in this format (dd/mm/yyyy): "
+            )
             try:
                 validate_dob(p.dob)
                 break
@@ -427,7 +461,7 @@ class Tournament_Manager_UI:
                     print(ERR_DIGIT)
                 except:
                     print(ERR_UNKNOWN)
-                    
+
         while True:
             p.address = input("\n(Optional)Enter the Address of the player: ")
             if p.address == "b":
@@ -445,3 +479,18 @@ class Tournament_Manager_UI:
                     print(ERR_UNKNOWN)
         # print("\n==Player Created==")
         self.logic_wrapper.create_player(p)
+
+    def display_available_teams(self, teams: List[object]) -> None:
+
+        header = "* Here is a list of all available teams: *"
+        separator = "*" * len(header)
+
+        print(f"\n{separator}")
+        print(header)
+        print(f"{separator}\n")
+
+        print(f"{'NAME':<35}{'ID':<25}")
+        print("-" * 64)
+        for team in teams:
+            print(f"{team.name.title():<35}{team.id:<25}")
+        print("-" * 64)

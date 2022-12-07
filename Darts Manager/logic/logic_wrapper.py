@@ -21,7 +21,10 @@ class Logic_Wrapper:
         self.team_logic.create_team(team)
 
     def create_club(self, club: object) -> None:
-        self.data_wrapper.create_club(club)
+        self.club_logic.create_club(club)
+
+    def create_league(self, league: object) -> None:
+        self.league_logic.create_league(league)
 
     def get_new_club_id(self) -> int:
         return self.club_logic.get_new_club_id()

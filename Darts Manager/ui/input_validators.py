@@ -44,7 +44,6 @@ ERR_DOB_FORMAT = """
 ╚══════════════════════════════════════════════════════════════╝"""
 
 
-
 class NameLengthException(Exception):
     pass
 
@@ -60,12 +59,28 @@ class InvalidNumberCharacterException(Exception):
 class NoAsperandSymbolException(Exception):
     pass
 
+
 class TooManyAsperandSymbolException(Exception):
     pass
+
 
 class InvalidNameError(Exception):
     pass
 
+
+class NotDigitsError(Exception):
+    pass
+
+
+class RoundLengthError(Exception):
+    pass
+
+
+def validate_rounds(rounds: str) -> None:
+    if not rounds.isdigit():
+        raise NotDigitsError
+    if int(rounds) < 1:
+        raise RoundLengthError
 
 
 def validate_club_length(name):

@@ -14,6 +14,10 @@ class League_Data:
         self.match_file = "files/matches.csv"
         self.team_folder = "league_teams"
 
+    def create_league(self, league: object) -> None:
+        """Registers a new league in the database. Also generates a schedule for the league and stores it in the database."""
+        pass
+
     def get_new_match_id(self) -> int:
         """Generates a unique match id."""
         with open(self.match_file, newline="", encoding="utf-8") as csvfile:

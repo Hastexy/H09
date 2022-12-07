@@ -16,6 +16,9 @@ class Data_Wrapper:
     def get_all_players(self) -> List[object]:
         return self.player_data.read_all_players()
 
+    def create_league(self, league: object) -> None:
+        self.league_data.create_league(league)
+
     def create_player(self, player: object) -> None:
         self.player_data.create_player(player)
 
