@@ -177,3 +177,9 @@ class League_Data:
                 pass
             new_id = id + 1
         return new_id
+
+    def get_all_leagues(self) -> None:
+        with open(self.league_file, newline="", encoding="utf-8") as league_file:
+            reader = csv.DictReader(league_file, delimiter=";")
+            all_leagues = [League(*league.values()) for league in reader]
+        return all_leagues

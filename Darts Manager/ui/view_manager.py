@@ -1,3 +1,4 @@
+from typing import List
 from model.team import Team
 from model.player import Player
 
@@ -8,12 +9,12 @@ STR_DOB = "DOB"
 STR_PHONE = "PHONE"
 STR_HOME_PHONE = "HOME PHONE"
 STR_ADDRESS = "ADDRESS"
+STR_ROLE = "ROLE"
 
 
 class View_Manager_UI:
     def __init__(self, logic_connection) -> None:
         self.logic_wrapper = logic_connection
-
 
     def menu_output(self):
         print(
@@ -23,8 +24,8 @@ class View_Manager_UI:
 ╠═══╬══════════════════════════════════════╣
 ║ 1 ║ View Teams                           ║
 ║ 2 ║ View Upcoming Matches                ║
-║ 3 ║ View Matches With Registered Results ║
-║ 4 ║ View League Scores                   ║
+║ 3 ║ View Finished Matches                ║
+║ 4 ║ View Team Standings                  ║
 ║ b ║ Back                                 ║
 ║ q ║ Quit                                 ║
 ╚═══╩══════════════════════════════════════╝"""
@@ -38,6 +39,11 @@ class View_Manager_UI:
         # print("q. quit")
 
     def input_prompt(self):
+        all_leagues = self.logic_wrapper.get_all_leagues()
+        league_id = self.select_league_id(all_leagues)
+
+        if league_id == "b":
+            return
 
         while True:
             self.menu_output()
@@ -50,31 +56,46 @@ class View_Manager_UI:
                 print("\nGoing back!")
                 return "b"
             elif command == "1":
-                # print("\nYou are viewing the teams and their players")
-                all_teams = self.logic_wrapper.get_all_teams()
+                print("==Viewing Teams and Players==")
+                all_teams = self.logic_wrapper.get_all_league_teams(league_id)
                 for idx, team in enumerate(all_teams, 1):
                     print(f"\n{idx}. TEAM NAME: {team.name}")
                     print(
-                        f"\n{STR_NAME:<50}{STR_SSN:<12}{STR_EMAIL:<30}{STR_DOB:<12}{STR_PHONE:<10}{STR_HOME_PHONE:<15}{STR_ADDRESS:<30}\n"
+                        f"\n{STR_NAME:<35}{STR_PHONE:<12}{STR_SSN:<15}{STR_ADDRESS:<20}{STR_ROLE:<10}"
                     )
-                    print(team.captain)
                     for player in team.players:
                         print(
-                            f"{player.name:<50}{player.ssn:<12}{player.email:<30}{player.dob:<12}{player.phone:<10}{player.home_phone:<15}{player.address:<30}"
+                            f"{player.name.title():<35}{player.phone:<12}{player.ssn:<15}{player.address.title():<20}{player.role.title():<10}"
                         )
-                # for team in all_teams:
-                #     print(f"\n1. TEAM NAME: {team.name}")
-                #     print()
-                #     print(
-                #         f"{str_name:<25}{str_ssn:<12}{str_email:<20}{str_dob:<12}{str_phone:<10}{str_home_phone:<15}{str_address:<30}\n"
-                #     )
-                #     for player in team.players:
-                #         print(
-                #             f"{player.name:<25}{player.ssn:<12}{player.email:<20}{player.dob:<12}{player.phone:<10}{player.home_phone:<15}{player.address:<30}"
-                #         )
+
             elif command == "2":
-                print("==Print Upcoming Matches==")
+                print("==Viewing Upcoming Matches==")
             elif command == "3":
-                print("==Print Matches with registered results==")
+                print("==Viewing Matches with registered results==")
             elif command == "4":
-                print("==Print League Scores==")
+                print("==Viewing League Standings==")
+
+    def display_available_leagues(self, leagues: List[object]) -> None:
+        header = "* Here is a list of all registered leagues: *"
+        separator = "*" * len(header)
+
+        print(f"\n{separator}")
+        print(header)
+        print(f"{separator}\n")
+
+        print(f"{'NAME':<35}{'ID'}")
+        print("-" * 38)
+        for league in leagues:
+            print(f"{league.name.title():<35}{league.id}")
+        print("-" * 38)
+
+    def select_league_id(self, all_leagues: List[object]) -> None:
+        while True:
+            self.display_available_leagues(all_leagues)
+            print("Press 'b' to go back")
+            league_id = input("Which league do you want to view (League ID)?: ")
+            for league in all_leagues:
+                if league_id == str(league.id) or league_id == "b":
+                    return league_id
+
+            print("Please select a valid league ID from the list!")

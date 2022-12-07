@@ -69,6 +69,9 @@ class Data_Wrapper:
     def get_all_league_teams(self, league_id: str) -> List[object]:
         return self.league_data.get_all_league_teams(league_id)
 
+    def get_all_leagues(self) -> None:
+        return self.league_data.get_all_leagues()
+
     def register_result(self):
         pass
 

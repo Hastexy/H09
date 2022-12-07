@@ -21,5 +21,5 @@ class Player:
         self.phone = phone
         self.home_phone = home_phone
         self.address = address
-        self.team = ""
-        self.role = ""
+        self.team = team
+        self.role = role
