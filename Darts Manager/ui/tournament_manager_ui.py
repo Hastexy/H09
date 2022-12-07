@@ -314,10 +314,10 @@ class Tournament_Manager_UI:
 
         # Get a list of all the teams participating!!
         print("Register Teams In The League (At Least TWO Teams):")
-        print("Press 'q' to stop registering teams")
         all_teams = self.logic_wrapper.get_all_teams()
         while True:
             self.display_available_teams(all_teams)
+            print("Press 'q' to stop registering teams")
             next_team_id = input("\n Register Next Team (Team ID): ")
 
             if next_team_id == "b":
@@ -334,7 +334,6 @@ class Tournament_Manager_UI:
             else:
                 print("Please select a team from the list!")
 
-        # get number of rounds
         while True:
             l.rounds = input("\nEnter the amount of rounds per day: ")
 

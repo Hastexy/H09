@@ -16,7 +16,8 @@ class League_Data:
 
     def create_league(self, league: object) -> None:
         """Registers a new league in the database. Also generates a schedule for the league and stores it in the database."""
-        with open(self.league_file, newline="", encoding="utf-8") as league_file:
+        schedule = self.generate_schedule(league.teams)
+        with open(self.league_file, "a", newline="", encoding="utf-8") as league_file:
             field_names = [
                 "ID",
                 "name",
@@ -156,22 +157,26 @@ class League_Data:
                         matches.append(m)
         return matches
 
-    def register_teams(self, teams: List[object], league_id: str) -> None:  # KjartanIK
-        """Takes a Team object and registers a new Team in the database based on its attributes."""
+        def register_teams(
+            self, teams: List[object], league_id: str
+        ) -> None:  # KjartanIK
+            """Takes a Team object and registers a new Team in the database based on its attributes."""
 
-        teams_file = self.team_folder + league_id.id + ".csv"
+            teams_file = self.team_folder + league_id.id + ".csv"
 
-        with open(self.match_file, "a", newline="", encoding="utf-8") as teams_file:
-            fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
-            writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
-            writer.writerow(
-                {
-                    "ID": league_id.id,
-                    "name": league_id.name,
-                    "host_name": league_id.host_name,
-                    "host_phonenumber": league_id.host_phonenumber,
-                }
-            )
+            with open(self.match_file, "a", newline="", encoding="utf-8") as teams_file:
+                fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
+                writer = csv.DictWriter(
+                    teams_file, fieldnames=fieldnames, delimiter=";"
+                )
+                writer.writerow(
+                    {
+                        "ID": league_id.id,
+                        "name": league_id.name,
+                        "host_name": league_id.host_name,
+                        "host_phonenumber": league_id.host_phonenumber,
+                    }
+                )
 
         with open(teams_file, "a", newline="", encoding="utf-8") as teams_file:
             fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
