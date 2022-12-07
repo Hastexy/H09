@@ -15,25 +15,16 @@ class Logic_Wrapper:
         self.league_logic = League_Logic(self.data_wrapper)
 
     def create_player(self, player: object) -> None:
-        """Takes in a player object and forwards it to the data layer"""
         self.player_logic.create_player(player)
 
-    def get_new_player_id(self) -> int:
-        return self.player_logic.get_new_player_id()
-
-    def get_all_players(self) -> List[object]:
-        return self.player_logic.get_all_players()
-
     def create_team(self, team: object) -> None:
-        """Takes in a team object and forwards it to the data layer"""
         self.team_logic.create_team(team)
 
-    def check_for_clubs(self) -> bool:
-        return self.club_logic.check_for_clubs()
-
     def create_club(self, club: object) -> None:
-        """Takes in a club object and forwards it to the data layer"""
-        self.data_wrapper.create_club(club)
+        self.club_logic.create_club(club)
+
+    def create_league(self, league: object) -> None:
+        self.league_logic.create_league(league)
 
     def get_new_club_id(self) -> int:
         return self.club_logic.get_new_club_id()
@@ -41,31 +32,41 @@ class Logic_Wrapper:
     def get_new_team_id(self) -> int:
         return self.team_logic.get_new_team_id()
 
-    def get_all_teams(self) -> List[dict]:
-        # return self.team_logic.get_all_teams()
-        return self.team_logic.get_all_teams()
+    def get_new_player_id(self) -> int:
+        return self.player_logic.get_new_player_id()
 
-    def get_all_clubs(self) -> list:
-        return self.club_logic.get_all_clubs()
-
-    def update_player_status(self, player_id: str, role: str, team_id: str) -> None:
-        """Updates the role and team_id for the player with the given player_id."""
-        self.player_logic.update_player_status(player_id, role, team_id)
+    def get_new_league_id(self) -> int:
+        return self.league_logic.get_new_league_id()
 
     def get_new_match_id(self) -> int:
         return self.league_logic.get_new_match_id()
 
-    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
-        self.league_logic.generate_schedule(all_teams, league_ID)
+    def get_all_clubs(self) -> List[object]:
+        return self.club_logic.get_all_clubs()
 
-    def register_teams(self, tourney):
-        self.league_logic.register_teams(tourney)
+    def get_all_teams(self) -> List[object]:
+        return self.team_logic.get_all_teams()
+
+    def get_all_players(self) -> List[object]:
+        return self.player_logic.get_all_players()
 
     def get_unfinished_matches(self, league_id: str) -> List[object]:
         return self.league_logic.get_unfinished_matches(league_id)
 
     def get_finished_matces(self, league_id: str) -> List[object]:
         return self.league_logic.get_finished_matches(league_id)
+
+    def check_for_clubs(self) -> bool:
+        return self.club_logic.check_for_clubs()
+
+    def update_player_status(self, player_id: str, role: str, team_id: str) -> None:
+        self.player_logic.update_player_status(player_id, role, team_id)
+
+    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
+        self.league_logic.generate_schedule(all_teams, league_ID)
+
+    def register_teams(self, tourney):  # breyta þessu hérna!!
+        self.league_logic.register_teams(tourney)
 
     def get_all_league_teams(self, league_id: str) -> List[object]:
         return self.league_logic.get_all_league_teams(league_id)
