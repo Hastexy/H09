@@ -359,7 +359,7 @@ class Tournament_Manager_UI:
                 l.start_date = l.round_dates[0]
                 l.end_date = l.round_dates[-1]
             else:
-                l.start_date, l.end_date = l.round_dates[0]
+                l.start_date = l.end_date = l.round_dates[0]
             break
 
         self.logic_wrapper.create_league(l)
