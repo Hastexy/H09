@@ -5,6 +5,9 @@ class League_Logic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
 
+    def get_new_league_id(self) -> int:
+        return self.data_wrapper.get_new_league_id()
+
     def get_new_match_id(self) -> int:
         """Makes a request to the data wrapper to fetch a new unique match id number. Returns the match id number as an integer."""
         return self.data_wrapper.get_new_match_id()

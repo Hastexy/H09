@@ -104,42 +104,8 @@ class Tournament_Manager_UI:
                 # print("\n==Player Created==")
                 self.logic_wrapper.create_player(p)
             elif command == "4":
-                # print("\n==League Created==")
-                l = League()
-                # l.id = self.logic_wrapper.get_id() vantar að geta náð id
-                while True:
-                    l.name = input("\nEnter the name of your league: ")
-                    break
-                while True:
-                    l.host = input("\nEnter the host name of your league: ")
-                    break
-                while True:
-                    l.phone = input("\nEnter the phone nr. of your league: ")
-                    break
-                while True:
-                    l.start_date = input(
-                        "\nEnter the starting date of your league (with this format: xx.xx.xxxx): "
-                    )
-                    break
-                while True:
-                    l.end_date = input(
-                        "\nEnter the ending date of your league (If it is a one day league enter the same date): "
-                    )
-                    break
-                while True:
-                    l.teams = input(
-                        "\nEnter the amount of teams competing in your league: "
-                    )
-                    print("===teams picked===")
-                    break
-                while True:  # spurning hvort það megi bara vera ein umferð per dag?...
-                    l.matches = input("\nEnter the amount of rounds per day: ")
-                    break
-
-                print("---Testing---")
-                print(l)
-
-                pass
+                print(CANCEL)
+                self.create_league()
             else:
                 print("\nInvalid input, try again")
 
@@ -347,3 +313,70 @@ class Tournament_Manager_UI:
 
         self.logic_wrapper.create_team(t)
         print("\n==Team Created==")
+
+    def create_league(self) -> None:
+        l = League()
+        l.id = self.logic_wrapper.get_new_league_id()
+        while True:
+            l.name = input("\nEnter the name of your league: ")
+
+            if l.name == "b":
+                return
+
+            try:
+                validate_league_name(l.name)
+                break
+            except:
+                print(
+                    "Name taken! Another league already has this name, please choose another one."
+                )
+
+        while True:
+            l.host = input("\nEnter the host name of your league: ")
+
+            if l.host == "b":
+                return
+
+            try:
+                validate_player_name(l.host)
+                break
+            except NameLengthException:
+                print("\n##Name is too long##")
+            except InvalidNameError:
+                print("\n##Name cannot contain digits!##")
+            except:
+                print("\n##Unknown Error Occured, try again##")
+
+        while True:
+            l.phone = input("\nHost's phonenumber: ")
+
+            if l.phone == "b":
+                return
+            try:
+                validate_number(l.phone)
+                break
+            except InvalidNumberLengthException:
+                print("The phone number must consist of SEVEN digits!")
+            except InvalidNumberCharacterException:
+                print("The phone number must consist ONLY of digits!")
+
+        while True:
+            l.start_date = input(
+                "\nEnter the starting date of your league (with this format: xx.xx.xxxx): "
+            )
+            break
+        while True:
+            l.end_date = input(
+                "\nEnter the ending date of your league (If it is a one day league enter the same date): "
+            )
+            break
+        while True:
+            l.teams = input("\nEnter the amount of teams competing in your league: ")
+            print("===teams picked===")
+            break
+        while True:  # spurning hvort það megi bara vera ein umferð per dag?...
+            l.matches = input("\nEnter the amount of rounds per day: ")
+            break
+
+        print("---Testing---")
+        print(l)

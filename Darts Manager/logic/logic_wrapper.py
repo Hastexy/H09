@@ -32,6 +32,9 @@ class Logic_Wrapper:
     def get_new_player_id(self) -> int:
         return self.player_logic.get_new_player_id()
 
+    def get_new_league_id(self) -> int:
+        return self.league_logic.get_new_league_id()
+
     def get_new_match_id(self) -> int:
         return self.league_logic.get_new_match_id()
 

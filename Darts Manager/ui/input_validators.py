@@ -27,6 +27,7 @@ ERR_PHONE = """
 ║ Phone number must be 7 digits long ║
 ╚════════════════════════════════════╝"""
 
+
 class NameLengthException(Exception):
     pass
 
@@ -88,6 +89,11 @@ def validate_dob(dob):
         raise NameLengthException
     if dob[2] != "." or dob[5] != ".":
         raise InvalidNumberCharacterException
+
+
+def validate_league_name(league_name) -> None:
+    """Má ég lesa úr gagnagrunninum hérna??"""
+    pass
 
 
 # class AlreadyRegisteredExeption(Exception)

@@ -22,6 +22,9 @@ class Data_Wrapper:
     def get_new_player_id(self) -> int:
         return self.player_data.get_new_player_id()
 
+    def get_new_league_id(self) -> int:
+        return self.league_data.get_new_league_id()
+
     def update_player_status(self, player_id: str, role: str, team_id: str) -> None:
         self.player_data.update_player_status(player_id, role, team_id)
 
