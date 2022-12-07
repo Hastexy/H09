@@ -43,6 +43,46 @@ ERR_DOB_FORMAT = """
 ║ xx/xx/xxxx                                                   ║
 ╚══════════════════════════════════════════════════════════════╝"""
 
+ERR_NO_ASP = """
+╔════════════════════╗
+║ Missing "@" symbol ║
+╚════════════════════╝"""
+
+ERR_MANY_ASP = """
+╔══════════════════════════╗
+║ More than one "@" symbol ║
+╚══════════════════════════╝"""
+
+ERR_BEFORE_ASP = """
+╔════════════════════════════════════════╗
+║ There is nothing before the "@" symbol ║
+╚════════════════════════════════════════╝"""
+
+ERR_AFTER_ASP = """
+╔═══════════════════════════════════════╗
+║ There is nothing after the "@" symbol ║
+╚═══════════════════════════════════════╝"""
+
+ERR_DOT_ASP = """
+╔══════════════════════════════════════════════════════╗
+║ There shouldn't be a dot before the asperand symbol  ║
+╚══════════════════════════════════════════════════════╝"""
+
+ERR_DOT_START = """
+╔═══════════════════════════════════╗
+║ An email doesn't start with a dot ║
+╚═══════════════════════════════════╝"""
+
+ERR_CONSECUTIVE_DOT = """
+╔════════════════════════════════════════════════════════════════╗
+║ There are not supposed to be consecutive dots in an email ".." ║
+╚════════════════════════════════════════════════════════════════╝"""
+
+ERR_DOMAIN_MISSING = """
+╔════════════════════════════════════════════════════════════╗
+║ You are missing the domain ".com" at the end of your email ║
+╚════════════════════════════════════════════════════════════╝"""
+
 
 class NameLengthException(Exception):
     pass
@@ -59,8 +99,25 @@ class InvalidNumberCharacterException(Exception):
 class NoAsperandSymbolException(Exception):
     pass
 
-
 class TooManyAsperandSymbolException(Exception):
+    pass
+
+class NothingBeforeAsperandException(Exception):
+    pass
+
+class NothingAfterAsperandException(Exception):
+    pass
+
+class NoDotBeforeAsperandException(Exception):
+    pass
+
+class NoDotAtStartException(Exception):
+    pass
+
+class ConsecutiveDotsException(Exception):
+    pass
+
+class MissingDomainNameException(Exception):
     pass
 
 
@@ -116,9 +173,25 @@ def validate_ssn(ssn):
 
 def validate_email(email):
     if "@" not in email:
-        raise NoAsperandSymbolException
+        raise NoAsperandSymbolException()
     if email.count("@") >= 2:
-        raise TooManyAsperandSymbolException
+        raise TooManyAsperandSymbolException()
+    if email.count("@") == 1:
+        x,y = email.split("@")
+        if x == "":
+            NothingBeforeAsperandException()
+        if y == "":
+            NothingAfterAsperandException()
+        if x[-1] == ".":
+            NoDotBeforeAsperandException()
+        
+    if email[0] == ".":
+        NoDotAtStartException()
+    if ".." in email:
+        ConsecutiveDotsException()
+    
+    if email[-4] != ".com":
+        MissingDomainNameException()
 
 
 def validate_dob(dob):

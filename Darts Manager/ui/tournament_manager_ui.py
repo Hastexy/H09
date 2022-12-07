@@ -350,7 +350,7 @@ class Tournament_Manager_UI:
                     "The league must be at least ONE round! Please enter an integer greater than ZERO!"
                 )
         while True:
-            print("Now enter the dates of all the rounds in this format (dd/mm/yyyy)")
+            print("Now enter the dates of all the rounds in this format (dd/mm/yyyy hh:mm)")
             for i in range(1, int(l.rounds) + 1):
                 next_date = input(f"Enter the date of round {i}: ")
                 l.round_dates.append(next_date)
@@ -408,9 +408,21 @@ class Tournament_Manager_UI:
                     validate_email(p.email)
                     break
                 except NoAsperandSymbolException:
-                    print("\n##There needs to be an @ in the email##")
+                    print(ERR_NO_ASP)
                 except TooManyAsperandSymbolException:
-                    print("\n##Too many '@' symbols, only supposed to be 1##")
+                    print(ERR_MANY_ASP)
+                except NothingBeforeAsperandException:
+                    print(ERR_BEFORE_ASP)
+                except NothingAfterAsperandException:
+                    print(ERR_AFTER_ASP)
+                except NoDotBeforeAsperandException:
+                    print(ERR_DOT_ASP)
+                except NoDotAtStartException:
+                    print(ERR_DOT_START)
+                except ConsecutiveDotsException:
+                    print(ERR_CONSECUTIVE_DOT)
+                except MissingDomainNameException:
+                    print(ERR_DOMAIN_MISSING)
                 except:
                     print(ERR_UNKNOWN)
         while True:

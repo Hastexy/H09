@@ -145,10 +145,33 @@ class League_Data:
                         matches.append(m)
         return matches
 
+<<<<<<< HEAD
     def register_teams(self, league: object) -> None:  # KjartanIK
         """Takes a Team object and registers a new Team in the database based on its attributes."""
 
         teams_file = self.team_folder + league.id + ".csv"
+=======
+    def register_teams(
+        self, teams: List[object], league_id: str
+        ) -> None:
+        """Takes a Team object and registers a new Team in the database based on its attributes."""
+
+        teams_file = self.team_folder + league_id.id + ".csv"
+
+        with open(self.match_file, "a", newline="", encoding="utf-8") as teams_file:
+            fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
+            writer = csv.DictWriter(
+                teams_file, fieldnames=fieldnames, delimiter=";"
+            )
+            writer.writerow(
+                    {
+                        "ID": league_id.id,
+                        "name": league_id.name,
+                        "host_name": league_id.host_name,
+                        "host_phonenumber": league_id.host_phonenumber,
+                    }
+                )
+>>>>>>> 6c56921fa2d9cf8723631f77492f34094685b8df
 
         with open(teams_file, "a", newline="", encoding="utf-8") as teams_file:
             fieldnames = ["ID", "name", "clubID"]
