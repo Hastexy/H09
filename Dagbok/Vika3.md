@@ -41,7 +41,15 @@ Hrafnkell og Styrmir: UI layer og byrja að hugsa um hvernig myndbandið ætti a
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund klukkan 4.
+Við náðum að klára stórt skref í dag og er núna hægt að búa til allt.
+Eina sem vantar eru nokkur villu check og að fínpússa að búa til deildir.
+Annars er næsta skref þá að klára þessi villu checks og fara í það að klára allt forritið.
+Þar sem eftir að geta búið til deildir er það mjög einfalt að geta séð spilaðar og óspilaðar viðureignir.
+Við gerðum það hægt í data og logic layer um daginn svo það þarf held ég bara að gera UI partinn.
+Annars er hópurinn skiptur svona fyrir morgundaginn:
+Hrafnkell og Styrmir: villu check og myndband
+Kjartan Elvar, Kjartan Ingi og Kristinn: byrja á að klára allt varðandi deildir
 ```
 
 
