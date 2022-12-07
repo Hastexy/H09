@@ -57,7 +57,11 @@ Kjartan Elvar, Kjartan Ingi og Kristinn: byrja á að klára allt varðandi deil
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund klukkan 12.
+Við byrjuðum á að ræða hvað þurfti að villi checka og bæta.
+Það þarf að villu checka betur varðandi emails og dagsetningar á deildum.
+Styrmir og Hrafnkell fara í að kíkja á það og einnig byrja á myndbandinu.
+Kjartan Elvar, Kjartan Ingi og Kristinn vinna í deildum og skjölum.
 ```
 
 ### Færsla 2 - Samantekt
