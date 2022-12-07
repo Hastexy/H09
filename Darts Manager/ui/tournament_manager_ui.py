@@ -314,6 +314,7 @@ class Tournament_Manager_UI:
 
         # Get a list of all the teams participating!!
         print("Register Teams In The League (At Least TWO Teams):")
+        print("Press 'q' to stop registering teams")
         all_teams = self.logic_wrapper.get_all_teams()
         while True:
             self.display_available_teams(all_teams)
@@ -331,7 +332,7 @@ class Tournament_Manager_UI:
                     l.teams.append(team)
                     break
             else:
-                print("Invalid input!")
+                print("Please select a team from the list!")
 
         # get number of rounds
         while True:
@@ -489,8 +490,8 @@ class Tournament_Manager_UI:
         print(header)
         print(f"{separator}\n")
 
-        print(f"{'NAME':<35}{'ID':<25}")
-        print("-" * 64)
+        print(f"{'NAME':<35}{'ID'}")
+        print("-" * 38)
         for team in teams:
-            print(f"{team.name.title():<35}{team.id:<25}")
-        print("-" * 64)
+            print(f"{team.name.title():<35}{team.id}")
+        print("-" * 38)

@@ -12,7 +12,7 @@ class League:
         self.name = name
         self.host = host
         self.phone = phone
-        self.round = rounds
+        self.rounds = rounds
         self.teams = []
         self.round_dates = []
         self.start_date = ""

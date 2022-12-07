@@ -16,7 +16,28 @@ class League_Data:
 
     def create_league(self, league: object) -> None:
         """Registers a new league in the database. Also generates a schedule for the league and stores it in the database."""
-        pass
+        with open(self.league_file, newline="", encoding="utf-8") as league_file:
+            field_names = [
+                "ID",
+                "name",
+                "host_name",
+                "host_phonenumber",
+                "start_date",
+                "end_date",
+                "rounds",
+            ]
+            writer = csv.DictWriter(league_file, delimiter=";", fieldnames=field_names)
+            writer.writerow(
+                {
+                    "ID": league.id,
+                    "name": league.name,
+                    "host_name": league.host,
+                    "host_phonenumber": league.phone,
+                    "start_date": league.start_date,
+                    "end_date": league.end_date,
+                    "rounds": league.rounds,
+                }
+            )
 
     def get_new_match_id(self) -> int:
         """Generates a unique match id."""
