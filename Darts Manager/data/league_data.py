@@ -12,11 +12,10 @@ class League_Data:
     def __init__(self):
         self.league_file = "files/leagues.csv"
         self.match_file = "files/matches.csv"
-        self.team_folder = "league_teams"
+        self.team_folder = "league_teams/"
 
     def create_league(self, league: object) -> None:
-        """Registers a new league in the database. Also generates a schedule for the league and stores it in the database."""
-        schedule = self.generate_schedule(league.teams)
+        """Registers a new league in the database. Also generates a schedule for the league and stores the matches in the database."""
         with open(self.league_file, "a", newline="", encoding="utf-8") as league_file:
             field_names = [
                 "ID",
@@ -39,25 +38,13 @@ class League_Data:
                     "rounds": league.rounds,
                 }
             )
+        self.register_teams(league)
+        self.generate_schedule(league)
 
-    def get_new_match_id(self) -> int:
-        """Generates a unique match id."""
-        with open(self.match_file, newline="", encoding="utf-8") as csvfile:
-            for id, _ in enumerate(csvfile):
-                pass
-            new_id = id + 1
-        return new_id
-
-    def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
+    def generate_schedule(self, league: object) -> None:
         """Creates a schedule for a league. It makes sure that all the teams compete with each other only once."""
 
-        id_list = []
-
-        for teams in all_teams:
-            t_id = teams.id
-            id_list.append(t_id)
-
-        matches = set(combinations(id_list, 2))
+        all_matches = list(combinations(league.teams, 2))
 
         with open(self.match_file, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
@@ -70,16 +57,17 @@ class League_Data:
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
 
-            for match in matches:
-                new_id = self.get_new_match_id()
+            for match in all_matches:
+                m = Match()
+                m.id = self.get_new_match_id()
                 writer.writerow(
                     {
-                        "match_ID": new_id,
-                        "date": "xx/xx/xxxx",
-                        "home_team": match[0],
-                        "away_team": match[1],
-                        "result": "0-0",  # Enter results in this format (2-1)
-                        "league_ID": league_ID,
+                        "match_ID": m.id,
+                        "date": m.date,
+                        "home_team": m.home_team,
+                        "away_team": m.away_team,
+                        "result": m.result,
+                        "league_ID": league.id,
                     }
                 )
 
@@ -157,39 +145,33 @@ class League_Data:
                         matches.append(m)
         return matches
 
-        def register_teams(
-            self, teams: List[object], league_id: str
-        ) -> None:  # KjartanIK
-            """Takes a Team object and registers a new Team in the database based on its attributes."""
+    def register_teams(self, league: object) -> None:  # KjartanIK
+        """Takes a Team object and registers a new Team in the database based on its attributes."""
 
-            teams_file = self.team_folder + league_id.id + ".csv"
-
-            with open(self.match_file, "a", newline="", encoding="utf-8") as teams_file:
-                fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
-                writer = csv.DictWriter(
-                    teams_file, fieldnames=fieldnames, delimiter=";"
-                )
-                writer.writerow(
-                    {
-                        "ID": league_id.id,
-                        "name": league_id.name,
-                        "host_name": league_id.host_name,
-                        "host_phonenumber": league_id.host_phonenumber,
-                    }
-                )
+        teams_file = self.team_folder + league.id + ".csv"
 
         with open(teams_file, "a", newline="", encoding="utf-8") as teams_file:
-            fieldnames = ["ID", "name", "host_name", "host_phonenumber"]
+            fieldnames = ["ID", "name", "clubID"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
             writer.writeheader()
-            for team in league_id.teams:
-                writer.writerow({"ID": team.id, "clubID": team.clubID})
+            for team in league.teams:
+                writer.writerow(
+                    {"ID": team.id, "name": team.name, "clubID": team.clubID}
+                )
 
     def reschedule_match(self, match_id: int) -> object:
         pass
 
     def get_new_league_id(self) -> int:
         with open(self.league_file, newline="", encoding="utf-8") as csvfile:
+            for id, _ in enumerate(csvfile):
+                pass
+            new_id = id + 1
+        return new_id
+
+    def get_new_match_id(self) -> int:
+        """Generates a unique match id."""
+        with open(self.match_file, newline="", encoding="utf-8") as csvfile:
             for id, _ in enumerate(csvfile):
                 pass
             new_id = id + 1

@@ -83,6 +83,3 @@ class Data_Wrapper:
 
     def get_new_match_id(self) -> int:
         return self.league_data.get_new_match_id()
-
-    def register_teams(self, tourney):
-        self.league_data.register_teams(tourney)

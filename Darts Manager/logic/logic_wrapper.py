@@ -65,8 +65,5 @@ class Logic_Wrapper:
     def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
         self.league_logic.generate_schedule(all_teams, league_ID)
 
-    def register_teams(self, tourney):  # breyta þessu hérna!!
-        self.league_logic.register_teams(tourney)
-
     def get_all_league_teams(self, league_id: str) -> List[object]:
         return self.league_logic.get_all_league_teams(league_id)
