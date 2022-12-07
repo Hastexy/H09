@@ -52,57 +52,8 @@ class Tournament_Manager_UI:
                 print(CANCEL)
                 self.create_team()
             elif command == "3":
-                p = Player()
-                p.id = self.logic_wrapper.get_new_player_id()
-
-                while True:
-                    p.name = input("\nEnter the name of the player: ").lower().strip()
-                    try:
-                        validate_player_name(p.name)
-                        break
-                    except NameLengthException:
-                        print("\n##Name is too long##")
-                    except InvalidNameError:
-                        print("\n##Name cannot contain digits!##")
-                    except:
-                        print("\n##Unknown Error Occured, try again##")
-                while True:
-                    p.ssn = input("\nEnter the social security number of the player: ")
-                    try:
-                        validate_ssn(p.ssn)
-                        break
-                    except InvalidNumberLengthException:
-                        print("\n##SSN number bust be 10 digits long##")
-                    except InvalidNumberCharacterException:
-                        print("\n##SSN must only consist of digits##")
-                    except:
-                        print("\n##Unknown Error Occured, try again##")
-                while True:
-                    p.email = input("\nEnter the email of the player: ")
-                    try:
-                        validate_email(p.email)
-                        break
-                    except NoAsperandSymbolException:
-                        print("\n##There needs to be an @ in the email##")
-                    except:
-                        print("\n##Unknown Error Occured, try again##")
-                while True:
-                    p.dob = input(
-                        "\nEnter the date of birth of the player in this format(dd.mm.yyyy): "
-                    )
-                    try:
-                        validate_dob(p.dob)
-                        break
-                    except NameLengthException:
-                        print("\n##The format is only 10 letters, try again##")
-                    except InvalidNumberCharacterException:
-                        print("\n##There must be a dot between day, month and year##")
-
-                p.phone = input("\n(Optional)Enter the GSM-Phone of the player: ")
-                p.home_phone = input("\n(Optional)Enter the Home-Phone of the player: ")
-                p.address = input("\n(Optional)Enter the Address of the player: ")
-                # print("\n==Player Created==")
-                self.logic_wrapper.create_player(p)
+                print(CANCEL)
+                self.create_player()
             elif command == "4":
                 print(CANCEL)
                 self.create_league()
@@ -380,3 +331,117 @@ class Tournament_Manager_UI:
 
         print("---Testing---")
         print(l)
+
+    def create_player(self) -> None:
+        p = Player()
+        p.id = self.logic_wrapper.get_new_player_id()
+
+        while True:
+            p.name = input("\nEnter the name of the player: ")
+            if p.name == "b":
+                print(CANCEL2)
+                return "b"
+            else:
+                try:
+                    validate_player_name(p.name)
+                    break
+                except NameLengthException:
+                    print(ERR_LENGTH)
+                except InvalidNameError:
+                    print(ERR_DIGIT)
+                except:
+                    print(ERR_UNKNOWN)
+        while True:
+            p.ssn = input("\nEnter the social security number of the player: ")
+            if p.ssn == "b":
+                print(CANCEL2)
+                return "b"
+            else:
+                try:
+                    validate_ssn(p.ssn)
+                    break
+                except InvalidNumberLengthException:
+                    print(ERR_SSN)
+                except InvalidNumberCharacterException:
+                    print(ERR_DIGIT)
+                except:
+                    print(ERR_UNKNOWN)
+        while True:
+            p.email = input("\nEnter the email of the player: ")
+            if p.email == "b":
+                print(CANCEL2)
+                return "b"
+            else:
+                try:
+                    validate_email(p.email)
+                    break
+                except NoAsperandSymbolException:
+                    print("\n##There needs to be an @ in the email##")
+                except TooManyAsperandSymbolException:
+                    print("\n##Too many '@' symbols, only supposed to be 1##")
+                except:
+                    print(ERR_UNKNOWN)
+        while True:
+            p.dob = input("\nEnter the date of birth for the player in this format (dd/mm/yyyy): ")
+            try:
+                validate_dob(p.dob)
+                break
+            except NameLengthException:
+                print(ERR_DOB_FORMAT)
+            except InvalidNumberCharacterException:
+                print(ERR_DOB_FORMAT)
+            except:
+                print(ERR_UNKNOWN)
+        print(SKIP)
+        while True:
+            p.phone = input("\n(OPTIONAL)Enter the players phone number: ")
+            if p.phone == "b":
+                print(CANCEL2)
+                return "b"
+            elif p.phone == "":
+                break
+            else:
+                try:
+                    validate_number(p.phone)
+                    break
+                except InvalidNumberLengthException:
+                    print(ERR_PHONE)
+                except InvalidNumberCharacterException:
+                    print(ERR_DIGIT)
+                except:
+                    print(ERR_UNKNOWN)
+        while True:
+            p.home_phone = input("\n(OPTIONAL)Enter the players home-phone number: ")
+            if p.home_phone == "b":
+                print(CANCEL2)
+                return "b"
+            elif p.home_phone == "":
+                break
+            else:
+                try:
+                    validate_number(p.home_phone)
+                    break
+                except InvalidNumberLengthException:
+                    print(ERR_PHONE)
+                except InvalidNumberCharacterException:
+                    print(ERR_DIGIT)
+                except:
+                    print(ERR_UNKNOWN)
+                    
+        while True:
+            p.address = input("\n(Optional)Enter the Address of the player: ")
+            if p.address == "b":
+                print(CANCEL2)
+                return "b"
+            elif p.address == "":
+                break
+            else:
+                try:
+                    validate_club_length(p.address)
+                    break
+                except NameLengthException:
+                    print(ERR_LENGTH)
+                except:
+                    print(ERR_UNKNOWN)
+        # print("\n==Player Created==")
+        self.logic_wrapper.create_player(p)

@@ -7,6 +7,11 @@ CANCEL2 = """
 ║ Creation Cancelled ║
 ╚════════════════════╝"""
 
+SKIP = """
+╔════════════════════════════════════════════════╗
+║ Press the enter button to skip optional inputs ║
+╚════════════════════════════════════════════════╝"""
+
 ERR_LENGTH = """
 ╔═════════════════════════════════════════════════════╗
 ║ The input must be between 3 and 49 characters long! ║
@@ -27,6 +32,18 @@ ERR_PHONE = """
 ║ Phone number must be 7 digits long ║
 ╚════════════════════════════════════╝"""
 
+ERR_SSN = """
+╔═══════════════════════════════════════════════╗
+║ Social Security Number must be 10 digits long ║
+╚═══════════════════════════════════════════════╝"""
+
+ERR_DOB_FORMAT = """
+╔══════════════════════════════════════════════════════════════╗
+║ The date of birth must be 10 digits long in the format below ║
+║ xx/xx/xxxx                                                   ║
+╚══════════════════════════════════════════════════════════════╝"""
+
+
 
 class NameLengthException(Exception):
     pass
@@ -43,9 +60,12 @@ class InvalidNumberCharacterException(Exception):
 class NoAsperandSymbolException(Exception):
     pass
 
+class TooManyAsperandSymbolException(Exception):
+    pass
 
 class InvalidNameError(Exception):
     pass
+
 
 
 def validate_club_length(name):
@@ -82,12 +102,14 @@ def validate_ssn(ssn):
 def validate_email(email):
     if "@" not in email:
         raise NoAsperandSymbolException
+    if email.count("@") >= 2:
+        raise TooManyAsperandSymbolException
 
 
 def validate_dob(dob):
     if len(dob) != 10:
         raise NameLengthException
-    if dob[2] != "." or dob[5] != ".":
+    if dob[2] != "/" or dob[5] != "/":
         raise InvalidNumberCharacterException
 
 
