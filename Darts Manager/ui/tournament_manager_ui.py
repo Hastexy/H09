@@ -146,8 +146,6 @@ class Tournament_Manager_UI:
                 p = Player()
                 p.id = self.logic_wrapper.get_new_player_id()
 
-                #Gera check að ef það eru minni en 4 players sem geta verið skráðir í lið þá hætta þessu
-
                 while True:
                     p.name = input("\nEnter the name of the player: ").lower().strip()
                     try:
@@ -292,7 +290,7 @@ class Tournament_Manager_UI:
                     print(ERR_LENGTH)
                 except:
                     print(ERR_UNKNOWN)
-        
+
         while True:
             c.address = input("\nEnter the address of your club: ")
             if c.address == "b":
@@ -306,7 +304,7 @@ class Tournament_Manager_UI:
                     print(ERR_LENGTH)
                 except:
                     print(ERR_UNKNOWN)
-                    
+
         while True:
             c.phone_number = input("\nEnter the club phone number: ")
             if c.phone_number == "b":
@@ -322,9 +320,11 @@ class Tournament_Manager_UI:
                     print(ERR_DIGIT)
                 except:
                     print(ERR_UNKNOWN)
-                    
+
         self.logic_wrapper.create_club(c)
-        print("""
+        print(
+            """
 ╔══════════════╗
 ║ CLUB CREATED ║
-╚══════════════╝""")
+╚══════════════╝"""
+        )
