@@ -34,7 +34,28 @@ class Results_Manager_UI:
             if name == "b":
                 return
             elif self.logic_wrapper.check_host_name(name, league_id):
-                print("Komin tenging host :)")
+                # þarf að sækja allar kláraðar viðureignir í league-inu:
+                all_finished_matches = self.logic_wrapper.get_finished_matches(
+                    league_id
+                )
+
+                while True:
+                    print("1. Change Match Result")
+                    print("2. Change Match Date")
+                    print("b. Back")
+
+                    command = input("Enter your choice: ").strip().lower()
+                    if command == "b":
+                        return
+                    elif command == "1":
+                        self.display_finished_matches(all_finished_matches)
+                        self.change_match_results(all_finished_matches)
+                    elif command == "2":
+                        self.display_finished_matches(all_finished_matches)
+                        self.change_match_date(all_finished_matches, league_id)
+                    else:
+                        print("Invalid input!")
+
             elif self.logic_wrapper.check_captain_name(name, league_id):
                 print("Komin tenging í captain :)")
             else:
@@ -83,3 +104,38 @@ class Results_Manager_UI:
         for league in leagues:
             print(f"{league.name.title():<35}{league.id}")
         print("-" * 38)
+
+    def display_finished_matches(self, all_matches: dict) -> None:
+        pass
+        header = "* Here is a list of all finished matches: *"
+        separator = "*" * len(header)
+
+        print(f"\n{separator}")
+        print(header)
+        print(f"{separator}\n")
+
+        for date, matches in all_matches.items():
+            header = f"#### Date: {date}"
+            print(header)
+            print("-" * len(header))
+            for match in matches:
+                print(
+                    f"Game:\t{match.home_team.title()} VS {match.away_team.title():<15}ID: {match.id}\n"
+                )
+
+    def change_match_date(self, all_matches: dict) -> None:
+        match_id = input("Select a match to change (match ID): ")
+
+    def change_match_results(self, all_matches: dict) -> None:
+        while True:
+            print("Press 'b' to go back")
+            match_id = input("Select a match to change (match ID): ")
+            if match_id == "b":
+                return
+            for matches in all_matches.values():
+                for match in matches:
+                    if str(match.id) == match_id:
+
+                        self.logic_wrapper.update_match_results(match)
+                        return
+            print("Please select one of the matches from the list!")

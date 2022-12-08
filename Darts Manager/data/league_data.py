@@ -221,3 +221,12 @@ class League_Data:
                         if player["name"] == name and player["role"] == "captain":
                             return True
         return False
+
+    def record_results(self, match: object) -> None:
+        gamefile = self.game_folder + str(match.id) + ".csv"
+        with open(gamefile, "w", newline="", encoding="utf-8") as game_file:
+            field_names = ["type", "h_player", "a_player", "h_score", "a_score"]
+            writer = csv.DictWriter(game_file, fieldnames=field_names, delimiter=";")
+            writer.writeheader()
+            for game in match.games:
+                
