@@ -68,6 +68,15 @@ class League_Logic:
         return self.data_wrapper.check_captain_name(name, league_id)
 
     def record_result(self, match: object) -> None:
+        home_score_total = 0
+        away_score_total = 0
+        for game in match.games:
+            if game.home_score == 2:
+                home_score_total += 1
+            elif game.away_score == 2:
+                away_score_total += 1
+        result_string = "-".join([str(home_score_total), str(away_score_total)])
+        match.result = result_string
         self.data_wrapper.record_result(match)
 
     def get_team_members(self, name: str, league_id: str) -> List[object]:

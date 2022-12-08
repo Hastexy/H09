@@ -1,13 +1,13 @@
 type;h_player;a_player;h_score;a_score
-501;testtwo;kóngur kári óskarsson;0;2
-501;truckside weightclass;australian thunderlord;0;2
-501;thunderbitch;kóalabjörn;0;2
-501;testthree;destro the king;0;2
-301;testtwo;kóalabjörn;0;2
-301;testthree;kóngur kári óskarsson;0;0
-C;truckside weightclass;australian thunderlord;0;2
-C;thunderbitch;destro the king;0;0
-501;truckside weightclass;australian thunderlord;0;2
-501;thunderbitch;destro the king;0;0
-501;testtwo;kóalabjörn;0;0
-501;testthree;kóngur kári óskarsson;0;0
+501;testthree;skólastrákur;2;1
+501;truckside weightclass;súperman;2;1
+501;thunderbitch;testfour;0;2
+501;testtwo;testone;1;2
+301;testtwo;skólastrákur;2;1
+301;testthree;súperman;0;0
+C;truckside weightclass;testfour;0;2
+C;thunderbitch;testone;0;0
+501;truckside weightclass;skólastrákur;2;0
+501;thunderbitch;súperman;0;0
+501;testtwo;testfour;0;0
+501;testthree;testone;0;0

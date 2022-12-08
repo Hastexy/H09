@@ -1,4 +1,5 @@
 import csv
+import fileinput
 from typing import List
 from itertools import combinations
 from model.league import League
@@ -228,6 +229,16 @@ class League_Data:
         return False
 
     def record_result(self, match: object) -> None:
+        matchfile = self.match_folder + str(match.league_id) + ".csv"
+        with fileinput.input(files=matchfile, inplace=True, mode="r") as match_file:
+
+            reader = csv.DictReader(match_file, delimiter=";")
+            print(";".join(reader.fieldnames))
+            for a_match in reader:
+                if a_match["match_ID"] == match.id:
+                    a_match["result"] = match.result
+                print(";".join([*a_match.values()]))
+
         gamefile = self.game_folder + str(match.id) + ".csv"
         with open(gamefile, "w", newline="", encoding="utf-8") as game_file:
             field_names = ["type", "h_player", "a_player", "h_score", "a_score"]

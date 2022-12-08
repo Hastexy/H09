@@ -60,20 +60,6 @@ class Results_Manager_UI:
 
         # skoða host nafnið hjá þessu tiltekna league
         # fara í gegnum öll liðin sem taka þátt í keppninni og liðsmenn þeirra
-        # while True:
-        #     self.menu_output()
-        #     command = input("\nEnter your option: ")
-        #     command = command.lower()
-        #     if command == "q":
-        #         print("\nGoodbye for now!")
-        #         return "q"
-        #     elif command == "b":
-        #         print("\nGoing back!")
-        #         return "b"
-        #     elif command == "1":
-        #         print("==Register match result stuff==")
-        #     elif command == "2":
-        #         print("==Change match result stuff==")
 
     def select_league_id(self, all_leagues: List[object]) -> None:
         while True:
