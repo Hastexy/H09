@@ -236,4 +236,4 @@ class League_Data:
             writer = csv.DictWriter(game_file, fieldnames=field_names, delimiter=";")
             writer.writeheader()
             for game in match.games:
-                
+                pass
