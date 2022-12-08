@@ -97,7 +97,7 @@ class View_Manager_UI:
                         )
                         for game in match.games:
                             print(
-                                f"{game.home_player.title():<25}{game.home_score:<4}{game.type:<4}{game.away_score}{game.away_player.title():>25}"
+                                f"{game.home_player.title():<25}{game.home_score:<4}{game.type:^4}{game.away_score}{game.away_player.title():>25}"
                             )
             elif command == "4":
                 print("==Viewing League Standings==\n")
