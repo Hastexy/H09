@@ -82,13 +82,17 @@ Hrafnkell, Kjartan Elvar og Kjartan Ingi eru að vinna í því að klára allt 
 ### Færsla 1 - Morgunfundur
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók stuttan fund um 2.
+Allt tengdt View Menu er komið og er Kjartan Elvar að klára að gera results manager-inn svo hægt sé að nýskrá og breyta úrslitum.
+Kjartan Ingi fór að bæta við kommentum í kóðan og að breyta diagrams og meira í skýrslunni til að passa við allt sem við höfum.
+Kristinn og Styrmir byrjuðu að undirbúa myndbandið og byrjar upptaka seinna í dag eða á morgun.
+Hrafnkell ætlar að klára view menu UI-ið í dag og eftir það er nærrum allt UI búið nema kannski með að nýskrá/breyta úrslit.
 ```
 
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund klukkan 6.
 ```
 
 
