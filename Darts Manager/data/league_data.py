@@ -146,14 +146,13 @@ class League_Data:
                             match["result"],
                             match["league_ID"],
                         )
-                        with open(
-                            "files/games.csv", newline="", encoding="utf-8"
-                        ) as game_file:
+                        gamefile = self.game_folder + m.id + ".csv"
+
+                        with open(gamefile, newline="", encoding="utf-8") as game_file:
                             game_reader = csv.DictReader(game_file, delimiter=";")
                             for game in game_reader:
-                                if game["match_ID"] == m.id:
-                                    g = Game(*game.values())
-                                    m.games.append(g)
+                                g = Game(*game.values())
+                                m.games.append(g)
                         matches.append(m)
         return matches
 

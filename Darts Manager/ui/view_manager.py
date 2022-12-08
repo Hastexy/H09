@@ -91,12 +91,12 @@ class View_Manager_UI:
                 )
                 for date, matches in matches_sorted_by_date.items():
                     header = f"#### Date: {date}"
-                    #test_delim = "x" * 39
+                    # test_delim = "x" * 39
                     print(header)
                     print("-" * len(header))
                     for match in matches:
                         self.create_match_table(match)
-                      
+
                         # print(
                         #     f"Game:   {match.home_team.title()} VS {match.away_team.title()}\n"
                         # )
@@ -143,22 +143,25 @@ class View_Manager_UI:
     def create_match_table(self, match) -> str:
         home_txt = "===Home Team==="
         away_txt = "===Away Team==="
-        
+
         print(f"╔{DELIM}╦═════╦{DELIM}╗")
         print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
         print(f"╠{DELIML}╬═════╬{DELIMR}╣")
         print(f"║{home_txt:^39}║Leg 1║Leg 2║GAMES║Leg 2║Leg 1║{away_txt:^39}║")
         print(f"╠{DELIMLP}╬═════╬{DELIMRP}╣")
         for count, game in enumerate(match.games):
+            self.parse_leg_score(game)
             home_leg1, home_leg2 = game.home_score.split("-")
             away_leg1, away_leg2 = game.home_score.split("-")
-            print(f"║{game.home_player.title():<39}║{home_leg1:^5}║{home_leg2:^5}║{game.type:^5}║{away_leg1:^5}║{away_leg2:^5}║{game.away_player.title():>39}║")
+            print(
+                f"║{game.home_player.title():<39}║{home_leg1:^5}║{home_leg2:^5}║{game.type:^5}║{away_leg1:^5}║{away_leg2:^5}║{game.away_player.title():>39}║"
+            )
 
             if count != 11:
                 print(f"╠{DELIMLP}╬═════╬{DELIMRP}╣")
             else:
                 print(f"╚{DELIMLB}╩═════╩{DELIMRB}╝")
-                
+
     def parse_leg_score(self, game: object) -> None:
         if game.home_score == "0":
             game.home_score = "0-0"
