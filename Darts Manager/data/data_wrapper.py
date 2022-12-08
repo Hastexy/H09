@@ -81,8 +81,11 @@ class Data_Wrapper:
     def check_captain_name(self, name: str, league_id: str) -> bool:
         return self.league_data.check_captain_name(name, league_id)
 
-    def register_result(self):
-        pass
+    def record_result(self, match: object) -> None:
+        self.league_data.record_result(match)
+
+    def get_team_members(self, name: str, league_id: str) -> List[object]:
+        return self.league_data.get_team_members(name, league_id)
 
     def edit_result(self):
         pass

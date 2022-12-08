@@ -41,7 +41,7 @@ class League_Data:
             )
         self.register_teams(league)
         self.generate_schedule(league)
-        # Þetta er það eina sem er eftir af create dæminu!!
+        # Þetta er það eina sem er eftir af create dæminu!!.
 
     def generate_schedule(self, league: object) -> None:
         """Creates a schedule for a league. It makes sure that all the teams compete with each other only once."""
@@ -222,11 +222,33 @@ class League_Data:
                             return True
         return False
 
-    def record_results(self, match: object) -> None:
+    def record_result(self, match: object) -> None:
         gamefile = self.game_folder + str(match.id) + ".csv"
         with open(gamefile, "w", newline="", encoding="utf-8") as game_file:
             field_names = ["type", "h_player", "a_player", "h_score", "a_score"]
             writer = csv.DictWriter(game_file, fieldnames=field_names, delimiter=";")
             writer.writeheader()
             for game in match.games:
-                
+                writer.writerow(
+                    {
+                        "type": game.type,
+                        "h_player": game.home_player.name,
+                        "a_player": game.away_player.name,
+                        "h_score": game.home_score,
+                        "a_score": game.away_score,
+                    }
+                )
+
+    def get_team_members(self, name: str, league_id: str) -> List[object]:
+        teamfile = self.team_folder + league_id + ".csv"
+        with open(teamfile, newline="", encoding="utf-8") as team_file:
+            teamreader = csv.DictReader(team_file, delimiter=";")
+            for team in teamreader:
+                if team["name"] == name:
+                    memberfile = "files/TeamMembers/" + team["ID"] + ".csv"
+                    with open(memberfile, newline="", encoding="utf-8") as member_file:
+                        memberreader = csv.DictReader(member_file, delimiter=";")
+                        all_team_players = [
+                            Player(*member.values()) for member in memberreader
+                        ]
+                        return all_team_players

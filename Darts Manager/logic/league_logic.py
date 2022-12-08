@@ -62,3 +62,9 @@ class League_Logic:
 
     def check_captain_name(self, name: str, league_id: str) -> bool:
         return self.data_wrapper.check_captain_name(name, league_id)
+
+    def record_result(self, match: object) -> None:
+        self.data_wrapper.record_result(match)
+
+    def get_team_members(self, name: str, league_id: str) -> List[object]:
+        return self.data_wrapper.get_team_members(name, league_id)

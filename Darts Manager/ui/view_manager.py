@@ -133,3 +133,18 @@ class View_Manager_UI:
                     return league_id
 
             print("Please select a valid league ID from the list!")
+
+    def parse_leg_score(self, game: object) -> None:
+        if game.home_score == "0":
+            game.home_score == "0-0"
+        elif game.home_score == "1":
+            game.home_score = "1-0"
+        else:
+            game.home_score = "1-1"
+
+        if game.away_score == "0":
+            game.away_score == "0-0"
+        elif game.away_score == "1":
+            game.away_score = "1-0"
+        else:
+            game.home_score = "1-1"
