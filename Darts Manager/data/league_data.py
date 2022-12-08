@@ -131,7 +131,8 @@ class League_Data:
     def get_unfinished_matches(self, league_id) -> List[object]:  # Kristinn
         """Receives a league_id number and fetches all the matches that have yet to be  in that league. Returns a list of Match objects."""
         matches = []
-        with open(self.match_file, newline="", encoding="utf-8") as match_file:
+        matchfile = self.match_folder + str(league_id) + ".csv"
+        with open(matchfile, newline="", encoding="utf-8") as match_file:
             reader = csv.DictReader(match_file, delimiter=";")
             for match in reader:
                 if match["league_ID"] == league_id:
