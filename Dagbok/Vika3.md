@@ -67,7 +67,14 @@ Kjartan Elvar, Kjartan Ingi og Kristinn vinna í deildum og skjölum.
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-
+Hópurinn tók fund klukkan 4.
+Við ræddum það sem þyrfti að klárast á morgun og var það í raun allt.
+Við ætlum að reyna að hafa virkandi forrit á morgun sem ætti að vera nógu gott fyrir fyrstu skil.
+Það mun höndla allar A kröfur en sjáum til um B kröfur.
+Kristinn gerði grunn handrit fyrir myndbandið og mun hann og Styrmir vinna í að gera myndbandið á morgun.
+Hrafnkell, Kjartan Elvar og Kjartan Ingi eru að vinna í því að klára allt tengdt deildum.
+Það er hægt að búa þær til en nokkrar villur hér og það og einnig þarf að geta birt upplýsingar um deildir.
+Það allt mun vonandi klárast á morgun.
 ```
 
 
