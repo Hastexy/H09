@@ -41,6 +41,7 @@ class League_Data:
             )
         self.register_teams(league)
         self.generate_schedule(league)
+        # Þetta er það eina sem er eftir af create dæminu!!
 
     def generate_schedule(self, league: object) -> None:
         """Creates a schedule for a league. It makes sure that all the teams compete with each other only once."""
