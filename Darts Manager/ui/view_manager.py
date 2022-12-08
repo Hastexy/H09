@@ -56,7 +56,7 @@ class View_Manager_UI:
                 print("\nGoing back!")
                 return "b"
             elif command == "1":
-                print("==Viewing Teams and Players==")
+                print("==Viewing Teams and Players==\n")
                 all_teams = self.logic_wrapper.get_all_league_teams(league_id)
                 for idx, team in enumerate(all_teams, 1):
                     print(f"\n{idx}. TEAM NAME: {team.name}")
@@ -69,11 +69,38 @@ class View_Manager_UI:
                         )
 
             elif command == "2":
-                print("==Viewing Upcoming Matches==")
+                print("==Viewing Upcoming Matches==\n")
+                matches_sorted_by_date = self.logic_wrapper.get_unfinished_matches(
+                    league_id
+                )
+                for date, matches in matches_sorted_by_date.items():
+                    header = f"#### Date: {date}"
+                    print(header)
+                    print("-" * len(header))
+                    print("Games:")
+                    for match in matches:
+                        home, away = match
+                        print(f"\t{home} VS {away}")
+
             elif command == "3":
-                print("==Viewing Matches with registered results==")
+                print("==Viewing Matches with registered results==\n")
+                matches_sorted_by_date = self.logic_wrapper.get_finished_matches(
+                    league_id
+                )
+                for date, matches in matches_sorted_by_date.items():
+                    header = f"#### Date: {date}"
+                    print(header)
+                    print("-" * len(header))
+                    for match in matches:
+                        print(
+                            f"Game:   {match.home_team.title()} VS {match.away_team.title()}\n"
+                        )
+                        for game in match.games:
+                            print(
+                                f"{game.home_player.title():<25}{game.home_score:<4}{game.type:<4}{game.away_score}{game.away_player.title():>25}"
+                            )
             elif command == "4":
-                print("==Viewing League Standings==")
+                print("==Viewing League Standings==\n")
 
     def display_available_leagues(self, leagues: List[object]) -> None:
         header = "* Here is a list of all registered leagues: *"

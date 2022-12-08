@@ -19,13 +19,31 @@ class League_Logic:
         """Makes a request to the datawrapper to generate a schedule for a specific league."""
         self.data_wrapper.generate_schedule(all_teams, rounds, league_ID)
 
-    def get_unfinished_matches(self, league_id: str) -> List[object]:
+    def get_unfinished_matches(self, league_id: str) -> dict:
         """Makes a request to the datawrapper to fetch all unfinished matches in a specific league. If a match has an empty 'result' column in the database, it is considered unfinished."""
-        return self.data_wrapper.get_unfinished_matches(league_id)
+        matches_sorted_by_date = {}
+        all_matches = self.data_wrapper.get_unfinished_matches(league_id)
+        for match in all_matches:
 
-    def get_finished_matces(self, league_id: str) -> List[object]:
+            if match.date not in matches_sorted_by_date:
+                matches_sorted_by_date[match.date] = []
+
+            matches_sorted_by_date[match.date].append(
+                (match.home_team, match.away_team)
+            )
+        return matches_sorted_by_date
+
+    def get_finished_matches(self, league_id: str) -> dict:
         """Makes a request to the datawrapper to fetch all unfinished matches in a specific league. If a match has a non-empty 'result' column in the database, it is considered finished."""
-        return self.data_wrapper.get_finished_matches(league_id)
+        matches_sorted_by_date = {}
+        all_matches = self.data_wrapper.get_finished_matches(league_id)
+        for match in all_matches:
+
+            if match.date not in matches_sorted_by_date:
+                matches_sorted_by_date[match.date] = []
+
+            matches_sorted_by_date[match.date].append(match)
+        return matches_sorted_by_date
 
     def get_all_leagues(self) -> None:
         return self.data_wrapper.get_all_leagues()
