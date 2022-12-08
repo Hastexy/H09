@@ -83,9 +83,9 @@ class League_Data:
         with open(league_team_file, newline="", encoding="utf-8") as teams_file:
             team_reader = csv.DictReader(teams_file, delimiter=";")
             for team in team_reader:
-                t = Team(team["name"])
-                member_file = "files/TeamMembers/" + t.id + ".csv"
-                with open(member_file, newline="", encoding="utf-8") as member_file:
+                t = Team(team["ID"], team["name"])
+                memberfile = "files/TeamMembers/" + t.id + ".csv"
+                with open(memberfile, newline="", encoding="utf-8") as member_file:
                     member_reader = csv.DictReader(member_file, delimiter=";")
                     for player in member_reader:
                         p = Player(*player.values())
