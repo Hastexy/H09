@@ -47,8 +47,8 @@ class League_Data:
         """Creates a schedule for a league. It makes sure that all the teams compete with each other only once."""
 
         all_matches = list(combinations(league.teams, 2))
-
-        with open(self.match_file, "a", newline="", encoding="utf-8") as csvfile:
+        matchfile = self.match_folder + league.id + ".csv"
+        with open(matchfile, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
                 "match_ID",
                 "date",
