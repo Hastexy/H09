@@ -4,7 +4,7 @@ from logic.team_logic import Team_Logic
 from data.data_wrapper import Data_Wrapper
 from logic.club_logic import Club_Logic
 from logic.league_logic import League_Logic
-
+#The Logic Wrapper connects functions between the ui layer and the logic layer.
 
 class Logic_Wrapper:
     def __init__(self):
@@ -79,3 +79,9 @@ class Logic_Wrapper:
 
     def check_captain_name(self, name: str, league_id: str) -> bool:
         return self.league_logic.check_captain_name(name, league_id)
+
+    def record_result(self, match: object) -> None:
+        self.league_logic.record_result(match)
+
+    def get_team_members(self, name: str, league_id: str) -> List[object]:
+        return self.league_logic.get_team_members(name, league_id)

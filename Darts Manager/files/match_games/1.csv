@@ -1,13 +1,13 @@
 type;h_player;a_player;h_score;a_score
-501;Grayson Ewing;Gilberto Pollard;1-0;1-1
-501;Eliezer Atkinson;Maggie Lynch;0-0;1-1
-501;Matteo Roberts;Cassie Obrien;1-1;0-0
-501;Payten Tucker;Devin Villarreal;0-0;1-1
-301;Payten Tucker;Gilberto Pollard;1-0;1-1
-301;Grayson Ewing;Devin Villarreal;0-0;0-0
-C;Matteo Roberts;Maggie Lynch;0-0;1-1
-C;Eliezer Atkinson;Cassie Obrien;0-0;0-0
-501;Payten Tucker;Devin Villarreal;1-1;0-1
-501;Matteo Roberts;Gilberto Pollard;0-0;0-0
-501;Grayson Ewing;Cassie Obrien;0-0;0-0
-501;Eliezer Atkinson;Maggie Lynch;0-0;0-0
+501;truckside weightclass;australian thunderlord;2;2
+501;thunderbitch;destro the king;1;2
+501;testtwo;kóalabjörn;1;2
+501;testthree;kóngur kári óskarsson;2;1
+301;truckside weightclass;australian thunderlord;2;1
+301;testtwo;destro the king;0;0
+C;thunderbitch;kóalabjörn;2;1
+C;testthree;kóngur kári óskarsson;0;0
+501;truckside weightclass;australian thunderlord;1;2
+501;thunderbitch;destro the king;0;0
+501;testtwo;kóalabjörn;0;0
+501;testthree;kóngur kári óskarsson;0;0

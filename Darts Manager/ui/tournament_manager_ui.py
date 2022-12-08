@@ -317,7 +317,7 @@ class Tournament_Manager_UI:
             if next_team_id == "b":
                 return
 
-            if next_team_id == "q":
+            if next_team_id == "q":  # gæti þurft að villu tékka upp á að tvö lið keppi
                 break
 
             for team in all_teams:

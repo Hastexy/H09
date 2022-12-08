@@ -7,9 +7,11 @@ class League_Logic:
         self.data_wrapper = data_connection
 
     def create_league(self, league: object) -> None:
+        '''sends information about a new league to the data layer to be created/stored.'''
         self.data_wrapper.create_league(league)
 
     def get_new_league_id(self) -> int:
+        '''Retrives a number 1 higher than the highest id league id from the data layer.'''
         return self.data_wrapper.get_new_league_id()
 
     def get_new_match_id(self) -> int:
@@ -47,6 +49,7 @@ class League_Logic:
         return matches_sorted_by_date
 
     def get_all_leagues(self) -> None:
+        '''Retrives all the leagues from data layer.'''
         return self.data_wrapper.get_all_leagues()
 
     def get_all_league_teams(self, league_id: str) -> List[object]:
@@ -54,11 +57,20 @@ class League_Logic:
         return self.data_wrapper.get_all_league_teams(league_id)
 
     def get_team_standings(self, league_id: str) -> List[tuple]:
+        '''Get team standings from a specific league'''
         all_teams = self.data_wrapper.get_team_standings(league_id)
         return sorted(all_teams, key=itemgetter(1, 2, 0), reverse=True)
 
     def check_host_name(self, name: str, league_id: str) -> bool:
+        '''Check if host name already exists.'''
         return self.data_wrapper.check_host_name(name, league_id)
 
     def check_captain_name(self, name: str, league_id: str) -> bool:
+        '''Checks if the name given belongs to the captain.'''
         return self.data_wrapper.check_captain_name(name, league_id)
+
+    def record_result(self, match: object) -> None:
+        self.data_wrapper.record_result(match)
+
+    def get_team_members(self, name: str, league_id: str) -> List[object]:
+        return self.data_wrapper.get_team_members(name, league_id)

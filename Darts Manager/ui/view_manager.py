@@ -97,6 +97,14 @@ class View_Manager_UI:
                     for match in matches:
                         self.create_match_table(match)
                       
+                        # print(
+                        #     f"Game:   {match.home_team.title()} VS {match.away_team.title()}\n"
+                        # )
+                        # for game in match.games:
+                        #     self.parse_leg_score(game)
+                        #     print(
+                        #         f"{game.home_player.title():<25}{game.home_score:<4}{game.type:^4}{game.away_score}{game.away_player.title():>25}"
+                        #     )
             elif command == "4":
                 print("==Viewing League Standings==\n")
                 print(f"{'TEAM':<25}{'MATCHES WON':<20}{'LEGS WON'}")
@@ -150,3 +158,18 @@ class View_Manager_UI:
                 print(f"╠{DELIMLP}╬═════╬{DELIMRP}╣")
             else:
                 print(f"╚{DELIMLB}╩═════╩{DELIMRB}╝")
+                
+    def parse_leg_score(self, game: object) -> None:
+        if game.home_score == "0":
+            game.home_score = "0-0"
+        elif game.home_score == "1":
+            game.home_score = "1-0"
+        else:
+            game.home_score = "1-1"
+
+        if game.away_score == "0":
+            game.away_score = "0-0"
+        elif game.away_score == "1":
+            game.away_score = "1-0"
+        else:
+            game.away_score = "1-1"
