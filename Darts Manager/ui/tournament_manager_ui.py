@@ -350,7 +350,7 @@ class Tournament_Manager_UI:
                     "The league must be at least ONE round! Please enter an integer greater than ZERO!"
                 )
         while True:
-            print("Now enter the dates of all the rounds in this format (dd/mm/yyyy hh:mm)")
+            print("Now enter the dates of all the rounds in this format (dd-mm-yyyy hh:mm)")
             for i in range(1, int(l.rounds) + 1):
                 next_date = input(f"Enter the date of round {i}: ")
                 l.round_dates.append(next_date)
@@ -427,7 +427,7 @@ class Tournament_Manager_UI:
                     print(ERR_UNKNOWN)
         while True:
             p.dob = input(
-                "\nEnter the date of birth for the player in this format (dd/mm/yyyy): "
+                "\nEnter the date of birth for the player in this format (dd-mm-yyyy): "
             )
             try:
                 validate_dob(p.dob)

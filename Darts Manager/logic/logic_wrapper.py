@@ -53,7 +53,7 @@ class Logic_Wrapper:
     def get_unfinished_matches(self, league_id: str) -> List[object]:
         return self.league_logic.get_unfinished_matches(league_id)
 
-    def get_finished_matces(self, league_id: str) -> List[object]:
+    def get_finished_matches(self, league_id: str) -> List[object]:
         return self.league_logic.get_finished_matches(league_id)
 
     def check_for_clubs(self) -> bool:

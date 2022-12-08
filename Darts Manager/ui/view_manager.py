@@ -73,8 +73,22 @@ class View_Manager_UI:
                 #             f"{player.name:<25}{player.ssn:<12}{player.email:<20}{player.dob:<12}{player.phone:<10}{player.home_phone:<15}{player.address:<30}"
                 #         )
             elif command == "2":
-                print("==Print Upcoming Matches==")
+                #print("==Print Upcoming Matches==")
+                test = self.logic_wrapper.get_unfinished_matches("1")
+                print(test)
+                for i in test:
+                    print(i)
             elif command == "3":
-                print("==Print Matches with registered results==")
+                #print("==Print Matches with registered results==")
+                test2 = self.logic_wrapper.get_finished_matches("1")
+                print(test2)
+                for i in test2:
+                    print(i)
+                    for j in i:
+                        print(j)
             elif command == "4":
                 print("==Print League Scores==")
+                test3 = self.logic_wrapper.get_all_league_teams("1")
+                for i in test3:
+                    print(i)
+                pass

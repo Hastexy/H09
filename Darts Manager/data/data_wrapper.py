@@ -63,7 +63,7 @@ class Data_Wrapper:
     def get_unfinished_matches(self, league_id: str) -> List[object]:
         return self.league_data.get_unfinished_matches(league_id)
 
-    def get_finished_matces(self, league_id: str) -> List[object]:
+    def get_finished_matches(self, league_id: str) -> List[object]:
         return self.league_data.get_finished_matches(league_id)
 
     def get_all_league_teams(self, league_id: str) -> List[object]:

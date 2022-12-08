@@ -27,7 +27,7 @@ class League_Logic:
         """Makes a request to the datawrapper to fetch all unfinished matches in a specific league. If a match has an empty 'result' column in the database, it is considered unfinished."""
         return self.data_wrapper.get_unfinished_matches(league_id)
 
-    def get_finished_matces(self, league_id: str) -> List[object]:
+    def get_finished_matches(self, league_id: str) -> List[object]:
         """Makes a request to the datawrapper to fetch all unfinished matches in a specific league. If a match has a non-empty 'result' column in the database, it is considered finished."""
         return self.data_wrapper.get_finished_matches(league_id)
 
