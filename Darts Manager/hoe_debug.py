@@ -1,4 +1,4 @@
-from ui.view_manager import View_Manager_UI
+from ui.view_manager_ui import View_Manager_UI
 from logic.logic_wrapper import Logic_Wrapper
 
 menu = View_Manager_UI(Logic_Wrapper())
