@@ -193,7 +193,7 @@ class Tournament_Manager_UI:
                 validate_team_name(t.name)
                 break
             except NameLengthException:
-                print("\n##The name must be between 3 or 49 characters long!##")
+                print("\n##The name must be between 3 or 39 characters long!##")
             except:
                 print("\n##Unknown Error Occured, try again##")
 

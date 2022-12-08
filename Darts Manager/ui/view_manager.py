@@ -11,6 +11,14 @@ STR_HOME_PHONE = "HOME PHONE"
 STR_ADDRESS = "ADDRESS"
 STR_ROLE = "ROLE"
 
+DELIM = "═" * 51
+DELIML = "═" * 39 + "╦═════╦═════"
+DELIMR = "═════╦═════╦" + "═" * 39
+DELIMLP = "═" * 39 + "╬═════╬═════"
+DELIMRP = "═════╬═════╬" + "═" * 39
+DELIMLB = "═" * 39 + "╩═════╩═════"
+DELIMRB = "═════╩═════╩" + "═" * 39
+
 
 class View_Manager_UI:
     def __init__(self, logic_connection) -> None:
@@ -72,8 +80,9 @@ class View_Manager_UI:
                     print("-" * len(header))
                     print("Games:")
                     for match in matches:
-                        home, away = match
-                        print(f"\t{home} VS {away}")
+                        # home, away = match
+                        # print(f"\t{home} VS {away}")
+                        self.create_match_table(match)
 
             elif command == "3":
                 print("==Viewing Matches with registered results==\n")
@@ -82,16 +91,12 @@ class View_Manager_UI:
                 )
                 for date, matches in matches_sorted_by_date.items():
                     header = f"#### Date: {date}"
+                    #test_delim = "x" * 39
                     print(header)
                     print("-" * len(header))
                     for match in matches:
-                        print(
-                            f"Game:   {match.home_team.title()} VS {match.away_team.title()}\n"
-                        )
-                        for game in match.games:
-                            print(
-                                f"{game.home_player.title():<25}{game.home_score:<4}{game.type:^4}{game.away_score}{game.away_player.title():>25}"
-                            )
+                        self.create_match_table(match)
+                      
             elif command == "4":
                 print("==Viewing League Standings==\n")
                 print(f"{'TEAM':<25}{'MATCHES WON':<20}{'LEGS WON'}")
@@ -126,3 +131,22 @@ class View_Manager_UI:
                     return league_id
 
             print("Please select a valid league ID from the list!")
+
+    def create_match_table(self, match) -> str:
+        home_txt = "===Home Team==="
+        away_txt = "===Away Team==="
+        
+        print(f"╔{DELIM}╦═════╦{DELIM}╗")
+        print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
+        print(f"╠{DELIML}╬═════╬{DELIMR}╣")
+        print(f"║{home_txt:^39}║Leg 1║Leg 2║GAMES║Leg 2║Leg 1║{away_txt:^39}║")
+        print(f"╠{DELIMLP}╬═════╬{DELIMRP}╣")
+        for count, game in enumerate(match.games):
+            home_leg1, home_leg2 = game.home_score.split("-")
+            away_leg1, away_leg2 = game.home_score.split("-")
+            print(f"║{game.home_player.title():<39}║{home_leg1:^5}║{home_leg2:^5}║{game.type:^5}║{away_leg1:^5}║{away_leg2:^5}║{game.away_player.title():>39}║")
+
+            if count != 11:
+                print(f"╠{DELIMLP}╬═════╬{DELIMRP}╣")
+            else:
+                print(f"╚{DELIMLB}╩═════╩{DELIMRB}╝")
