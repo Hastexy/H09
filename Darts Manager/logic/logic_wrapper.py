@@ -50,10 +50,10 @@ class Logic_Wrapper:
     def get_all_players(self) -> List[object]:
         return self.player_logic.get_all_players()
 
-    def get_unfinished_matches(self, league_id: str) -> List[object]:
+    def get_unfinished_matches(self, league_id: str) -> dict:
         return self.league_logic.get_unfinished_matches(league_id)
 
-    def get_finished_matches(self, league_id: str) -> List[object]:
+    def get_finished_matches(self, league_id: str) -> dict:
         return self.league_logic.get_finished_matches(league_id)
 
     def check_for_clubs(self) -> bool:
@@ -65,8 +65,17 @@ class Logic_Wrapper:
     def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
         self.league_logic.generate_schedule(all_teams, league_ID)
 
-    def register_teams(self, tourney):  # breyta þessu hérna!!
-        self.league_logic.register_teams(tourney)
-
     def get_all_league_teams(self, league_id: str) -> List[object]:
         return self.league_logic.get_all_league_teams(league_id)
+
+    def get_all_leagues(self) -> None:
+        return self.league_logic.get_all_leagues()
+
+    def get_team_standings(self, league_id: str) -> List[tuple]:
+        return self.league_logic.get_team_standings(league_id)
+
+    def check_host_name(self, name: str, league_id: str) -> bool:
+        return self.league_logic.check_host_name(name, league_id)
+
+    def check_captain_name(self, name: str, league_id: str) -> bool:
+        return self.league_logic.check_captain_name(name, league_id)

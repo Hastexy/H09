@@ -99,23 +99,30 @@ class InvalidNumberCharacterException(Exception):
 class NoAsperandSymbolException(Exception):
     pass
 
+
 class TooManyAsperandSymbolException(Exception):
     pass
+
 
 class NothingBeforeAsperandException(Exception):
     pass
 
+
 class NothingAfterAsperandException(Exception):
     pass
+
 
 class NoDotBeforeAsperandException(Exception):
     pass
 
+
 class NoDotAtStartException(Exception):
     pass
 
+
 class ConsecutiveDotsException(Exception):
     pass
+
 
 class MissingDomainNameException(Exception):
     pass
@@ -177,24 +184,24 @@ def validate_email(email):
     if email.count("@") >= 2:
         raise TooManyAsperandSymbolException()
     if email.count("@") == 1:
-        x,y = email.split("@")
+        x, y = email.split("@")
         if x == "":
             NothingBeforeAsperandException()
         if y == "":
             NothingAfterAsperandException()
         if x[-1] == ".":
             NoDotBeforeAsperandException()
-        
+
     if email[0] == ".":
         NoDotAtStartException()
     if ".." in email:
         ConsecutiveDotsException()
-    
+
     if email[-4] != ".com":
         MissingDomainNameException()
 
 
-def validate_dob(dob):
+def validate_dob(dob: str):
     if len(dob) != 10:
         raise NameLengthException
     if dob[2] != "/" or dob[5] != "/":

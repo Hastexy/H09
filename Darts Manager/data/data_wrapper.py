@@ -69,6 +69,18 @@ class Data_Wrapper:
     def get_all_league_teams(self, league_id: str) -> List[object]:
         return self.league_data.get_all_league_teams(league_id)
 
+    def get_all_leagues(self) -> None:
+        return self.league_data.get_all_leagues()
+
+    def get_team_standings(self, league_id: str) -> List[tuple]:
+        return self.league_data.get_team_standings(league_id)
+
+    def check_host_name(self, name: str, league_id: str) -> bool:
+        return self.league_data.check_host_name(name, league_id)
+
+    def check_captain_name(self, name: str, league_id: str) -> bool:
+        return self.league_data.check_captain_name(name, league_id)
+
     def register_result(self):
         pass
 
@@ -83,6 +95,3 @@ class Data_Wrapper:
 
     def get_new_match_id(self) -> int:
         return self.league_data.get_new_match_id()
-
-    def register_teams(self, tourney):
-        self.league_data.register_teams(tourney)

@@ -4,6 +4,7 @@ from model.team import Team
 from model.player import Player
 from model.league import League
 from ui.input_validators import *
+from datetime import datetime, time, date, timedelta
 
 
 class Tournament_Manager_UI:
@@ -16,24 +17,17 @@ class Tournament_Manager_UI:
 
         print(
             """
-╔═══╦════════════════════╗
-║   ║ Tournament Manager ║
-╠═══╬════════════════════╣
-║ 1 ║ Create Club        ║
-║ 2 ║ Create Team        ║
-║ 3 ║ Create Player      ║
-║ 4 ║ Create League      ║
-║ b ║ Back               ║
-║ q ║ Quit               ║
-╚═══╩════════════════════╝"""
+╔═══╦═══════════════╗
+║   ║  Create Menu  ║
+╠═══╬═══════════════╣
+║ 1 ║ Create Club   ║
+║ 2 ║ Create Team   ║
+║ 3 ║ Create Player ║
+║ 4 ║ Create League ║
+║ b ║ Back          ║
+║ q ║ Quit          ║
+╚═══╩═══════════════╝"""
         )
-        # print("\n---Tournament Manager---")
-        # print("1. create club")
-        # print("2. create team")
-        # print("3. create player")
-        # print("4. create tourney")
-        # print("b. back")
-        # print("q. quit")
 
     def input_promt(self):
         while True:
@@ -334,26 +328,32 @@ class Tournament_Manager_UI:
             else:
                 print("Please select a team from the list!")
 
+        if len(l.teams) % 2 == 1:
+            l.rounds = len(l.teams)
+        else:
+            l.rounds = len(l.teams) - 1
+
         while True:
-            l.rounds = input("\nEnter the amount of rounds per day: ")
-
-            if l.rounds == "b":
-                return
-
+            start_date = input(
+                "Please enter the starting date of the league in this format (dd/mm/yyyy hh:mm): "
+            )
             try:
-                validate_rounds(l.rounds)
+                start_date = datetime.strptime(start_date, "%d/%m/%Y %H:%M")
                 break
-            except NotDigitsError:
-                print("Please insert an integer!")
-            except RoundLengthError:
-                print(
-                    "The league must be at least ONE round! Please enter an integer greater than ZERO!"
-                )
-        while True:
-            print("Now enter the dates of all the rounds in this format (dd-mm-yyyy hh:mm)")
-            for i in range(1, int(l.rounds) + 1):
-                next_date = input(f"Enter the date of round {i}: ")
-                l.round_dates.append(next_date)
+                print("Please enter the date like the format shows!")
+            except:
+                pass
+
+        l.round_dates.append(start_date)
+
+        interval = int(input("How many days between rounds?: "))
+        tdelta = timedelta(days=interval)
+
+        next_date = start_date
+
+        for _ in range(l.rounds - 1):
+            next_date += tdelta
+            l.round_dates.append(next_date)
 
             if len(l.round_dates) > 1:
                 l.start_date = l.round_dates[0]
@@ -363,6 +363,7 @@ class Tournament_Manager_UI:
             break
 
         self.logic_wrapper.create_league(l)
+        print("==League Created==")
 
     def create_player(self) -> None:
         p = Player()
