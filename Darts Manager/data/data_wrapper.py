@@ -75,6 +75,12 @@ class Data_Wrapper:
     def get_team_standings(self, league_id: str) -> List[tuple]:
         return self.league_data.get_team_standings(league_id)
 
+    def check_host_name(self, name: str, league_id: str) -> bool:
+        return self.league_data.check_host_name(name, league_id)
+
+    def check_captain_name(self, name: str, league_id: str) -> bool:
+        return self.league_data.check_captain_name(name, league_id)
+
     def register_result(self):
         pass
 

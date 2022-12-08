@@ -73,3 +73,9 @@ class Logic_Wrapper:
 
     def get_team_standings(self, league_id: str) -> List[tuple]:
         return self.league_logic.get_team_standings(league_id)
+
+    def check_host_name(self, name: str, league_id: str) -> bool:
+        return self.league_logic.check_host_name(name, league_id)
+
+    def check_captain_name(self, name: str, league_id: str) -> bool:
+        return self.league_logic.check_captain_name(name, league_id)

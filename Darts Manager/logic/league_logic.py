@@ -56,3 +56,9 @@ class League_Logic:
     def get_team_standings(self, league_id: str) -> List[tuple]:
         all_teams = self.data_wrapper.get_team_standings(league_id)
         return sorted(all_teams, key=itemgetter(1, 2, 0), reverse=True)
+
+    def check_host_name(self, name: str, league_id: str) -> bool:
+        return self.data_wrapper.check_host_name(name, league_id)
+
+    def check_captain_name(self, name: str, league_id: str) -> bool:
+        return self.data_wrapper.check_captain_name(name, league_id)

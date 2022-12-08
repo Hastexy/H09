@@ -199,3 +199,25 @@ class League_Data:
             reader = csv.DictReader(league_file, delimiter=";")
             all_leagues = [League(*league.values()) for league in reader]
         return all_leagues
+
+    def check_host_name(self, name: str, league_id: str) -> bool:
+        with open(self.league_file, newline="", encoding="utf-8") as csv_file:
+            reader = csv.DictReader(csv_file, delimiter=";")
+            for league in reader:
+                if league["ID"] == str(league_id):
+                    if league["host_name"] == name:
+                        return True
+        return False
+
+    def check_captain_name(self, name: str, league_id: str) -> bool:
+        teamfile = self.team_folder + league_id + ".csv"
+        with open(teamfile, newline="", encoding="utf-8") as team_file:
+            team_reader = csv.DictReader(team_file, delimiter=";")
+            for team in team_reader:
+                memberfile = "files/TeamMembers/" + team["ID"] + ".csv"
+                with open(memberfile, newline="", encoding="utf-8") as member_file:
+                    member_reader = csv.DictReader(member_file, delimiter=";")
+                    for player in member_reader:
+                        if player["name"] == name and player["role"] == "captain":
+                            return True
+        return False
