@@ -92,8 +92,14 @@ class League_Data:
                 all_teams.append(t)
         return all_teams
 
-    def get_team_standings(self) -> List[object]:
-        pass
+    def get_team_standings(self, league_id: str) -> List[tuple]:
+        team_list = []
+        teamfile = self.team_folder + str(league_id) + ".csv"
+        with open(teamfile, newline="", encoding="utf-8") as team_file:
+            reader = csv.DictReader(team_file, delimiter=";")
+            for team in reader:
+                team_list.append((team["name"], team["match_wins"], team["legs_wins"]))
+        return team_list
 
     def get_finished_matches(self, league_id: str) -> List[object]:
         """Receives a league_id number and fetches all the matches that have been completed in that league. Returns a list of Match objects."""
@@ -154,11 +160,19 @@ class League_Data:
         teams_file = self.team_folder + str(league.id) + ".csv"
 
         with open(teams_file, "a", newline="", encoding="utf-8") as teams_file:
-            fieldnames = ["ID", "name", "clubID"]
+            fieldnames = ["ID", "name", "clubID", "match_wins", "legs_wins"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
             writer.writeheader()
             for team in league.teams:
-                writer.writerow({"ID": team.id, "name": team.name, "clubID": team.club})
+                writer.writerow(
+                    {
+                        "ID": team.id,
+                        "name": team.name,
+                        "clubID": team.club,
+                        "match_wins": "0",
+                        "legs_wins": "0",
+                    }
+                )
 
     def reschedule_match(self, match_id: int) -> object:
         pass

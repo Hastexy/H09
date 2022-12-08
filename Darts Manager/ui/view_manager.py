@@ -101,6 +101,13 @@ class View_Manager_UI:
                             )
             elif command == "4":
                 print("==Viewing League Standings==\n")
+                print(f"{'TEAM':<25}{'MATCHES WON':<20}{'LEGS WON'}")
+                teams_sorted_by_wins = self.logic_wrapper.get_team_standings(league_id)
+                for team in teams_sorted_by_wins:
+                    name, matches, legs = team
+                    print("-" * 53)
+                    print(f"{name:<25}{matches:<20}{legs}")
+                print("-" * 53)
 
     def display_available_leagues(self, leagues: List[object]) -> None:
         header = "* Here is a list of all registered leagues: *"

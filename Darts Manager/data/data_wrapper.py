@@ -72,6 +72,9 @@ class Data_Wrapper:
     def get_all_leagues(self) -> None:
         return self.league_data.get_all_leagues()
 
+    def get_team_standings(self, league_id: str) -> List[tuple]:
+        return self.league_data.get_team_standings(league_id)
+
     def register_result(self):
         pass
 

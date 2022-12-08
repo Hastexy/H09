@@ -1,4 +1,5 @@
 from typing import List
+from operator import itemgetter
 
 
 class League_Logic:
@@ -51,3 +52,7 @@ class League_Logic:
     def get_all_league_teams(self, league_id: str) -> List[object]:
         """Makes a request to the datawrapper to fetch all teams participating in a specific league."""
         return self.data_wrapper.get_all_league_teams(league_id)
+
+    def get_team_standings(self, league_id: str) -> List[tuple]:
+        all_teams = self.data_wrapper.get_team_standings(league_id)
+        return sorted(all_teams, key=itemgetter(1, 2, 0), reverse=True)
