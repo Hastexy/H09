@@ -19,24 +19,17 @@ class View_Manager_UI:
     def menu_output(self):
         print(
             """
-╔═══╦══════════════════════════════════════╗
-║   ║             View Manager             ║
-╠═══╬══════════════════════════════════════╣
-║ 1 ║ View Teams                           ║
-║ 2 ║ View Upcoming Matches                ║
-║ 3 ║ View Finished Matches                ║
-║ 4 ║ View Team Standings                  ║
-║ b ║ Back                                 ║
-║ q ║ Quit                                 ║
-╚═══╩══════════════════════════════════════╝"""
+╔═══╦═══════════════════════╗
+║   ║      League Info      ║
+╠═══╬═══════════════════════╣
+║ 1 ║ View Teams            ║
+║ 2 ║ View Upcoming Matches ║
+║ 3 ║ View Finished Matches ║
+║ 4 ║ View League Standings ║
+║ b ║ Back                  ║
+║ q ║ Quit                  ║
+╚═══╩═══════════════════════╝"""
         )
-        # print("\n---View Manager---")
-        # print("1. view team")
-        # print("2. view upcoming matches")
-        # print("3. view matches with registered results")
-        # print("4. view League Scores")
-        # print("b. back")
-        # print("q. quit")
 
     def input_prompt(self):
         all_leagues = self.logic_wrapper.get_all_leagues()

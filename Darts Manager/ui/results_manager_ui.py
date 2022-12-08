@@ -11,7 +11,7 @@ class Results_Manager_UI:
         print(
             """
 ╔═══╦════════════════════════╗
-║   ║    Results Manager     ║
+║   ║     Match Manager      ║
 ╠═══╬════════════════════════╣
 ║ 1 ║ Register Match Results ║
 ║ 2 ║ Change Match Results   ║
@@ -19,11 +19,6 @@ class Results_Manager_UI:
 ║ q ║ Quit                   ║
 ╚═══╩════════════════════════╝"""
         )
-        # print("\n---Results Manager---")
-        # print("1. register match results")
-        # print("2. change match results")
-        # print("b. back")
-        # print("q. quit")
 
     def input_prompt(self):
         all_leagues = self.logic_wrapper.get_all_leagues()

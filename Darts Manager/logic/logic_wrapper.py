@@ -4,7 +4,7 @@ from logic.team_logic import Team_Logic
 from data.data_wrapper import Data_Wrapper
 from logic.club_logic import Club_Logic
 from logic.league_logic import League_Logic
-
+#The Logic Wrapper connects functions between the ui layer and the logic layer.
 
 class Logic_Wrapper:
     def __init__(self):

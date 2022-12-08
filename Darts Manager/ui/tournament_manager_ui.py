@@ -17,24 +17,17 @@ class Tournament_Manager_UI:
 
         print(
             """
-╔═══╦════════════════════╗
-║   ║ Tournament Manager ║
-╠═══╬════════════════════╣
-║ 1 ║ Create Club        ║
-║ 2 ║ Create Team        ║
-║ 3 ║ Create Player      ║
-║ 4 ║ Create League      ║
-║ b ║ Back               ║
-║ q ║ Quit               ║
-╚═══╩════════════════════╝"""
+╔═══╦═══════════════╗
+║   ║  Create Menu  ║
+╠═══╬═══════════════╣
+║ 1 ║ Create Club   ║
+║ 2 ║ Create Team   ║
+║ 3 ║ Create Player ║
+║ 4 ║ Create League ║
+║ b ║ Back          ║
+║ q ║ Quit          ║
+╚═══╩═══════════════╝"""
         )
-        # print("\n---Tournament Manager---")
-        # print("1. create club")
-        # print("2. create team")
-        # print("3. create player")
-        # print("4. create tourney")
-        # print("b. back")
-        # print("q. quit")
 
     def input_promt(self):
         while True:
@@ -347,8 +340,9 @@ class Tournament_Manager_UI:
             try:
                 start_date = datetime.strptime(start_date, "%d/%m/%Y %H:%M")
                 break
-            except ValueError:
                 print("Please enter the date like the format shows!")
+            except:
+                pass
 
         l.round_dates.append(start_date)
 
@@ -361,12 +355,12 @@ class Tournament_Manager_UI:
             next_date += tdelta
             l.round_dates.append(next_date)
 
-        if len(l.round_dates) > 1:
-            l.start_date, l.end_date = l.round_dates[0].strftime(
-                "%d-%m-%Y %H:%M"
-            ), l.round_dates[-1].strftime("%d-%m-%Y %H:%M")
-        else:
-            l.start_date = l.end_date = l.round_dates[0]
+            if len(l.round_dates) > 1:
+                l.start_date = l.round_dates[0]
+                l.end_date = l.round_dates[-1]
+            else:
+                l.start_date = l.end_date = l.round_dates[0]
+            break
 
         self.logic_wrapper.create_league(l)
         print("==League Created==")
@@ -434,7 +428,7 @@ class Tournament_Manager_UI:
                     print(ERR_UNKNOWN)
         while True:
             p.dob = input(
-                "\nEnter the date of birth for the player in this format (dd/mm/yyyy): "
+                "\nEnter the date of birth for the player in this format (dd-mm-yyyy): "
             )
             try:
                 validate_dob(p.dob)
