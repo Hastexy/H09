@@ -23,7 +23,7 @@ class Tournament_Manager_UI:
         self.clubs = ["test", "Dart Vader"]
 
     def menu_output(self):
-        '''Prints out the available options from the tournament manager screen.'''
+        """Prints out the available options from the tournament manager screen."""
         print(
             """
 ╔═══╦═══════════════╗
@@ -39,7 +39,7 @@ class Tournament_Manager_UI:
         )
 
     def input_promt(self):
-        '''This is the main domain for the tournament manager.'''
+        """This is the main domain for the tournament manager."""
         while True:
             self.menu_output()
             command = input("\nEnter your option: ")
@@ -54,7 +54,7 @@ class Tournament_Manager_UI:
                 print(CANCEL)
                 self.create_club()
             elif command == "2":
-                #print(CANCEL)
+                # print(CANCEL)
                 self.create_team()
             elif command == "3":
                 print(CANCEL)
@@ -87,13 +87,15 @@ class Tournament_Manager_UI:
     def display_all_clubs(self) -> list:
         """Displays all clubs registered in the system."""
 
-        #print("\n##### Every team must belong to a club. #####")
+        # print("\n##### Every team must belong to a club. #####")
 
-        print(f"""{Fore.YELLOW}
+        print(
+            f"""{Fore.YELLOW}
 ╔══════════════════════════════════╗
 ║ Every team must belong to a club ║
-╚══════════════════════════════════╝{Fore.WHITE}""")
-        
+╚══════════════════════════════════╝{Fore.WHITE}"""
+        )
+
         header = f"║ {'List of all registered clubs':^79} ║"
         separator = "═" * (len(header) - 2)
 
@@ -111,13 +113,13 @@ class Tournament_Manager_UI:
         return all_clubs
 
     def create_club(self) -> None:
-        '''Creates a new club and registers it into the database.'''
+        """Creates a new club and registers it into the database."""
         c = Club()
         c.id = self.logic_wrapper.get_new_club_id()
 
         while True:
 
-            c.name = input("\nEnter the name of your club: ")
+            c.name = input("\nEnter the name of your club: ").strip().lower()
             if c.name == "b":
                 print(CANCEL2)
                 return "b"
@@ -131,7 +133,7 @@ class Tournament_Manager_UI:
                     print(ERR_UNKNOWN)
 
         while True:
-            c.address = input("\nEnter the address of your club: ")
+            c.address = input("\nEnter the address of your club: ").strip().lower()
             if c.address == "b":
                 print(CANCEL2)
                 return "b"
@@ -169,7 +171,7 @@ class Tournament_Manager_UI:
         )
 
     def create_team(self) -> None:
-        '''Creates a new team and registers it to the database.'''
+        """Creates a new team and registers it to the database."""
         if not self.logic_wrapper.check_for_clubs():
 
             print(
@@ -184,11 +186,7 @@ class Tournament_Manager_UI:
         while True:
 
             print(CANCEL)
-            
-            # club_ID = input(
-            #     "\nWhich club does the new team belong to? (club ID): "
-            # ).lower()
-            
+
             club_ID = input(
                 "\nEnter the ID of the club this new team belongs to: "
             ).lower()
@@ -209,7 +207,7 @@ class Tournament_Manager_UI:
             print("Please choose one of the club ID's from the list.")
 
         while True:
-            t.name = input("\nEnter the name of the new team: ")
+            t.name = input("\nEnter the name of the new team: ").strip().lower()
             if t.name == "b":
                 return
 
@@ -222,7 +220,7 @@ class Tournament_Manager_UI:
                 print(ERR_UNKNOWN)
 
         # header = f"║ Every team must have at least 4 players, one of whom is the team captain ║"
-        header = f"║ {'Every team must have 4 players minimum':<63} ║"
+        header = f"║ {'Every team must have 4 players':<63} ║"
         separator = "═" * (len(header) - 2)
 
         print(f"\n╔{separator}╗")
@@ -258,7 +256,7 @@ class Tournament_Manager_UI:
 
             print("Invalid player ID!")
 
-        print("---Now we need to add the rest of the players (at least THREE more)---")
+        print("---Now we need to add the rest of the players (THREE more)---")
         print("Press 'q' to stop adding players to the team.")
 
         while True:
@@ -292,12 +290,11 @@ class Tournament_Manager_UI:
         )
 
     def create_league(self) -> None:
-        '''Creates a new league and registers it into the database.'''
+        """Creates a new league and registers it into the database."""
         l = League()
         l.id = self.logic_wrapper.get_new_league_id()
         while True:
             l.name = input("\nEnter the name of your league: ")
-
             if l.name == "b":
                 return
 
@@ -448,7 +445,7 @@ class Tournament_Manager_UI:
         )
 
     def create_player(self) -> None:
-        '''Creates a new player and registers them into the datebase.'''
+        """Creates a new player and registers them into the datebase."""
         p = Player()
         p.id = self.logic_wrapper.get_new_player_id()
 
@@ -559,7 +556,9 @@ class Tournament_Manager_UI:
                     print(ERR_UNKNOWN)
 
         while True:
-            p.address = input("\n(Optional)Enter the Address of the player: ")
+            p.address = (
+                input("\n(Optional)Enter the Address of the player: ").strip().lower()
+            )
             if p.address == "b":
                 print(CANCEL2)
                 return "b"
@@ -582,7 +581,7 @@ class Tournament_Manager_UI:
         self.logic_wrapper.create_player(p)
 
     def display_available_teams(self, teams: List[object]) -> None:
-        '''displays all available teams.'''
+        """displays all available teams."""
         header = f"║ {'Here is a list of all available teams':^39} ║"
         separator = "═" * (len(header) - 2)
 

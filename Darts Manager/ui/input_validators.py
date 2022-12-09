@@ -214,8 +214,7 @@ def validate_dob(dob: str):
         raise InvalidNumberCharacterException()
 
 
-def validate_league_name(league_name) -> None:
-    """Má ég lesa úr gagnagrunninum hérna??"""
+def validate_league_name(league_name: str) -> None:
     pass
 
 
