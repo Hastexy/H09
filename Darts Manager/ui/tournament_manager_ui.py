@@ -5,7 +5,11 @@ from model.player import Player
 from model.league import League
 from ui.input_validators import *
 from datetime import datetime, time, date, timedelta
-
+from colorama import init, Fore, Style, Back
+init()
+#Colorama options
+#Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+#Style = [DIM, NORMAL, BRIGHT]
 
 class Tournament_Manager_UI:
     def __init__(self, data_connection) -> None:
@@ -15,8 +19,7 @@ class Tournament_Manager_UI:
 
     def menu_output(self):
 
-        print(
-            """
+        print("""
 ╔═══╦═══════════════╗
 ║   ║  Create Menu  ║
 ╠═══╬═══════════════╣
@@ -427,7 +430,7 @@ class Tournament_Manager_UI:
                     print(ERR_UNKNOWN)
         while True:
             p.dob = input(
-                "\nEnter the date of birth for the player in this format (dd-mm-yyyy): "
+                "\nEnter the date of birth for the player in this format dd/mm/yyyy: "
             )
             try:
                 validate_dob(p.dob)

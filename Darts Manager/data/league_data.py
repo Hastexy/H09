@@ -223,7 +223,7 @@ class League_Data:
         return False
 
     def check_captain_name(self, name: str, league_id: str) -> bool:
-        """Checks if the given player is a captain."""
+        """Checks if the given player is a captain in a team participating in a specific league."""
         teamfile = self.team_folder + league_id + ".csv"
         with open(teamfile, newline="", encoding="utf-8") as team_file:
             team_reader = csv.DictReader(team_file, delimiter=";")
@@ -233,7 +233,7 @@ class League_Data:
                     member_reader = csv.DictReader(member_file, delimiter=";")
                     for player in member_reader:
                         if player["name"] == name and player["role"] == "captain":
-                            return True
+                            return Player(*player.values())
         return False
 
     def record_result(self, match: object) -> None:
@@ -276,3 +276,10 @@ class League_Data:
                             Player(*member.values()) for member in memberreader
                         ]
                         return all_team_players
+
+    def get_team(self, team_id: str) -> object:
+        with open("files/teams.csv", newline="", encoding="utf-8") as team_file:
+            reader = csv.DictReader(team_file, delimiter=";")
+            for team in reader:
+                if team["ID"] == team_id:
+                    return Team(*team.values())

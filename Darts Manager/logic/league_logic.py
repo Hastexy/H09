@@ -84,3 +84,6 @@ class League_Logic:
 
     def reschedule_match(self, match: object) -> None:
         self.data_wrapper.reschedule_match(match)
+
+    def get_team(self, team_id: str) -> object:
+        return self.data_wrapper.get_team(team_id)
