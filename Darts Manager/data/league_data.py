@@ -223,7 +223,7 @@ class League_Data:
         return False
 
     def check_captain_name(self, name: str, league_id: str) -> bool:
-        """Checks if the given player is a captain."""
+        """Checks if the given player is a captain in a team participating in a specific league."""
         teamfile = self.team_folder + league_id + ".csv"
         with open(teamfile, newline="", encoding="utf-8") as team_file:
             team_reader = csv.DictReader(team_file, delimiter=";")

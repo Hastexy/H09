@@ -78,9 +78,14 @@ class View_Manager_UI:
                 print(TOP)
                 print(f"║{'===Viewing Upcoming Matches===':^109}║")
                 print(BOT)
-                matches_sorted_by_date = self.logic_wrapper.get_unfinished_matches(
-                    league_id
-                )
+                try:
+                    matches_sorted_by_date = self.logic_wrapper.get_unfinished_matches(
+                        league_id
+                    )
+                except FileNotFoundError:
+                    print("Something went wrong in the database, please fix!")
+                    return
+
                 for date, matches in matches_sorted_by_date.items():
                     self.show_date(date)
                     # print("Games:")
@@ -184,25 +189,30 @@ class View_Manager_UI:
         print(f"\n╔{'═'*4}╦{'═'*15}╦{'═'*99}╗")
         print(f"║{f'{id}.':^4}║{'TEAM NAME':^15}║ {team.name.title():<98}║")
         print(f"╚{'═'*4}╩{'═'*15}╩{'═'*99}╝")
-        #=============CLUTTERED VERSION Could fix with colorama===============
+        # =============CLUTTERED VERSION Could fix with colorama===============
         # print(f"\n╔{'═'*39}╦{'═'*14}╦{'═'*39}╦{'═'*14}╗")
         # print(f"║{STR_NAME:^39}║{STR_SSN:^14}║{STR_EMAIL:^39}║{STR_DOB:^14}║")
         # print(f"╠{'═'*15}╦{'═'*15}╦{'═'*7}╩{'═'*14}╩{'═'*16}╦{'═'*15}╦{'═'*6}╩{'═'*14}╣")
         # print(f"║{STR_PHONE:^15}║{STR_HOME_PHONE:^15}║{STR_ADDRESS:^39}║{STR_ROLE:^15}║{'#'*21}║")
         print(f"\n╔{'═'*39}╦{'═'*14}╦{'═'*39}╦{'═'*14}╦{'═'*10}╗")
-        print(f"║{STR_NAME:^39}║{STR_SSN:^14}║{STR_EMAIL:^39}║{STR_DOB:^14}║{STR_ROLE:^10}║")
-        #print(f"\n{STR_NAME:<35}{STR_PHONE:<12}{STR_SSN:<15}{STR_ADDRESS:<20}{STR_ROLE:<10}")
+        print(
+            f"║{STR_NAME:^39}║{STR_SSN:^14}║{STR_EMAIL:^39}║{STR_DOB:^14}║{STR_ROLE:^10}║"
+        )
+        # print(f"\n{STR_NAME:<35}{STR_PHONE:<12}{STR_SSN:<15}{STR_ADDRESS:<20}{STR_ROLE:<10}")
         for player in team.players:
             print(f"╠{'═'*39}╬{'═'*14}╬{'═'*39}╬{'═'*14}╬{'═'*10}╣")
-            print(f"║ {player.name.title():<38}║{player.ssn:^14}║ {player.email:<38}║{player.dob:^14}║{player.role.upper():^10}║")
-            
-        #=============CLUTTERED VERSION Could fix with colorama===============
+            print(
+                f"║ {player.name.title():<38}║{player.ssn:^14}║ {player.email:<38}║{player.dob:^14}║{player.role.upper():^10}║"
+            )
+
+        # =============CLUTTERED VERSION Could fix with colorama===============
         #     print(f"╠{'═'*15}╩{'═'*15}╩{'═'*7}╦{'═'*14}╦{'═'*16}╩{'═'*15}╩{'═'*6}╦{'═'*14}╣")
         #     print(f"║{player.name.title():^39}║{player.ssn:^14}║{player.email:^39}║{player.dob:^14}║")
         #     print(f"╠{'═'*15}╦{'═'*15}╦{'═'*7}╩{'═'*14}╩{'═'*16}╦{'═'*15}╦{'═'*6}╩{'═'*14}╣")
         #     print(f"║{player.phone:^15}║{player.home_phone:^15}║{player.address:^39}║{player.role:^15}║{'#'*21}║")
         # print(f"╚{'═'*15}╩{'═'*15}╩{'═'*39}╩{'═'*15}╩{'═'*21}╝")
-        print(f"╚{'═'*39}╩{'═'*14}╩{'═'*39}╩{'═'*14}╩{'═'*10}╝")                    
+        print(f"╚{'═'*39}╩{'═'*14}╩{'═'*39}╩{'═'*14}╩{'═'*10}╝")
+
     def parse_leg_score(self, game: object) -> None:
         if game.home_score == "0":
             game.home_score = "0-0"
