@@ -7,7 +7,7 @@ class Club_Data:
     def __init__(self):
         self.file_name = "files/clubs.csv"
 
-    def read_all_clubs(self) -> List[object]:  # Þurfum við þetta fall????
+    def read_all_clubs(self) -> List[object]:
         """Fetches all registered clubs in the database and returns a list of Club objects."""
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:

@@ -8,12 +8,13 @@ BACK = f"""{Fore.YELLOW}
 ║ Input "b" to go back ║
 ╚══════════════════════╝\n{Fore.WHITE}"""
 
+
 class Results_Manager_UI:
     def __init__(self, logic_connection) -> None:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
-        '''Prints out all available inputs from the result manager screen.'''
+        """Prints out all available inputs from the result manager screen."""
         print(
             """
 ╔═══╦════════════════════════╗
@@ -27,7 +28,7 @@ class Results_Manager_UI:
         )
 
     def input_prompt(self):
-        '''This is the main domain for the result manager.'''
+        """This is the main domain for the result manager."""
         all_leagues = self.logic_wrapper.get_all_leagues()
         league_id = self.select_league_id(all_leagues)
 
@@ -74,21 +75,26 @@ class Results_Manager_UI:
                         print("Invalid input!")
 
             elif self.logic_wrapper.check_captain_name(name, league_id):
-                # Heilsa captain með nafni og útskýra hvað hann getur gert
                 print(f"\n{Fore.YELLOW}╔{'═'*78}╗")
-                print(f"║ {f'Hello {name}, you are here to update a match result':^77}║")
-                # sækja allar upcoming viðureignir
+                print(
+                    f"║ {f'Hello {name}, you are here to update a match result':^77}║"
+                )
                 the_captain = self.logic_wrapper.check_captain_name(name, league_id)
                 all_unfinished_matches = self.logic_wrapper.get_unfinished_matches(
                     league_id
                 )
                 the_team_of_the_captain = self.logic_wrapper.get_team(the_captain.team)
-                # sigta út þær sem þessi captain er ekki partur af þ.e. liðið hans
                 filtered_unfinished_matches = {}
                 for date, matches in all_unfinished_matches.items():
                     for match in matches:
                         if match.home_team == the_team_of_the_captain.name:
-                            filtered_unfinished_matches[date] = matches
+
+                            if date not in filtered_unfinished_matches:
+                                filtered_unfinished_matches[date] = []
+
+                            filtered_unfinished_matches[date].append(match)
+
+
                 if not filtered_unfinished_matches:
                     print(f"║ {'You have no matches to record results for':^76} ║")
                     print(f"╚{'═' * 78}╝{Fore.WHITE}")
@@ -99,20 +105,19 @@ class Results_Manager_UI:
                 print("#### Going Back To Main Menu")
                 return
             else:
-                print(f"""{Fore.RED}
+                print(
+                    f"""{Fore.RED}
 ╔═════════════════════════════════════╗
 ║ Couldn't find that name, try again! ║
-╚═════════════════════════════════════╝{Fore.WHITE}""")
+╚═════════════════════════════════════╝{Fore.WHITE}"""
+                )
 
     def select_league_id(self, all_leagues: List[object]) -> None:
-        '''Allows the user to select a league by its id.'''
+        """Allows the user to select a league by its id."""
         while True:
             self.display_available_leagues(all_leagues)
             print(BACK)
-            league_id = input(
-                # "Which league do you want to register results for (League ID)?: "
-                "Enter the ID of the League you want to work on: "
-            )
+            league_id = input("Enter the ID of the League you want to work on: ")
             if league_id == "b":
                 return "b"
             for league in all_leagues:
@@ -127,7 +132,7 @@ class Results_Manager_UI:
             )
 
     def display_available_leagues(self, leagues: List[object]) -> None:
-        '''Displays all registerd leagues.'''
+        """Displays all registerd leagues."""
         header = f"║ {'List of all registered leagues':^39} ║"
         separator = "═" * (len(header) - 2)
 
@@ -149,19 +154,16 @@ class Results_Manager_UI:
         print(f"╚{separator}╝{Fore.WHITE}")
 
         for date, matches in all_matches.items():
-            #header = f"#### Date: {date}"
-            #print(header)
-            #print("-" * len(header))
-            print(f"╔{'═'*10}╦{'═'*67}╗")
-            print(f"║{'Date':^10}║{date:<67}║")
-            print(f"╠{'═'*6}╦{'═'*3}╩{'═'*24}╦{'═'*5}╦{'═'*28}╦{'═'*7}╣")
+
+            print(f"╔{'═'*10}╦{'═'*71}╗")
+            print(f"║{'Date':^10}║{date:<71}║")
+            print(f"╠{'═'*6}╦{'═'*3}╩{'═'*24}╦{'═'*5}╦{'═'*28}╦{'═'*11}╣")
             for match in matches:
                 print(
-                    f"║ Game ║ {match.home_team.title():>26} ║  V  ║ {match.away_team.title():<26} ║ ID: {match.id} ║"
+                    f"║ Game ║ {match.home_team.title():>26} ║  V  ║ {match.away_team.title():<26} ║ ID: {match.id:<5} ║"
                 )
-                # print(f"╔{'═' * 51}╦═════╦{'═' * 51}╗")
-                # print(f"║{match.home_team.title():^35}║  V  ║{match.away_team.title():^35}║")
-            print(f"╚{'═'*6}╩{'═'*28}╩{'═'*5}╩{'═'*28}╩{'═' * 7}╝")
+
+            print(f"╚{'═'*6}╩{'═'*28}╩{'═'*5}╩{'═'*28}╩{'═' * 11}╝")
 
     def change_match_date(self, all_matches: dict) -> None:
         while True:
@@ -207,7 +209,6 @@ class Results_Manager_UI:
                 print("Please enter the date like the format shows!")
 
     def update_match_result(self, match: object, league_id: str) -> None:
-        # 501 1v1 game
         print(f"\n╔{'═'*67}╗")
         print(f"║{'First there are FOUR 501 games 1v1':^67}║")
         print(f"║{'Select a player from each team and then assign the scores':^67}║")
@@ -219,7 +220,7 @@ class Results_Manager_UI:
         away_team_players = self.logic_wrapper.get_team_members(
             match.away_team, league_id
         )
-
+        # 501 Games
         for i in range(1, 5):
             home_player, away_player = self.get_competitors(
                 home_team_players, away_team_players, i
@@ -229,10 +230,9 @@ class Results_Manager_UI:
             match.games.append(g)
 
         # 301 game
-        #print("\nNow there is a 301 game 2v2\n")
         print(f"\n╔{'═'*67}╗")
         print(f"║{'Now there is a 301 game 2v2':^67}║")
-        
+
         home_team_players = self.logic_wrapper.get_team_members(
             match.home_team, league_id
         )
@@ -257,8 +257,6 @@ class Results_Manager_UI:
         print(f"║{'Enter the result for the cricket game':^67}║")
         print(f"╚{'═'*67}╝")
 
-        #print("\nNow there is a Cricket game 2v2")
-        #print("Enter the result for the cricket game:\n")
         home_score, away_score = self.get_game_scores()
 
         g = Game("C", home_player1, away_player1, home_score, away_score)
@@ -271,8 +269,6 @@ class Results_Manager_UI:
         print(f"║{'Now for the 4v4 501 game':^67}║")
         print(f"║{'Enter the result for the last 501 game':^67}║")
         print(f"╚{'═'*67}╝")
-        #print("\nNow for the 4v4 501 game")
-        #print("How did that game go?\n")
         home_team_players = self.logic_wrapper.get_team_members(
             match.home_team, league_id
         )
@@ -292,7 +288,7 @@ class Results_Manager_UI:
             match.games.append(g)
 
     def display_players(self, players: List[object]) -> None:
-        
+
         header = "* Available Players: *"
         separator = "*" * len(header)
 
@@ -307,7 +303,7 @@ class Results_Manager_UI:
         print("-" * 38)
 
     def get_game_scores(self) -> int:
-        '''Get the game scores for a game in a given match.'''
+        """Get the game scores for a game in a given match."""
         while True:
             try:
                 home_score = int(input("Home Player Score: "))
@@ -317,7 +313,6 @@ class Results_Manager_UI:
             except ValueError:
                 print("Please enter an integer between 0 and 2!")
 
-        # Gæti þurft að villutékka að það má ekki setja inn 2 fyrir bæði liðin...
         while True:
             try:
                 away_score = int(input("Away Player Score: "))
@@ -331,7 +326,7 @@ class Results_Manager_UI:
     def get_competitors(
         self, home_team_players, away_team_players, game_number
     ) -> object:
-        ''''''
+        """"""
         while True:
             home_player = ""
             self.display_players(home_team_players)
@@ -364,7 +359,9 @@ class Results_Manager_UI:
         return home_player, away_player
 
     def get_301_players(self, available_players: List[object]) -> object:
-        print(f"║{'Select TWO players from the list who competed in the 301 game':^67}║")
+        print(
+            f"║{'Select TWO players from the list who competed in the 301 game':^67}║"
+        )
         print(f"╚{'═'*67}╝")
         both_players = []
         for i in range(1, 3):

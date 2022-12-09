@@ -90,6 +90,10 @@ ERR_DOMAIN_MISSING = f"""{Fore.RED}
 ╚════════════════════════════════════════════════════════════╝{Fore.WHITE}"""
 
 
+class SameNameError(Exception):
+    pass
+
+
 class NameLengthException(Exception):
     pass
 
@@ -214,14 +218,6 @@ def validate_dob(dob: str):
         raise InvalidNumberCharacterException()
 
 
-def validate_league_name(league_name) -> None:
-    """Má ég lesa úr gagnagrunninum hérna??"""
-    pass
-
-
-# class AlreadyRegisteredExeption(Exception)
-#     pass
-
-# def validate_results(score):
-#     if score in results:
-#         raise AlreadyRegisteredExeption()
+def validate_league_name(taken_names: list, league_name: str) -> None:
+    if league_name in taken_names:
+        raise SameNameError

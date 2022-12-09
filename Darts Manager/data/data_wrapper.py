@@ -59,9 +59,6 @@ class Data_Wrapper:
     def generate_schedule(self, all_teams: List[object], league_ID: str) -> None:
         self.league_data.generate_schedule(all_teams, league_ID)
 
-    def get_unplayed_matches(self):
-        pass
-
     def get_unfinished_matches(self, league_id: str) -> List[object]:
         return self.league_data.get_unfinished_matches(league_id)
 

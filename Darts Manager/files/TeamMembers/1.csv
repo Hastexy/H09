@@ -1,5 +1,5 @@
 ID;name;ssn;email;dob;phone;home_phone;address;team_ID;role
-9;truckside weightclass;0685478965;thundertruck@gmail.com;12/12/2341;6985456;2568975;Leirutangi 26;1;captain
-12;thunderbitch;0685478961;thudnerskolia@gmail.com;12/12/2341;6985452;2568972;Leirutangi 0;1;player
-2;testtwo;2222222222;TestTwo@;22/22/2222;2222222;2222222;TestTwo Street;1;player
-3;testthree;3333333333;TestThree@;33/33/3333;3333333;3333333;TestThree Street;1;player
+1;sporgonizza fabio;2609723648;sporga@email.com;12/12/1995;6422410;;neighborlystreet 280;1;captain
+2;gwendoline lucider;1512713385;gwendo@email.com;12/09/1994;5868787;;knowledgestreet 33;1;player
+3;zarathustra ford;0811933925;zara@gmail.com;12/04/1996;5868989;;swingstreet 135;1;player
+4;winston birdshill;1408783929;winston@gmail.com;15/12/2000;5869874;;;1;player

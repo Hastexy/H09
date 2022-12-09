@@ -1,4 +1,4 @@
-class Game:  # tegund af leik / umferð í einhverri viðureign
+class Game:
     def __init__(
         self,
         game_type="",
@@ -7,8 +7,6 @@ class Game:  # tegund af leik / umferð í einhverri viðureign
         home_score="",
         away_score="",
     ) -> None:
-
-        # Þetta komment gæti breyst, fer eftir útfærslunni á hvernig við geymum leiki sem eru spilaðir af mörgum spilurum...
 
         """Initiates an instance of a Game. Each Game object is of a certain type and has two players competing, the home_player and the away_player. The Game object also keeps the score for the game."""
 
