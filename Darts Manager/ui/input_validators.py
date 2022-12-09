@@ -202,7 +202,7 @@ def validate_email(email):
     if ".." in email:
         raise ConsecutiveDotsException()
 
-    if email[-4] != ".com":
+    if email[-4:] != ".com":
         raise MissingDomainNameException()
 
 

@@ -146,8 +146,10 @@ class View_Manager_UI:
 ║ Input "b" to go back ║
 ╚══════════════════════╝\n{Fore.WHITE}""")
             league_id = input("Which league do you want to view (League ID)?: ")
+            if league_id == "b":
+                return "b"
             for league in all_leagues:
-                if league_id == str(league.id) or league_id == "b":
+                if league_id == str(league.id): #or league_id == "b"
                     return league_id
 
             print("Please select a valid league ID from the list!")
