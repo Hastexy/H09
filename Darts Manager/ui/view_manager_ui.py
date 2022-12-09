@@ -20,7 +20,9 @@ DELIMRP = "═════╬═════╬" + "═" * 39
 DELIMLB = "═" * 39 + "╩═════╩═════"
 DELIMRB = "═════╩═════╩" + "═" * 39
 TOP = f"\n╔{'═'*109}╗"
-
+BOT = f"╚{'═'*109}╝\n"
+HOME_TXT = "===Home Team==="
+AWAY_TXT = "===Away Team==="
 
 class View_Manager_UI:
     def __init__(self, logic_connection) -> None:
@@ -59,46 +61,40 @@ class View_Manager_UI:
                 print("\nGoing back!")
                 return "b"
             elif command == "1":
-                print("==Viewing Teams and Players==\n")
+                print(TOP)
+                print(f"║{'===Viewing Teams and Players===':^109}║")
+                print(BOT)
                 all_teams = self.logic_wrapper.get_all_league_teams(league_id)
                 for idx, team in enumerate(all_teams, 1):
-                    print(f"\n{idx}. TEAM NAME: {team.name}")
-                    print(
-                        f"\n{STR_NAME:<35}{STR_PHONE:<12}{STR_SSN:<15}{STR_ADDRESS:<20}{STR_ROLE:<10}"
-                    )
-                    for player in team.players:
-                        print(
-                            f"{player.name.title():<35}{player.phone:<12}{player.ssn:<15}{player.address.title():<20}{player.role.title():<10}"
-                        )
+                    self.display_team_and_players(idx, team)
 
             elif command == "2":
-                print("==Viewing Upcoming Matches==\n")
+                print(TOP)
+                print(f"║{'===Viewing Upcoming Matches===':^109}║")
+                print(BOT)
                 matches_sorted_by_date = self.logic_wrapper.get_unfinished_matches(
                     league_id
                 )
                 for date, matches in matches_sorted_by_date.items():
-                    header = f"#### Date: {date}"
-                    print(header)
-                    print("-" * len(header))
-                    print("Games:")
+                    self.show_date(date)
+                    #print("Games:")
                     for match in matches:
                         # home, away = match
                         # print(f"\t{home} VS {away}")
-                        self.create_match_table(match)
+                        self.show_upcoming_matches(match)
 
             elif command == "3":
-                print("==Viewing Matches with registered results==\n")
+                print(TOP)
+                print(f"║{'===Viewing Matches with Registered Results===':^109}║")
+                print(BOT)
                 matches_sorted_by_date = self.logic_wrapper.get_finished_matches(
                     league_id
                 )
                 for date, matches in matches_sorted_by_date.items():
-                    print(TOP)
-                    print(f"║{'===Viewing Matches with Registered Results===':^109}║")
-                    print(f"╠{'═'*109}╣")
-                    header = f"#### Date: {date}"
+                    self.show_date(date)
                     #test_delim = "x" * 39
-                    print(header)
-                    print("-" * len(header))
+                    #print(header)
+                    #print("-" * len(header))
                     for match in matches:
                         self.create_match_table(match)
                       
@@ -142,12 +138,11 @@ class View_Manager_UI:
             print("Please select a valid league ID from the list!")
 
     def create_match_table(self, match) -> str:
-        home_txt = "===Home Team==="
-        away_txt = "===Away Team==="
+        
         print(f"╔{DELIM}╦═════╦{DELIM}╗")
         print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
         print(f"╠{DELIML}╬═════╬{DELIMR}╣")
-        print(f"║{home_txt:^39}║Leg 1║Leg 2║GAMES║Leg 2║Leg 1║{away_txt:^39}║")
+        print(f"║{HOME_TXT:^39}║Leg 1║Leg 2║GAMES║Leg 2║Leg 1║{AWAY_TXT:^39}║")
         print(f"╠{DELIMLP}╬═════╬{DELIMRP}╣")
         for count, game in enumerate(match.games):
             self.parse_leg_score(game)
@@ -163,6 +158,25 @@ class View_Manager_UI:
         print(f"║{home_score:^51}║SCORE║{away_score:^51}║")             
         print(f"╚{DELIM}╩═════╩{DELIM}╝")
         
+    def show_upcoming_matches(self, match) -> str:
+        print(f"╔{DELIM}╦═════╦{DELIM}╗")
+        print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
+        print(f"╚{DELIM}╩═════╩{DELIM}╝")
+
+    def show_date(self, date) -> str:
+        print(f"╔{'═'*10}╦{'═'*98}╗")
+        print(f"║{'Date':^10}║{date:<98}║")
+        print(f"╚{'═'*10}╩{'═'*98}╝")
+
+    def display_team_and_players(self, id, team):
+        print(f"╔{'═'*4}╦{'═'*15}╦{'═'*88}╗")
+        print(f"║{f'{id}.':^4}║{'TEAM NAME':^15}║ {team.name.title():<87}║")
+        print(f"╠{'═'*4}╩{'═'*15}╩{'═'*18}╬{'═'*69}╣")
+        print(f"║ {STR_NAME:<38}║xxxxxxxxxxxxxxxxx║")
+        #print(f"\n{STR_NAME:<35}{STR_PHONE:<12}{STR_SSN:<15}{STR_ADDRESS:<20}{STR_ROLE:<10}")
+        for player in team.players:
+            print()
+            print(f"║{player.name.title():<35}{player.phone:<12}{player.ssn:<15}{player.address.title():<20}{player.role.title():<10}")
                 
     def parse_leg_score(self, game: object) -> None:
         if game.home_score == "0":
@@ -191,3 +205,6 @@ class View_Manager_UI:
             print(DELIM_MID)
             print(f"║{name.title():<39}║{matches:^34}║{legs:^34}║")
         print(f"╚{'═'*39}╩{'═'*34}╩{'═'*34}╝")
+
+    def show_player_info(self, player) -> str:
+        pass
