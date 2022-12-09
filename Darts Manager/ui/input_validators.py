@@ -216,11 +216,3 @@ def validate_dob(dob: str):
 
 def validate_league_name(league_name: str) -> None:
     pass
-
-
-# class AlreadyRegisteredExeption(Exception)
-#     pass
-
-# def validate_results(score):
-#     if score in results:
-#         raise AlreadyRegisteredExeption()
