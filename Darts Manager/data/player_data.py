@@ -9,6 +9,7 @@ class Player_Data:
         self.file_name = "files/players.csv"
 
     def read_all_players(self) -> List[object]:
+        '''returns a list of players.'''
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile, delimiter=";")
             ret_list = [
@@ -16,7 +17,8 @@ class Player_Data:
             ]
         return ret_list
 
-    def create_player(self, player):
+    def create_player(self, player: object):
+        '''Creates a new player and stores it in players.csv.'''
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
                 "ID",
@@ -48,6 +50,7 @@ class Player_Data:
             )
 
     def get_new_player_id(self) -> int:
+        '''Generates a new id for the new player.'''
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             for id, _ in enumerate(csvfile):
                 pass
@@ -55,7 +58,8 @@ class Player_Data:
         return new_id
 
     def update_player_status(self, player_id, role, team_id) -> None:
-        """Updates both role and team id for one player. This function isn't very efficient because it overwrites the file contents and then rewrites the ENTIRE data back into the file again with minor changes."""
+        """Updates both role and team id for one player. This function isn't very efficient because it overwrites
+        the file contents and then rewrites the ENTIRE data back into the file again with minor changes."""
         with fileinput.input(
             files=(self.file_name), inplace=True, mode="r"
         ) as player_file:

@@ -4,7 +4,7 @@ from data.club_data import Club_Data
 from data.league_data import League_Data
 
 from typing import List
-
+#The Data Wrapper sends information between the data layer and the logic layer, by connecting functions together.
 
 class Data_Wrapper:
     def __init__(self):
@@ -16,15 +16,19 @@ class Data_Wrapper:
     def get_all_players(self) -> List[object]:
         return self.player_data.read_all_players()
 
+    def create_league(self, league: object) -> None:
+        self.league_data.create_league(league)
+
     def create_player(self, player: object) -> None:
-        """Takes in a player object and forwards it to player_data"""
         self.player_data.create_player(player)
 
     def get_new_player_id(self) -> int:
         return self.player_data.get_new_player_id()
 
+    def get_new_league_id(self) -> int:
+        return self.league_data.get_new_league_id()
+
     def update_player_status(self, player_id: str, role: str, team_id: str) -> None:
-        """Updates the role and team_id for the player with the given player_id."""
         self.player_data.update_player_status(player_id, role, team_id)
 
     def get_all_teams(self, league_id: str = "") -> List[object]:
@@ -39,7 +43,6 @@ class Data_Wrapper:
         return self.club_data.check_for_clubs()
 
     def create_club(self, club: object):
-        """Takes in a club object and forwards it to club_data"""
         self.club_data.create_club(club)
 
     def get_all_clubs(self) -> list:
@@ -60,14 +63,29 @@ class Data_Wrapper:
     def get_unfinished_matches(self, league_id: str) -> List[object]:
         return self.league_data.get_unfinished_matches(league_id)
 
-    def get_finished_matces(self, league_id: str) -> List[object]:
+    def get_finished_matches(self, league_id: str) -> List[object]:
         return self.league_data.get_finished_matches(league_id)
 
     def get_all_league_teams(self, league_id: str) -> List[object]:
         return self.league_data.get_all_league_teams(league_id)
 
-    def register_result(self):
-        pass
+    def get_all_leagues(self) -> None:
+        return self.league_data.get_all_leagues()
+
+    def get_team_standings(self, league_id: str) -> List[tuple]:
+        return self.league_data.get_team_standings(league_id)
+
+    def check_host_name(self, name: str, league_id: str) -> bool:
+        return self.league_data.check_host_name(name, league_id)
+
+    def check_captain_name(self, name: str, league_id: str) -> bool:
+        return self.league_data.check_captain_name(name, league_id)
+
+    def record_result(self, match: object) -> None:
+        self.league_data.record_result(match)
+
+    def get_team_members(self, name: str, league_id: str) -> List[object]:
+        return self.league_data.get_team_members(name, league_id)
 
     def edit_result(self):
         pass
@@ -80,6 +98,3 @@ class Data_Wrapper:
 
     def get_new_match_id(self) -> int:
         return self.league_data.get_new_match_id()
-
-    def register_teams(self, tourney):
-        self.league_data.register_teams(tourney)

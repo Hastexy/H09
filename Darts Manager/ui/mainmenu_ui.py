@@ -4,13 +4,6 @@ from ui.tournament_manager_ui import Tournament_Manager_UI
 from ui.results_manager_ui import Results_Manager_UI
 from ui.view_manager import View_Manager_UI
 from logic.logic_wrapper import Logic_Wrapper
-#from prettytable import PrettyTable
-# pt = PrettyTable()
-# pt.field_names = ["", "Main Menu"]
-# pt.add_row(["1", "Tournament Manager"])
-# pt.add_row(["2", "Results Manager"])
-# pt.add_row(["3", "View Manager"])
-# pt.add_row(["q", "Quit Program"])
 
 
 class MainMenu_UI:
@@ -19,20 +12,15 @@ class MainMenu_UI:
 
     def menu_output(self):
         print("""
-╔═══╦════════════════════╗
-║   ║     Main Menu      ║
-╠═══╬════════════════════╣
-║ 1 ║ Tournament Manager ║
-║ 2 ║ Results Manager    ║
-║ 3 ║ View Manager       ║
-║ q ║ Quit               ║
-╚═══╩════════════════════╝""")
-        #print(pt)
-        #print("\n---Main Menu---")
-        #print("1. Tournament manager")
-        #print("2. Results manager")
-        #print("3. View manager")
-        #print("q. to exit")
+╔═══╦═══════════════╗
+║   ║   Main Menu   ║
+╠═══╬═══════════════╣
+║ 1 ║ Create Menu   ║
+║ 2 ║ Match Manager ║
+║ 3 ║ League Info   ║
+║ q ║ Quit          ║
+╚═══╩═══════════════╝""")
+
 
     def input_prompt(self):
         while True:

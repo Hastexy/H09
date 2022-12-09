@@ -6,7 +6,6 @@ class Game:  # tegund af leik / umferð í einhverri viðureign
         away_player="",
         home_score="",
         away_score="",
-        match_ID="",
     ) -> None:
 
         # Þetta komment gæti breyst, fer eftir útfærslunni á hvernig við geymum leiki sem eru spilaðir af mörgum spilurum...
@@ -36,4 +35,3 @@ class Game:  # tegund af leik / umferð í einhverri viðureign
         self.away_player = away_player
         self.home_score = home_score
         self.away_score = away_score
-        self.match_ID = match_ID
