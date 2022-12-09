@@ -141,7 +141,7 @@ class View_Manager_UI:
     def select_league_id(self, all_leagues: List[object]) -> None:
         while True:
             self.display_available_leagues(all_leagues)
-            print(f"""{Fore.GREEN}
+            print(f"""{Fore.YELLOW}
 ╔══════════════════════╗
 ║ Input "b" to go back ║
 ╚══════════════════════╝\n{Fore.WHITE}""")
