@@ -2,7 +2,7 @@
 # from ui.team_ui import Team_UI
 from ui.tournament_manager_ui import Tournament_Manager_UI
 from ui.results_manager_ui import Results_Manager_UI
-from ui.view_manager import View_Manager_UI
+from ui.view_manager_ui import View_Manager_UI
 from logic.logic_wrapper import Logic_Wrapper
 
 

@@ -5,6 +5,12 @@ from model.player import Player
 from model.league import League
 from ui.input_validators import *
 from datetime import datetime, time, date, timedelta
+from colorama import init, Fore, Style, Back
+
+init()
+# Colorama options
+# Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+# Style = [DIM, NORMAL, BRIGHT]
 
 
 class Tournament_Manager_UI:
@@ -193,7 +199,7 @@ class Tournament_Manager_UI:
                 validate_team_name(t.name)
                 break
             except NameLengthException:
-                print("\n##The name must be between 3 or 49 characters long!##")
+                print("\n##The name must be between 3 or 39 characters long!##")
             except:
                 print("\n##Unknown Error Occured, try again##")
 
@@ -291,7 +297,7 @@ class Tournament_Manager_UI:
             except InvalidNameError:
                 print("\n##Name cannot contain digits!##")
             except:
-                print("\n##Unknown Error Occured, try again##")
+                print(ERR_UNKNOWN)
 
         while True:
             l.phone = input("\nHost's phonenumber: ")
@@ -302,9 +308,9 @@ class Tournament_Manager_UI:
                 validate_number(l.phone)
                 break
             except InvalidNumberLengthException:
-                print("The phone number must consist of SEVEN digits!")
+                print(ERR_PHONE)
             except InvalidNumberCharacterException:
-                print("The phone number must consist ONLY of digits!")
+                print(ERR_DIGIT)
 
         # Get a list of all the teams participating!!
         print("Register Teams In The League (At Least TWO Teams):")
@@ -340,9 +346,8 @@ class Tournament_Manager_UI:
             try:
                 start_date = datetime.strptime(start_date, "%d/%m/%Y %H:%M")
                 break
+            except ValueError:
                 print("Please enter the date like the format shows!")
-            except:
-                pass
 
         l.round_dates.append(start_date)
 
@@ -428,7 +433,7 @@ class Tournament_Manager_UI:
                     print(ERR_UNKNOWN)
         while True:
             p.dob = input(
-                "\nEnter the date of birth for the player in this format (dd-mm-yyyy): "
+                "\nEnter the date of birth for the player in this format dd/mm/yyyy: "
             )
             try:
                 validate_dob(p.dob)

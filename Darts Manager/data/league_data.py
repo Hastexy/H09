@@ -1,4 +1,5 @@
 import csv
+import fileinput
 from typing import List
 from itertools import combinations
 from model.league import League
@@ -47,8 +48,8 @@ class League_Data:
         """Creates a schedule for a league. It makes sure that all the teams compete with each other only once."""
 
         all_matches = list(combinations(league.teams, 2))
-
-        with open(self.match_file, "a", newline="", encoding="utf-8") as csvfile:
+        matchfile = self.match_folder + str(league.id) + ".csv"
+        with open(matchfile, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
                 "match_ID",
                 "date",
@@ -146,14 +147,13 @@ class League_Data:
                             match["result"],
                             match["league_ID"],
                         )
-                        with open(
-                            "files/games.csv", newline="", encoding="utf-8"
-                        ) as game_file:
+                        gamefile = self.game_folder + m.id + ".csv"
+
+                        with open(gamefile, newline="", encoding="utf-8") as game_file:
                             game_reader = csv.DictReader(game_file, delimiter=";")
                             for game in game_reader:
-                                if game["match_ID"] == m.id:
-                                    g = Game(*game.values())
-                                    m.games.append(g)
+                                g = Game(*game.values())
+                                m.games.append(g)
                         matches.append(m)
         return matches
 
@@ -177,9 +177,17 @@ class League_Data:
                     }
                 )
 
-    def reschedule_match(self, match_id: int) -> object:
+    def reschedule_match(self, match: object) -> None:
         """Changes the date of a match"""
-        pass
+        matchfile = self.match_folder + str(match.league_id) + ".csv"
+        with fileinput.input(files=matchfile, inplace=True, mode="r") as match_file:
+
+            reader = csv.DictReader(match_file, delimiter=";")
+            print(";".join(reader.fieldnames))
+            for a_match in reader:
+                if a_match["match_ID"] == match.id:
+                    a_match["date"] = match.date
+                print(";".join([*a_match.values()]))
 
     def get_new_league_id(self) -> int:
         """Generates a new id for a league."""
@@ -215,7 +223,7 @@ class League_Data:
         return False
 
     def check_captain_name(self, name: str, league_id: str) -> bool:
-        """Checks if the given player is a captain."""
+        """Checks if the given player is a captain in a team participating in a specific league."""
         teamfile = self.team_folder + league_id + ".csv"
         with open(teamfile, newline="", encoding="utf-8") as team_file:
             team_reader = csv.DictReader(team_file, delimiter=";")
@@ -225,10 +233,20 @@ class League_Data:
                     member_reader = csv.DictReader(member_file, delimiter=";")
                     for player in member_reader:
                         if player["name"] == name and player["role"] == "captain":
-                            return True
+                            return Player(*player.values())
         return False
 
     def record_result(self, match: object) -> None:
+        matchfile = self.match_folder + str(match.league_id) + ".csv"
+        with fileinput.input(files=matchfile, inplace=True, mode="r") as match_file:
+
+            reader = csv.DictReader(match_file, delimiter=";")
+            print(";".join(reader.fieldnames))
+            for a_match in reader:
+                if a_match["match_ID"] == match.id:
+                    a_match["result"] = match.result
+                print(";".join([*a_match.values()]))
+
         gamefile = self.game_folder + str(match.id) + ".csv"
         with open(gamefile, "w", newline="", encoding="utf-8") as game_file:
             field_names = ["type", "h_player", "a_player", "h_score", "a_score"]
@@ -258,3 +276,10 @@ class League_Data:
                             Player(*member.values()) for member in memberreader
                         ]
                         return all_team_players
+
+    def get_team(self, team_id: str) -> object:
+        with open("files/teams.csv", newline="", encoding="utf-8") as team_file:
+            reader = csv.DictReader(team_file, delimiter=";")
+            for team in reader:
+                if team["ID"] == team_id:
+                    return Team(*team.values())
