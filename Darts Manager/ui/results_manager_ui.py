@@ -81,7 +81,13 @@ class Results_Manager_UI:
                 for date, matches in all_unfinished_matches.items():
                     for match in matches:
                         if match.home_team == the_team_of_the_captain.name:
-                            filtered_unfinished_matches[date] = matches
+
+                            if date not in filtered_unfinished_matches:
+                                filtered_unfinished_matches[date] = []
+
+                            filtered_unfinished_matches[date].append(match)
+
+
                 if not filtered_unfinished_matches:
                     print(f"║ {'You have no matches to record results for':^76} ║")
                     print(f"╚{'═' * 78}╝{Fore.WHITE}")
