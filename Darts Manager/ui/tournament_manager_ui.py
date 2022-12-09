@@ -323,8 +323,10 @@ class Tournament_Manager_UI:
             if next_team_id == "b":
                 return
 
-            if next_team_id == "q":  # gæti þurft að villu tékka upp á að tvö lið keppi
+            if next_team_id == "q" and len(l.teams) >= 2:
                 break
+            else:
+                print("You must register at least TWO teams in a league")
 
             for team in all_teams:
                 if next_team_id == team.id:
