@@ -41,9 +41,9 @@ class Results_Manager_UI:
             elif self.logic_wrapper.check_host_name(name, league_id):
                 # Heilsa host með nafni og útskýra hvað hann getur gert
                 middle = f"Hello {name}, you are here to make some changes"
-                print(f"\n╔{'═'*50}╗")
+                print(f"\n{Fore.YELLOW}╔{'═'*50}╗")
                 print(f"║{middle:^50}║")
-                print(f"╚{'═'*50}╝")
+                print(f"╚{'═'*50}╝{Fore.WHITE}")
                 all_finished_matches = self.logic_wrapper.get_finished_matches(
                     league_id
                 )
@@ -148,6 +148,7 @@ class Results_Manager_UI:
         print(f"╚{'═'*41}╝")
 
     def display_matches(self, all_matches: dict, header: str) -> None:
+        "Displays all the available matches from the match list given"
         separator = "═" * (len(header) - 2)
 
         # print(f"{Fore.YELLOW}╔{separator}╗")
@@ -167,6 +168,7 @@ class Results_Manager_UI:
             print(f"╚{'═'*6}╩{'═'*28}╩{'═'*5}╩{'═'*28}╩{'═' * 11}╝")
 
     def change_match_date(self, all_matches: dict) -> None:
+        "asks the match you want to change the date of"
         while True:
             print(BACK)
             match_id = input("Select a match to change the date of (match ID): ")
@@ -187,6 +189,7 @@ class Results_Manager_UI:
             print("Please select one of the matches from the list!")
 
     def change_match_result(self, all_matches: dict, league_id: str) -> None:
+        "Goes through all the matches and asks for a new score and replaces the old score"
         while True:
             print(BACK)
             match_id = input("Select a match to change (match ID): ")
@@ -198,23 +201,44 @@ class Results_Manager_UI:
                         match.games.clear()
                         self.update_match_result(match, league_id)
                         self.logic_wrapper.record_result(match)
-                        print("\n#### Result Recorded Successfully\n")
+                        print(
+                            f"""{Fore.RED}
+╔══════════════════════════════╗
+║ Result Recorded Successfully ║
+╚══════════════════════════════╝{Fore.WHITE}"""
+                        )
                         return
             print("Please select one of the matches from the list!")
 
     def update_match_date(self, match: object) -> None:
+        "Asks for the new date and replaces the old one"
         while True:
             new_date = input(
                 "\nPlease enter the new date of the match in this format (dd/mm/yyyy hh:mm): "
             )
+            if new_date == "b":
+                return
             try:
                 new_date = datetime.strptime(new_date, "%d/%m/%Y %H:%M")
                 match.date = str(new_date.strftime("%d/%m/%Y %H:%M"))
+                print(
+                    f"""{Fore.GREEN}
+╔═══════════════════════════╗
+║ Date Changed Successfully ║
+╚═══════════════════════════╝{Fore.WHITE}"""
+                )
                 return
             except ValueError:
                 print("Please enter the date like the format shows!")
+                print(
+                    f"""{Fore.RED}
+╔══════════════════════════════════════════════╗
+║ Please enter the date like the format shows! ║
+╚══════════════════════════════════════════════╝{Fore.WHITE}"""
+                )
 
     def update_match_result(self, match: object, league_id: str) -> None:
+        "Asks for the input for each match and updates the score at the end with that information"
         print(f"\n╔{'═'*67}╗")
         print(f"║{'First there are FOUR 501 games 1v1':^67}║")
         print(f"║{'Select a player from each team and then assign the scores':^67}║")
@@ -300,7 +324,7 @@ class Results_Manager_UI:
             match.games.append(g)
 
     def display_players(self, players: List[object]) -> None:
-
+        "Prints out a list of all available players in a given match"
         header = "* Available Players: *"
         separator = "*" * len(header)
 
@@ -345,7 +369,7 @@ class Results_Manager_UI:
     def get_competitors(
         self, home_team_players, away_team_players, game_number
     ) -> object:
-        """"""
+        """Asks for the home and away team players for each match"""
         while True:
             home_player = ""
             self.display_players(home_team_players)
@@ -378,6 +402,7 @@ class Results_Manager_UI:
         return home_player, away_player
 
     def get_301_players(self, available_players: List[object], team: str) -> object:
+        """Asks for 2 players from both teams to see who competed in the 301 dart game"""
         print(
             f"║{'Select TWO players from the list who competed in the 301 game':^67}║"
         )
