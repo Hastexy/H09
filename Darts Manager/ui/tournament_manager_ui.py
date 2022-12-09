@@ -1,3 +1,6 @@
+from itertools import combinations
+import math
+import random
 from typing import List
 from model.club import Club
 from model.team import Team
@@ -306,7 +309,7 @@ class Tournament_Manager_UI:
                 )
 
         while True:
-            l.host = input("\nEnter the host name of your league: ")
+            l.host = input("\nEnter the host name of your league: ").strip().lower()
 
             if l.host == "b":
                 return
@@ -401,23 +404,36 @@ class Tournament_Manager_UI:
             except ValueError:
                 print("\nPlease enter the date like the format shows!")
 
-        l.round_dates.append(start_date.strftime("%d/%m/%Y %H:%M"))
+        # l.round_dates.append(start_date.strftime("%d/%m/%Y %H:%M"))
 
         interval = int(input("\nHow many days between rounds?: "))
         tdelta = timedelta(days=interval)
 
+        matches_per_round = math.floor(len(l.teams) / 2)
+        # búa til nýja orðabók, lyklar: date, value: lista af x matches, x = floor(len(l.teams) / 2)
         next_date = start_date
+        all_matches = list(combinations(l.teams, 2))
+        all_dates = []
 
-        for _ in range(l.rounds - 1):
+        for _ in range(l.rounds):
+            correct_formatted_date = next_date.strftime("%d/%m/%Y %H:%M")
+            all_dates.append(correct_formatted_date)
+            l.matches[correct_formatted_date] = []
+
+            for _ in range(matches_per_round):
+                next_team = random.choice(all_matches)
+                l.matches[correct_formatted_date].append(next_team)
+                all_matches.remove(next_team)
+
             next_date += tdelta
-            l.round_dates.append(next_date.strftime("%d/%m/%Y %H:%M"))
 
-            if len(l.round_dates) > 1:
-                l.start_date = l.round_dates[0]
-                l.end_date = l.round_dates[-1]
-            else:
-                l.start_date = l.end_date = l.round_dates[0]
-            break
+            # l.round_dates.append(next_date.strftime("%d/%m/%Y %H:%M"))
+
+        if len(all_dates) > 1:
+            l.start_date = all_dates[0]
+            l.end_date = all_dates[-1]
+        else:
+            l.start_date = l.end_date = all_dates[0]
 
         self.logic_wrapper.create_league(l)
         print(
