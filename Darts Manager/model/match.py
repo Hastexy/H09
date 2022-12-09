@@ -1,4 +1,4 @@
-class Match:  # viðureign
+class Match:
     def __init__(
         self, id="", date="", home_team="", away_team="", result="", league_id=""
     ) -> None:
