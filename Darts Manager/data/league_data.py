@@ -160,9 +160,9 @@ class League_Data:
     def register_teams(self, league: object) -> None:
         """Registers all the teams participating in league in the database."""
 
-        teams_file = self.team_folder + str(league.id) + ".csv"
+        teamsfile = self.team_folder + str(league.id) + ".csv"
 
-        with open(teams_file, "a", newline="", encoding="utf-8") as teams_file:
+        with open(teamsfile, "a", newline="", encoding="utf-8") as teams_file:
             fieldnames = ["ID", "name", "clubID", "match_wins", "legs_wins"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
             writer.writeheader()
