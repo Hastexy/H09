@@ -36,7 +36,7 @@ class Results_Manager_UI:
         while True:
             name = input("\nEnter your registered name: ").strip().lower()
             if name == "b":
-                return
+                return "b"
             elif self.logic_wrapper.check_host_name(name, league_id):
                 # Heilsa host með nafni og útskýra hvað hann getur gert
                 print(f"Hello {name}, you are here to make some changes")
@@ -84,7 +84,8 @@ class Results_Manager_UI:
                         if match.home_team == the_team_of_the_captain.name:
                             filtered_unfinished_matches[date] = matches
                 if not filtered_unfinished_matches:
-                    print("You have no matches to record results for :)")
+                    print(f"║ {'You have no matches to record results for':^76} ║")
+                    print(f"╚{'═' * 78}╝{Fore.WHITE}")
                     return
                 header = f"║ {'Here is a list of all your unfinished matches':^76} ║"
                 self.display_matches(filtered_unfinished_matches, header)
@@ -135,7 +136,7 @@ class Results_Manager_UI:
         print(f"╚{'═'*41}╝")
 
     def display_matches(self, all_matches: dict, header: str) -> None:
-        separator = "*" * len(header)
+        separator = "═" * (len(header) - 2)
 
         #print(f"\n{separator}")
         print(header)
@@ -201,10 +202,10 @@ class Results_Manager_UI:
 
     def update_match_result(self, match: object, league_id: str) -> None:
         # 501 1v1 game
-        print("\nFirst there are FOUR 501 games 1v1")
-        print(
-            "Select a player from each team and assign a score to them for each game!\n"
-        )
+        print(f"\n╔{'═'*67}╗")
+        print(f"║{'First there are FOUR 501 games 1v1':^67}║")
+        print(f"║{'Select a player from each team and then assign the scores':^67}║")
+        print(f"╚{'═'*67}╝")
 
         home_team_players = self.logic_wrapper.get_team_members(
             match.home_team, league_id
@@ -222,7 +223,10 @@ class Results_Manager_UI:
             match.games.append(g)
 
         # 301 game
-        print("\nNow there is a 301 game 2v2\n")
+        #print("\nNow there is a 301 game 2v2\n")
+        print(f"\n╔{'═'*67}╗")
+        print(f"║{'Now there is a 301 game 2v2':^67}║")
+        
         home_team_players = self.logic_wrapper.get_team_members(
             match.home_team, league_id
         )
@@ -242,8 +246,13 @@ class Results_Manager_UI:
         # Cricket game
         home_player1, home_player2 = home_team_players
         away_player1, away_player2 = away_team_players
-        print("\nNow there is a Cricket game 2v2")
-        print("Enter the result for the cricket game:\n")
+        print(f"\n╔{'═'*67}╗")
+        print(f"║{'Now there is a Cricket game 2v2':^67}║")
+        print(f"║{'Enter the result for the cricket game':^67}║")
+        print(f"╚{'═'*67}╝")
+
+        #print("\nNow there is a Cricket game 2v2")
+        #print("Enter the result for the cricket game:\n")
         home_score, away_score = self.get_game_scores()
 
         g = Game("C", home_player1, away_player1, home_score, away_score)
@@ -252,8 +261,12 @@ class Results_Manager_UI:
         match.games.append(g)
 
         # 501 4v4 game
-        print("\nNow for the 4v4 501 game")
-        print("How did that game go?\n")
+        print(f"\n╔{'═'*67}╗")
+        print(f"║{'Now for the 4v4 501 game':^67}║")
+        print(f"║{'Enter the result for the last 501 game':^67}║")
+        print(f"╚{'═'*67}╝")
+        #print("\nNow for the 4v4 501 game")
+        #print("How did that game go?\n")
         home_team_players = self.logic_wrapper.get_team_members(
             match.home_team, league_id
         )
@@ -345,7 +358,8 @@ class Results_Manager_UI:
         return home_player, away_player
 
     def get_301_players(self, available_players: List[object]) -> object:
-        print("Select TWO players from the list who competed in the 301 game:")
+        print(f"║{'Select TWO players from the list who competed in the 301 game':^67}║")
+        print(f"╚{'═'*67}╝")
         both_players = []
         for i in range(1, 3):
             while True:
