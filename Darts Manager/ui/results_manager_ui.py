@@ -41,9 +41,9 @@ class Results_Manager_UI:
             elif self.logic_wrapper.check_host_name(name, league_id):
                 # Heilsa host með nafni og útskýra hvað hann getur gert
                 middle = f"Hello {name}, you are here to make some changes"
-                print(f"\n╔{'═'*50}╗")
+                print(f"\n{Fore.YELLOW}╔{'═'*50}╗")
                 print(f"║{middle:^50}║")
-                print(f"╚{'═'*50}╝")
+                print(f"╚{'═'*50}╝{Fore.WHITE}")
                 all_finished_matches = self.logic_wrapper.get_finished_matches(
                     league_id
                 )
@@ -148,7 +148,7 @@ class Results_Manager_UI:
     def display_matches(self, all_matches: dict, header: str) -> None:
         separator = "═" * (len(header) - 2)
 
-        #print(f"{Fore.YELLOW}╔{separator}╗")
+        print(f"\n{Fore.YELLOW}╔{separator}╗")
         print(header)
         print(f"╚{separator}╝{Fore.WHITE}")
 
@@ -175,12 +175,6 @@ class Results_Manager_UI:
                     if str(match.id) == match_id:
                         self.update_match_date(match)
                         self.logic_wrapper.reschedule_match(match)
-                        print(
-                    f"""{Fore.GREEN}
-╔═══════════════════════════╗
-║ Date Changed Successfully ║
-╚═══════════════════════════╝{Fore.WHITE}"""
-                )
                         return
             print("Please select one of the matches from the list!")
 
@@ -196,7 +190,12 @@ class Results_Manager_UI:
                         match.games.clear()
                         self.update_match_result(match, league_id)
                         self.logic_wrapper.record_result(match)
-                        print("\n#### Result Recorded Successfully\n")
+                        print(
+                    f"""{Fore.RED}
+╔══════════════════════════════╗
+║ Result Recorded Successfully ║
+╚══════════════════════════════╝{Fore.WHITE}"""
+                )
                         return
             print("Please select one of the matches from the list!")
 
@@ -205,12 +204,22 @@ class Results_Manager_UI:
             new_date = input(
                 "\nPlease enter the new date of the match in this format (dd/mm/yyyy hh:mm): "
             )
+            if new_date == "b":
+                return
             try:
                 new_date = datetime.strptime(new_date, "%d/%m/%Y %H:%M")
                 match.date = str(new_date.strftime("%d/%m/%Y %H:%M"))
+                print(f"""{Fore.GREEN}
+╔═══════════════════════════╗
+║ Date Changed Successfully ║
+╚═══════════════════════════╝{Fore.WHITE}""")
                 return
             except ValueError:
                 print("Please enter the date like the format shows!")
+                print(f"""{Fore.RED}
+╔══════════════════════════════════════════════╗
+║ Please enter the date like the format shows! ║
+╚══════════════════════════════════════════════╝{Fore.WHITE}""")
 
     def update_match_result(self, match: object, league_id: str) -> None:
         print(f"\n╔{'═'*67}╗")
