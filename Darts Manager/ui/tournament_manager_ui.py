@@ -23,7 +23,7 @@ class Tournament_Manager_UI:
         self.clubs = ["test", "Dart Vader"]
 
     def menu_output(self):
-
+        '''Prints out the available options from the tournament manager screen.'''
         print(
             """
 ╔═══╦═══════════════╗
@@ -39,6 +39,7 @@ class Tournament_Manager_UI:
         )
 
     def input_promt(self):
+        '''This is the main domain for the tournament manager.'''
         while True:
             self.menu_output()
             command = input("\nEnter your option: ")
@@ -110,6 +111,7 @@ class Tournament_Manager_UI:
         return all_clubs
 
     def create_club(self) -> None:
+        '''Creates a new club and registers it into the database.'''
         c = Club()
         c.id = self.logic_wrapper.get_new_club_id()
 
@@ -167,6 +169,7 @@ class Tournament_Manager_UI:
         )
 
     def create_team(self) -> None:
+        '''Creates a new team and registers it to the database.'''
         if not self.logic_wrapper.check_for_clubs():
 
             print(
@@ -289,6 +292,7 @@ class Tournament_Manager_UI:
         )
 
     def create_league(self) -> None:
+        '''Creates a new league and registers it into the database.'''
         l = League()
         l.id = self.logic_wrapper.get_new_league_id()
         while True:
@@ -444,6 +448,7 @@ class Tournament_Manager_UI:
         )
 
     def create_player(self) -> None:
+        '''Creates a new player and registers them into the datebase.'''
         p = Player()
         p.id = self.logic_wrapper.get_new_player_id()
 
@@ -577,7 +582,7 @@ class Tournament_Manager_UI:
         self.logic_wrapper.create_player(p)
 
     def display_available_teams(self, teams: List[object]) -> None:
-
+        '''displays all available teams.'''
         header = f"║ {'Here is a list of all available teams':^39} ║"
         separator = "═" * (len(header) - 2)
 

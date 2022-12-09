@@ -35,6 +35,7 @@ class View_Manager_UI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
+        '''Prints out the options available from the view manager screen.'''
         print(
             """
 ╔═══╦═══════════════════════╗
@@ -50,6 +51,7 @@ class View_Manager_UI:
         )
 
     def input_prompt(self):
+        '''This is the main domain for the view manager.'''
         all_leagues = self.logic_wrapper.get_all_leagues()
         league_id = self.select_league_id(all_leagues)
 
@@ -124,6 +126,7 @@ class View_Manager_UI:
                 self.create_league_standings(league_id)
 
     def display_available_leagues(self, leagues: List[object]) -> None:
+        '''displays all available leagues.'''
         header = f"║ {'List of all registered Leagues':^39} ║"
         separator = "═" * (len(header) - 2)
 
@@ -139,6 +142,7 @@ class View_Manager_UI:
         print(f"╚{'═'*41}╝")
 
     def select_league_id(self, all_leagues: List[object]) -> None:
+        '''Allows the user to choose a league by its id.'''
         while True:
             self.display_available_leagues(all_leagues)
             print(f"""{Fore.YELLOW}
@@ -155,7 +159,7 @@ class View_Manager_UI:
             print("Please select a valid league ID from the list!")
 
     def create_match_table(self, match) -> str:
-
+        '''Formats the information of the match into a table.'''
         print(f"╔{DELIM}╦═════╦{DELIM}╗")
         print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
         print(f"╠{DELIML}╬═════╬{DELIMR}╣")
@@ -178,16 +182,19 @@ class View_Manager_UI:
         print(f"╚{DELIM}╩═════╩{DELIM}╝")
 
     def show_upcoming_matches(self, match) -> str:
+        '''Show all matches that have no results.'''
         print(f"╔{DELIM}╦═════╦{DELIM}╗")
         print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
         print(f"╚{DELIM}╩═════╩{DELIM}╝")
 
     def show_date(self, date) -> str:
+        '''Prints the dare of a match.'''
         print(f"╔{'═'*10}╦{'═'*98}╗")
         print(f"║{'Date':^10}║{date:<98}║")
         print(f"╚{'═'*10}╩{'═'*98}╝")
 
     def display_team_and_players(self, id, team):
+        '''Displays all teams and all players.'''
         print(f"\n╔{'═'*4}╦{'═'*15}╦{'═'*99}╗")
         print(f"║{f'{id}.':^4}║{'TEAM NAME':^15}║ {team.name.title():<98}║")
         print(f"╚{'═'*4}╩{'═'*15}╩{'═'*99}╝")
@@ -216,6 +223,7 @@ class View_Manager_UI:
         print(f"╚{'═'*39}╩{'═'*14}╩{'═'*39}╩{'═'*14}╩{'═'*10}╝")
 
     def parse_leg_score(self, game: object) -> None:
+        '''Formats the score of each team for the the match table.'''
         if game.home_score == "0":
             game.home_score = "0-0"
         elif game.home_score == "1":
@@ -231,6 +239,7 @@ class View_Manager_UI:
             game.away_score = "1-1"
 
     def create_league_standings(self, league_id) -> str:
+        '''Prints out all teams and how many games and how legs they've won.'''
         print(TOP)
         print(f"║{'===Viewing League Standings===':^109}║")
         print(f"╠{'═'*39}╦{'═'*34}╦{'═'*34}╣")
@@ -242,6 +251,3 @@ class View_Manager_UI:
             print(DELIM_MID)
             print(f"║{name.title():<39}║{matches:^34}║{legs:^34}║")
         print(f"╚{'═'*39}╩{'═'*34}╩{'═'*34}╝")
-
-    def show_player_info(self, player) -> str:
-        pass

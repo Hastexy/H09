@@ -196,16 +196,7 @@ class League_Data:
             for id, _ in enumerate(csvfile):
                 pass
             new_id = id + 1
-        return new_id
-
-    # def get_new_match_id(self, league_id) -> int:
-    #     """Generates a unique match id."""
-    #     matchfile = self.match_folder + str(league_id) + ".csv"
-    #     with open(matchfile, newline="", encoding="utf-8") as csvfile:
-    #         for id, _ in enumerate(csvfile):
-    #             pass
-    #         new_id = id + 1
-    #     return new_id
+        return new_id   
 
     def get_all_leagues(self) -> list:
         """Returns a list of all league names."""
