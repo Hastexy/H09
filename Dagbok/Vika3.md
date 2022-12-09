@@ -92,19 +92,13 @@ Hrafnkell ætlar að klára view menu UI-ið í dag og eftir það er nærrum al
 ### Færsla 2 - Samantekt
 ##### Ritari: Hrafnkell Orri Elvarsson
 ```
-Hópurinn tók fund klukkan 6.
+Hópurinn tók fund klukkan 6 og planaði síðasta daginn.
 ```
 
 
 ## 9.12.2022
 ### Færsla 1 - Morgunfundur
-##### Ritari: Hrafnkell Orri Elvarsson
+##### Ritari: Kjartan Elvar Baldvinsson
 ```
-
-```
-
-### Færsla 2 - Samantekt
-##### Ritari: Hrafnkell Orri Elvarsson
-```
-
+Hópurinn byrjaði að vinna snemma klukkan 9. Allir voru í discord call-i allan daginn að leggja lokahönd á verkefnið fyrir skil.
 ```
