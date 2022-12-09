@@ -59,7 +59,7 @@ class League_Data:
                 "league_ID",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
-            next_id = int(self.get_new_match_id(league.id))
+            next_id = 1
             for match in all_matches:  # a match is a tuple containing two Team objects
                 m = Match()
                 m.id = next_id
@@ -197,14 +197,14 @@ class League_Data:
             new_id = id + 1
         return new_id
 
-    def get_new_match_id(self, league_id) -> int:
-        """Generates a unique match id."""
-        matchfile = self.match_folder + str(league_id) + ".csv"
-        with open(matchfile, newline="", encoding="utf-8") as csvfile:
-            for id, _ in enumerate(csvfile):
-                pass
-            new_id = id + 1
-        return new_id
+    # def get_new_match_id(self, league_id) -> int:
+    #     """Generates a unique match id."""
+    #     matchfile = self.match_folder + str(league_id) + ".csv"
+    #     with open(matchfile, newline="", encoding="utf-8") as csvfile:
+    #         for id, _ in enumerate(csvfile):
+    #             pass
+    #         new_id = id + 1
+    #     return new_id
 
     def get_all_leagues(self) -> list:
         """Returns a list of all league names."""
