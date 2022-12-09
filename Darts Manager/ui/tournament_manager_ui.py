@@ -320,7 +320,11 @@ class Tournament_Manager_UI:
                 print(ERR_DIGIT)
 
         # Get a list of all the teams participating!!
-        print("\nRegister Teams In The League (At Least TWO Teams):")
+        #print("\nRegister Teams In The League (At Least TWO Teams):")
+        print(f"""{Fore.YELLOW}
+╔═════════════════════════════════════════╗
+║ Register at least TWO teams in a league ║
+╚═════════════════════════════════════════╝{Fore.WHITE}""") 
         all_teams = self.logic_wrapper.get_all_teams()
         while True:
             self.display_available_teams(all_teams)
@@ -336,18 +340,28 @@ class Tournament_Manager_UI:
             if next_team_id == "q" and len(l.teams) >= 2:
                 break
             else:
-                print("\nYou must register at least TWO teams in a league")
-
+                #print("\nYou must register at least TWO teams in a league")
+                print(f"""{Fore.YELLOW}
+╔═════════════════════════════════════════╗
+║ Register at least TWO teams in a league ║
+╚═════════════════════════════════════════╝{Fore.WHITE}""")    
+                
             for team in all_teams:
                 if next_team_id == team.id:
                     all_teams.remove(team)
                     l.teams.append(team)
+                    print(f"""{Fore.GREEN}
+╔═════════════════════╗
+║   Team Registered   ║
+╚═════════════════════╝{Fore.WHITE}""") 
                     break
             else:
-                print(""""
+                print(f"""{Fore.YELLOW}
+╔═════════════════════════════════════════╗
+║   Please select a team from the list!   ║
+╚═════════════════════════════════════════╝{Fore.WHITE}""")                    
                       
-                      \nPlease select a team from the list!
-                      """)
+
 
         if len(l.teams) % 2 == 1:
             l.rounds = len(l.teams)
