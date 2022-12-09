@@ -191,7 +191,7 @@ class League_Data:
             for id, _ in enumerate(csvfile):
                 pass
             new_id = id + 1
-        return new_id
+        return new_id   
 
     def get_new_match_id(self) -> int:
         """Generates a unique match id."""

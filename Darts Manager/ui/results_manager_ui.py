@@ -13,6 +13,7 @@ class Results_Manager_UI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
+        '''Prints out all available inputs from the result manager screen.'''
         print(
             """
 ╔═══╦════════════════════════╗
@@ -26,6 +27,7 @@ class Results_Manager_UI:
         )
 
     def input_prompt(self):
+        '''This is the main domain for the result manager.'''
         all_leagues = self.logic_wrapper.get_all_leagues()
         league_id = self.select_league_id(all_leagues)
 
@@ -96,6 +98,7 @@ class Results_Manager_UI:
 ╚═════════════════════════════════════╝{Fore.WHITE}""")
 
     def select_league_id(self, all_leagues: List[object]) -> None:
+        '''Allows the user to select a league by its id.'''
         while True:
             self.display_available_leagues(all_leagues)
             print(BACK)
@@ -117,6 +120,7 @@ class Results_Manager_UI:
             )
 
     def display_available_leagues(self, leagues: List[object]) -> None:
+        '''Displays all registerd leagues.'''
         header = f"║ {'List of all registered leagues':^39} ║"
         separator = "═" * (len(header) - 2)
 
@@ -131,7 +135,7 @@ class Results_Manager_UI:
         print(f"╚{'═'*41}╝")
 
     def display_matches(self, all_matches: dict, header: str) -> None:
-        separator = "═" * (len(header) - 2)
+        separator = "*" * len(header)
 
         #print(f"\n{separator}")
         print(header)
@@ -269,6 +273,7 @@ class Results_Manager_UI:
             match.games.append(g)
 
     def display_players(self, players: List[object]) -> None:
+        
         header = "* Available Players: *"
         separator = "*" * len(header)
 
@@ -283,6 +288,7 @@ class Results_Manager_UI:
         print("-" * 38)
 
     def get_game_scores(self) -> int:
+        '''Get the game scores for a game in a given match.'''
         while True:
             try:
                 home_score = int(input("Home Player Score: "))
@@ -306,6 +312,7 @@ class Results_Manager_UI:
     def get_competitors(
         self, home_team_players, away_team_players, game_number
     ) -> object:
+        ''''''
         while True:
             home_player = ""
             self.display_players(home_team_players)

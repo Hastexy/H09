@@ -11,6 +11,7 @@ class MainMenu_UI:
         self.logic_wrapper = Logic_Wrapper()
 
     def menu_output(self):
+        '''Displays all inputs available from the main menu screen.'''
         print(
             """
 ╔═══╦═══════════════╗
@@ -24,6 +25,7 @@ class MainMenu_UI:
         )
 
     def input_prompt(self):
+        '''This is the main domain for the main menu.'''
         while True:
             self.menu_output()
             command = input("\nEnter your command: ")
