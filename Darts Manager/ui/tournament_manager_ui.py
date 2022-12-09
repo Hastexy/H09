@@ -344,7 +344,10 @@ class Tournament_Manager_UI:
                     l.teams.append(team)
                     break
             else:
-                print("\nPlease select a team from the list!")
+                print(""""
+                      
+                      \nPlease select a team from the list!
+                      """)
 
         if len(l.teams) % 2 == 1:
             l.rounds = len(l.teams)
