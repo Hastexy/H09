@@ -65,20 +65,25 @@ class Results_Manager_UI:
                 # Heilsa captain með nafni og útskýra hvað hann getur gert
                 print(f"Hello {name}, you are here to update a match result")
                 # sækja allar upcoming viðureignir
-                the_captain = self.logic_wrapper.get_captain(name, league_id)
+                the_captain = self.logic_wrapper.check_captain_name(name, league_id)
                 all_unfinished_matches = self.logic_wrapper.get_unfinished_matches(
                     league_id
                 )
-
+                the_team_of_the_captain = self.logic_wrapper.get_team(the_captain.team)
                 # sigta út þær sem þessi captain er ekki partur af þ.e. liðið hans
-                filtered_unfinished_matches = []
-
-                header = (
-                    "* Here is a list of all your matches with no recorded results: *"
-                )
+                filtered_unfinished_matches = {}
+                for date, matches in all_unfinished_matches.items():
+                    for match in matches:
+                        if match.home_team == the_team_of_the_captain.name:
+                            filtered_unfinished_matches[date] = matches
+                if not filtered_unfinished_matches:
+                    print("You have no unfinished matches :)")
+                    return
+                header = "* Here is a list of all your unfinished matches: *"
                 self.display_matches(filtered_unfinished_matches, header)
                 self.change_match_result(filtered_unfinished_matches, league_id)
-
+                print("#### Going Back To Main Menu")
+                return
             else:
                 print("Couldn't find that name, try again!")
 
@@ -152,6 +157,7 @@ class Results_Manager_UI:
                         match.games.clear()
                         self.update_match_result(match, league_id)
                         self.logic_wrapper.record_result(match)
+                        print("\n#### Result Recorded Successfully\n")
                         return
             print("Please select one of the matches from the list!")
 

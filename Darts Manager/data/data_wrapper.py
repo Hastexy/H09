@@ -94,3 +94,6 @@ class Data_Wrapper:
 
     def reschedule_match(self, match: object) -> None:
         self.league_data.reschedule_match(match)
+
+    def get_team(self, team_id: str) -> object:
+        return self.league_data.get_team(team_id)
