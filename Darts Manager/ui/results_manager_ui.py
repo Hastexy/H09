@@ -39,7 +39,6 @@ class Results_Manager_UI:
             if name == "b":
                 return "b"
             elif self.logic_wrapper.check_host_name(name, league_id):
-                # Heilsa host með nafni og útskýra hvað hann getur gert
                 print(f"Hello {name}, you are here to make some changes")
                 all_finished_matches = self.logic_wrapper.get_finished_matches(
                     league_id
@@ -69,18 +68,15 @@ class Results_Manager_UI:
                         print("Invalid input!")
 
             elif self.logic_wrapper.check_captain_name(name, league_id):
-                # Heilsa captain með nafni og útskýra hvað hann getur gert
                 print(f"\n{Fore.YELLOW}╔{'═'*78}╗")
                 print(
                     f"║ {f'Hello {name}, you are here to update a match result':^77}║"
                 )
-                # sækja allar upcoming viðureignir
                 the_captain = self.logic_wrapper.check_captain_name(name, league_id)
                 all_unfinished_matches = self.logic_wrapper.get_unfinished_matches(
                     league_id
                 )
                 the_team_of_the_captain = self.logic_wrapper.get_team(the_captain.team)
-                # sigta út þær sem þessi captain er ekki partur af þ.e. liðið hans
                 filtered_unfinished_matches = {}
                 for date, matches in all_unfinished_matches.items():
                     for match in matches:
@@ -108,10 +104,7 @@ class Results_Manager_UI:
         while True:
             self.display_available_leagues(all_leagues)
             print(BACK)
-            league_id = input(
-                # "Which league do you want to register results for (League ID)?: "
-                "Enter the ID of the League you want to work on: "
-            )
+            league_id = input("Enter the ID of the League you want to work on: ")
             if league_id == "b":
                 return "b"
             for league in all_leagues:
@@ -143,7 +136,6 @@ class Results_Manager_UI:
     def display_matches(self, all_matches: dict, header: str) -> None:
         separator = "═" * (len(header) - 2)
 
-        # print(f"\n{separator}")
         print(header)
         print(f"╚{separator}╝{Fore.WHITE}")
 
