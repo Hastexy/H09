@@ -287,11 +287,11 @@ class Tournament_Manager_UI:
             l.name = input("\nEnter the name of your league: ")
             if l.name == "b":
                 return
-
             try:
-                validate_league_name(l.name)
-                break
-            except:
+                all_leagues = self.logic_wrapper.get_all_leagues()
+                taken_names = [league.name.lower() for league in all_leagues]
+                validate_league_name(taken_names, l.name.lower())
+            except SameNameError:
                 print(
                     f"""{Fore.RED}
 ╔══════════════════════════════════════════════════════════════════════╗
