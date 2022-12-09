@@ -40,15 +40,15 @@ class Results_Manager_UI:
                 return "b"
             elif self.logic_wrapper.check_host_name(name, league_id):
                 print(f"Hello {name}, you are here to make some changes")
-                all_finished_matches = self.logic_wrapper.get_finished_matches(
-                    league_id
-                )
-
-                all_unfinished_matches = self.logic_wrapper.get_unfinished_matches(
-                    league_id
-                )
 
                 while True:
+                    all_finished_matches = self.logic_wrapper.get_finished_matches(
+                        league_id
+                    )
+
+                    all_unfinished_matches = self.logic_wrapper.get_unfinished_matches(
+                        league_id
+                    )
                     print("1. Change Match Result")
                     print("2. Change Match Date")
                     print("b. Back")
