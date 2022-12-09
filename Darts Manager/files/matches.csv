@@ -1,1 +1,16 @@
 match_ID;date;home_team;away_team;result;league_ID
+1;12/12/2022 20:00;the brahms;the rings;;1
+2;12/12/2022 20:00;the lightnings;the oligarcs;;1
+3;12/12/2022 20:00;the anacondas;the oligarcs;;1
+4;13/12/2022 20:00;the brahms;the anacondas;;1
+5;13/12/2022 20:00;the lightnings;the cesars;;1
+6;13/12/2022 20:00;the brahms;the cesars;;1
+7;14/12/2022 20:00;the rings;the lightnings;;1
+8;14/12/2022 20:00;the lightnings;the anacondas;;1
+9;14/12/2022 20:00;the brahms;the lightnings;;1
+10;15/12/2022 20:00;the rings;the oligarcs;;1
+11;15/12/2022 20:00;the oligarcs;the cesars;;1
+12;15/12/2022 20:00;the brahms;the oligarcs;;1
+13;16/12/2022 20:00;the rings;the anacondas;;1
+14;16/12/2022 20:00;the rings;the cesars;;1
+15;16/12/2022 20:00;the anacondas;the cesars;;1

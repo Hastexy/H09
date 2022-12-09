@@ -12,9 +12,9 @@ from model.player import Player
 class League_Data:
     def __init__(self):
         self.league_file = "files/leagues.csv"
-        self.match_folder = "files/league_matches/"
         self.team_folder = "files/league_teams/"
         self.game_folder = "files/match_games/"
+        self.match_file = "files/matches.csv"
 
     def create_league(self, league: object) -> None:
         """Registers a new league in the database. Also generates a schedule for the league and stores the matches in the database."""
@@ -42,12 +42,10 @@ class League_Data:
             )
         self.register_teams(league)
         self.generate_schedule(league)
-        # Þetta er það eina sem er eftir af create dæminu!!.
 
     def generate_schedule(self, league: object) -> None:
         """Creates a schedule for a league. It makes sure that all the teams compete with each other only once."""
 
-        # matchfile = self.match_folder + str(league.id) + ".csv"
         matchfile = "files/matches.csv"
         with open(matchfile, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
@@ -98,17 +96,17 @@ class League_Data:
     def get_team_standings(self, league_id: str) -> List[tuple]:
         """Returns points a  has scored."""
         team_list = []
-        teamfile = self.team_folder + str(league_id) + ".csv"
-        with open(teamfile, newline="", encoding="utf-8") as team_file:
+        with open(self.match_file, newline="", encoding="utf-8") as team_file:
             reader = csv.DictReader(team_file, delimiter=";")
-            for team in reader:
-                team_list.append((team["name"], team["match_wins"], team["legs_wins"]))
+            for match in reader:
+                team_list.append(
+                    (match["home_team"], match["away_team"], match["result"])
+                )
         return team_list
 
     def get_finished_matches(self, league_id: str) -> List[object]:
         """Receives a league_id number and fetches all the matches that have been completed in that league. Returns a list of Match objects."""
         matches = []
-        # matchfile = self.match_folder + str(league_id) + ".csv"
         matchfile = "files/matches.csv"
         with open(matchfile, newline="", encoding="utf-8") as match_file:
             reader = csv.DictReader(match_file, delimiter=";")
@@ -191,7 +189,7 @@ class League_Data:
             for id, _ in enumerate(csvfile):
                 pass
             new_id = id + 1
-        return new_id   
+        return new_id
 
     def get_new_match_id(self) -> int:
         """Generates a unique match id."""

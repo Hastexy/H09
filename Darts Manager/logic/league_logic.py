@@ -57,7 +57,26 @@ class League_Logic:
     def get_team_standings(self, league_id: str) -> List[tuple]:
         """Get team standings from a specific league"""
         all_teams = self.data_wrapper.get_team_standings(league_id)
-        return sorted(all_teams, key=itemgetter(1, 2, 0), reverse=True)
+        team_score_dict = {}
+        for home_team, away_team, result in all_teams:
+            if result:
+                home_score, away_score = result.split("-")
+            else:
+                home_score = away_score = 0
+
+                if home_team not in team_score_dict:
+                    team_score_dict[home_team] = int(home_score)
+                else:
+                    team_score_dict[home_team] += int(home_score)
+
+                if away_team not in team_score_dict:
+                    team_score_dict[away_team] = int(away_score)
+                else:
+                    team_score_dict[away_team] += int(away_score)
+
+        all_teams = [(k, v) for k, v in team_score_dict.items()]
+
+        return sorted(all_teams, key=itemgetter(1), reverse=True)
 
     def check_host_name(self, name: str, league_id: str) -> bool:
         """Check if host name already exists."""

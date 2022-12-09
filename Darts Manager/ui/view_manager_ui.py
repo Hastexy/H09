@@ -2,10 +2,11 @@ from typing import List
 from model.team import Team
 from model.player import Player
 from colorama import init, Fore, Style
+
 init()
-#Colorama options
-#Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
-#Style = [DIM, NORMAL, BRIGHT]
+# Colorama options
+# Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+# Style = [DIM, NORMAL, BRIGHT]
 
 STR_NAME = "NAME"
 STR_SSN = "SSN"
@@ -17,7 +18,7 @@ STR_ADDRESS = "ADDRESS"
 STR_ROLE = "ROLE"
 
 DELIM = "═" * 51
-DELIM_MID = f"╠{'═'*39}╬{'═'*34}╬{'═'*34}╣"
+DELIM_MID = f"╠{'═'*39}╬{'═'*34}║"
 DELIML = "═" * 39 + "╦═════╦═════"
 DELIMR = "═════╦═════╦" + "═" * 39
 DELIMLP = "═" * 39 + "╬═════╬═════"
@@ -35,7 +36,7 @@ class View_Manager_UI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
-        '''Prints out the options available from the view manager screen.'''
+        """Prints out the options available from the view manager screen."""
         print(
             """
 ╔═══╦═══════════════════════╗
@@ -51,7 +52,7 @@ class View_Manager_UI:
         )
 
     def input_prompt(self):
-        '''This is the main domain for the view manager.'''
+        """This is the main domain for the view manager."""
         all_leagues = self.logic_wrapper.get_all_leagues()
         league_id = self.select_league_id(all_leagues)
 
@@ -126,7 +127,7 @@ class View_Manager_UI:
                 self.create_league_standings(league_id)
 
     def display_available_leagues(self, leagues: List[object]) -> None:
-        '''displays all available leagues.'''
+        """displays all available leagues."""
         header = f"║ {'List of all registered Leagues':^39} ║"
         separator = "═" * (len(header) - 2)
 
@@ -142,24 +143,26 @@ class View_Manager_UI:
         print(f"╚{'═'*41}╝")
 
     def select_league_id(self, all_leagues: List[object]) -> None:
-        '''Allows the user to choose a league by its id.'''
+        """Allows the user to choose a league by its id."""
         while True:
             self.display_available_leagues(all_leagues)
-            print(f"""{Fore.YELLOW}
+            print(
+                f"""{Fore.YELLOW}
 ╔══════════════════════╗
 ║ Input "b" to go back ║
-╚══════════════════════╝\n{Fore.WHITE}""")
+╚══════════════════════╝\n{Fore.WHITE}"""
+            )
             league_id = input("Which league do you want to view (League ID)?: ")
             if league_id == "b":
                 return "b"
             for league in all_leagues:
-                if league_id == str(league.id): #or league_id == "b"
+                if league_id == str(league.id):  # or league_id == "b"
                     return league_id
 
             print("Please select a valid league ID from the list!")
 
     def create_match_table(self, match) -> str:
-        '''Formats the information of the match into a table.'''
+        """Formats the information of the match into a table."""
         print(f"╔{DELIM}╦═════╦{DELIM}╗")
         print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
         print(f"╠{DELIML}╬═════╬{DELIMR}╣")
@@ -182,19 +185,19 @@ class View_Manager_UI:
         print(f"╚{DELIM}╩═════╩{DELIM}╝")
 
     def show_upcoming_matches(self, match) -> str:
-        '''Show all matches that have no results.'''
+        """Show all matches that have no results."""
         print(f"╔{DELIM}╦═════╦{DELIM}╗")
         print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
         print(f"╚{DELIM}╩═════╩{DELIM}╝")
 
     def show_date(self, date) -> str:
-        '''Prints the dare of a match.'''
+        """Prints the dare of a match."""
         print(f"╔{'═'*10}╦{'═'*98}╗")
         print(f"║{'Date':^10}║{date:<98}║")
         print(f"╚{'═'*10}╩{'═'*98}╝")
 
     def display_team_and_players(self, id, team):
-        '''Displays all teams and all players.'''
+        """Displays all teams and all players."""
         print(f"\n╔{'═'*4}╦{'═'*15}╦{'═'*99}╗")
         print(f"║{f'{id}.':^4}║{'TEAM NAME':^15}║ {team.name.title():<98}║")
         print(f"╚{'═'*4}╩{'═'*15}╩{'═'*99}╝")
@@ -223,7 +226,7 @@ class View_Manager_UI:
         print(f"╚{'═'*39}╩{'═'*14}╩{'═'*39}╩{'═'*14}╩{'═'*10}╝")
 
     def parse_leg_score(self, game: object) -> None:
-        '''Formats the score of each team for the the match table.'''
+        """Formats the score of each team for the the match table."""
         if game.home_score == "0":
             game.home_score = "0-0"
         elif game.home_score == "1":
@@ -239,15 +242,15 @@ class View_Manager_UI:
             game.away_score = "1-1"
 
     def create_league_standings(self, league_id) -> str:
-        '''Prints out all teams and how many games and how legs they've won.'''
-        print(TOP)
-        print(f"║{'===Viewing League Standings===':^109}║")
-        print(f"╠{'═'*39}╦{'═'*34}╦{'═'*34}╣")
-        print(f"║{'TEAM':<39}║{'MATCHES WON':^34}║{'LEGS WON':^34}║")
+        """Prints out all teams and how many games and how legs they've won."""
+        print(f"\n╔{'═'*74}╗")
+        print(f"║{'===Viewing League Standings===':^74}║")
+        print(f"╠{'═'*39}╦{'═'*34}╗")
+        print(f"║{'TEAM':<39}║{'MATCHES WON':^34}║")
         teams_sorted_by_wins = self.logic_wrapper.get_team_standings(league_id)
         for team in teams_sorted_by_wins:
-            name, matches, legs = team
+            name, matches = team
             # print("-" * 53)
             print(DELIM_MID)
-            print(f"║{name.title():<39}║{matches:^34}║{legs:^34}║")
-        print(f"╚{'═'*39}╩{'═'*34}╩{'═'*34}╝")
+            print(f"║{name.title():<39}║{matches:^34}║")
+        print(f"╚{'═'*39}╩{'═'*34}╝")
