@@ -81,3 +81,6 @@ class League_Logic:
 
     def get_team_members(self, name: str, league_id: str) -> List[object]:
         return self.data_wrapper.get_team_members(name, league_id)
+
+    def reschedule_match(self, match: object) -> None:
+        self.data_wrapper.reschedule_match(match)

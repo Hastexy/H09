@@ -177,9 +177,17 @@ class League_Data:
                     }
                 )
 
-    def reschedule_match(self, match_id: int) -> object:
+    def reschedule_match(self, match: object) -> None:
         """Changes the date of a match"""
-        pass
+        matchfile = self.match_folder + str(match.league_id) + ".csv"
+        with fileinput.input(files=matchfile, inplace=True, mode="r") as match_file:
+
+            reader = csv.DictReader(match_file, delimiter=";")
+            print(";".join(reader.fieldnames))
+            for a_match in reader:
+                if a_match["match_ID"] == match.id:
+                    a_match["date"] = match.date
+                print(";".join([*a_match.values()]))
 
     def get_new_league_id(self) -> int:
         """Generates a new id for a league."""

@@ -4,7 +4,9 @@ from data.club_data import Club_Data
 from data.league_data import League_Data
 
 from typing import List
-#The Data Wrapper sends information between the data layer and the logic layer, by connecting functions together.
+
+# The Data Wrapper sends information between the data layer and the logic layer, by connecting functions together.
+
 
 class Data_Wrapper:
     def __init__(self):
@@ -87,14 +89,8 @@ class Data_Wrapper:
     def get_team_members(self, name: str, league_id: str) -> List[object]:
         return self.league_data.get_team_members(name, league_id)
 
-    def edit_result(self):
-        pass
-
-    def create_tournament(self):
-        pass
-
-    def create_a_match(self):
-        pass
-
     def get_new_match_id(self) -> int:
         return self.league_data.get_new_match_id()
+
+    def reschedule_match(self, match: object) -> None:
+        self.league_data.reschedule_match(match)

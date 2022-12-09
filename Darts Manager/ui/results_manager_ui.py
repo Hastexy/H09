@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 
 from model.game import Game
@@ -36,6 +37,10 @@ class Results_Manager_UI:
                     league_id
                 )
 
+                all_unfinished_matches = self.logic_wrapper.get_unfinished_matches(
+                    league_id
+                )
+
                 while True:
                     print("1. Change Match Result")
                     print("2. Change Match Date")
@@ -45,11 +50,13 @@ class Results_Manager_UI:
                     if command == "b":
                         return
                     elif command == "1":
-                        self.display_finished_matches(all_finished_matches)
-                        self.change_match_results(all_finished_matches, league_id)
+                        header = "* Here is a list of all finished matches: *"
+                        self.display_matches(all_finished_matches, header)
+                        self.change_match_result(all_finished_matches, league_id)
                     elif command == "2":
-                        self.display_finished_matches(all_finished_matches)
-                        self.change_match_date(all_finished_matches, league_id)
+                        header = "* Here is a list of all upcoming matches: *"
+                        self.display_matches(all_unfinished_matches, header)
+                        self.change_match_date(all_unfinished_matches)
                     else:
                         print("Invalid input!")
 
@@ -88,9 +95,7 @@ class Results_Manager_UI:
             print(f"{league.name.title():<35}{league.id}")
         print("-" * 38)
 
-    def display_finished_matches(self, all_matches: dict) -> None:
-        pass
-        header = "* Here is a list of all finished matches: *"
+    def display_matches(self, all_matches: dict, header: str) -> None:
         separator = "*" * len(header)
 
         print(f"\n{separator}")
@@ -107,9 +112,21 @@ class Results_Manager_UI:
                 )
 
     def change_match_date(self, all_matches: dict) -> None:
-        match_id = input("Select a match to change (match ID): ")
+        while True:
+            print("Press 'b' to go back")
+            match_id = input("Select a match to change the date of (match ID): ")
+            if match_id == "b":
+                return
+            for matches in all_matches.values():
+                for match in matches:
+                    if str(match.id) == match_id:
+                        self.update_match_date(match)
+                        self.logic_wrapper.reschedule_match(match)
+                        print("\n#### Date Changed Successfully\n")
+                        return
+            print("Please select one of the matches from the list!")
 
-    def change_match_results(self, all_matches: dict, league_id: str) -> None:
+    def change_match_result(self, all_matches: dict, league_id: str) -> None:
         while True:
             print("Press 'b' to go back")
             match_id = input("Select a match to change (match ID): ")
@@ -123,6 +140,18 @@ class Results_Manager_UI:
                         self.logic_wrapper.record_result(match)
                         return
             print("Please select one of the matches from the list!")
+
+    def update_match_date(self, match: object) -> None:
+        while True:
+            new_date = input(
+                "Please enter the new date of the match in this format (dd/mm/yyyy hh:mm): "
+            )
+            try:
+                new_date = datetime.strptime(new_date, "%d/%m/%Y %H:%M")
+                match.date = str(new_date.strftime("%d/%m/%Y %H:%M"))
+                return
+            except ValueError:
+                print("Please enter the date like the format shows!")
 
     def update_match_result(self, match: object, league_id: str) -> None:
         # 501 1v1 game
