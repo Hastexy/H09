@@ -55,7 +55,7 @@ class League_Logic:
         return self.data_wrapper.get_all_league_teams(league_id)
 
     def get_team_standings(self, league_id: str) -> List[tuple]:
-        """Get team standings from a specific league"""
+        """Get team standings from a specific league."""
         all_teams = self.data_wrapper.get_team_standings(league_id)
         team_score_dict = {}
         for home_team, away_team, result in all_teams:

@@ -1,5 +1,3 @@
-# from ui.player_UI import Player_UI
-# from ui.team_ui import Team_UI
 from ui.tournament_manager_ui import Tournament_Manager_UI
 from ui.results_manager_ui import Results_Manager_UI
 from ui.view_manager_ui import View_Manager_UI
@@ -11,7 +9,7 @@ class MainMenu_UI:
         self.logic_wrapper = Logic_Wrapper()
 
     def menu_output(self):
-        '''Displays all inputs available from the main menu screen.'''
+        """Displays all inputs available from the main menu screen."""
         print(
             """
 ╔═══╦═══════════════╗
@@ -25,7 +23,7 @@ class MainMenu_UI:
         )
 
     def input_prompt(self):
-        '''This is the main domain for the main menu.'''
+        """This is the main domain for the main menu."""
         while True:
             self.menu_output()
             command = input("\nEnter your command: ")
@@ -34,7 +32,6 @@ class MainMenu_UI:
                 print("\nGoodbye")
                 break
             elif command == "1":
-                # print("\n===TOURNAMENT MANAGER====")
                 verify_user = (
                     input("\nAre you a tournament host? (y/n): ").strip().lower()
                 )
@@ -52,9 +49,7 @@ class MainMenu_UI:
                 back_method = menu.input_prompt()
                 if back_method == "q":
                     return "q"
-                # print("\n===RESULTS MANAGER===")   Implement RM Menu Later
             elif command == "3":
-                # print("\n===VIEW MANAGER===")
                 menu = View_Manager_UI(self.logic_wrapper)
                 back_method = menu.input_prompt()
                 if back_method == "q":

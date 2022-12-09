@@ -11,9 +11,6 @@ from datetime import datetime, time, date, timedelta
 from colorama import init, Fore, Style, Back
 
 init()
-# Colorama options
-# Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
-# Style = [DIM, NORMAL, BRIGHT]
 
 
 class Tournament_Manager_UI:
@@ -54,7 +51,6 @@ class Tournament_Manager_UI:
                 print(CANCEL)
                 self.create_club()
             elif command == "2":
-                # print(CANCEL)
                 self.create_team()
             elif command == "3":
                 print(CANCEL)
@@ -74,7 +70,6 @@ class Tournament_Manager_UI:
         print(header)
         print(f"╠{separator}╣")
 
-        # print(f"╔{'═'*65}╗")
         print(f"║{'NAME':<38}{'SocialSecurityNumber':<25}{'ID':>2}║")
         print(f"╠{'═'*65}╣")
         all_players = self.logic_wrapper.get_all_players()
@@ -86,8 +81,6 @@ class Tournament_Manager_UI:
 
     def display_all_clubs(self) -> list:
         """Displays all clubs registered in the system."""
-
-        # print("\n##### Every team must belong to a club. #####")
 
         print(
             f"""{Fore.YELLOW}
@@ -219,7 +212,6 @@ class Tournament_Manager_UI:
             except:
                 print(ERR_UNKNOWN)
 
-        # header = f"║ Every team must have at least 4 players, one of whom is the team captain ║"
         header = f"║ {'Every team must have 4 players':<63} ║"
         separator = "═" * (len(header) - 2)
 
@@ -227,8 +219,6 @@ class Tournament_Manager_UI:
         print(header)
         print(f"║ {'Start by picking the team captain':<63} ║")
         print(f"╚{separator}╝")
-
-        # print("---Let's start by picking the team captain---")
 
         captain_assigned = False
         all_players = self.display_available_players()
@@ -338,8 +328,6 @@ class Tournament_Manager_UI:
             except InvalidNumberCharacterException:
                 print(ERR_DIGIT)
 
-        # Get a list of all the teams participating!!
-        # print("\nRegister Teams In The League (At Least TWO Teams):")
         print(
             f"""{Fore.YELLOW}
 ╔═════════════════════════════════════════╗
@@ -363,7 +351,6 @@ class Tournament_Manager_UI:
             if next_team_id == "q" and len(l.teams) >= 2:
                 break
             else:
-                # print("\nYou must register at least TWO teams in a league")
                 print(
                     f"""{Fore.YELLOW}
 ╔═════════════════════════════════════════╗
@@ -405,13 +392,10 @@ class Tournament_Manager_UI:
             except ValueError:
                 print("\nPlease enter the date like the format shows!")
 
-        # l.round_dates.append(start_date.strftime("%d/%m/%Y %H:%M"))
-
         interval = int(input("\nHow many days between rounds?: "))
         tdelta = timedelta(days=interval)
 
         matches_per_round = math.floor(len(l.teams) / 2)
-        # búa til nýja orðabók, lyklar: date, value: lista af x matches, x = floor(len(l.teams) / 2)
         next_date = start_date
         all_matches = list(combinations(l.teams, 2))
         all_dates = []
@@ -427,8 +411,6 @@ class Tournament_Manager_UI:
                 all_matches.remove(next_team)
 
             next_date += tdelta
-
-            # l.round_dates.append(next_date.strftime("%d/%m/%Y %H:%M"))
 
         if len(all_dates) > 1:
             l.start_date = all_dates[0]
@@ -589,7 +571,6 @@ class Tournament_Manager_UI:
         print(header)
         print(f"╠{separator}╣")
 
-        # print(f"╔{'═'*41}╗")
         print(f"║ {'NAME':<38}{'ID':>2}║")
         print(f"╠{'═'*41}╣")
         for team in teams:
