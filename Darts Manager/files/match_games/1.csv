@@ -1,28 +1,13 @@
 type;h_player;a_player;h_score;a_score
-<<<<<<< HEAD
-501;truckside weightclass;destro the king;2;1
-501;thunderbitch;australian thunderlord;1;2
-501;testtwo;kóalabjörn;2;2
-501;testthree;kóngur kári óskarsson;1;1
-301;truckside weightclass;australian thunderlord;0;0
-301;thunderbitch;destro the king;0;0
-C;testtwo;kóalabjörn;2;0
-C;testthree;kóngur kári óskarsson;0;0
-501;truckside weightclass;australian thunderlord;2;0
-501;thunderbitch;destro the king;0;0
-501;testtwo;kóalabjörn;0;0
-501;testthree;kóngur kári óskarsson;0;0
-=======
-501;skólastrákur;truckside weightclass;2;1
-501;súperman;thunderbitch;1;2
-501;testfour;testtwo;1;2
-501;testone;testthree;2;1
-301;skólastrákur;truckside weightclass;0;2
+501;skólastrákur;truckside weightclass;2;2
+501;súperman;thunderbitch;2;1
+501;testfour;testtwo;0;0
+501;testone;testthree;0;0
+301;skólastrákur;truckside weightclass;2;1
 301;súperman;thunderbitch;0;0
-C;testfour;testtwo;2;0
+C;testfour;testtwo;1;2
 C;testone;testthree;0;0
-501;skólastrákur;truckside weightclass;1;2
+501;skólastrákur;truckside weightclass;2;1
 501;súperman;thunderbitch;0;0
 501;testfour;testtwo;0;0
 501;testone;testthree;0;0
->>>>>>> cd915a3a04a1b901dbd49669450783e40beade4f

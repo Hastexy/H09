@@ -1,6 +1,11 @@
 from typing import List
 from model.team import Team
 from model.player import Player
+from colorama import init, Fore, Style
+init()
+#Colorama options
+#Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+#Style = [DIM, NORMAL, BRIGHT]
 
 STR_NAME = "NAME"
 STR_SSN = "SSN"
@@ -131,10 +136,10 @@ class View_Manager_UI:
     def select_league_id(self, all_leagues: List[object]) -> None:
         while True:
             self.display_available_leagues(all_leagues)
-            print("""
+            print(f"""{Fore.GREEN}
 ╔══════════════════════╗
 ║ Input "b" to go back ║
-╚══════════════════════╝\n""")
+╚══════════════════════╝\n{Fore.WHITE}""")
             league_id = input("Which league do you want to view (League ID)?: ")
             for league in all_leagues:
                 if league_id == str(league.id) or league_id == "b":
