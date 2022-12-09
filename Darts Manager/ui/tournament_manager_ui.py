@@ -64,13 +64,13 @@ class Tournament_Manager_UI:
     def display_available_players(self) -> list:
         """Displays all players who are both registered in the database and do not belong to a team."""
         header = f"║ {'List of all available players':^63} ║"
-        separator = "═" * (len(header)-2)
+        separator = "═" * (len(header) - 2)
 
         print(f"\n╔{separator}╗")
         print(header)
         print(f"╠{separator}╣")
 
-        #print(f"╔{'═'*65}╗")
+        # print(f"╔{'═'*65}╗")
         print(f"║{'NAME':<38}{'SocialSecurityNumber':<25}{'ID':>2}║")
         print(f"╠{'═'*65}╣")
         all_players = self.logic_wrapper.get_all_players()
@@ -204,7 +204,7 @@ class Tournament_Manager_UI:
             except:
                 print("\n##Unknown Error Occured, try again##")
 
-        #header = f"║ Every team must have at least 4 players, one of whom is the team captain ║"
+        # header = f"║ Every team must have at least 4 players, one of whom is the team captain ║"
         header = f"║ {'Every team must have 4 players minimum':<63} ║"
         separator = "═" * (len(header) - 2)
 
@@ -213,7 +213,7 @@ class Tournament_Manager_UI:
         print(f"║ {'Start by picking the team captain':<63} ║")
         print(f"╚{separator}╝")
 
-        #print("---Let's start by picking the team captain---")
+        # print("---Let's start by picking the team captain---")
 
         captain_assigned = False
         all_players = self.display_available_players()
@@ -267,10 +267,12 @@ class Tournament_Manager_UI:
                 print("Invalid player ID!")
 
         self.logic_wrapper.create_team(t)
-        print(f"""{Fore.GREEN}
+        print(
+            f"""{Fore.GREEN}
 ╔══════════════╗
 ║ TEAM CREATED ║
-╚══════════════╝{Fore.WHITE}""")
+╚══════════════╝{Fore.WHITE}"""
+        )
 
     def create_league(self) -> None:
         l = League()
@@ -285,10 +287,12 @@ class Tournament_Manager_UI:
                 validate_league_name(l.name)
                 break
             except:
-                print(f"""{Fore.RED}
+                print(
+                    f"""{Fore.RED}
 ╔══════════════════════════════════════════════════════════════════════╗
 ║ Name taken! Another league already has this name, choose another one ║
-╚══════════════════════════════════════════════════════════════════════╝{Fore.WHITE}""")
+╚══════════════════════════════════════════════════════════════════════╝{Fore.WHITE}"""
+                )
 
         while True:
             l.host = input("\nEnter the host name of your league: ")
@@ -320,18 +324,22 @@ class Tournament_Manager_UI:
                 print(ERR_DIGIT)
 
         # Get a list of all the teams participating!!
-        #print("\nRegister Teams In The League (At Least TWO Teams):")
-        print(f"""{Fore.YELLOW}
+        # print("\nRegister Teams In The League (At Least TWO Teams):")
+        print(
+            f"""{Fore.YELLOW}
 ╔═════════════════════════════════════════╗
 ║ Register at least TWO teams in a league ║
-╚═════════════════════════════════════════╝{Fore.WHITE}""") 
+╚═════════════════════════════════════════╝{Fore.WHITE}"""
+        )
         all_teams = self.logic_wrapper.get_all_teams()
         while True:
             self.display_available_teams(all_teams)
-            print(f"""{Fore.YELLOW}
+            print(
+                f"""{Fore.YELLOW}
 ╔═════════════════════════════════════════╗
 ║   Press "q" to stop registering teams   ║
-╚═════════════════════════════════════════╝{Fore.WHITE}""")
+╚═════════════════════════════════════════╝{Fore.WHITE}"""
+            )
             next_team_id = input("\nRegister Next Team (Team ID): ")
 
             if next_team_id == "b":
@@ -340,28 +348,32 @@ class Tournament_Manager_UI:
             if next_team_id == "q" and len(l.teams) >= 2:
                 break
             else:
-                #print("\nYou must register at least TWO teams in a league")
-                print(f"""{Fore.YELLOW}
+                # print("\nYou must register at least TWO teams in a league")
+                print(
+                    f"""{Fore.YELLOW}
 ╔═════════════════════════════════════════╗
 ║ Register at least TWO teams in a league ║
-╚═════════════════════════════════════════╝{Fore.WHITE}""")    
-                
+╚═════════════════════════════════════════╝{Fore.WHITE}"""
+                )
+
             for team in all_teams:
                 if next_team_id == team.id:
                     all_teams.remove(team)
                     l.teams.append(team)
-                    print(f"""{Fore.GREEN}
+                    print(
+                        f"""{Fore.GREEN}
 ╔═════════════════════╗
 ║   Team Registered   ║
-╚═════════════════════╝{Fore.WHITE}""") 
+╚═════════════════════╝{Fore.WHITE}"""
+                    )
                     break
             else:
-                print(f"""{Fore.YELLOW}
+                print(
+                    f"""{Fore.YELLOW}
 ╔═════════════════════════════════════════╗
 ║   Please select a team from the list!   ║
-╚═════════════════════════════════════════╝{Fore.WHITE}""")                    
-                      
-
+╚═════════════════════════════════════════╝{Fore.WHITE}"""
+                )
 
         if len(l.teams) % 2 == 1:
             l.rounds = len(l.teams)
@@ -378,7 +390,7 @@ class Tournament_Manager_UI:
             except ValueError:
                 print("\nPlease enter the date like the format shows!")
 
-        l.round_dates.append(start_date)
+        l.round_dates.append(start_date.strftime("%d/%m/%Y %H:%M"))
 
         interval = int(input("\nHow many days between rounds?: "))
         tdelta = timedelta(days=interval)
@@ -387,7 +399,7 @@ class Tournament_Manager_UI:
 
         for _ in range(l.rounds - 1):
             next_date += tdelta
-            l.round_dates.append(next_date)
+            l.round_dates.append(next_date.strftime("%d/%m/%Y %H:%M"))
 
             if len(l.round_dates) > 1:
                 l.start_date = l.round_dates[0]
@@ -397,10 +409,12 @@ class Tournament_Manager_UI:
             break
 
         self.logic_wrapper.create_league(l)
-        print(f"""{Fore.GREEN}
+        print(
+            f"""{Fore.GREEN}
 ╔════════════════╗
 ║ LEAGUE CREATED ║
-╚════════════════╝{Fore.WHITE}""")
+╚════════════════╝{Fore.WHITE}"""
+        )
 
     def create_player(self) -> None:
         p = Player()
@@ -527,10 +541,12 @@ class Tournament_Manager_UI:
                     print(ERR_LENGTH)
                 except:
                     print(ERR_UNKNOWN)
-        print(f"""{Fore.GREEN}
+        print(
+            f"""{Fore.GREEN}
 ╔════════════════╗
 ║ PLAYER CREATED ║
-╚════════════════╝{Fore.WHITE}""")
+╚════════════════╝{Fore.WHITE}"""
+        )
         self.logic_wrapper.create_player(p)
 
     def display_available_teams(self, teams: List[object]) -> None:
@@ -542,7 +558,7 @@ class Tournament_Manager_UI:
         print(header)
         print(f"╠{separator}╣")
 
-        #print(f"╔{'═'*41}╗")
+        # print(f"╔{'═'*41}╗")
         print(f"║ {'NAME':<38}{'ID':>2}║")
         print(f"╠{'═'*41}╣")
         for team in teams:
