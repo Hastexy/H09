@@ -302,15 +302,20 @@ class Results_Manager_UI:
         header = "* Available Players: *"
         separator = "*" * len(header)
 
-        print(f"\n{separator}")
-        print(header)
-        print(f"{separator}\n")
-
-        print(f"{'NAME':<35}{'ID'}")
-        print("-" * 38)
+        print(f"""{Fore.YELLOW}
+╔═══════════════════╗
+║ Available Players ║
+╚═══════════════════╝{Fore.WHITE}""")
+        
+        # print(f"\n{separator}")
+        # print(header)
+        # print(f"{separator}\n")
+        print(f"╔{'═'*42}╗")
+        print(f"║ {'NAME':<38}{'ID':>2} ║")
+        print(f"╠{'═'*42}╣")
         for player in players:
-            print(f"{player.name.title():<35}{player.id}")
-        print("-" * 38)
+            print(f"║ {player.name.title():<38}{player.id:>2} ║")
+        print(f"╚{'═'*42}╝\n")
 
     def get_game_scores(self) -> int:
         """Get the game scores for a game in a given match."""
