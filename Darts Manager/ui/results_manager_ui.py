@@ -87,7 +87,6 @@ class Results_Manager_UI:
 
                             filtered_unfinished_matches[date].append(match)
 
-
                 if not filtered_unfinished_matches:
                     print(f"║ {'You have no matches to record results for':^76} ║")
                     print(f"╚{'═' * 78}╝{Fore.WHITE}")
@@ -231,8 +230,14 @@ class Results_Manager_UI:
         away_team_players = self.logic_wrapper.get_team_members(
             match.away_team, league_id
         )
-        home_player1, home_player2 = self.get_301_players(home_team_players)
-        away_player1, away_player2 = self.get_301_players(away_team_players)
+        home_player1, home_player2 = self.get_301_players(
+            home_team_players, team="Home Team Player"
+        )
+        print()
+        print()
+        away_player1, away_player2 = self.get_301_players(
+            away_team_players, team="Away Team Player"
+        )
         home_score, away_score = self.get_game_scores()
 
         g = Game("301", home_player1, away_player1, home_score, away_score)
@@ -350,7 +355,7 @@ class Results_Manager_UI:
             print("Please insert a valid Player ID from the list!")
         return home_player, away_player
 
-    def get_301_players(self, available_players: List[object]) -> object:
+    def get_301_players(self, available_players: List[object], team: str) -> object:
         print(
             f"║{'Select TWO players from the list who competed in the 301 game':^67}║"
         )
@@ -360,7 +365,7 @@ class Results_Manager_UI:
             while True:
                 a_player = ""
                 self.display_players(available_players)
-                a_player_id = input(f"Select player {i} (Player ID)?: ")
+                a_player_id = input(f"Select {team} {i} (Player ID)?: ")
                 for player in available_players:
                     if a_player_id == player.id:
                         available_players.remove(player)
