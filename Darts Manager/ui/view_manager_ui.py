@@ -114,23 +114,27 @@ class View_Manager_UI:
                 self.create_league_standings(league_id)
 
     def display_available_leagues(self, leagues: List[object]) -> None:
-        header = "* Here is a list of all registered leagues: *"
-        separator = "*" * len(header)
+        header = f"║ {'List of all registered Leagues':^39} ║"
+        separator = "═" * (len(header) - 2)
 
-        print(f"\n{separator}")
+        print(f"\n╔{separator}╗")
         print(header)
-        print(f"{separator}\n")
+        print(f"╚{separator}╝")
 
-        print(f"{'NAME':<35}{'ID'}")
-        print("-" * 38)
+        print(f"╔{'═'*41}╗")
+        print(f"║ {'NAME':<38}{'ID':>2}║")
+        print(f"╠{'═'*41}╣")
         for league in leagues:
-            print(f"{league.name.title():<35}{league.id}")
-        print("-" * 38)
+            print(f"║ {league.name.title():<38}{league.id:>2}║")
+        print(f"╚{'═'*41}╝")
 
     def select_league_id(self, all_leagues: List[object]) -> None:
         while True:
             self.display_available_leagues(all_leagues)
-            print("Press 'b' to go back")
+            print("""
+╔══════════════════════╗
+║ Input "b" to go back ║
+╚══════════════════════╝\n""")
             league_id = input("Which league do you want to view (League ID)?: ")
             for league in all_leagues:
                 if league_id == str(league.id) or league_id == "b":
