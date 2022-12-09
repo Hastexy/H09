@@ -1,7 +1,6 @@
 import csv
 import fileinput
 from typing import List
-from itertools import combinations
 from model.league import League
 from model.match import Match
 from model.game import Game
