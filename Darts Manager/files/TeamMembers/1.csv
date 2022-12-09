@@ -1,0 +1,5 @@
+ID;name;ssn;email;dob;phone;home_phone;address;team_ID;role
+1;Sporgonizza Fabio;2609723648;sporga@email.com;12/12/1995;6422410;;neighborlystreet 280;1;captain
+2;Gwendoline Lucider;1512713385;gwendo@email.com;12/09/1994;5868787;;knowledgestreet 33;1;player
+3;Zarathustra Ford;0811933925;zara@gmail.com;12/04/1996;5868989;;swingstreet 135;1;player
+4;Winston Birdshill;1408783929;winston@gmail.com;15/12/2000;5869874;;;1;player

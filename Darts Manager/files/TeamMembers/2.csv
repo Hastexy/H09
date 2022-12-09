@@ -1,0 +1,5 @@
+ID;name;ssn;email;dob;phone;home_phone;address;team_ID;role
+5;Matteo Roberts;1507953166;matteo@gmail.com;15/02/2001;5467897;;crazystreet 212;2;captain
+6;Payten Tucker;2802833965;payten@gmail.com;13/12/1992;5863214;;smilestreet 205;2;player
+7;Eliezer Atkinson;0505723003;eliezer@gmail.com;01/01/1996;7561922;;voicelessstreet 7;2;player
+8;Grayson Ewing;2504913506;grayson@gmail.com;06/06/1998;6114334;;cowardlystreet 14;2;player

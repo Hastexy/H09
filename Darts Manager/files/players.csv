@@ -1,1 +1,25 @@
 ID;name;ssn;email;date_of_birth;phone;home_phone;address;team_ID;role
+1;Sporgonizza Fabio;2609723648;sporga@email.com;12/12/1995;6422410;;neighborlystreet 280;1;captain
+2;Gwendoline Lucider;1512713385;gwendo@email.com;12/09/1994;5868787;;knowledgestreet 33;1;player
+3;Zarathustra Ford;0811933925;zara@gmail.com;12/04/1996;5868989;;swingstreet 135;1;player
+4;Winston Birdshill;1408783929;winston@gmail.com;15/12/2000;5869874;;;1;player
+5;Matteo Roberts;1507953166;matteo@gmail.com;15/02/2001;5467897;;crazystreet 212;2;captain
+6;Payten Tucker;2802833965;payten@gmail.com;13/12/1992;5863214;;smilestreet 205;2;player
+7;Eliezer Atkinson;0505723003;eliezer@gmail.com;01/01/1996;7561922;;voicelessstreet 7;2;player
+8;Grayson Ewing;2504913506;grayson@gmail.com;06/06/1998;6114334;;cowardlystreet 14;2;player
+9;Jacqueline Payne;2706713276;jacqueline@gmail.com;12/07/2004;8485386;;substantialstreet 170;3;captain
+10;Elaina Singleton;1611873154;elaina@gmail.com;15/12/2000;6553265;;cherriesstreet 20;3;player
+11;Marcel Arias;0711983486;marcel@gmail.com;07/07/2001;6015114;;mess upstreet 250;3;player
+12;kallie hansen;1107913504;kallie@gmail.com;05/07/1997;6987450;;trickstreet 73;3;player
+13;Nero Pesky;1901893434;nero@gmail.com;05/05/2001;6214709;;kissstreet 198;4;captain
+14;Verma Murra;0301843696;verma@email.com;12/12/2005;7251471;;puzzledstreet 135;4;player
+15;Ron Ribo;2101733629;ron@gmail.com;03/03/1997;6245050;;commonstreet 163;4;player
+16;Eva Zarantula;2803953272;eva@gmail.com;12/04/1998;8188739;;parsimoniousstreet 196;4;player
+17;Cassie Obrien;1309743005;cassie@gmail.com;04/04/1997;7451813;;tightstreet 279;5;captain
+18;Maggie Lynch;1503833070;maggie@gmail.com;03/03/1996;8779676;;icestreet 134;5;player
+19;Devin Villarreal;2712823053;devin@gmail.com;03/04/1995;7247162;;crossstreet 229;5;player
+20;Gilberto Pollard;1711793440;gilberto@email.com;14/12/2002;7592715;;thinkablestreet 230;5;player
+21;Marianna Bush;0205843948;marianna@gmail.com;04/03/1995;8617834;;bellsstreet 202;6;captain
+22;Dayanara Mckinney;0501953638;dayanara@email.com;02/03/1999;6555175;;threadstreet 109;6;player
+23;Kailey Green;2007873650;kailey@gmail.com;02/04/1994;6622296;;changeablestreet 123;6;player
+24;Erik Bradshaw;1701783246;erik@gmail.com;03/03/1996;6492065;;marriedstreet 39;6;player
