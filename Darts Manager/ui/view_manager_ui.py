@@ -24,6 +24,7 @@ BOT = f"╚{'═'*109}╝\n"
 HOME_TXT = "===Home Team==="
 AWAY_TXT = "===Away Team==="
 
+
 class View_Manager_UI:
     def __init__(self, logic_connection) -> None:
         self.logic_wrapper = logic_connection
@@ -77,7 +78,7 @@ class View_Manager_UI:
                 )
                 for date, matches in matches_sorted_by_date.items():
                     self.show_date(date)
-                    #print("Games:")
+                    # print("Games:")
                     for match in matches:
                         # home, away = match
                         # print(f"\t{home} VS {away}")
@@ -92,12 +93,12 @@ class View_Manager_UI:
                 )
                 for date, matches in matches_sorted_by_date.items():
                     self.show_date(date)
-                    #test_delim = "x" * 39
-                    #print(header)
-                    #print("-" * len(header))
+                    # test_delim = "x" * 39
+                    # print(header)
+                    # print("-" * len(header))
                     for match in matches:
                         self.create_match_table(match)
-                      
+
                         # print(
                         #     f"Game:   {match.home_team.title()} VS {match.away_team.title()}\n"
                         # )
@@ -106,10 +107,10 @@ class View_Manager_UI:
                         #     print(
                         #         f"{game.home_player.title():<25}{game.home_score:<4}{game.type:^4}{game.away_score}{game.away_player.title():>25}"
                         #     )
-                        
+
             elif command == "4":
-                
-                #print("\n==Viewing League Standings==\n")
+
+                # print("\n==Viewing League Standings==\n")
                 self.create_league_standings(league_id)
 
     def display_available_leagues(self, leagues: List[object]) -> None:
@@ -138,7 +139,7 @@ class View_Manager_UI:
             print("Please select a valid league ID from the list!")
 
     def create_match_table(self, match) -> str:
-        
+
         print(f"╔{DELIM}╦═════╦{DELIM}╗")
         print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
         print(f"╠{DELIML}╬═════╬{DELIMR}╣")
@@ -148,16 +149,18 @@ class View_Manager_UI:
             self.parse_leg_score(game)
             home_leg1, home_leg2 = game.home_score.split("-")
             away_leg1, away_leg2 = game.away_score.split("-")
-            print(f"║{game.home_player.title():<39}║{home_leg1:^5}║{home_leg2:^5}║{game.type:^5}║{away_leg2:^5}║{away_leg1:^5}║{game.away_player.title():>39}║")
+            print(
+                f"║{game.home_player.title():<39}║{home_leg1:^5}║{home_leg2:^5}║{game.type:^5}║{away_leg2:^5}║{away_leg1:^5}║{game.away_player.title():>39}║"
+            )
 
             if count != 11:
                 print(f"╠{DELIMLP}╬═════╬{DELIMRP}╣")
             else:
                 print(f"╠{DELIMLB}╬═════╬{DELIMRB}╣")
         home_score, away_score = match.result.split("-")
-        print(f"║{home_score:^51}║SCORE║{away_score:^51}║")             
+        print(f"║{home_score:^51}║SCORE║{away_score:^51}║")
         print(f"╚{DELIM}╩═════╩{DELIM}╝")
-        
+
     def show_upcoming_matches(self, match) -> str:
         print(f"╔{DELIM}╦═════╦{DELIM}╗")
         print(f"║{match.home_team.title():^51}║  V  ║{match.away_team.title():^51}║")
@@ -173,11 +176,13 @@ class View_Manager_UI:
         print(f"║{f'{id}.':^4}║{'TEAM NAME':^15}║ {team.name.title():<87}║")
         print(f"╠{'═'*4}╩{'═'*15}╩{'═'*18}╬{'═'*69}╣")
         print(f"║ {STR_NAME:<38}║xxxxxxxxxxxxxxxxx║")
-        #print(f"\n{STR_NAME:<35}{STR_PHONE:<12}{STR_SSN:<15}{STR_ADDRESS:<20}{STR_ROLE:<10}")
+        # print(f"\n{STR_NAME:<35}{STR_PHONE:<12}{STR_SSN:<15}{STR_ADDRESS:<20}{STR_ROLE:<10}")
         for player in team.players:
             print()
-            print(f"║{player.name.title():<35}{player.phone:<12}{player.ssn:<15}{player.address.title():<20}{player.role.title():<10}")
-                
+            print(
+                f"║{player.name.title():<35}{player.phone:<12}{player.ssn:<15}{player.address.title():<20}{player.role.title():<10}"
+            )
+
     def parse_leg_score(self, game: object) -> None:
         if game.home_score == "0":
             game.home_score = "0-0"
@@ -189,7 +194,7 @@ class View_Manager_UI:
         if game.away_score == "0":
             game.away_score = "0-0"
         elif game.away_score == "1":
-            game.away_score = "1-0"
+            game.away_score = "0-1"
         else:
             game.away_score = "1-1"
 
@@ -201,7 +206,7 @@ class View_Manager_UI:
         teams_sorted_by_wins = self.logic_wrapper.get_team_standings(league_id)
         for team in teams_sorted_by_wins:
             name, matches, legs = team
-            #print("-" * 53)
+            # print("-" * 53)
             print(DELIM_MID)
             print(f"║{name.title():<39}║{matches:^34}║{legs:^34}║")
         print(f"╚{'═'*39}╩{'═'*34}╩{'═'*34}╝")

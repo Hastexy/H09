@@ -1,13 +1,13 @@
 type;h_player;a_player;h_score;a_score
-501;testthree;skólastrákur;2;1
-501;truckside weightclass;súperman;2;1
-501;thunderbitch;testfour;0;2
-501;testtwo;testone;1;2
-301;testtwo;skólastrákur;2;1
-301;testthree;súperman;0;0
-C;truckside weightclass;testfour;0;2
-C;thunderbitch;testone;0;0
-501;truckside weightclass;skólastrákur;2;0
+501;truckside weightclass;skólastrákur;2;1
+501;thunderbitch;súperman;2;1
+501;testtwo;testfour;1;2
+501;testthree;testone;2;1
+301;truckside weightclass;skólastrákur;2;1
+301;thunderbitch;súperman;0;0
+C;testtwo;testfour;2;1
+C;testthree;testone;0;0
+501;truckside weightclass;skólastrákur;1;2
 501;thunderbitch;súperman;0;0
 501;testtwo;testfour;0;0
 501;testthree;testone;0;0
