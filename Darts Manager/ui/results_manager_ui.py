@@ -149,7 +149,7 @@ class Results_Manager_UI:
     def display_matches(self, all_matches: dict, header: str) -> None:
         separator = "═" * (len(header) - 2)
 
-        print(f"{Fore.YELLOW}\n╔{separator}╗")
+        #print(f"{Fore.YELLOW}╔{separator}╗")
         print(header)
         print(f"╚{separator}╝{Fore.WHITE}")
 
@@ -176,7 +176,12 @@ class Results_Manager_UI:
                     if str(match.id) == match_id:
                         self.update_match_date(match)
                         self.logic_wrapper.reschedule_match(match)
-                        print("\n#### Date Changed Successfully\n")
+                        print(
+                    f"""{Fore.GREEN}
+╔═══════════════════════════╗
+║ Date Changed Successfully ║
+╚═══════════════════════════╝{Fore.WHITE}"""
+                )
                         return
             print("Please select one of the matches from the list!")
 
@@ -199,7 +204,7 @@ class Results_Manager_UI:
     def update_match_date(self, match: object) -> None:
         while True:
             new_date = input(
-                "Please enter the new date of the match in this format (dd/mm/yyyy hh:mm): "
+                "\nPlease enter the new date of the match in this format (dd/mm/yyyy hh:mm): "
             )
             try:
                 new_date = datetime.strptime(new_date, "%d/%m/%Y %H:%M")
