@@ -427,7 +427,7 @@ class Tournament_Manager_UI:
                     print(ERR_UNKNOWN)
         while True:
             p.dob = input(
-                "\nEnter the date of birth for the player in this format (dd-mm-yyyy): "
+                "\nEnter the date of birth for the player in this format (dd/mm/yyyy): "
             )
             try:
                 validate_dob(p.dob)
