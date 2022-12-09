@@ -28,9 +28,9 @@ ERR_UNKNOWN = f"""{Fore.RED}
 ╚═══════════════════════════════════╝{Fore.WHITE}"""
 
 ERR_DIGIT = f"""{Fore.RED}
-╔══════════════════════════════════════════╗
-║ Phone number must only consist of digits ║
-╚══════════════════════════════════════════╝{Fore.WHITE}"""
+╔═══════════════════════════════════╗
+║ Input must only consist of digits ║
+╚═══════════════════════════════════╝{Fore.WHITE}"""
 
 ERR_PHONE = f"""{Fore.RED}
 ╔════════════════════════════════════╗

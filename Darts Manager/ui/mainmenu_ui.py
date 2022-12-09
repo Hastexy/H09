@@ -26,7 +26,7 @@ class MainMenu_UI:
     def input_prompt(self):
         while True:
             self.menu_output()
-            command = input("\nEnter your command:")
+            command = input("\nEnter your command: ")
             command = command.lower()
             if command == "q":
                 print("\nGoodbye")

@@ -285,9 +285,10 @@ class Tournament_Manager_UI:
                 validate_league_name(l.name)
                 break
             except:
-                print(
-                    "Name taken! Another league already has this name, please choose another one."
-                )
+                print(f"""{Fore.RED}
+╔══════════════════════════════════════════════════════════════════════╗
+║ Name taken! Another league already has this name, choose another one ║
+╚══════════════════════════════════════════════════════════════════════╝{Fore.WHITE}""")
 
         while True:
             l.host = input("\nEnter the host name of your league: ")
@@ -299,9 +300,9 @@ class Tournament_Manager_UI:
                 validate_player_name(l.host)
                 break
             except NameLengthException:
-                print("\n##Name is too long##")
+                print(ERR_LENGTH)
             except InvalidNameError:
-                print("\n##Name cannot contain digits!##")
+                print(ERR_DIGIT)
             except:
                 print(ERR_UNKNOWN)
 
@@ -319,12 +320,15 @@ class Tournament_Manager_UI:
                 print(ERR_DIGIT)
 
         # Get a list of all the teams participating!!
-        print("Register Teams In The League (At Least TWO Teams):")
+        print("\nRegister Teams In The League (At Least TWO Teams):")
         all_teams = self.logic_wrapper.get_all_teams()
         while True:
             self.display_available_teams(all_teams)
-            print("Press 'q' to stop registering teams")
-            next_team_id = input("\n Register Next Team (Team ID): ")
+            print(f"""{Fore.YELLOW}
+╔═════════════════════════════════════════╗
+║   Press "q" to stop registering teams   ║
+╚═════════════════════════════════════════╝{Fore.WHITE}""")
+            next_team_id = input("\nRegister Next Team (Team ID): ")
 
             if next_team_id == "b":
                 return
@@ -332,7 +336,7 @@ class Tournament_Manager_UI:
             if next_team_id == "q" and len(l.teams) >= 2:
                 break
             else:
-                print("You must register at least TWO teams in a league")
+                print("\nYou must register at least TWO teams in a league")
 
             for team in all_teams:
                 if next_team_id == team.id:
@@ -340,7 +344,7 @@ class Tournament_Manager_UI:
                     l.teams.append(team)
                     break
             else:
-                print("Please select a team from the list!")
+                print("\nPlease select a team from the list!")
 
         if len(l.teams) % 2 == 1:
             l.rounds = len(l.teams)
@@ -349,17 +353,17 @@ class Tournament_Manager_UI:
 
         while True:
             start_date = input(
-                "Please enter the starting date of the league in this format (dd/mm/yyyy hh:mm): "
+                "\nPlease enter the starting date of the league in this format (dd/mm/yyyy hh:mm): "
             )
             try:
                 start_date = datetime.strptime(start_date, "%d/%m/%Y %H:%M")
                 break
             except ValueError:
-                print("Please enter the date like the format shows!")
+                print("\nPlease enter the date like the format shows!")
 
         l.round_dates.append(start_date)
 
-        interval = int(input("How many days between rounds?: "))
+        interval = int(input("\nHow many days between rounds?: "))
         tdelta = timedelta(days=interval)
 
         next_date = start_date
@@ -514,15 +518,16 @@ class Tournament_Manager_UI:
 
     def display_available_teams(self, teams: List[object]) -> None:
 
-        header = "* Here is a list of all available teams: *"
-        separator = "*" * len(header)
+        header = f"║ {'Here is a list of all available teams':^39} ║"
+        separator = "═" * (len(header) - 2)
 
-        print(f"\n{separator}")
+        print(f"\n╔{separator}╗")
         print(header)
-        print(f"{separator}\n")
+        print(f"╠{separator}╣")
 
-        print(f"{'NAME':<35}{'ID'}")
-        print("-" * 38)
+        #print(f"╔{'═'*41}╗")
+        print(f"║ {'NAME':<38}{'ID':>2}║")
+        print(f"╠{'═'*41}╣")
         for team in teams:
-            print(f"{team.name.title():<35}{team.id}")
-        print("-" * 38)
+            print(f"║ {team.name.title():<38}{team.id:>2}║")
+        print(f"╚{'═'*41}╝")
