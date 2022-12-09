@@ -3,6 +3,10 @@ from typing import List
 from colorama import init, Fore, Style
 from model.game import Game
 
+BACK = f"""{Fore.YELLOW}
+╔══════════════════════╗
+║ Input "b" to go back ║
+╚══════════════════════╝\n{Fore.WHITE}"""
 
 class Results_Manager_UI:
     def __init__(self, logic_connection) -> None:
@@ -28,7 +32,7 @@ class Results_Manager_UI:
         if league_id == "b":
             return
         while True:
-            name = input("What is your name (full name)?: ").strip().lower()
+            name = input("\nEnter your registered name: ").strip().lower()
             if name == "b":
                 return
             elif self.logic_wrapper.check_host_name(name, league_id):
@@ -63,7 +67,8 @@ class Results_Manager_UI:
 
             elif self.logic_wrapper.check_captain_name(name, league_id):
                 # Heilsa captain með nafni og útskýra hvað hann getur gert
-                print(f"Hello {name}, you are here to update a match result")
+                print(f"\n{Fore.YELLOW}╔{'═'*78}╗")
+                print(f"║ {f'Hello {name}, you are here to update a match result':^77}║")
                 # sækja allar upcoming viðureignir
                 the_captain = self.logic_wrapper.check_captain_name(name, league_id)
                 all_unfinished_matches = self.logic_wrapper.get_unfinished_matches(
@@ -77,35 +82,39 @@ class Results_Manager_UI:
                         if match.home_team == the_team_of_the_captain.name:
                             filtered_unfinished_matches[date] = matches
                 if not filtered_unfinished_matches:
-                    print("You have no unfinished matches :)")
+                    print("You have no matches to record results for :)")
                     return
-                header = "* Here is a list of all your unfinished matches: *"
+                header = f"║ {'Here is a list of all your unfinished matches':^76} ║"
                 self.display_matches(filtered_unfinished_matches, header)
                 self.change_match_result(filtered_unfinished_matches, league_id)
                 print("#### Going Back To Main Menu")
                 return
             else:
-                print("Couldn't find that name, try again!")
+                print(f"""{Fore.RED}
+╔═════════════════════════════════════╗
+║ Couldn't find that name, try again! ║
+╚═════════════════════════════════════╝{Fore.WHITE}""")
 
     def select_league_id(self, all_leagues: List[object]) -> None:
         while True:
             self.display_available_leagues(all_leagues)
-            print(f"""{Fore.YELLOW}
-╔══════════════════════╗
-║ Input "b" to go back ║
-╚══════════════════════╝\n{Fore.WHITE}""")
+            print(BACK)
             league_id = input(
-                #"Which league do you want to register results for (League ID)?: "
-                "Enter the ID of the League you want to register results for: "
+                # "Which league do you want to register results for (League ID)?: "
+                "Enter the ID of the League you want to work on: "
             )
+            if league_id == "b":
+                return "b"
             for league in all_leagues:
-                if league_id == str(league.id) or league_id == "b":
+                if league_id == str(league.id):
                     return league_id
 
-            print(f"""{Fore.RED}
+            print(
+                f"""{Fore.RED}
 ╔═════════════════════════════════════════╗
 ║ Select a valid league ID from the list! ║
-╚═════════════════════════════════════════╝{Fore.WHITE}""")
+╚═════════════════════════════════════════╝{Fore.WHITE}"""
+            )
 
     def display_available_leagues(self, leagues: List[object]) -> None:
         header = f"║ {'List of all registered leagues':^39} ║"
@@ -122,24 +131,30 @@ class Results_Manager_UI:
         print(f"╚{'═'*41}╝")
 
     def display_matches(self, all_matches: dict, header: str) -> None:
-        separator = "*" * len(header)
+        separator = "═" * (len(header) - 2)
 
-        print(f"\n{separator}")
+        #print(f"\n{separator}")
         print(header)
-        print(f"{separator}\n")
+        print(f"╚{separator}╝{Fore.WHITE}")
 
         for date, matches in all_matches.items():
-            header = f"#### Date: {date}"
-            print(header)
-            print("-" * len(header))
+            #header = f"#### Date: {date}"
+            #print(header)
+            #print("-" * len(header))
+            print(f"╔{'═'*10}╦{'═'*67}╗")
+            print(f"║{'Date':^10}║{date:<67}║")
+            print(f"╠{'═'*6}╦{'═'*3}╩{'═'*24}╦{'═'*5}╦{'═'*28}╦{'═'*7}╣")
             for match in matches:
                 print(
-                    f"Game:\t{match.home_team.title()} VS {match.away_team.title():<15}ID: {match.id}\n"
+                    f"║ Game ║ {match.home_team.title():>26} ║  V  ║ {match.away_team.title():<26} ║ ID: {match.id} ║"
                 )
+                # print(f"╔{'═' * 51}╦═════╦{'═' * 51}╗")
+                # print(f"║{match.home_team.title():^35}║  V  ║{match.away_team.title():^35}║")
+            print(f"╚{'═'*6}╩{'═'*28}╩{'═'*5}╩{'═'*28}╩{'═' * 7}╝")
 
     def change_match_date(self, all_matches: dict) -> None:
         while True:
-            print("Press 'b' to go back")
+            print(BACK)
             match_id = input("Select a match to change the date of (match ID): ")
             if match_id == "b":
                 return
@@ -154,7 +169,7 @@ class Results_Manager_UI:
 
     def change_match_result(self, all_matches: dict, league_id: str) -> None:
         while True:
-            print("Press 'b' to go back")
+            print(BACK)
             match_id = input("Select a match to change (match ID): ")
             if match_id == "b":
                 return
