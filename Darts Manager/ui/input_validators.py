@@ -1,87 +1,92 @@
-CANCEL = """
+from colorama import init, Fore, Style
+init()
+#Colorama options
+#Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+#Style = [DIM, NORMAL, BRIGHT]
+CANCEL = f"""{Fore.YELLOW}
 ╔═══════════════════════════════════════════╗
 ║ Input "b" at any point to cancel creation ║
-╚═══════════════════════════════════════════╝"""
-CANCEL2 = """
+╚═══════════════════════════════════════════╝{Fore.WHITE}"""
+CANCEL2 = f"""{Fore.YELLOW}
 ╔════════════════════╗
 ║ Creation Cancelled ║
-╚════════════════════╝"""
+╚════════════════════╝{Fore.WHITE}"""
 
-SKIP = """
+SKIP = f"""{Fore.YELLOW}
 ╔════════════════════════════════════════════════╗
 ║ Press the enter button to skip optional inputs ║
-╚════════════════════════════════════════════════╝"""
+╚════════════════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_LENGTH = """
+ERR_LENGTH = f"""{Fore.RED}
 ╔═════════════════════════════════════════════════════╗
 ║ The input must be between 3 and 39 characters long! ║
-╚═════════════════════════════════════════════════════╝"""
+╚═════════════════════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_UNKNOWN = """
+ERR_UNKNOWN = f"""{Fore.RED}
 ╔═══════════════════════════════════╗
 ║ Unknown Error Occurred, try again ║
-╚═══════════════════════════════════╝"""
+╚═══════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_DIGIT = """
+ERR_DIGIT = f"""{Fore.RED}
 ╔══════════════════════════════════════════╗
 ║ Phone number must only consist of digits ║
-╚══════════════════════════════════════════╝"""
+╚══════════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_PHONE = """
+ERR_PHONE = f"""{Fore.RED}
 ╔════════════════════════════════════╗
 ║ Phone number must be 7 digits long ║
-╚════════════════════════════════════╝"""
+╚════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_SSN = """
+ERR_SSN = f"""{Fore.RED}
 ╔═══════════════════════════════════════════════╗
 ║ Social Security Number must be 10 digits long ║
-╚═══════════════════════════════════════════════╝"""
+╚═══════════════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_DOB_FORMAT = """
+ERR_DOB_FORMAT = f"""{Fore.RED}
 ╔══════════════════════════════════════════════════════════════╗
 ║ The date of birth must be 10 digits long in the format below ║
 ║ xx/xx/xxxx                                                   ║
-╚══════════════════════════════════════════════════════════════╝"""
+╚══════════════════════════════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_NO_ASP = """
+ERR_NO_ASP = f"""{Fore.RED}
 ╔════════════════════╗
 ║ Missing "@" symbol ║
-╚════════════════════╝"""
+╚════════════════════╝{Fore.WHITE}"""
 
-ERR_MANY_ASP = """
+ERR_MANY_ASP = f"""{Fore.RED}
 ╔══════════════════════════╗
 ║ More than one "@" symbol ║
-╚══════════════════════════╝"""
+╚══════════════════════════╝{Fore.WHITE}"""
 
-ERR_BEFORE_ASP = """
+ERR_BEFORE_ASP = f"""{Fore.RED}
 ╔════════════════════════════════════════╗
 ║ There is nothing before the "@" symbol ║
-╚════════════════════════════════════════╝"""
+╚════════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_AFTER_ASP = """
+ERR_AFTER_ASP = f"""{Fore.RED}
 ╔═══════════════════════════════════════╗
 ║ There is nothing after the "@" symbol ║
-╚═══════════════════════════════════════╝"""
+╚═══════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_DOT_ASP = """
+ERR_DOT_ASP = f"""{Fore.RED}
 ╔══════════════════════════════════════════════════════╗
 ║ There shouldn't be a dot before the asperand symbol  ║
-╚══════════════════════════════════════════════════════╝"""
+╚══════════════════════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_DOT_START = """
+ERR_DOT_START = f"""{Fore.RED}
 ╔═══════════════════════════════════╗
 ║ An email doesn't start with a dot ║
-╚═══════════════════════════════════╝"""
+╚═══════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_CONSECUTIVE_DOT = """
+ERR_CONSECUTIVE_DOT = f"""{Fore.RED}
 ╔════════════════════════════════════════════════════════════════╗
 ║ There are not supposed to be consecutive dots in an email ".." ║
-╚════════════════════════════════════════════════════════════════╝"""
+╚════════════════════════════════════════════════════════════════╝{Fore.WHITE}"""
 
-ERR_DOMAIN_MISSING = """
+ERR_DOMAIN_MISSING = f"""{Fore.RED}
 ╔════════════════════════════════════════════════════════════╗
 ║ You are missing the domain ".com" at the end of your email ║
-╚════════════════════════════════════════════════════════════╝"""
+╚════════════════════════════════════════════════════════════╝{Fore.WHITE}"""
 
 
 class NameLengthException(Exception):
@@ -142,9 +147,9 @@ class RoundLengthError(Exception):
 
 def validate_rounds(rounds: str) -> None:
     if not rounds.isdigit():
-        raise NotDigitsError
+        raise NotDigitsError()
     if int(rounds) < 1:
-        raise RoundLengthError
+        raise RoundLengthError()
 
 
 def validate_club_length(name):
@@ -186,26 +191,26 @@ def validate_email(email):
     if email.count("@") == 1:
         x, y = email.split("@")
         if x == "":
-            NothingBeforeAsperandException()
+            raise NothingBeforeAsperandException()
         if y == "":
-            NothingAfterAsperandException()
+            raise NothingAfterAsperandException()
         if x[-1] == ".":
-            NoDotBeforeAsperandException()
+            raise NoDotBeforeAsperandException()
 
     if email[0] == ".":
-        NoDotAtStartException()
+        raise NoDotAtStartException()
     if ".." in email:
-        ConsecutiveDotsException()
+        raise ConsecutiveDotsException()
 
     if email[-4] != ".com":
-        MissingDomainNameException()
+        raise MissingDomainNameException()
 
 
 def validate_dob(dob: str):
     if len(dob) != 10:
-        raise NameLengthException
+        raise NameLengthException()
     if dob[2] != "/" or dob[5] != "/":
-        raise InvalidNumberCharacterException
+        raise InvalidNumberCharacterException()
 
 
 def validate_league_name(league_name) -> None:
