@@ -11,7 +11,8 @@ class MainMenu_UI:
         self.logic_wrapper = Logic_Wrapper()
 
     def menu_output(self):
-        print("""
+        print(
+            """
 ╔═══╦═══════════════╗
 ║   ║   Main Menu   ║
 ╠═══╬═══════════════╣
@@ -19,8 +20,8 @@ class MainMenu_UI:
 ║ 2 ║ Match Manager ║
 ║ 3 ║ League Info   ║
 ║ q ║ Quit          ║
-╚═══╩═══════════════╝""")
-
+╚═══╩═══════════════╝"""
+        )
 
     def input_prompt(self):
         while True:
@@ -32,7 +33,7 @@ class MainMenu_UI:
                 break
             elif command == "1":
                 # print("\n===TOURNAMENT MANAGER====")
-                verify_user = input("\nAre you a tournament host? (y/n): ")
+                verify_user = input("\nAre you a tournament host? (y/n): ").lower()
                 if verify_user == "y":
                     menu = Tournament_Manager_UI(self.logic_wrapper)
                     back_method = menu.input_promt()
@@ -47,7 +48,7 @@ class MainMenu_UI:
                 back_method = menu.input_prompt()
                 if back_method == "q":
                     return "q"
-                #print("\n===RESULTS MANAGER===")   Implement RM Menu Later
+                # print("\n===RESULTS MANAGER===")   Implement RM Menu Later
             elif command == "3":
                 # print("\n===VIEW MANAGER===")
                 menu = View_Manager_UI(self.logic_wrapper)
