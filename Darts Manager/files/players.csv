@@ -1,13 +1,9 @@
 ID;name;ssn;email;date_of_birth;phone;home_phone;address;team_ID;role
-1;testone;1111111111;TestOne@;11/11/1111;1111111;1111111;TestOne Street;3;player
-2;testtwo;2222222222;TestTwo@;22/22/2222;2222222;2222222;TestTwo Street;1;player
-3;testthree;3333333333;TestThree@;33/33/3333;3333333;3333333;TestThree Street;1;player
-4;testfour;4444444444;TestFour@;44/44/4444;4444444;4444444;TestFour Street;3;player
-6;kóngur kári óskarsson;0610952179;oskar@gmail.com;12/12/2002;6593121;568888;Leirutangi 1;2;player
-7;destro the king;0610953658;destro@gmail.com;12/12/2008;5868666;5878985;Kingside road 13;2;player
-8;australian thunderlord;0610953214;austro@gmail.com;12/12/2345;5648975;5632145;Asgard;2;captain
-9;truckside weightclass;0685478965;thundertruck@gmail.com;12/12/2341;6985456;2568975;Leirutangi 26;1;captain
-10;skólastrákur;0685478967;thundertruck@gmail.com;12/12/2341;6985454;2568971;Leirutangi 2122;3;captain
-11;kóalabjörn;0685478966;kóala@gmail.com;12/12/2341;6985453;2568921;Leirutangi 38;2;player
-12;thunderbitch;0685478961;thudnerskolia@gmail.com;12/12/2341;6985452;2568972;Leirutangi 0;1;player
-13;súperman;0685478962;aælsdfjælfjdk@gmail.com;12/12/2341;6985451;2512975;Leirutangi 21;3;player
+1;testone;1111111111;TestOne@;11.11.1111;1111111;1111111;TestOne Street;1;player
+2;testtwo;2222222222;TestTwo@;22.22.2222;2222222;2222222;TestTwo Street;1;player
+3;testthree;3333333333;TestThree@;33.33.3333;3333333;3333333;TestThree Street;1;player
+4;testfour;4444444444;TestFour@;44.44.4444;4444444;4444444;TestFour Street;1;captain
+6;kóngur kári óskarsson;0610952179;oskar@gmail.com;12.12.2002;6593121;568888;Leirutangi 1;2;captain
+7;destro the king;0610953658;destro@gmail.com;12.12.2008;5868666;5878985;Kingside road 13;2;player
+8;australian thunderlord;0610953214;austro@gmail.com;12.12.2345;5648975;5632145;Asgard;2;player
+9;truckside weightclass;0685478965;thundertruck@gmail.com;12.12.2341;6985456;2568975;Leirutangi 26;2;player
