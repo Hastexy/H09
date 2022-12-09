@@ -61,9 +61,9 @@ class View_Manager_UI:
                 print("\nGoing back!")
                 return "b"
             elif command == "1":
-                print(TOP)
-                print(f"║{'===Viewing Teams and Players===':^109}║")
-                print(BOT)
+                print(f"\n╔{'═'*120}╗")
+                print(f"║{'===Viewing Teams and Players===':^120}║")
+                print(f"╚{'═'*120}╝\n")
                 all_teams = self.logic_wrapper.get_all_league_teams(league_id)
                 for idx, team in enumerate(all_teams, 1):
                     self.display_team_and_players(idx, team)
@@ -169,15 +169,28 @@ class View_Manager_UI:
         print(f"╚{'═'*10}╩{'═'*98}╝")
 
     def display_team_and_players(self, id, team):
-        print(f"╔{'═'*4}╦{'═'*15}╦{'═'*88}╗")
-        print(f"║{f'{id}.':^4}║{'TEAM NAME':^15}║ {team.name.title():<87}║")
-        print(f"╠{'═'*4}╩{'═'*15}╩{'═'*18}╬{'═'*69}╣")
-        print(f"║ {STR_NAME:<38}║xxxxxxxxxxxxxxxxx║")
+        print(f"\n╔{'═'*4}╦{'═'*15}╦{'═'*99}╗")
+        print(f"║{f'{id}.':^4}║{'TEAM NAME':^15}║ {team.name.title():<98}║")
+        print(f"╚{'═'*4}╩{'═'*15}╩{'═'*99}╝")
+        #=============CLUTTERED VERSION Could fix with colorama===============
+        # print(f"\n╔{'═'*39}╦{'═'*14}╦{'═'*39}╦{'═'*14}╗")
+        # print(f"║{STR_NAME:^39}║{STR_SSN:^14}║{STR_EMAIL:^39}║{STR_DOB:^14}║")
+        # print(f"╠{'═'*15}╦{'═'*15}╦{'═'*7}╩{'═'*14}╩{'═'*16}╦{'═'*15}╦{'═'*6}╩{'═'*14}╣")
+        # print(f"║{STR_PHONE:^15}║{STR_HOME_PHONE:^15}║{STR_ADDRESS:^39}║{STR_ROLE:^15}║{'#'*21}║")
+        print(f"\n╔{'═'*39}╦{'═'*14}╦{'═'*39}╦{'═'*14}╦{'═'*10}╗")
+        print(f"║{STR_NAME:^39}║{STR_SSN:^14}║{STR_EMAIL:^39}║{STR_DOB:^14}║{STR_ROLE:^10}║")
         #print(f"\n{STR_NAME:<35}{STR_PHONE:<12}{STR_SSN:<15}{STR_ADDRESS:<20}{STR_ROLE:<10}")
         for player in team.players:
-            print()
-            print(f"║{player.name.title():<35}{player.phone:<12}{player.ssn:<15}{player.address.title():<20}{player.role.title():<10}")
-                
+            print(f"╠{'═'*39}╬{'═'*14}╬{'═'*39}╬{'═'*14}╬{'═'*10}╣")
+            print(f"║ {player.name.title():<38}║{player.ssn:^14}║ {player.email:<38}║{player.dob:^14}║{player.role.upper():^10}║")
+            
+        #=============CLUTTERED VERSION Could fix with colorama===============
+        #     print(f"╠{'═'*15}╩{'═'*15}╩{'═'*7}╦{'═'*14}╦{'═'*16}╩{'═'*15}╩{'═'*6}╦{'═'*14}╣")
+        #     print(f"║{player.name.title():^39}║{player.ssn:^14}║{player.email:^39}║{player.dob:^14}║")
+        #     print(f"╠{'═'*15}╦{'═'*15}╦{'═'*7}╩{'═'*14}╩{'═'*16}╦{'═'*15}╦{'═'*6}╩{'═'*14}╣")
+        #     print(f"║{player.phone:^15}║{player.home_phone:^15}║{player.address:^39}║{player.role:^15}║{'#'*21}║")
+        # print(f"╚{'═'*15}╩{'═'*15}╩{'═'*39}╩{'═'*15}╩{'═'*21}╝")
+        print(f"╚{'═'*39}╩{'═'*14}╩{'═'*39}╩{'═'*14}╩{'═'*10}╝")                    
     def parse_leg_score(self, game: object) -> None:
         if game.home_score == "0":
             game.home_score = "0-0"
