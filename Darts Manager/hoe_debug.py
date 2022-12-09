@@ -1,35 +1,33 @@
-from ui.view_manager_ui import View_Manager_UI
+from ui.results_manager_ui import Results_Manager_UI
 from logic.logic_wrapper import Logic_Wrapper
 from colorama import init, Fore, Style, Back
 
-print(f"""{Fore.GREEN}
-╔════════════════╗
-║ PLAYER CREATED ║
-╚════════════════╝{Fore.WHITE}""")
-
-print(f"""{Fore.GREEN}
-╔══════════════╗
-║ CLUB CREATED ║
-╚══════════════╝{Fore.WHITE}""")
-
-print(f"""{Fore.GREEN}
-╔══════════════╗
-║ TEAM CREATED ║
-╚══════════════╝{Fore.WHITE}""")
-
-print(f"""{Fore.GREEN}
-╔════════════════╗
-║ LEAGUE CREATED ║
-╚════════════════╝{Fore.WHITE}""")
-
-menu = View_Manager_UI(Logic_Wrapper())
+menu = Results_Manager_UI(Logic_Wrapper())
 back_method = menu.input_prompt()
 if back_method == "q":
     print("quit")
 
 
 
+# print(f"""{Fore.GREEN}
+# ╔════════════════╗
+# ║ PLAYER CREATED ║
+# ╚════════════════╝{Fore.WHITE}""")
 
+# print(f"""{Fore.GREEN}
+# ╔══════════════╗
+# ║ CLUB CREATED ║
+# ╚══════════════╝{Fore.WHITE}""")
+
+# print(f"""{Fore.GREEN}
+# ╔══════════════╗
+# ║ TEAM CREATED ║
+# ╚══════════════╝{Fore.WHITE}""")
+
+# print(f"""{Fore.GREEN}
+# ╔════════════════╗
+# ║ LEAGUE CREATED ║
+# ╚════════════════╝{Fore.WHITE}""")
 
 # import itertools
 

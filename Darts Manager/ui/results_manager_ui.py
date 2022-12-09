@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List
-
+from colorama import init, Fore, Style
 from model.game import Game
 
 
@@ -90,29 +90,36 @@ class Results_Manager_UI:
     def select_league_id(self, all_leagues: List[object]) -> None:
         while True:
             self.display_available_leagues(all_leagues)
-            print("Press 'b' to go back")
+            print(f"""{Fore.YELLOW}
+╔══════════════════════╗
+║ Input "b" to go back ║
+╚══════════════════════╝\n{Fore.WHITE}""")
             league_id = input(
-                "Which league do you want to register results for (League ID)?: "
+                #"Which league do you want to register results for (League ID)?: "
+                "Enter the ID of the League you want to register results for: "
             )
             for league in all_leagues:
                 if league_id == str(league.id) or league_id == "b":
                     return league_id
 
-            print("Please select a valid league ID from the list!")
+            print(f"""{Fore.RED}
+╔═════════════════════════════════════════╗
+║ Select a valid league ID from the list! ║
+╚═════════════════════════════════════════╝{Fore.WHITE}""")
 
     def display_available_leagues(self, leagues: List[object]) -> None:
-        header = "* Here is a list of all registered leagues: *"
-        separator = "*" * len(header)
+        header = f"║ {'List of all registered leagues':^39} ║"
+        separator = "═" * (len(header) - 2)
 
-        print(f"\n{separator}")
+        print(f"\n╔{separator}╗")
         print(header)
-        print(f"{separator}\n")
+        print(f"╠{separator}╣")
 
-        print(f"{'NAME':<35}{'ID'}")
-        print("-" * 38)
+        print(f"║ {'NAME':<38}{'ID':>2}║")
+        print(f"╠{'═'*41}╣")
         for league in leagues:
-            print(f"{league.name.title():<35}{league.id}")
-        print("-" * 38)
+            print(f"║ {league.name.title():<38}{league.id:>2}║")
+        print(f"╚{'═'*41}╝")
 
     def display_matches(self, all_matches: dict, header: str) -> None:
         separator = "*" * len(header)
