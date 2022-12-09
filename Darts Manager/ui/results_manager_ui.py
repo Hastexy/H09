@@ -36,7 +36,7 @@ class Results_Manager_UI:
         while True:
             name = input("\nEnter your registered name: ").strip().lower()
             if name == "b":
-                return
+                return "b"
             elif self.logic_wrapper.check_host_name(name, league_id):
                 # Heilsa host með nafni og útskýra hvað hann getur gert
                 print(f"Hello {name}, you are here to make some changes")
@@ -84,7 +84,8 @@ class Results_Manager_UI:
                         if match.home_team == the_team_of_the_captain.name:
                             filtered_unfinished_matches[date] = matches
                 if not filtered_unfinished_matches:
-                    print("You have no matches to record results for :)")
+                    print(f"║ {'You have no matches to record results for':^76} ║")
+                    print(f"╚{'═' * 78}╝{Fore.WHITE}")
                     return
                 header = f"║ {'Here is a list of all your unfinished matches':^76} ║"
                 self.display_matches(filtered_unfinished_matches, header)
