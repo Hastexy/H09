@@ -1,7 +1,3 @@
-from data.player_data import Player_Data
-from model.player import Player
-
-
 class Player_Logic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
