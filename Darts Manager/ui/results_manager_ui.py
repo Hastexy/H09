@@ -77,7 +77,7 @@ class Results_Manager_UI:
                         if match.home_team == the_team_of_the_captain.name:
                             filtered_unfinished_matches[date] = matches
                 if not filtered_unfinished_matches:
-                    print("You have no unfinished matches :)")
+                    print("You have no matches to record results for :)")
                     return
                 header = "* Here is a list of all your unfinished matches: *"
                 self.display_matches(filtered_unfinished_matches, header)
@@ -90,22 +90,26 @@ class Results_Manager_UI:
     def select_league_id(self, all_leagues: List[object]) -> None:
         while True:
             self.display_available_leagues(all_leagues)
-            print(f"""{Fore.YELLOW}
+            print(
+                f"""{Fore.YELLOW}
 ╔══════════════════════╗
 ║ Input "b" to go back ║
-╚══════════════════════╝\n{Fore.WHITE}""")
+╚══════════════════════╝\n{Fore.WHITE}"""
+            )
             league_id = input(
-                #"Which league do you want to register results for (League ID)?: "
+                # "Which league do you want to register results for (League ID)?: "
                 "Enter the ID of the League you want to register results for: "
             )
             for league in all_leagues:
                 if league_id == str(league.id) or league_id == "b":
                     return league_id
 
-            print(f"""{Fore.RED}
+            print(
+                f"""{Fore.RED}
 ╔═════════════════════════════════════════╗
 ║ Select a valid league ID from the list! ║
-╚═════════════════════════════════════════╝{Fore.WHITE}""")
+╚═════════════════════════════════════════╝{Fore.WHITE}"""
+            )
 
     def display_available_leagues(self, leagues: List[object]) -> None:
         header = f"║ {'List of all registered leagues':^39} ║"

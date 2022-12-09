@@ -148,14 +148,14 @@ class League_Data:
                             match["result"],
                             match["league_ID"],
                         )
-                        gamefile = self.game_folder + m.id + ".csv"
-
-                        with open(gamefile, newline="", encoding="utf-8") as game_file:
-                            game_reader = csv.DictReader(game_file, delimiter=";")
-                            for game in game_reader:
-                                g = Game(*game.values())
-                                m.games.append(g)
                         matches.append(m)
+                        # gamefile = self.game_folder + m.id + ".csv"
+
+                        # with open(gamefile, newline="", encoding="utf-8") as game_file:
+                        #     game_reader = csv.DictReader(game_file, delimiter=";")
+                        #     for game in game_reader:
+                        #         g = Game(*game.values())
+                        #         m.games.append(g)
         return matches
 
     def register_teams(self, league: object) -> None:

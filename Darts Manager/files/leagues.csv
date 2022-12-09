@@ -1,11 +1,6 @@
 ID;name;host_name;host_phonenumber;start_date;end_date;rounds
-<<<<<<< HEAD
 1;HR open 2022;Kjartan;6998585;2022-12-12 18:00:00;2022-12-14 18:00:00;3
 2;HR open 2021;Kjartan Elvar;6998585;12/12/2021 19:00;14/12/2021 19:00;3
 3;HR Dartmót;kjarrikárason;4567894;1820-12-12 19:00:00;1820-12-16 19:00:00;3
 4;HR bestamótið;gylfi pílumeistari;4567894;1999-12-12 19:00:00;1999-12-16 19:00:00;3
 5;HR lokamótið í heiminum;káriklári;1234567;12/12/1995 20:00;16/12/1995 20:00;3
-=======
-1;HR open 2022;kjartan;6998585;2022-12-12 18:00:00;2022-12-14 18:00:00;3
-2;HR open 2021;kjartan Elvar;6998585;12/12/2021 19:00;14/12/2021 19:00;3
->>>>>>> ccdcc1fefa4c4daa9799790f3ff394302e4abeed

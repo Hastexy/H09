@@ -1,0 +1,13 @@
+type;h_player;a_player;h_score;a_score
+501;australian thunderlord;skólastrákur;2;1
+501;destro the king;súperman;2;1
+501;kóalabjörn;testfour;2;1
+501;kóngur kári óskarsson;testone;1;2
+301;australian thunderlord;skólastrákur;0;2
+301;destro the king;testone;0;0
+C;kóalabjörn;súperman;1;2
+C;kóngur kári óskarsson;testfour;0;0
+501;australian thunderlord;skólastrákur;0;2
+501;destro the king;súperman;0;0
+501;kóalabjörn;testfour;0;0
+501;kóngur kári óskarsson;testone;0;0
