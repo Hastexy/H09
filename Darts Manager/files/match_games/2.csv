@@ -1,0 +1,13 @@
+type;h_player;a_player;h_score;a_score
+501;jacqueline payne;cassie obrien;2;1
+501;elaina singleton;maggie lynch;1;2
+501;marcel arias;devin villarreal;1;2
+501;kallie hansen;gilberto pollard;0;2
+301;jacqueline payne;cassie obrien;2;1
+301;elaina singleton;maggie lynch;0;0
+C;marcel arias;devin villarreal;1;2
+C;kallie hansen;gilberto pollard;0;0
+501;jacqueline payne;cassie obrien;2;0
+501;elaina singleton;maggie lynch;0;0
+501;marcel arias;devin villarreal;0;0
+501;kallie hansen;gilberto pollard;0;0

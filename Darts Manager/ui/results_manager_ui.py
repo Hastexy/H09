@@ -53,12 +53,14 @@ class Results_Manager_UI:
                 )
 
                 while True:
-                    print(f"""
+                    print(
+                        f"""
 ╔═══╦═════════════════════╗
 ║ 1 ║ Change Match Result ║
 ║ 2 ║ Change Match Date   ║
 ║ b ║ Back                ║
-╚═══╩═════════════════════╝""")
+╚═══╩═════════════════════╝"""
+                    )
 
                     command = input("\nEnter your choice: ").strip().lower()
                     if command == "b":
@@ -148,7 +150,7 @@ class Results_Manager_UI:
     def display_matches(self, all_matches: dict, header: str) -> None:
         separator = "═" * (len(header) - 2)
 
-        #print(f"{Fore.YELLOW}╔{separator}╗")
+        # print(f"{Fore.YELLOW}╔{separator}╗")
         print(header)
         print(f"╚{separator}╝{Fore.WHITE}")
 
@@ -176,11 +178,11 @@ class Results_Manager_UI:
                         self.update_match_date(match)
                         self.logic_wrapper.reschedule_match(match)
                         print(
-                    f"""{Fore.GREEN}
+                            f"""{Fore.GREEN}
 ╔═══════════════════════════╗
 ║ Date Changed Successfully ║
 ╚═══════════════════════════╝{Fore.WHITE}"""
-                )
+                        )
                         return
             print("Please select one of the matches from the list!")
 
@@ -302,11 +304,13 @@ class Results_Manager_UI:
         header = "* Available Players: *"
         separator = "*" * len(header)
 
-        print(f"""{Fore.YELLOW}
+        print(
+            f"""{Fore.YELLOW}
 ╔═══════════════════╗
 ║ Available Players ║
-╚═══════════════════╝{Fore.WHITE}""")
-        
+╚═══════════════════╝{Fore.WHITE}"""
+        )
+
         # print(f"\n{separator}")
         # print(header)
         # print(f"{separator}\n")

@@ -64,15 +64,15 @@ class League_Logic:
             else:
                 home_score = away_score = 0
 
-                if home_team not in team_score_dict:
-                    team_score_dict[home_team] = int(home_score)
-                else:
-                    team_score_dict[home_team] += int(home_score)
+            if home_team not in team_score_dict:
+                team_score_dict[home_team] = int(home_score)
+            else:
+                team_score_dict[home_team] += int(home_score)
 
-                if away_team not in team_score_dict:
-                    team_score_dict[away_team] = int(away_score)
-                else:
-                    team_score_dict[away_team] += int(away_score)
+            if away_team not in team_score_dict:
+                team_score_dict[away_team] = int(away_score)
+            else:
+                team_score_dict[away_team] += int(away_score)
 
         all_teams = [(k, v) for k, v in team_score_dict.items()]
 
