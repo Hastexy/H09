@@ -63,19 +63,20 @@ class Tournament_Manager_UI:
 
     def display_available_players(self) -> list:
         """Displays all players who are both registered in the database and do not belong to a team."""
-        header = "* Here is a list of all available players: *"
-        separator = "*" * len(header)
+        header = f"║ {'List of all available players':^63} ║"
+        separator = "═" * (len(header)-2)
 
-        print(f"\n{separator}")
+        print(f"\n╔{separator}╗")
         print(header)
-        print(f"{separator}\n")
+        print(f"╠{separator}╣")
 
-        print(f"{'NAME':<35}{'SocialSecurityNumber':<25}{'ID'}")
-        print("-" * 64)
+        #print(f"╔{'═'*65}╗")
+        print(f"║{'NAME':<38}{'SocialSecurityNumber':<25}{'ID':>2}║")
+        print(f"╠{'═'*65}╣")
         all_players = self.logic_wrapper.get_all_players()
         for player in all_players:
-            print(f"{player.name.title():<35}{player.ssn:<25}{player.id}")
-        print("-" * 64)
+            print(f"║{player.name.title():<38}{player.ssn:<25}{player.id:>2}║")
+        print(f"╚{'═'*65}╝")
 
         return all_players
 
@@ -203,14 +204,16 @@ class Tournament_Manager_UI:
             except:
                 print("\n##Unknown Error Occured, try again##")
 
-        header = "* Remember, every team must have at least FOUR players, one of whom is the team captain. *"
-        separator = "*" * len(header)
+        #header = f"║ Every team must have at least 4 players, one of whom is the team captain ║"
+        header = f"║ {'Every team must have 4 players minimum':<63} ║"
+        separator = "═" * (len(header) - 2)
 
-        print(f"\n{separator}")
+        print(f"\n╔{separator}╗")
         print(header)
-        print(f"{separator}\n")
+        print(f"║ {'Start by picking the team captain':<63} ║")
+        print(f"╚{separator}╝")
 
-        print("---Let's start by picking the team captain---")
+        #print("---Let's start by picking the team captain---")
 
         captain_assigned = False
         all_players = self.display_available_players()
@@ -264,7 +267,10 @@ class Tournament_Manager_UI:
                 print("Invalid player ID!")
 
         self.logic_wrapper.create_team(t)
-        print(f"{Fore.GREEN}\n==Team Created=={Fore.WHITE}")
+        print(f"""{Fore.GREEN}
+╔══════════════╗
+║ TEAM CREATED ║
+╚══════════════╝{Fore.WHITE}""")
 
     def create_league(self) -> None:
         l = League()
@@ -370,7 +376,10 @@ class Tournament_Manager_UI:
             break
 
         self.logic_wrapper.create_league(l)
-        print(f"{Fore.GREEN}==League Created=={Fore.WHITE}")
+        print(f"""{Fore.GREEN}
+╔════════════════╗
+║ LEAGUE CREATED ║
+╚════════════════╝{Fore.WHITE}""")
 
     def create_player(self) -> None:
         p = Player()
@@ -497,7 +506,10 @@ class Tournament_Manager_UI:
                     print(ERR_LENGTH)
                 except:
                     print(ERR_UNKNOWN)
-        print(f"{Fore.GREEN}\n==Player Created=={Fore.WHITE}")
+        print(f"""{Fore.GREEN}
+╔════════════════╗
+║ PLAYER CREATED ║
+╚════════════════╝{Fore.WHITE}""")
         self.logic_wrapper.create_player(p)
 
     def display_available_teams(self, teams: List[object]) -> None:
