@@ -151,10 +151,10 @@ class Tournament_Manager_UI:
 
         self.logic_wrapper.create_club(c)
         print(
-            """
+            f"""{Fore.GREEN}
 ╔══════════════╗
 ║ CLUB CREATED ║
-╚══════════════╝"""
+╚══════════════╝{Fore.WHITE}"""
         )
 
     def create_team(self) -> None:
@@ -264,7 +264,7 @@ class Tournament_Manager_UI:
                 print("Invalid player ID!")
 
         self.logic_wrapper.create_team(t)
-        print("\n==Team Created==")
+        print(f"{Fore.GREEN}\n==Team Created=={Fore.WHITE}")
 
     def create_league(self) -> None:
         l = League()
@@ -368,7 +368,7 @@ class Tournament_Manager_UI:
             break
 
         self.logic_wrapper.create_league(l)
-        print("==League Created==")
+        print(f"{Fore.GREEN}==League Created=={Fore.WHITE}")
 
     def create_player(self) -> None:
         p = Player()
@@ -495,7 +495,7 @@ class Tournament_Manager_UI:
                     print(ERR_LENGTH)
                 except:
                     print(ERR_UNKNOWN)
-        # print("\n==Player Created==")
+        print(f"{Fore.GREEN}\n==Player Created=={Fore.WHITE}")
         self.logic_wrapper.create_player(p)
 
     def display_available_teams(self, teams: List[object]) -> None:
