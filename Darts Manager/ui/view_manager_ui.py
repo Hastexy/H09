@@ -4,9 +4,7 @@ from model.player import Player
 from colorama import init, Fore, Style
 
 init()
-# Colorama options
-# Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
-# Style = [DIM, NORMAL, BRIGHT]
+
 
 STR_NAME = "NAME"
 STR_SSN = "SSN"
@@ -91,10 +89,7 @@ class View_Manager_UI:
 
                 for date, matches in matches_sorted_by_date.items():
                     self.show_date(date)
-                    # print("Games:")
                     for match in matches:
-                        # home, away = match
-                        # print(f"\t{home} VS {away}")
                         self.show_upcoming_matches(match)
 
             elif command == "3":
@@ -106,24 +101,12 @@ class View_Manager_UI:
                 )
                 for date, matches in matches_sorted_by_date.items():
                     self.show_date(date)
-                    # test_delim = "x" * 39
-                    # print(header)
-                    # print("-" * len(header))
+
                     for match in matches:
                         self.create_match_table(match)
 
-                        # print(
-                        #     f"Game:   {match.home_team.title()} VS {match.away_team.title()}\n"
-                        # )
-                        # for game in match.games:
-                        #     self.parse_leg_score(game)
-                        #     print(
-                        #         f"{game.home_player.title():<25}{game.home_score:<4}{game.type:^4}{game.away_score}{game.away_player.title():>25}"
-                        #     )
-
             elif command == "4":
 
-                # print("\n==Viewing League Standings==\n")
                 self.create_league_standings(league_id)
 
     def display_available_leagues(self, leagues: List[object]) -> None:
@@ -156,7 +139,7 @@ class View_Manager_UI:
             if league_id == "b":
                 return "b"
             for league in all_leagues:
-                if league_id == str(league.id):  # or league_id == "b"
+                if league_id == str(league.id):
                     return league_id
 
             print("Please select a valid league ID from the list!")
@@ -201,45 +184,18 @@ class View_Manager_UI:
         print(f"\n╔{'═'*4}╦{'═'*15}╦{'═'*99}╗")
         print(f"║{f'{id}.':^4}║{'TEAM NAME':^15}║ {team.name.title():<98}║")
         print(f"╚{'═'*4}╩{'═'*15}╩{'═'*99}╝")
-        # =============CLUTTERED VERSION Could fix with colorama===============
-        # print(f"\n╔{'═'*39}╦{'═'*14}╦{'═'*39}╦{'═'*14}╗")
-        # print(f"║{STR_NAME:^39}║{STR_SSN:^14}║{STR_EMAIL:^39}║{STR_DOB:^14}║")
-        # print(f"╠{'═'*15}╦{'═'*15}╦{'═'*7}╩{'═'*14}╩{'═'*16}╦{'═'*15}╦{'═'*6}╩{'═'*14}╣")
-        # print(f"║{STR_PHONE:^15}║{STR_HOME_PHONE:^15}║{STR_ADDRESS:^39}║{STR_ROLE:^15}║{'#'*21}║")
+
         print(f"\n╔{'═'*39}╦{'═'*14}╦{'═'*39}╦{'═'*14}╦{'═'*10}╗")
         print(
             f"║{STR_NAME:^39}║{STR_SSN:^14}║{STR_EMAIL:^39}║{STR_DOB:^14}║{STR_ROLE:^10}║"
         )
-        # print(f"\n{STR_NAME:<35}{STR_PHONE:<12}{STR_SSN:<15}{STR_ADDRESS:<20}{STR_ROLE:<10}")
         for player in team.players:
             print(f"╠{'═'*39}╬{'═'*14}╬{'═'*39}╬{'═'*14}╬{'═'*10}╣")
             print(
                 f"║ {player.name.title():<38}║{player.ssn:^14}║ {player.email:<38}║{player.dob:^14}║{player.role.upper():^10}║"
             )
 
-        # =============CLUTTERED VERSION Could fix with colorama===============
-        #     print(f"╠{'═'*15}╩{'═'*15}╩{'═'*7}╦{'═'*14}╦{'═'*16}╩{'═'*15}╩{'═'*6}╦{'═'*14}╣")
-        #     print(f"║{player.name.title():^39}║{player.ssn:^14}║{player.email:^39}║{player.dob:^14}║")
-        #     print(f"╠{'═'*15}╦{'═'*15}╦{'═'*7}╩{'═'*14}╩{'═'*16}╦{'═'*15}╦{'═'*6}╩{'═'*14}╣")
-        #     print(f"║{player.phone:^15}║{player.home_phone:^15}║{player.address:^39}║{player.role:^15}║{'#'*21}║")
-        # print(f"╚{'═'*15}╩{'═'*15}╩{'═'*39}╩{'═'*15}╩{'═'*21}╝")
         print(f"╚{'═'*39}╩{'═'*14}╩{'═'*39}╩{'═'*14}╩{'═'*10}╝")
-
-    def parse_leg_score(self, game: object) -> None:
-        """Formats the score of each team for the the match table."""
-        if game.home_score == "0":
-            game.home_score = "0-0"
-        elif game.home_score == "1":
-            game.home_score = "1-0"
-        else:
-            game.home_score = "1-1"
-
-        if game.away_score == "0":
-            game.away_score = "0-0"
-        elif game.away_score == "1":
-            game.away_score = "0-1"
-        else:
-            game.away_score = "1-1"
 
     def create_league_standings(self, league_id) -> str:
         """Prints out all teams and how many games and how legs they've won."""
@@ -250,7 +206,6 @@ class View_Manager_UI:
         teams_sorted_by_wins = self.logic_wrapper.get_team_standings(league_id)
         for team in teams_sorted_by_wins:
             name, matches = team
-            # print("-" * 53)
             print(DELIM_MID)
             print(f"║{name.title():<39}║{matches:^34}║")
         print(f"╚{'═'*39}╩{'═'*34}╝")
