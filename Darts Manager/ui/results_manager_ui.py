@@ -32,7 +32,8 @@ class Results_Manager_UI:
             if name == "b":
                 return
             elif self.logic_wrapper.check_host_name(name, league_id):
-                # þarf að sækja allar kláraðar viðureignir í league-inu:
+                # Heilsa host með nafni og útskýra hvað hann getur gert
+                print(f"Hello {name}, you are here to make some changes")
                 all_finished_matches = self.logic_wrapper.get_finished_matches(
                     league_id
                 )
@@ -61,12 +62,23 @@ class Results_Manager_UI:
                         print("Invalid input!")
 
             elif self.logic_wrapper.check_captain_name(name, league_id):
-                print("Komin tenging í captain :)")
+                # Heilsa captain með nafni og útskýra hvað hann getur gert
+                print(f"Hello {name}, you are here to update a match result")
+                # sækja allar upcoming viðureignir
+                all_unfinished_matches = self.logic_wrapper.get_unfinished_matches(
+                    league_id
+                )
+                # sigta út þær sem þessi captain er ekki partur af þ.e. liðið hans
+                filtered_unfinished_matches = []
+
+                header = (
+                    "* Here is a list of all your matches with no recorded results: *"
+                )
+                self.display_matches(filtered_unfinished_matches, header)
+                self.change_match_result(filtered_unfinished_matches, league_id)
+
             else:
                 print("Couldn't find that name, try again!")
-
-        # skoða host nafnið hjá þessu tiltekna league
-        # fara í gegnum öll liðin sem taka þátt í keppninni og liðsmenn þeirra
 
     def select_league_id(self, all_leagues: List[object]) -> None:
         while True:
