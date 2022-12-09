@@ -59,6 +59,7 @@ class League_Data:
                 "league_ID",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
+            writer.writeheader()
             next_id = 1
             for match in all_matches:  # a match is a tuple containing two Team objects
                 m = Match()
