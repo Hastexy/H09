@@ -47,9 +47,8 @@ class League_Data:
     def generate_schedule(self, league: object) -> None:
         """Creates a schedule for a league. It makes sure that all the teams compete with each other only once."""
 
-        all_matches = list(combinations(league.teams, 2))
         matchfile = self.match_folder + str(league.id) + ".csv"
-        with open(matchfile, "a", newline="", encoding="utf-8") as csvfile:
+        with open(matchfile, "w", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
                 "match_ID",
                 "date",
@@ -61,22 +60,23 @@ class League_Data:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
             writer.writeheader()
             next_id = 1
-            for match in all_matches:  # a match is a tuple containing two Team objects
-                m = Match()
-                m.id = next_id
-                next_id += 1
-                m.date = ""  # vantar að sækja úr league.round_dates
-                m.home_team, m.away_team = match
-                writer.writerow(
-                    {
-                        "match_ID": m.id,
-                        "date": m.date,
-                        "home_team": m.home_team.name,
-                        "away_team": m.away_team.name,
-                        "result": m.result,
-                        "league_ID": league.id,
-                    }
-                )
+            for date, matches in league.matches.items():
+                for match in matches:
+                    m = Match()
+                    m.id = next_id
+                    next_id += 1
+                    m.date = date
+                    m.home_team, m.away_team = match
+                    writer.writerow(
+                        {
+                            "match_ID": m.id,
+                            "date": m.date,
+                            "home_team": m.home_team.name,
+                            "away_team": m.away_team.name,
+                            "result": m.result,
+                            "league_ID": league.id,
+                        }
+                    )
 
     def get_all_league_teams(self, league_id: str) -> List[object]:
         """Receives a league_id number and fetches all the teams participating in that specific league. Returns a list of Team objects."""
