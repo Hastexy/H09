@@ -14,7 +14,7 @@ SKIP = """
 
 ERR_LENGTH = """
 ╔═════════════════════════════════════════════════════╗
-║ The input must be between 3 and 49 characters long! ║
+║ The input must be between 3 and 39 characters long! ║
 ╚═════════════════════════════════════════════════════╝"""
 
 ERR_UNKNOWN = """
@@ -148,17 +148,17 @@ def validate_rounds(rounds: str) -> None:
 
 
 def validate_club_length(name):
-    if len(name) <= 2 or len(name) >= 50:
+    if len(name) <= 2 or len(name) >= 40:
         raise NameLengthException()
 
 
 def validate_team_name(name):
-    if len(name) <= 2 or len(name) >= 50:
+    if len(name) <= 2 or len(name) >= 40:
         raise NameLengthException()
 
 
 def validate_player_name(name):
-    if len(name) <= 2 or len(name) >= 50:
+    if len(name) <= 2 or len(name) >= 40:
         raise NameLengthException()
     elif not name.replace(" ", "").isalpha():
         raise InvalidNameError()

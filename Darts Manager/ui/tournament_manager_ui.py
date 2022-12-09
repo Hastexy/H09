@@ -193,7 +193,7 @@ class Tournament_Manager_UI:
                 validate_team_name(t.name)
                 break
             except NameLengthException:
-                print("\n##The name must be between 3 or 49 characters long!##")
+                print("\n##The name must be between 3 or 39 characters long!##")
             except:
                 print("\n##Unknown Error Occured, try again##")
 
@@ -291,7 +291,7 @@ class Tournament_Manager_UI:
             except InvalidNameError:
                 print("\n##Name cannot contain digits!##")
             except:
-                print("\n##Unknown Error Occured, try again##")
+                print(ERR_UNKNOWN)
 
         while True:
             l.phone = input("\nHost's phonenumber: ")
@@ -302,9 +302,9 @@ class Tournament_Manager_UI:
                 validate_number(l.phone)
                 break
             except InvalidNumberLengthException:
-                print("The phone number must consist of SEVEN digits!")
+                print(ERR_PHONE)
             except InvalidNumberCharacterException:
-                print("The phone number must consist ONLY of digits!")
+                print(ERR_DIGIT)
 
         # Get a list of all the teams participating!!
         print("Register Teams In The League (At Least TWO Teams):")
@@ -340,9 +340,8 @@ class Tournament_Manager_UI:
             try:
                 start_date = datetime.strptime(start_date, "%d/%m/%Y %H:%M")
                 break
+            except ValueError:
                 print("Please enter the date like the format shows!")
-            except:
-                pass
 
         l.round_dates.append(start_date)
 
