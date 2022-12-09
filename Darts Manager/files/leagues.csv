@@ -1,7 +1,2 @@
 ID;name;host_name;host_phonenumber;start_date;end_date;rounds
-<<<<<<< HEAD
-1;HR open 2022;kjarri;4567894;12/12/2022 19:00;16/12/2022 19:00;3
-2;HR crazycupcakes;kárklári;5868888;14/12/2023 19:00;20/12/2023 19:00;3
-=======
 1;Testing;test;1231231;11/11/1111 11:11;11/11/1111 11:11;1
->>>>>>> 63ede7fe7e5abc613fb2364e7ed4d57d6bfa9101
