@@ -50,7 +50,7 @@ class Tournament_Manager_UI:
                 print(CANCEL)
                 self.create_club()
             elif command == "2":
-                print(CANCEL)
+                #print(CANCEL)
                 self.create_team()
             elif command == "3":
                 print(CANCEL)
@@ -83,21 +83,26 @@ class Tournament_Manager_UI:
     def display_all_clubs(self) -> list:
         """Displays all clubs registered in the system."""
 
-        print("\n##### Every team must belong to a club. #####")
+        #print("\n##### Every team must belong to a club. #####")
 
-        header = "* Here is a list of all the clubs registered in the system: *"
-        separator = "*" * len(header)
+        print(f"""{Fore.YELLOW}
+╔══════════════════════════════════╗
+║ Every team must belong to a club ║
+╚══════════════════════════════════╝{Fore.WHITE}""")
+        
+        header = f"║ {'List of all registered clubs':^79} ║"
+        separator = "═" * (len(header) - 2)
 
-        print(f"\n{separator}")
+        print(f"\n╔{separator}╗")
         print(header)
-        print(f"{separator}\n")
+        print(f"╠{separator}╣")
 
-        print(f"{'NAME':<35}{'Address':<25}{'ID'}")
-        print("-" * 64)
+        print(f"║ {'NAME':<39}{'Address':<39}{'ID':>2}║")
+        print(f"╠{'═' * 81}╣")
         all_clubs = self.logic_wrapper.get_all_clubs()
         for club in all_clubs:
-            print(f"{club.name.title():<35}{club.address:<25}{club.id}")
-        print("-" * 64)
+            print(f"║ {club.name.title():<39}{club.address:<39}{club.id:>2}║")
+        print(f"╚{'═'*81}╝")
 
         return all_clubs
 
@@ -172,8 +177,14 @@ class Tournament_Manager_UI:
         club_assigned = False
         while True:
 
+            print(CANCEL)
+            
+            # club_ID = input(
+            #     "\nWhich club does the new team belong to? (club ID): "
+            # ).lower()
+            
             club_ID = input(
-                "\nWhich club does the new team belong to? (club ID): "
+                "\nEnter the ID of the club this new team belongs to: "
             ).lower()
 
             if club_ID == "b":
@@ -200,9 +211,9 @@ class Tournament_Manager_UI:
                 validate_team_name(t.name)
                 break
             except NameLengthException:
-                print("\n##The name must be between 3 or 39 characters long!##")
+                print(ERR_LENGTH)
             except:
-                print("\n##Unknown Error Occured, try again##")
+                print(ERR_UNKNOWN)
 
         #header = f"║ Every team must have at least 4 players, one of whom is the team captain ║"
         header = f"║ {'Every team must have 4 players minimum':<63} ║"
