@@ -65,9 +65,11 @@ class Results_Manager_UI:
                 # Heilsa captain með nafni og útskýra hvað hann getur gert
                 print(f"Hello {name}, you are here to update a match result")
                 # sækja allar upcoming viðureignir
+                the_captain = self.logic_wrapper.get_captain(name, league_id)
                 all_unfinished_matches = self.logic_wrapper.get_unfinished_matches(
                     league_id
                 )
+
                 # sigta út þær sem þessi captain er ekki partur af þ.e. liðið hans
                 filtered_unfinished_matches = []
 
