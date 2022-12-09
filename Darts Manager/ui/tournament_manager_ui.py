@@ -291,6 +291,7 @@ class Tournament_Manager_UI:
                 all_leagues = self.logic_wrapper.get_all_leagues()
                 taken_names = [league.name.lower() for league in all_leagues]
                 validate_league_name(taken_names, l.name.lower())
+                break
             except SameNameError:
                 print(
                     f"""{Fore.RED}
