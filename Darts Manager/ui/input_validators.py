@@ -1,8 +1,9 @@
 from colorama import init, Fore, Style
+
 init()
-#Colorama options
-#Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
-#Style = [DIM, NORMAL, BRIGHT]
+# Colorama options
+# Fore = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+# Style = [DIM, NORMAL, BRIGHT]
 CANCEL = f"""{Fore.YELLOW}
 ╔═══════════════════════════════════════════╗
 ║ Input "b" at any point to cancel creation ║
