@@ -142,9 +142,9 @@ class RoundLengthError(Exception):
 
 def validate_rounds(rounds: str) -> None:
     if not rounds.isdigit():
-        raise NotDigitsError
+        raise NotDigitsError()
     if int(rounds) < 1:
-        raise RoundLengthError
+        raise RoundLengthError()
 
 
 def validate_club_length(name):
@@ -186,26 +186,26 @@ def validate_email(email):
     if email.count("@") == 1:
         x, y = email.split("@")
         if x == "":
-            NothingBeforeAsperandException()
+            raise NothingBeforeAsperandException()
         if y == "":
-            NothingAfterAsperandException()
+            raise NothingAfterAsperandException()
         if x[-1] == ".":
-            NoDotBeforeAsperandException()
+            raise NoDotBeforeAsperandException()
 
     if email[0] == ".":
-        NoDotAtStartException()
+        raise NoDotAtStartException()
     if ".." in email:
-        ConsecutiveDotsException()
+        raise ConsecutiveDotsException()
 
     if email[-4] != ".com":
-        MissingDomainNameException()
+        raise MissingDomainNameException()
 
 
 def validate_dob(dob: str):
     if len(dob) != 10:
-        raise NameLengthException
+        raise NameLengthException()
     if dob[2] != "/" or dob[5] != "/":
-        raise InvalidNumberCharacterException
+        raise InvalidNumberCharacterException()
 
 
 def validate_league_name(league_name) -> None:
