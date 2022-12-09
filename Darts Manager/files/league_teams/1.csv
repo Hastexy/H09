@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+ID;name;clubID
+1;thunderdarts;4
+2;dartvader;3
+3;binarydarts;1
+=======
 ID;name;clubID;match_wins;legs_wins
 1;thunderdarts;4;0;0
 2;dartvader;3;0;0
-3;binarydarts;1;0;0
+>>>>>>> 63ede7fe7e5abc613fb2364e7ed4d57d6bfa9101

@@ -47,8 +47,9 @@ class League_Data:
     def generate_schedule(self, league: object) -> None:
         """Creates a schedule for a league. It makes sure that all the teams compete with each other only once."""
 
-        matchfile = self.match_folder + str(league.id) + ".csv"
-        with open(matchfile, "w", newline="", encoding="utf-8") as csvfile:
+        # matchfile = self.match_folder + str(league.id) + ".csv"
+        matchfile = "files/matches.csv"
+        with open(matchfile, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
                 "match_ID",
                 "date",
@@ -58,13 +59,11 @@ class League_Data:
                 "league_ID",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=";")
-            writer.writeheader()
-            next_id = 1
+            next_id = int(self.get_new_match_id())
             for date, matches in league.matches.items():
                 for match in matches:
                     m = Match()
                     m.id = next_id
-                    next_id += 1
                     m.date = date
                     m.home_team, m.away_team = match
                     writer.writerow(
@@ -77,6 +76,7 @@ class League_Data:
                             "league_ID": league.id,
                         }
                     )
+                    next_id += 1
 
     def get_all_league_teams(self, league_id: str) -> List[object]:
         """Receives a league_id number and fetches all the teams participating in that specific league. Returns a list of Team objects."""
@@ -108,7 +108,8 @@ class League_Data:
     def get_finished_matches(self, league_id: str) -> List[object]:
         """Receives a league_id number and fetches all the matches that have been completed in that league. Returns a list of Match objects."""
         matches = []
-        matchfile = self.match_folder + str(league_id) + ".csv"
+        # matchfile = self.match_folder + str(league_id) + ".csv"
+        matchfile = "files/matches.csv"
         with open(matchfile, newline="", encoding="utf-8") as match_file:
             reader = csv.DictReader(match_file, delimiter=";")
             for match in reader:
@@ -134,7 +135,8 @@ class League_Data:
     def get_unfinished_matches(self, league_id) -> List[object]:  # Kristinn
         """Receives a league_id number and fetches all the matches that have yet to be  in that league. Returns a list of Match objects."""
         matches = []
-        matchfile = self.match_folder + str(league_id) + ".csv"
+        # matchfile = self.match_folder + str(league_id) + ".csv"
+        matchfile = "files/matches.csv"
         with open(matchfile, newline="", encoding="utf-8") as match_file:
             reader = csv.DictReader(match_file, delimiter=";")
             for match in reader:
@@ -148,14 +150,14 @@ class League_Data:
                             match["result"],
                             match["league_ID"],
                         )
-                        gamefile = self.game_folder + m.id + ".csv"
-
-                        with open(gamefile, newline="", encoding="utf-8") as game_file:
-                            game_reader = csv.DictReader(game_file, delimiter=";")
-                            for game in game_reader:
-                                g = Game(*game.values())
-                                m.games.append(g)
                         matches.append(m)
+                        # gamefile = self.game_folder + m.id + ".csv"
+
+                        # with open(gamefile, newline="", encoding="utf-8") as game_file:
+                        #     game_reader = csv.DictReader(game_file, delimiter=";")
+                        #     for game in game_reader:
+                        #         g = Game(*game.values())
+                        #         m.games.append(g)
         return matches
 
     def register_teams(self, league: object) -> None:
@@ -164,23 +166,16 @@ class League_Data:
         teamsfile = self.team_folder + str(league.id) + ".csv"
 
         with open(teamsfile, "a", newline="", encoding="utf-8") as teams_file:
-            fieldnames = ["ID", "name", "clubID", "match_wins", "legs_wins"]
+            fieldnames = ["ID", "name", "clubID"]
             writer = csv.DictWriter(teams_file, fieldnames=fieldnames, delimiter=";")
             writer.writeheader()
             for team in league.teams:
-                writer.writerow(
-                    {
-                        "ID": team.id,
-                        "name": team.name,
-                        "clubID": team.club,
-                        "match_wins": "0",
-                        "legs_wins": "0",
-                    }
-                )
+                writer.writerow({"ID": team.id, "name": team.name, "clubID": team.club})
 
     def reschedule_match(self, match: object) -> None:
         """Changes the date of a match"""
-        matchfile = self.match_folder + str(match.league_id) + ".csv"
+        # matchfile = self.match_folder + str(match.league_id) + ".csv"
+        matchfile = "files/matches.csv"
         with fileinput.input(files=matchfile, inplace=True, mode="r") as match_file:
 
             reader = csv.DictReader(match_file, delimiter=";")
@@ -197,6 +192,16 @@ class League_Data:
                 pass
             new_id = id + 1
         return new_id   
+
+    def get_new_match_id(self) -> int:
+        """Generates a unique match id."""
+        # matchfile = self.match_folder + str(league_id) + ".csv"
+        matchfile = "files/matches.csv"
+        with open(matchfile, newline="", encoding="utf-8") as csvfile:
+            for id, _ in enumerate(csvfile):
+                pass
+            new_id = id + 1
+        return new_id
 
     def get_all_leagues(self) -> list:
         """Returns a list of all league names."""
@@ -230,7 +235,8 @@ class League_Data:
         return False
 
     def record_result(self, match: object) -> None:
-        matchfile = self.match_folder + str(match.league_id) + ".csv"
+        # matchfile = self.match_folder + str(match.league_id) + ".csv"
+        matchfile = "files/matches.csv"
         with fileinput.input(files=matchfile, inplace=True, mode="r") as match_file:
 
             reader = csv.DictReader(match_file, delimiter=";")
