@@ -1,5 +1,5 @@
 ID;name;ssn;email;dob;phone;home_phone;address;team_ID;role
-21;Marianna Bush;0205843948;marianna@gmail.com;04/03/1995;8617834;;bellsstreet 202;6;captain
-22;Dayanara Mckinney;0501953638;dayanara@email.com;02/03/1999;6555175;;threadstreet 109;6;player
-23;Kailey Green;2007873650;kailey@gmail.com;02/04/1994;6622296;;changeablestreet 123;6;player
-24;Erik Bradshaw;1701783246;erik@gmail.com;03/03/1996;6492065;;marriedstreet 39;6;player
+21;marianna bush;0205843948;marianna@gmail.com;04/03/1995;8617834;;bellsstreet 202;6;captain
+22;dayanara mckinney;0501953638;dayanara@email.com;02/03/1999;6555175;;threadstreet 109;6;player
+23;kailey green;2007873650;kailey@gmail.com;02/04/1994;6622296;;changeablestreet 123;6;player
+24;erik bradshaw;1701783246;erik@gmail.com;03/03/1996;6492065;;marriedstreet 39;6;player

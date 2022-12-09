@@ -1,5 +1,5 @@
 ID;name;ssn;email;dob;phone;home_phone;address;team_ID;role
-9;Jacqueline Payne;2706713276;jacqueline@gmail.com;12/07/2004;8485386;;substantialstreet 170;3;captain
-10;Elaina Singleton;1611873154;elaina@gmail.com;15/12/2000;6553265;;cherriesstreet 20;3;player
-11;Marcel Arias;0711983486;marcel@gmail.com;07/07/2001;6015114;;mess upstreet 250;3;player
+9;jacqueline payne;2706713276;jacqueline@gmail.com;12/07/2004;8485386;;substantialstreet 170;3;captain
+10;elaina singleton;1611873154;elaina@gmail.com;15/12/2000;6553265;;cherriesstreet 20;3;player
+11;marcel arias;0711983486;marcel@gmail.com;07/07/2001;6015114;;mess upstreet 250;3;player
 12;kallie hansen;1107913504;kallie@gmail.com;05/07/1997;6987450;;trickstreet 73;3;player

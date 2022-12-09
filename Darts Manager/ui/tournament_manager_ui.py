@@ -432,7 +432,7 @@ class Tournament_Manager_UI:
         p.id = self.logic_wrapper.get_new_player_id()
 
         while True:
-            p.name = input("\nEnter the name of the player: ")
+            p.name = input("\nEnter the name of the player: ").strip().lower()
             if p.name == "b":
                 print(CANCEL2)
                 return "b"

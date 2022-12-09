@@ -1,5 +1,5 @@
 ID;name;ssn;email;dob;phone;home_phone;address;team_ID;role
-17;Cassie Obrien;1309743005;cassie@gmail.com;04/04/1997;7451813;;tightstreet 279;5;captain
-18;Maggie Lynch;1503833070;maggie@gmail.com;03/03/1996;8779676;;icestreet 134;5;player
-19;Devin Villarreal;2712823053;devin@gmail.com;03/04/1995;7247162;;crossstreet 229;5;player
-20;Gilberto Pollard;1711793440;gilberto@email.com;14/12/2002;7592715;;thinkablestreet 230;5;player
+17;cassie obrien;1309743005;cassie@gmail.com;04/04/1997;7451813;;tightstreet 279;5;captain
+18;maggie lynch;1503833070;maggie@gmail.com;03/03/1996;8779676;;icestreet 134;5;player
+19;devin villarreal;2712823053;devin@gmail.com;03/04/1995;7247162;;crossstreet 229;5;player
+20;gilberto pollard;1711793440;gilberto@email.com;14/12/2002;7592715;;thinkablestreet 230;5;player
