@@ -141,15 +141,15 @@ class Results_Manager_UI:
 
         for date, matches in all_matches.items():
 
-            print(f"╔{'═'*10}╦{'═'*67}╗")
-            print(f"║{'Date':^10}║{date:<67}║")
-            print(f"╠{'═'*6}╦{'═'*3}╩{'═'*24}╦{'═'*5}╦{'═'*28}╦{'═'*7}╣")
+            print(f"╔{'═'*10}╦{'═'*71}╗")
+            print(f"║{'Date':^10}║{date:<71}║")
+            print(f"╠{'═'*6}╦{'═'*3}╩{'═'*24}╦{'═'*5}╦{'═'*28}╦{'═'*11}╣")
             for match in matches:
                 print(
-                    f"║ Game ║ {match.home_team.title():>26} ║  V  ║ {match.away_team.title():<26} ║ ID: {match.id} ║"
+                    f"║ Game ║ {match.home_team.title():>26} ║  V  ║ {match.away_team.title():<26} ║ ID: {match.id:<5} ║"
                 )
 
-            print(f"╚{'═'*6}╩{'═'*28}╩{'═'*5}╩{'═'*28}╩{'═' * 7}╝")
+            print(f"╚{'═'*6}╩{'═'*28}╩{'═'*5}╩{'═'*28}╩{'═' * 11}╝")
 
     def change_match_date(self, all_matches: dict) -> None:
         while True:

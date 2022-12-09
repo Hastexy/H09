@@ -40,7 +40,7 @@ class Tournament_Manager_UI:
         while True:
             self.menu_output()
             command = input("\nEnter your option: ")
-            command = command.lower()
+            command = command.strip().lower()
             if command == "q":
                 print("\nGoodbye for now!")
                 return "q"
